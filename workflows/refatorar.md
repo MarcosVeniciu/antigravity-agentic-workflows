@@ -20,7 +20,18 @@ Before refactoring anything, you MUST:
 
 Your goal is to clean up the code that was just written in the `/codigo` phase. Apply the following techniques to ensure the internal quality of the module:
 
-#### 2.1. SOLID Principles Check
+#### 2.1. Refactoring Task List (`task.md`)
+
+Before making any changes, analyze the code and create or update a `task.md` checklist. You must address **one refactoring target at a time**.
+
+**Refactoring Checklist Template (`task.md`):**
+- `[ ]` **Target:** `function_name` or `Class`
+  - **Smell/Issue:** Deep nesting / SRP Violation / Magic Numbers
+  - **Action:** Extract into `new_helper_function` / Flatten conditionals
+
+*Process this list sequentially. Do not try to refactor multiple unrelated functions in the same step.*
+
+#### 2.2. SOLID Principles Check
 
 | Principle | What to Look For | Refactoring Action |
 |---|---|---|
@@ -30,7 +41,7 @@ Your goal is to clean up the code that was just written in the `/codigo` phase. 
 | **Interface Segregation (ISP)** | Clients forced to depend on methods they don't use. | Split interfaces into smaller, focused ones. |
 | **Dependency Inversion (DIP)** | High-level modules depending on low-level details. | Introduce abstractions/dependency injection. |
 
-#### 2.2. Code Smells Elimination
+#### 2.3. Code Smells Elimination
 
 * **Long Functions:** Break functions exceeding ~20 lines into smaller, named helper functions.
 * **Duplicate Code:** Extract repeated logic into shared utility functions.
@@ -38,7 +49,7 @@ Your goal is to clean up the code that was just written in the `/codigo` phase. 
 * **Magic Numbers/Strings:** Replace with named constants or configuration values.
 * **Dead Code:** Remove unused imports, unreachable branches, and commented-out blocks.
 
-#### 2.3. Naming & Readability
+#### 2.4. Naming & Readability
 
 * Rename variables, functions, and classes to express intent clearly.
 * Ensure consistent naming convention (snake_case, camelCase) per project standards.

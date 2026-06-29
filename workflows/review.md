@@ -29,7 +29,7 @@ Fetch the specific review checklist from the `08-templates/` directory in the `o
 Do not just glance at the code. For every checklist item:
 1. **Locate:** Find the exact mechanical proof requested by the template (e.g., count the `if/for` statements, read the test terminal output for time scaling).
 2. **Evaluate:** Apply the strict limits defined in the template.
-3. **Report:** Formulate a specific recommendation for the `/refatorar` agent on *how* to rewrite the code.
+3. **Report:** Formulate a specific recommendation for the `/aplicar-review` agent on *how* to rewrite the code.
 
 #### 2.2. Severity Classification
 
@@ -43,6 +43,11 @@ Do not just glance at the code. For every checklist item:
 
 ### 3. Report Output Format
 
+You must generate this report as an artifact named `audit_report.md` so the user can see it laterally without flooding the chat.
+Additionally, you MUST save this same report in the `obsidian_knowledge_graph` MCP vault (e.g., in `03-pivots-and-bugs/reviews/` or an appropriate directory).
+
+**Artifact Name:** `audit_report.md`
+
 ```markdown
 ## Code Review Report: [Mode]
 
@@ -52,21 +57,29 @@ Do not just glance at the code. For every checklist item:
 
 ### Findings
 
-#### [Finding #1] — [Severity Emoji] [Title]
+#### [ ] [Finding #1] — [Severity Emoji] [Title]
 - **File:** `path/to/file.py` (L42-L58)
 - **Evidence:** [Exact mechanical proof, e.g., "Nested loop iterating over query O(n^2)"]
-- **Refactoring Recommendation:** [Direct instruction for the /refatorar agent, e.g., "Extract ID list and use IN() clause in the main query"]
+- **Refactoring Recommendation:** [Direct instruction for the /aplicar-review agent, e.g., "Extract ID list and use IN() clause in the main query"]
+- **Resolution (to be filled by `/aplicar-review`):** 
+  - *[Leave this space empty for the next agent to document what was done]*
+
+---
+
+## Related Context
+- [Link to Implementation Plan / SDD]
+- [Link to Features List or Architecture map]
 ```
 
 ---
 
 ### 4. The Review Chain (Next Step Logic)
 
-Suggest the next logical audit or proceed to refactoring:
+Suggest the next step which is ALWAYS to apply the current review before moving to the next.
 
 > **[NEXT STEP — CONDITIONAL]:**
-> * If `/review`: *"🔎 General review completed. Suggestion: `/review arquitetura` to evaluate coupling."*
-> * If `/review arquitetura`: *"🏗️ Architecture completed. Suggestion: `/review resiliencia` to evaluate fault tolerance."*
-> * If `/review resiliencia`: *"🛡️ Resilience completed. Suggestion: `/review seguranca`."*
-> * If `/review seguranca`: *"🔒 Security completed. Suggestion: `/review performance`."*
-> * If `/review performance`: *"⚡ Performance completed. The audit cycle has ended. Execute `/refatorar` to apply all corrections at once."*
+> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review arquitetura`."*
+> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review resiliencia`."*
+> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review seguranca`."*
+> * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review performance`."*
+> * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. This is the final step of the audit cycle."*

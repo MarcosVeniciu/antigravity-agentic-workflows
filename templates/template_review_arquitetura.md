@@ -10,7 +10,7 @@ Observe the dependency declarations of core functions, the import headers of fil
 ## 1. Domain Leakage (Infrastructure Isolation)
 **How to Measure:** Scan the import statements at the top of files that contain core business rules (Calculations, Insights, Entities).
 - [ ] **Framework Contamination:** Do files that should contain purely business rules import web route decorators (e.g., `@app.get`), HTTP packages (e.g., `requests`, `flask`), Database framework models (e.g., `SQLAlchemy`, `Django ORM`), or Cloud SDKs (e.g., `boto3`)?
-- **How to Handle:** Demand that infrastructure libraries be completely removed from the domain layer. Instruct the `/refatorar` agent to extract these dependencies and access them via pure interface injection (Ports & Adapters / Repository Pattern).
+- **How to Handle:** Demand that infrastructure libraries be completely removed from the domain layer. Instruct the `/aplicar-review` agent to extract these dependencies and access them via pure interface injection (Ports & Adapters / Repository Pattern).
 
 ## 2. Dependency Inversion (DIP)
 **How to Measure:** Check class constructors (`__init__`) and function bodies for hardcoded instantiations.
@@ -25,7 +25,7 @@ Observe the dependency declarations of core functions, the import headers of fil
 ## 4. Side Effects and Immutability
 **How to Measure:** Analyze how functions interact with their input arguments (lists, dicts, objects). AIs often mutate inputs directly to save lines of code.
 - [ ] **Input Mutation:** Does a business function modify its input arguments directly (e.g., `input_list.append(x)` or `user_dict['status'] = 'active'`) instead of returning a new modified copy?
-- **How to Handle:** Enforce immutability in the domain layer. Instruct the `/refatorar` agent to create deep copies of the data or use functional approaches that return a new state object, preserving the original input.
+- **How to Handle:** Enforce immutability in the domain layer. Instruct the `/aplicar-review` agent to create deep copies of the data or use functional approaches that return a new state object, preserving the original input.
 
 ## 5. Interface Segregation & God Classes (ISP)
 **How to Measure:** Look at class sizes, responsibilities, and inherited methods.

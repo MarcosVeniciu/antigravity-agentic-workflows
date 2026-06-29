@@ -18,14 +18,24 @@ Before applying any fix, you MUST:
 
 ### 2. Resolution Protocol
 
-#### 2.1. Surgical Fixes
-* Address the ❌ FAIL and ⚠️ WARNING items identified in the review report.
+#### 2.1. Task Planning
+* First, parse the review report (`audit_report.md` artifact).
+* Create or update the `task.md` artifact to list all the findings as tasks. Use `[ ]` for pending, `[/]` for in-progress, and `[x]` for completed tasks. You MUST use this task list to track your progress for each task.
+
+#### 2.2. Surgical Fixes
+* Address the findings identified in the review report one by one, according to your `task.md`.
 * Apply the smallest possible code change to resolve the finding. Do not introduce new features or perform gratuitous refactoring.
 * Focus specifically on the domain of the review (e.g. if it was a security review, focus on OWASP fixes, SQL injection, secrets management; if architectural, focus on dependency injection, boundaries).
 
-#### 2.2. Review Report Updates
-* As you apply each fix, you MUST update the review report document itself by checking the corresponding checkboxes (e.g., changing `[ ]` to `[x]`).
-* If a finding is a false positive or intentionally ignored due to constraints, add a brief justification next to the unchecked box in the report.
+#### 2.3. Review Report & Vault Updates
+* As you apply each fix, you MUST update the `audit_report.md` artifact:
+  - Check the corresponding checkboxes (change `[ ]` to `[x]`).
+  - Fill the **Resolution (to be filled by `/aplicar-review`)** field with a brief description of what was effectively done to fix the issue.
+* If a finding is a false positive or intentionally ignored due to constraints, add a brief justification in the Resolution field and leave the box unchecked.
+* **CRITICAL:** Make sure you update the saved copy of the report in the `obsidian_knowledge_graph` MCP vault as well, to keep the historical record accurate!
+
+#### 2.4. Experiment Results Artifact
+* At the end of the review application, you MUST generate an `experiment_results.md` artifact to document the code changes you applied, summarizing how you addressed the review's findings and maintaining the `## Related Context` section pointing to previous artifacts.
 
 ---
 
@@ -38,9 +48,10 @@ Before applying any fix, you MUST:
 
 ### 4. Output Format
 
-1. Output the modified code blocks with exact file paths.
-2. Output a summary of which checkboxes were marked in the review report.
-3. Provide the test verification command:
+1. Output the modified code blocks with exact file paths (using standard coding tool protocols).
+2. Present the final `experiment_results.md` artifact with the documentation of changes.
+3. Confirm that the `audit_report.md` artifact and the Vault report were updated.
+4. Provide the test verification command:
 
 ```bash
 pytest path/to/test_file.py -v

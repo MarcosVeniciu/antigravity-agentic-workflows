@@ -11,7 +11,7 @@ Assume that every network operation (HTTP, database, file read) will silently fa
 **How to Measure:** Inspect all outbound network calls (HTTP clients, database queries, cache connections).
 - [ ] **Missing Timeouts:** Do functions make HTTP requests or DB connections without explicitly defining a strict timeout (e.g., `requests.get(url)` instead of `requests.get(url, timeout=5)`)?
 - [ ] **Graceful Degradation:** If a non-critical external service (e.g., analytics tracker, notification sender) fails or times out, does it crash the entire main business flow?
-- **How to Handle:** Demand explicit timeout parameters on all network calls. Instruct the `/refatorar` agent to wrap non-critical integrations in `try/except` blocks that log the error but allow the main process to complete successfully.
+- **How to Handle:** Demand explicit timeout parameters on all network calls. Instruct the `/aplicar-review` agent to wrap non-critical integrations in `try/except` blocks that log the error but allow the main process to complete successfully.
 
 ## 2. Idempotency and Safe Retries
 **How to Measure:** Analyze event-processing endpoints, webhook receivers, and retry loops.
