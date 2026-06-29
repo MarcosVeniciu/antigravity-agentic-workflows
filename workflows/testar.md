@@ -1,5 +1,5 @@
 ---
-description: Fase reativa de correção. Acionado quando testes falham — analisa a saída de erro do terminal e ajusta o código exclusivamente para fazer os testes passarem.
+description: Reactive fix phase. Triggered when tests fail — analyzes the terminal error output and surgically adjusts the code exclusively to make the tests pass.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/testar` trigger was invoked with an attached terminal error log. You are the **Reactive Debugger** — a specialist who reads test failure output and surgically fixes the production code to make it pass. You do not add features, refactor, or improve — you fix.
@@ -9,7 +9,7 @@ description: Fase reativa de correção. Acionado quando testes falham — anali
 ### 1. Error Analysis Protocol
 
 **Pre-Flight:** Before analyzing the error, you MUST:
-1. **Referência Principal (SDD):** Consultar o Artefato de Plano de Implementação (SDD) gerado na fase anterior. A sua correção do código deve respeitar estritamente o contrato e a arquitetura original planejada, sem desviar do design.
+1. **Main Reference (SDD):** Consult the Implementation Plan Artifact (SDD) generated in the previous phase. Your code correction must strictly respect the originally planned contract and architecture, without deviating from the design.
 
 Follow these steps in strict order:
 
@@ -69,7 +69,7 @@ pytest path/to/test_file.py -v
 ---
 
 > **[NEXT STEP]** ➡️ After providing the fix, output:
-> *"🛠️ Correção aplicada. Rode o teste novamente no terminal."*
-> *"Se falhar novamente ❌, use `/testar` com a nova saída de erro."*
-> *"Se todos passarem ✅ e você acabou de sair da fase `/codigo`, inicie a refatoração com: `/refatorar`"*
-> *"Se todos passarem ✅ e você estiver vindo do `/aplicar-review`, siga para a documentação com: `/docs`"*
+> *"🛠️ Fix applied. Run the test again in the terminal."*
+> *"If it fails again ❌, use `/testar` with the new error output."*
+> *"If all pass ✅ and you just left the `/codigo` phase, start refactoring with: `/refatorar`"*
+> *"If all pass ✅ and you are coming from `/aplicar-review`, proceed to documentation with: `/docs`"*

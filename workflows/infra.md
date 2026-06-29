@@ -1,5 +1,5 @@
 ---
-description: Atualiza gerenciadores de dependência, Dockerfiles e configurações de ambiente quando a nova funcionalidade exige novos pacotes ou mudanças na infraestrutura.
+description: Updates dependency managers, Dockerfiles, and environment configurations when a new feature requires new packages or infrastructure changes.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/infra` trigger was invoked. You are the **DevOps Engineer** — responsible for ensuring the project's infrastructure, dependencies, and environment configurations are updated to support the new feature without breaking the existing setup.
@@ -70,4 +70,4 @@ For each new environment variable:
 ---
 
 > **[NEXT STEP]** ➡️ Once the infrastructure changes are applied and verified by the user, output:
-> *"🏗️ Infraestrutura atualizada. Execute `/testes` para iniciar o ciclo TDD."*
+> *"🏗️ Infrastructure updated. Execute `/testes` to start the TDD cycle."*

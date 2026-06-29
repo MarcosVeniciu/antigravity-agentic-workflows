@@ -90,6 +90,10 @@ vault/
 ├── 02-conventions/        # Padrões de código e linting
 ├── 03-pivots-and-bugs/    # Histórico forense de bugs resolvidos
 ├── 04-domain-rules/       # Regras de negócio core
+├── 05-architecture-map/   # Mapas de componentes e integrações
+├── 06-roadmap-and-state/  # Débito técnico, WIP e roadmap
+├── 07-environment-setup/  # Build, deploy e configuração de ambiente
+├── 08-templates/          # Templates obrigatórios dos agentes
 └── 09-scopes-and-features/# Requisitos e BDDs
 ```
 > *Antes de qualquer ação, os agentes são instruídos a ler estas pastas autonomamente para se contextualizarem.*

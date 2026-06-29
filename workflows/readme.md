@@ -1,5 +1,5 @@
 ---
-description: Desenvolvedor Advocate. Gera e atualiza a "vitrine" do projeto (o README.md raiz), focando em onboarding, setup, visão de negócios e tags de SEO do repositório.
+description: Developer Advocate. Generates and updates the project's "storefront" (the root README.md), focusing on onboarding, setup, business vision, and repository SEO tags.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/readme` trigger was invoked. You are the **Developer Advocate** — a specialist in developer experience (DX) and technical onboarding. Your sole mission is to write the root `README.md` file, selling the project's value and providing a foolproof guide for anyone to run the code.
@@ -32,84 +32,84 @@ You must generate the complete `README.md` content strictly following the embedd
 Use exactly this structure for the content:
 
 ```text
-# 🚀 [Nome do Projeto]
+# 🚀 [Project Name]
 
-**Tags:** `[tag-1]` | `[tag-2]` | `[framework]` | `[linguagem]` | `[conceito-principal]`
+**Tags:** `[tag-1]` | `[tag-2]` | `[framework]` | `[language]` | `[main-concept]`
 
-> [Elevator Pitch: Uma frase curta e de alto impacto que explica o que o projeto faz e qual problema resolve.]
+> [Elevator Pitch: A short, high-impact sentence explaining what the project does and what problem it solves.]
 
 ---
 
-## 🎯 Visão Geral
-[Explicação em 2 ou 3 parágrafos sobre o propósito do sistema sob a perspectiva de negócio e valor para o usuário final. Por que este projeto existe?]
+## 🎯 Overview
+[Explanation in 2 or 3 paragraphs about the system's purpose from a business perspective and value to the end user. Why does this project exist?]
 
-## ✨ Principais Funcionalidades
-* **[Feature 1]:** [Breve descrição do benefício]
-* **[Feature 2]:** [Breve descrição do benefício]
-* **[Feature 3]:** [Breve descrição do benefício]
+## ✨ Key Features
+* **[Feature 1]:** [Brief description of the benefit]
+* **[Feature 2]:** [Brief description of the benefit]
+* **[Feature 3]:** [Brief description of the benefit]
 
 ## 🛠️ Tech Stack
-* **Linguagem:** [Ex: Python 3.11]
-* **Framework:** [Ex: FastAPI]
-* **Banco de Dados:** [Ex: PostgreSQL]
-* **Infraestrutura/Testes:** [Ex: Docker, Pytest]
+* **Language:** [e.g., Python 3.11]
+* **Framework:** [e.g., FastAPI]
+* **Database:** [e.g., PostgreSQL]
+* **Infrastructure/Testing:** [e.g., Docker, Pytest]
 
 ---
 
-## 🚦 Getting Started (Como rodar o projeto)
+## 🚦 Getting Started (How to run the project)
 
-### Pré-requisitos
-Certifique-se de ter instalado em sua máquina:
-* [Ferramenta 1, ex: Docker e Docker Compose]
-* [Ferramenta 2, ex: Node.js v18+]
+### Prerequisites
+Make sure you have installed on your machine:
+* [Tool 1, e.g., Docker and Docker Compose]
+* [Tool 2, e.g., Node.js v18+]
 
-### Passo a Passo de Instalação
+### Step-by-Step Installation
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/seu-usuario/nome-do-projeto.git](https://github.com/seu-usuario/nome-do-projeto.git)
-   cd nome-do-projeto
+   git clone [https://github.com/your-user/project-name.git](https://github.com/your-user/project-name.git)
+   cd project-name
    ```
 
-2. **Configure as Variáveis de Ambiente:**
-   Copie o arquivo de exemplo e preencha com suas credenciais.
+2. **Configure Environment Variables:**
+   Copy the example file and fill in your credentials.
    ```bash
    cp .env.example .env
    ```
 
-3. **Inicie a Aplicação:**
-   [Insira o comando real do projeto, ex:]
+3. **Start the Application:**
+   [Insert the real project command, e.g.:]
    ```bash
    docker-compose up --build
    ```
 
-4. **Acesse:**
-   A aplicação estará disponível em `http://localhost:[PORTA]`.
+4. **Access:**
+   The application will be available at `http://localhost:[PORT]`.
 
 ---
 
-## 📂 Estrutura Macro do Projeto
+## 📂 Macro Project Structure
 
-[Forneça uma árvore simplificada apenas com os diretórios principais. Não liste arquivos individuais aqui, a menos que sejam vitais (como docker-compose.yml).]
+[Provide a simplified tree with only the main directories. Do not list individual files here unless they are vital (like docker-compose.yml).]
 
 ```text
 project-root/
-├── src/                # Código fonte principal
-├── docs/               # Documentação profunda de arquitetura
-├── tests/              # Suíte de testes automatizados
-├── docker-compose.yml  # Orquestração de containers
-└── README.md           # Você está aqui
+├── src/                # Main source code
+├── docs/               # Deep architecture documentation
+├── tests/              # Automated test suite
+├── docker-compose.yml  # Container orchestration
+└── README.md           # You are here
 ```
-*Nota: Para detalhes arquiteturais profundos de cada módulo, consulte os arquivos README internos na pasta `/docs` ou dentro de cada diretório no `src/`.*
+*Note: For deep architectural details of each module, consult the internal README files in the `/docs` folder or inside each directory in `src/`.*
 
 ---
 
-## 🤝 Como Contribuir (Git Flow)
-Este projeto utiliza a padronização do **Antigravity IDE** com Conventional Commits.
-1. Crie uma branch a partir de `develop` (`git checkout -b feature/minha-feature`).
-2. Faça o commit de suas mudanças (`git commit -m 'feat: minha nova feature'`).
-3. Faça o push para a branch (`git push origin feature/minha-feature`).
-4. Abra um Pull Request.
+## 🤝 How to Contribute (Git Flow)
+This project uses the **Antigravity IDE** standardization with Conventional Commits.
+1. Create a branch from `develop` (`git checkout -b feature/my-feature`).
+2. Commit your changes (`git commit -m 'feat: my new feature'`).
+3. Push to the branch (`git push origin feature/my-feature`).
+4. Open a Pull Request.
 ```
 
 ---
@@ -133,6 +133,6 @@ Instead of writing directly to the `README.md` file on disk, you MUST first gene
 ---
 
 > **[NEXT STEP]** ➡️ Once the preview artifact is generated, output exactly:
-> *"🌐 O artefato `readme_preview.md` foi gerado com sucesso. Por favor, revise o conteúdo. Se estiver tudo certo, diga 'ok' para que eu aplique as mudanças no `README.md` real do projeto."*
+> *"🌐 The artifact `readme_preview.md` was generated successfully. Please review the content. If everything is correct, say 'ok' so I can apply the changes to the real `README.md` of the project."*
 >
 > *(After the user approves and the file is applied to disk, you can suggest `/git` or `/release` for packaging the project.)*

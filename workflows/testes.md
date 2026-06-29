@@ -10,7 +10,7 @@ description: TDD Base (Red Phase). Strictly writes the test suite — happy path
 
 Before writing any test, you MUST:
 
-1. **Referência Principal (SDD):** A referência fundamental e inegociável é o Artefato de Plano de Implementação (SDD) gerado na fase anterior. Revise rigorosamente os diagramas e contratos estabelecidos pelo `/artefatos` para entender o exato escopo e os critérios de aceite.
+1. **Main Reference (SDD):** The fundamental and non-negotiable reference is the Implementation Plan Artifact (SDD) generated in the previous phase. Rigorously review the diagrams and contracts established by `/artefatos` to understand the exact scope and acceptance criteria.
 2. **Read the vault:** Query `02-conventions/` in the `obsidian_knowledge_graph` MCP vault for the project's testing conventions.
 3. **Check existing tests:** Examine the current test directory to understand existing patterns, shared fixtures, or test utilities that should be reused.
 
@@ -61,7 +61,7 @@ For functions that process collections, loops, or batch data, you MUST include a
 
 ### 4. Strict Constraints
 
-* **Criação de Assinaturas (Stubbing):** Você MUST criar as assinaturas vazias de métodos, classes e funções (ex: `def func(A, B): pass`) nos arquivos de produção correspondentes, caso eles ainda não existam. Isso é essencial para que os testes possam ser importados sem erro de sintaxe/importação no ciclo "Green".
+* **Signature Creation (Stubbing):** You MUST create the empty signatures for methods, classes, and functions (e.g., `def func(A, B): pass`) in the corresponding production files if they don't exist yet. This is essential so the tests can be imported without syntax/import errors in the "Green" cycle.
 * **🚫 NO PRODUCTION LOGIC:** Do absolutely NOT write, modify, or generate any production/business logic beyond the empty signatures (stubs).
 * **🚫 NO TEST EXECUTION:** Do not run test commands. Only provide them as copy-pasteable `bash` blocks. Ensure you include flags to show print statements (e.g., `pytest -s -v`).
 * **✅ Tests MUST fail:** The generated tests define behavior that does not yet exist.

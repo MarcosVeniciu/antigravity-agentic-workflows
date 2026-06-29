@@ -1,5 +1,5 @@
 ---
-description: Resgate de contexto. Força releitura do GEMINI.md, artefatos e vault do Obsidian para recalibrar o modelo em sessões longas.
+description: Context recovery. Forces re-reading of GEMINI.md, artifacts, and Obsidian vault to recalibrate the model in long sessions.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/sync` trigger was invoked. You are in **Context Recovery Mode** — your task is to re-ground yourself by systematically re-reading all critical project context files before resuming work.
@@ -66,5 +66,5 @@ After re-reading, produce a structured status report:
 ---
 
 > **[NEXT STEP]** ➡️ After presenting the sync report, output:
-> *"🔄 Contexto resincronizado. Pronto para retomar o trabalho. Qual fase deseja continuar?"*
+> *"🔄 Context resynchronized. Ready to resume work. Which phase do you want to continue?"*
 > Then list the available phases from the agent catalog with their current status.

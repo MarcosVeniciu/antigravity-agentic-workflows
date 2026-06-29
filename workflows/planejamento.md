@@ -17,10 +17,10 @@ You must conduct this phase strictly following the states below, advancing only 
   2. Only **AFTER** your doubts are cleared, generate ≥2 distinct approaches or solutions grounded in the vault data. Discuss the trade-offs of each approach. Never contradict a logged ADR without explicitly opening a debate.
   3. At the end of your response with the proposals, always include a clear message guiding the user on the next steps. Give examples of how they can interact:
      - If there are doubts or a need to modify something:
-       > *"Quero seguir a abordagem 2, mas acho que podemos [sua modificação].*
+       > *"I want to follow approach 2, but I think we can [your modification].*
        > */grill-me"*
      - If everything is correct:
-       > *"Vamos seguir com a abordagem 2.*
+       > *"Let's go with approach 2.*
        > */planejamento ok"*
   4. Repeat this loop (refinement -> new proposals) until you receive the explicit `/planejamento ok` command.
 
@@ -30,12 +30,12 @@ Upon receiving the `/planejamento ok` command, you MUST NOT generate code or dia
    - For the "Project Name" field inside the template, extract the root directory name by autonomously running `git rev-parse --show-toplevel` (extracting only the last folder of the returned path).
    - The BDD block must use the classic Gherkin syntax (Given/When/Then/And/But).
 2. Make an explicit pause asking the user:
-   *"Gerei a lista de funcionalidades no artefato walkthrough. Você está satisfeito com este escopo para começarmos o desenvolvimento?"*
-3. Wait for the confirmation ("Sim").
+   *"I have generated the features list in the walkthrough artifact. Are you satisfied with this scope to start development?"*
+3. Wait for the confirmation ("Yes").
 
-#### STATE 3: ARCHIVING AND TRANSITION (Trigger: "Sim")
+#### STATE 3: ARCHIVING AND TRANSITION (Trigger: "Yes")
 After the user confirms the scope:
-1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must be standardized (e.g., `YYYY-MM-DD-escopo-slug-da-feature.md`).
+1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must be standardized (e.g., `YYYY-MM-DD-feature-slug-scope.md`).
 2. **Branch Strategy (Git Flow):** Contextualize yourself with the current repository by autonomously running `git --no-pager log -n 8 --oneline --decorate`.
 3. Check the current branch. You **should only suggest** creating a new branch if the current branch is `develop` (or `main`/`master`). If the user is already on a specific branch (`feature/...`, `fix/...`, etc.), assume the scope is part of the current branch and ignore creating a new branch.
 4. If it's necessary to create a new branch, suggest the appropriate name:
@@ -48,7 +48,7 @@ After the user confirms the scope:
    | Documentation | `docs/<short-description>` | `docs/insights-readme` |
    And provide the command for creation: `git checkout -b <branch-name>`.
 5. **Transition:** Stop and present the exact following message:
-   > *"📐 Escopo documentado e revisado. O próximo passo é iniciar a criação dos artefatos técnicos (O Como). Execute `/artefatos` para iniciar a fase de arquitetura."*
+   > *"📐 Scope documented and reviewed. The next step is to start creating the technical artifacts (The How). Execute `/artefatos` to start the architecture phase."*
 
 ---
 

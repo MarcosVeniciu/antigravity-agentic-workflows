@@ -16,6 +16,8 @@ To ensure a fluid experience without constant manual confirmations, it is highly
   - **Purpose:** Used by the `/changelog` workflow to extract all commits since the last tag for semantic versioning calculation and release notes generation.
 - `git branch --show-current`
   - **Purpose:** Used by the `/changelog` workflow to determine the current branch as part of the release candidate plan.
+- `git --no-pager log --oneline`
+  - **Purpose:** Used by the `/changelog` workflow as a fallback to extract all commits when the repository does not have any tags yet.
 
 *(Note: As new workflows are added or expanded, update this list with the necessary commands that require autonomous execution).*
 

@@ -1,5 +1,5 @@
 ---
-description: Geração e atualização da documentação técnica do repositório — READMEs de diretório, comentários de API, e árvore de projeto.
+description: Generation and update of the repository's technical documentation — directory READMEs, API comments, and project tree.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/docs` trigger was invoked. You are the **Technical Writer** — a documentation specialist who produces clear, maintainable technical documentation that serves as the first point of reference for any developer entering the codebase.
@@ -26,11 +26,11 @@ For each directory that was significantly modified or newly created:
 2. **Generate a Preview Artifact:** Instead of writing directly to the disk, you MUST generate the documentation as an artifact named `docs_preview.md` (or multiple preview artifacts if there are multiple directories). This allows the user to validate the content.
 3. **Fill every section** of the template in the preview artifact using data extracted from the actual code — not assumptions or generic descriptions.
 3. **Key sections to fill:**
-    * **Visão Geral:** The architectural purpose of this directory within the system (not "what the files do" but "why this module exists").
-    * **Arquitetura e Fluxo de Dados:** How data enters, transforms, and exits this module. **CRITICAL:** You MUST copy the Mermaid.js diagram generated in the `/artefatos` phase and paste it here. You MUST also include the Obsidian note link defined in the artifact plan (e.g., `**Nota de Referência:** [[YYYY-MM-DD-slug-arquitetura]]`) right above the diagram.
-    * **Mapeamento de Componentes:** One entry per file/subdirectory with its responsibility and public interface.
-    * **Decisões de Design & Trade-offs:** Document the *why* behind structural choices (patterns used, alternatives rejected).
-    * **Estratégia de Testes:** How this module is tested, which mocking strategies are used, and critical test scenarios.
+    * **Overview:** The architectural purpose of this directory within the system (not "what the files do" but "why this module exists").
+    * **Architecture and Data Flow:** How data enters, transforms, and exits this module. **CRITICAL:** You MUST copy the Mermaid.js diagram generated in the `/artefatos` phase and paste it here. You MUST also include the Obsidian note link defined in the artifact plan (e.g., `**Reference Note:** [[YYYY-MM-DD-slug-architecture]]`) right above the diagram.
+    * **Component Mapping:** One entry per file/subdirectory with its responsibility and public interface.
+    * **Design Decisions & Trade-offs:** Document the *why* behind structural choices (patterns used, alternatives rejected).
+    * **Testing Strategy:** How this module is tested, which mocking strategies are used, and critical test scenarios.
 
 #### 2.2. Root `README.md` — Project Structure Tree
 
@@ -76,4 +76,4 @@ If the project uses auto-generated API docs (Swagger/OpenAPI, Sphinx, JSDoc):
 ---
 
 > **[NEXT STEP]** ➡️ Once the preview artifact is generated, output exactly:
-> *"📚 O artefato `docs_preview.md` foi gerado com sucesso. Por favor, revise o conteúdo. Se estiver tudo certo, diga 'ok' para que eu aplique as mudanças nos arquivos reais de documentação. Após aplicar, execute `/grafo` para arquivar as decisões arquiteturais desta sessão no Knowledge Graph (Obsidian)."*
+> *"📚 The artifact `docs_preview.md` was generated successfully. Please review the content. If everything is correct, say 'ok' so I can apply the changes to the real documentation files. After applying, execute `/grafo` to archive the architectural decisions of this session in the Knowledge Graph (Obsidian)."*

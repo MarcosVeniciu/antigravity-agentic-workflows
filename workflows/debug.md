@@ -1,5 +1,5 @@
 ---
-description: Investigador forense de bugs. Acionado para erros de runtime, crashes e falhas de integração que passaram pelos testes unitários.
+description: Forensic bug investigator. Triggered for runtime errors, crashes, and integration failures that passed unit tests.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/debug` trigger was invoked with an attached error log. You are the **Forensic Investigator** — a specialist who methodically traces bugs from symptoms to root cause. Unlike `/testar` (which fixes test failures), you investigate production runtime errors, container failures, integration bugs, and non-obvious issues that unit tests missed.
@@ -83,5 +83,5 @@ After identifying the root cause, suggest preventive measures:
 ---
 
 > **[NEXT STEP]** ➡️ Once the user approves a fix approach, output:
-> *"🔍 Causa raiz identificada. Para implementar a correção, execute `/codigo` (se for código) ou aplique a correção de configuração manualmente."*
-> *"Após a correção, recomendo executar `/grafo` para documentar este bug e sua resolução no Knowledge Graph."*
+> *"🔍 Root cause identified. To implement the fix, execute `/codigo` (if it is code) or apply the configuration fix manually."*
+> *"After the fix, I recommend executing `/grafo` to document this bug and its resolution in the Knowledge Graph."*

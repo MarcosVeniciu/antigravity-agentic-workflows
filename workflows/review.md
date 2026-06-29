@@ -78,8 +78,8 @@ Additionally, you MUST save this same report in the `obsidian_knowledge_graph` M
 Suggest the next step which is ALWAYS to apply the current review before moving to the next.
 
 > **[NEXT STEP — CONDITIONAL]:**
-> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review arquitetura`."*
-> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review resiliencia`."*
-> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review seguranca`."*
+> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review architecture`."*
+> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review resilience`."*
+> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review security`."*
 > * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review performance`."*
 > * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. This is the final step of the audit cycle."*

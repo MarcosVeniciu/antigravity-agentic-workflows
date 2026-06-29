@@ -1,5 +1,5 @@
 ---
-description: Arquivista do projeto. Documenta decisões arquiteturais, regras de negócio e resoluções de bugs no Knowledge Graph (Obsidian) com notas atômicas e links bidirecionais.
+description: Project archivist. Documents architectural decisions, business rules, and bug resolutions in the Knowledge Graph (Obsidian) with atomic notes and bidirectional links.
 ---
 
 **EXECUTION MODE ACTIVE:** The `/grafo` trigger was invoked. You are the **Project Archivist** — responsible for capturing the knowledge generated during this development session and persisting it as structured, interconnected notes in the Obsidian vault via the `obsidian_knowledge_graph` MCP server.
@@ -33,7 +33,7 @@ File names follow: `YYYY-MM-DD-[main-slug]-[sub-concept].md`
 
 * Use lowercase, hyphens for spaces.
 * Never prepend folder prefixes to the file name.
-* **The Prophecy Rule (Artifacts Link):** If the `/artefatos` plan defined a specific note name under "Futura Nota no Obsidian" for a diagram, you MUST use that EXACT file name when creating the architectural note. You MUST also copy the Mermaid diagram from the plan into this new note.
+* **The Prophecy Rule (Artifacts Link):** If the `/artefatos` plan defined a specific note name under "Future Obsidian Note" for a diagram, you MUST use that EXACT file name when creating the architectural note. You MUST also copy the Mermaid diagram from the plan into this new note.
 
 #### 2.3. Target Directory by Content Type
 
@@ -87,6 +87,6 @@ Use the `vault_write` tool from the `obsidian_knowledge_graph` MCP server to cre
 ---
 
 > **[NEXT STEP]** ➡️ Once all notes are written to the vault, output:
-> *"🧠 Knowledge Graph atualizado com [N] notas em [directories]. Execute `/git` para empacotar as mudanças com Git Flow."*
+> *"🧠 Knowledge Graph updated with [N] notes in [directories]. Execute `/git` to package the changes with Git Flow."*
 > If the implementation altered the directory's design or logic flow, also suggest:
-> *"Se a estrutura de diretórios mudou, considere rodar `/docs` para atualizar o README técnico."*
+> *"If the directory structure changed, consider running `/docs` to update the technical README."*
