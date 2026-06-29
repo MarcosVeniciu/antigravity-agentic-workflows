@@ -8,15 +8,24 @@ description: Fase reativa de correção. Acionado quando testes falham — anali
 
 ### 1. Error Analysis Protocol
 
+**Pre-Flight:** Before analyzing the error, you MUST:
+1. **Referência Principal (SDD):** Consultar o Artefato de Plano de Implementação (SDD) gerado na fase anterior. A sua correção do código deve respeitar estritamente o contrato e a arquitetura original planejada, sem desviar do design.
+
 Follow these steps in strict order:
 
-#### 1.1. Parse the Error Output
+#### 1.1. Parse the Error Output & Create Task List
 
-Read the provided terminal output and extract:
-* **Failed test name(s):** Which specific test function(s) failed.
-* **Error type:** `AssertionError`, `TypeError`, `ValidationError`, `ImportError`, etc.
-* **Stack trace:** The exact file, line number, and call chain leading to the failure.
-* **Expected vs. Actual:** If the assertion provides both values, note the discrepancy.
+Read the provided terminal error output. Do not get overwhelmed by reading the entire stack trace of every error at once. Your first action MUST be to isolate the failures and create/update a `task.md` file.
+
+For each failing test, extract ONLY the essential information to populate the checklist using the template below:
+
+**Error Checklist Template (`task.md`):**
+- `[ ]` **Test:** `test_name`
+  - **Type:** `AssertionError` (or `TypeError`, `ImportError`, etc.)
+  - **Location:** `file_name.py:line_number`
+  - **Discrepancy:** Expected `X`, got `Y` (if applicable)
+
+*Process this checklist sequentially. Pick the first failing test on the list to analyze and fix.*
 
 #### 1.2. Root Cause Identification
 
@@ -34,7 +43,7 @@ Based on the parsed error, classify the root cause:
 #### 1.3. Scope the Fix
 
 * **Minimal change:** Apply the smallest possible code change that resolves the error. Do not introduce unrelated improvements.
-* **One fix at a time:** If multiple tests fail, address one failure at a time unless they share the same root cause.
+* **One fix at a time:** Use the `task.md` created in step 1.1 to address one failure at a time. Do not try to fix multiple unrelated errors in the same step.
 
 ---
 
@@ -62,4 +71,5 @@ pytest path/to/test_file.py -v
 > **[NEXT STEP]** ➡️ After providing the fix, output:
 > *"🛠️ Correção aplicada. Rode o teste novamente no terminal."*
 > *"Se falhar novamente ❌, use `/testar` com a nova saída de erro."*
-> *"Se todos passarem ✅, inicie as revisões com: `/review` (geral rápido) ou `/review seguranca` (auditoria profunda)."*
+> *"Se todos passarem ✅ e você acabou de sair da fase `/codigo`, inicie a refatoração com: `/refatorar`"*
+> *"Se todos passarem ✅ e você estiver vindo do `/aplicar-review`, siga para a documentação com: `/docs`"*

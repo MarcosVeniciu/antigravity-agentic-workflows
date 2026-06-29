@@ -10,7 +10,7 @@ description: Polimento estrutural do código funcional. Reorganiza, melhora legi
 
 Before refactoring anything, you MUST:
 
-1. **Read the review report:** Load the findings from the `/review` phase. Your refactoring MUST directly address the ⚠️ WARNING and ❌ FAIL items identified during the review. Do not refactor blindly.
+1. **Referência Principal (SDD):** A referência fundamental e inegociável é o Artefato de Plano de Implementação (SDD) gerado na fase anterior. Suas melhorias estruturais (extração de funções, aplicação de SOLID) NÃO podem desviar do design original arquitetado.
 2. **Read the vault:** Query `02-conventions/` in the `obsidian_knowledge_graph` MCP vault for the project's coding style rules and design patterns.
 3. **Verify test coverage:** Ensure the existing tests cover the code you are about to refactor. Refactoring without test coverage is reckless.
 
@@ -18,7 +18,7 @@ Before refactoring anything, you MUST:
 
 ### 2. Refactoring Protocol
 
-Apply the following techniques **only where the review findings justify them.** Do not apply them gratuitously:
+Your goal is to clean up the code that was just written in the `/codigo` phase. Apply the following techniques to ensure the internal quality of the module:
 
 #### 2.1. SOLID Principles Check
 
@@ -64,7 +64,7 @@ Apply the following techniques **only where the review findings justify them.** 
 
 ### 5. Output Format
 
-1. For each refactoring, state: **What** was refactored, **Why** (linking to the review finding), and **How** (the technique applied).
+1. For each refactoring, state: **What** was refactored, **Why** (e.g. which SOLID principle or Code Smell), and **How** (the technique applied).
 2. Output the refactored code blocks with file paths.
 3. Provide the test verification command:
 
@@ -75,8 +75,7 @@ pytest path/to/test_file.py -v
 ---
 
 > **[NEXT STEP]** ➡️ Once refactoring is complete, output exactly:
-> *"✨ Refactoring complete. **Mandatory Action:** Run the test suite in your terminal to ensure behavior was preserved."*
+> *"✨ Refactoring estrutural concluído. **Mandatory Action:** Run the test suite in your terminal to ensure behavior was preserved."*
 > 
-> *"If any test **fails** ❌: Execute `/testar` by pasting the terminal error output."*
-> *"If the tests **pass** ✅ and the refactoring was simple: Execute `/docs` to update the documentation."*
-> *"If the tests **pass** ✅ but the refactoring deeply altered the structure: It is recommended to run a general `/review` to ensure contract integrity before documenting."*
+> *"Se algum teste **falhar** ❌: Execute `/testar` colando a saída de erro."*
+> *"Se os testes **passarem** ✅: Execute `/review arquitetura` (ou `/review seguranca`) para iniciar a auditoria profunda da solução consolidada."*
