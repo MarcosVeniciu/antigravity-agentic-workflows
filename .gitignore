@@ -1,0 +1,48 @@
+# Python and environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Environment Variables
+.env
+.env.*
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Node
+node_modules/
+
+# Obsidian / Knowledge Graph specifics
+# Only ignore temporary/cache obsidian files, keep the actual notes!
+.obsidian/workspace
+.obsidian/workspace-mobile
+.obsidian/cache/
