@@ -16,22 +16,24 @@ Before generating any artifact, you MUST:
 
 ---
 
-### 2. Artifact Generation Protocol
+### 2. Artifact Generation Protocol (SDD Approach)
 
-Generate the following deliverables, strictly following the template structure. **Crucial:** Your diagrams and contracts (O Como) MUST be strictly based on the Scope Note from `09-scopes-and-features/` (O Quê):
+We strictly follow a Software Design Description (SDD) approach here. You must translate the BDD behavior plan into architectural UML diagrams and define the exact contracts (mocked APIs, schema validations) *before* any logic is written. This prevents scope leakage.
+
+Generate the deliverables by creating a **SINGLE ARTIFACT** named `implementation_plan.md`, strictly following the template structure. Do NOT print the whole plan in the chat; write it to the artifact. **Crucial:** Your diagrams and contracts (O Como) MUST be strictly based on the Scope Note from `09-scopes-and-features/` (O Quê).
 
 #### 2.1. Implementation Plan (Step-by-Step)
 
-Produce a numbered, sequential implementation plan in markdown. Each step must include:
+Inside the `implementation_plan.md` artifact, produce a numbered, sequential implementation plan. Each step must include:
 * **What:** A clear description of the change (file to create/modify, function to implement).
 * **Why:** The business rule or architectural rationale driving this step.
 * **Acceptance Criteria:** The specific, testable condition that proves this step is done.
 * **Dependencies:** Which previous steps must be complete before this one starts.
 
-#### 2.2. Architectural Diagrams
+#### 2.2. Architectural UML Diagrams & Contracts
 
-Generate at least one diagram using Mermaid.js syntax. Choose the most appropriate type(s) based on the feature's complexity:
-
+Inside the `implementation_plan.md` artifact, generate UML diagrams using Mermaid.js syntax and define technical contracts.
+Choose the most appropriate type(s) of diagram based on the feature's complexity:
 * **Sequence Diagram:** For features involving multi-component interactions (API calls, event flows, user journeys).
 * **Class Diagram:** For features introducing new models, services, or inheritance hierarchies.
 * **Flowchart:** For features with conditional logic, state machines, or decision trees.
@@ -42,9 +44,11 @@ Each diagram must:
 * Include a brief legend or caption explaining the diagram's scope.
 * Reference real file names and class/function names from the codebase (not generic placeholders).
 
+**Contracts (Mocks):** Explicitly mock the API specifications, Pydantic/Zod schemas, or interface definitions. This is the core of our SDD step.
+
 #### 2.3. Impact Analysis
 
-List the existing files and modules that will be affected by this implementation. For each, briefly describe:
+List the existing files and modules that will be affected by this implementation inside the artifact. For each, briefly describe:
 * What changes are expected.
 * Whether the change is additive (new code) or mutative (modifying existing behavior).
 * Any risk of breaking existing tests or contracts.
@@ -65,7 +69,8 @@ Before presenting the artifacts to the user, self-audit against these criteria:
 
 * **No functional code:** Do not write any production code or test code in this phase. Only structural descriptions, pseudo-logic, and diagrams.
 * **No command execution:** Do not run any terminal commands.
-* **Save Technical Note:** When the user approves the artifacts (e.g., typing `/artefatos ok`), you MUST save the technical note in the Obsidian vault (e.g., in `01-adrs/` or `05-architecture-map/` depending on the template) and include a **bidirectional link** back to the original scope note (e.g., `[[YYYY-MM-DD-escopo-feature]] -> Informa o contrato técnico`).
+* **Save Technical Note:** When the user approves the artifacts (e.g., typing `/artefatos ok`), you MUST save the `implementation_plan.md` contents into the Obsidian vault (e.g., in `01-adrs/` or `05-architecture-map/` depending on the template).
+* **Traceability:** In the `## Related Context` section of the note, you MUST include a **bidirectional link** back to the original BDD Scope Note from the vault (e.g., `[[YYYY-MM-DD-escopo-slug-da-feature]]`).
 
 ---
 

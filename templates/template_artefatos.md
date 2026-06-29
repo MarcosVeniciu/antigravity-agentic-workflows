@@ -22,12 +22,13 @@
 
 ---
 
-## 🏗️ Diagramas Arquiteturais
+## 🏗️ Arquitetura e Contratos (Abordagem SDD)
 
-*Gere os diagramas estritamente em formato Mermaid.js. Antes de cada diagrama, defina o nome exato da nota que será criada no Obsidian futuramente para arquivar este design. Substitua o placeholder pela data de hoje e um slug curto em inglês.*
+*Gere os diagramas UML estritamente em formato Mermaid.js e documente os contratos/esquemas de validação mockados antes de iniciar a lógica de produção.*
 
 > **Futura Nota no Obsidian:** `[[YYYY-MM-DD-slug-da-feature-arquitetura]]`
-### Diagrama de Sequência
+
+### Diagrama UML de Sequência
 
 ```mermaid
 sequenceDiagram
@@ -44,7 +45,7 @@ sequenceDiagram
     API-->>Client: [Response]
 ```
 
-### Diagrama de Classes (se aplicável)
+### Diagrama UML de Classes (se aplicável)
 
 ```mermaid
 classDiagram
@@ -52,6 +53,16 @@ classDiagram
         +tipo atributo
         +tipo metodo(args)
     }
+```
+
+### Contratos e Esquemas (Mocks)
+
+*Defina as interfaces falsas, esquemas de validação (ex: Pydantic, Zod) ou endpoints da API que atuarão como contrato para esta feature.*
+
+```python
+# Exemplo de Contrato / Mock
+class FuncionalidadeSchema(BaseModel):
+    campo: str
 ```
 
 ---

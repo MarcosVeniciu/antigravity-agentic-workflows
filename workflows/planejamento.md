@@ -26,11 +26,11 @@ You must conduct this phase strictly following the states below, advancing only 
 
 #### STATE 2: SCOPE CLOSURE (Trigger: `/planejamento ok`)
 Upon receiving the `/planejamento ok` command, you MUST NOT generate code or diagrams. Instead:
-1. Generate the **Features List (Scope)**. To do this, consult and fill out the template `templates/template_planejamento.md`. 
+1. Generate the **Features List (Scope)** as an artifact named `walkthrough.md` so it doesn't pollute the chat. To do this, consult and fill out the template `templates/template_planejamento.md` and write the result to the `walkthrough.md` artifact file.
    - For the "Project Name" field inside the template, extract the root directory name by autonomously running `git rev-parse --show-toplevel` (extracting only the last folder of the returned path).
    - The BDD block must use the classic Gherkin syntax (Given/When/Then/And/But).
 2. Make an explicit pause asking the user:
-   *"Você está satisfeito com este escopo para começarmos o desenvolvimento?"*
+   *"Gerei a lista de funcionalidades no artefato walkthrough. Você está satisfeito com este escopo para começarmos o desenvolvimento?"*
 3. Wait for the confirmation ("Sim").
 
 #### STATE 3: ARCHIVING AND TRANSITION (Trigger: "Sim")
