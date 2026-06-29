@@ -86,7 +86,10 @@ pytest path/to/test_file.py -v
 ---
 
 > **[NEXT STEP]** ➡️ Once refactoring is complete, output exactly:
-> *"✨ Refactoring estrutural concluído. **Mandatory Action:** Run the test suite in your terminal to ensure behavior was preserved."*
+> *"✨ Refactoring estrutural concluído. **Ação Obrigatória:** Rode a suíte de testes no seu terminal para garantir que o comportamento foi mantido."*
 > 
-> *"Se algum teste **falhar** ❌: Execute `/testar` colando a saída de erro."*
-> *"Se os testes **passarem** ✅: Execute `/review arquitetura` (ou `/review seguranca`) para iniciar a auditoria profunda da solução consolidada."*
+> *"Se algum teste **falhar** ❌: Continue neste chat e execute `/testar` colando a saída de erro."*
+> *"Se os testes **passarem** ✅: O seu código base está pronto e limpo!*
+>
+> *⚠️ **Recomendação do Sistema:** Abra um **novo chat** para as fases de Auditoria e Fechamento. Isso zera o limite de tokens, eliminando o ruído das tentativas anteriores e garantindo precisão máxima nos reviews de segurança e arquitetura.*
+> *No novo chat, basta executar `/review` ou `/review [categoria]` para iniciar."*

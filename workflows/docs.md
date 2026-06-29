@@ -23,7 +23,8 @@ Before writing documentation, you MUST:
 For each directory that was significantly modified or newly created:
 
 1. **Fetch the template** from `08-templates/template_doc_diretorio.md`.
-2. **Fill every section** of the template using data extracted from the actual code — not assumptions or generic descriptions.
+2. **Generate a Preview Artifact:** Instead of writing directly to the disk, you MUST generate the documentation as an artifact named `docs_preview.md` (or multiple preview artifacts if there are multiple directories). This allows the user to validate the content.
+3. **Fill every section** of the template in the preview artifact using data extracted from the actual code — not assumptions or generic descriptions.
 3. **Key sections to fill:**
     * **Visão Geral:** The architectural purpose of this directory within the system (not "what the files do" but "why this module exists").
     * **Arquitetura e Fluxo de Dados:** How data enters, transforms, and exits this module. **CRITICAL:** You MUST copy the Mermaid.js diagram generated in the `/artefatos` phase and paste it here. You MUST also include the Obsidian note link defined in the artifact plan (e.g., `**Nota de Referência:** [[YYYY-MM-DD-slug-arquitetura]]`) right above the diagram.
@@ -33,9 +34,9 @@ For each directory that was significantly modified or newly created:
 
 #### 2.2. Root `README.md` — Project Structure Tree
 
-If files or directories were created, moved, or deleted during this session, update the "Project Structure" tree in the root `README.md` to mirror the current physical state of the repository:
+If files or directories were created, moved, or deleted during this session, prepare an update for the "Project Structure" tree in the root `README.md` to mirror the current physical state of the repository. Include this proposed tree update in your preview artifact so the user can validate it:
 
-```
+```text
 project-root/
 ├── src/
 │   ├── routes/
@@ -70,8 +71,9 @@ If the project uses auto-generated API docs (Swagger/OpenAPI, Sphinx, JSDoc):
 
 * **🚫 DO NOT modify production code or tests.** Your scope is documentation files only.
 * **🚫 DO NOT run commands.**
+* **🚫 DO NOT write to the real files on disk initially.** Always generate the `docs_preview.md` artifact first!
 
 ---
 
-> **[NEXT STEP]** ➡️ Once documentation is complete, output:
-> *"📚 Documentação técnica atualizada. Execute `/grafo` para arquivar as decisões arquiteturais desta sessão no Knowledge Graph (Obsidian)."*
+> **[NEXT STEP]** ➡️ Once the preview artifact is generated, output exactly:
+> *"📚 O artefato `docs_preview.md` foi gerado com sucesso. Por favor, revise o conteúdo. Se estiver tudo certo, diga 'ok' para que eu aplique as mudanças nos arquivos reais de documentação. Após aplicar, execute `/grafo` para arquivar as decisões arquiteturais desta sessão no Knowledge Graph (Obsidian)."*

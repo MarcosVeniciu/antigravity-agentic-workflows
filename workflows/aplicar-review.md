@@ -34,8 +34,6 @@ Before applying any fix, you MUST:
 * If a finding is a false positive or intentionally ignored due to constraints, add a brief justification in the Resolution field and leave the box unchecked.
 * **CRITICAL:** Make sure you update the saved copy of the report in the `obsidian_knowledge_graph` MCP vault as well, to keep the historical record accurate!
 
-#### 2.4. Experiment Results Artifact
-* At the end of the review application, you MUST generate an `experiment_results.md` artifact to document the code changes you applied, summarizing how you addressed the review's findings and maintaining the `## Related Context` section pointing to previous artifacts.
 
 ---
 
@@ -49,9 +47,8 @@ Before applying any fix, you MUST:
 ### 4. Output Format
 
 1. Output the modified code blocks with exact file paths (using standard coding tool protocols).
-2. Present the final `experiment_results.md` artifact with the documentation of changes.
-3. Confirm that the `audit_report.md` artifact and the Vault report were updated.
-4. Provide the test verification command:
+2. Confirm that the `audit_report.md` artifact and the Vault report were updated with your resolutions.
+3. Provide the test verification command:
 
 ```bash
 pytest path/to/test_file.py -v
