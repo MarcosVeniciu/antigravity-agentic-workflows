@@ -12,7 +12,8 @@ Before creating any note, you MUST:
 
 1. **Review the session:** Analyze what was built, decided, and solved during this development session (from `/artefatos` through `/docs`).
 2. **Read the template:** Fetch `08-templates/template_grafo.md` from the vault. Use its structure as the formatting standard for every note you create.
-3. **Check existing notes:** Query the vault to ensure you are not creating duplicate notes for topics already covered.
+3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
+4. **Check existing notes:** Query the vault to ensure you are not creating duplicate notes for topics already covered.
 
 ---
 

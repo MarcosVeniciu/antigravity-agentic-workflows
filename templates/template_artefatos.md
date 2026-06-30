@@ -1,5 +1,7 @@
 # 📐 Plano de Implementação: [Feature Name]
 
+> **Projeto:** [Project Name]
+> **Branch:** [Branch Name]
 > **Data:** [YYYY-MM-DD]
 > **Status:** [Under Analysis / Approved / In Execution / Completed]
 > **Autor:** [Name]

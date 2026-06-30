@@ -1,5 +1,10 @@
 # ⚡ Performance Review Checklist
 
+> **Projeto:** [Project Name]
+> **Branch:** [Branch Name]
+> **Data:** [YYYY-MM-DD]
+> **Autor:** [Name]
+
 > **Purpose:** Quantitative audit focused on mathematical limits, database optimization, and mitigating AI-generated anti-patterns.
 
 ## How to Audit

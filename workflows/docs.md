@@ -12,7 +12,8 @@ Before writing documentation, you MUST:
 
 1. **Read the template:** Fetch `08-templates/template_doc_diretorio.md` from the `obsidian_knowledge_graph` MCP vault. Use its structure as the formatting standard for directory-level READMEs.
 2. **Read the vault:** Query `05-architecture-map/` for existing documentation and `02-conventions/` for documentation style standards.
-3. **Scan the codebase:** Analyze the files created or modified during this development session to understand what needs documenting.
+3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
+4. **Scan the codebase:** Analyze the files created or modified during this development session to understand what needs documenting.
 
 ---
 

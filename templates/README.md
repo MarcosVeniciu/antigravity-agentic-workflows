@@ -4,6 +4,8 @@ This directory contains the **Contract Structures** of the Antigravity IDE.
 
 To prevent the Artificial Intelligence from arbitrarily deciding how to format reports or generate architectural plans, the agents are forced to read and fill out the templates contained in this folder. This guarantees relentless standardization and predictability in the data output.
 
+> 🧠 **Context Awareness:** All templates require the agents to autonomously discover the `Projeto` and `Branch` context (using `git rev-parse --show-toplevel` and `git branch --show-current`) to populate the document headers, ensuring perfect traceability in the Knowledge Graph.
+
 ---
 
 ## 📑 Template List

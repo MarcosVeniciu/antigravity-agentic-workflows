@@ -18,6 +18,8 @@ Fetch the specific review checklist from the `08-templates/` directory in the `o
 | `/review arquitetura` | `template_review_arquitetura.md` | Domain leakage, dependency inversion, DTOs. |
 | `/review resiliencia` | `template_review_resiliencia.md` | Idempotency, transactions, graceful degradation. |
 
+**Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
+
 **If the template is not found, PAUSE and inform the user.**
 
 ---

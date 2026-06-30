@@ -1,5 +1,10 @@
 # 🛡️ Security Review Checklist
 
+> **Projeto:** [Project Name]
+> **Branch:** [Branch Name]
+> **Data:** [YYYY-MM-DD]
+> **Autor:** [Name]
+
 > **Purpose:** Mechanical audit focused on the OWASP Top 10, preventing injection, data manipulation, and securing access boundaries.
 
 ## How to Audit

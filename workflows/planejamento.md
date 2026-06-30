@@ -26,22 +26,11 @@ You must conduct this phase strictly following the states below, advancing only 
        > */planejamento ok"*
   4. Repeat this loop (refinement -> new proposals) until you receive the explicit `/planejamento ok` command.
 
-#### STATE 2: SCOPE CLOSURE (Trigger: `/planejamento ok`)
-Upon receiving the `/planejamento ok` command, you MUST NOT generate code or diagrams. Instead:
-1. Generate the **Features List (Scope)** as an artifact named `walkthrough.md` so it doesn't pollute the chat. To do this, consult and fill out the template `templates/template_planejamento.md` and write the result to the `walkthrough.md` artifact file.
-   - For the "Project Name" field inside the template, extract the root directory name by autonomously running `git rev-parse --show-toplevel` (extracting only the last folder of the returned path).
-   - The BDD (Behavior Driven Development) block bridges the gap between business rules and implemented code.
-   - You must describe requirements in structured natural language using the classic Gherkin syntax: Given (Context), When (Action), and Then (Expected Result).
-2. Make an explicit pause asking the user:
-   *"I have generated the features list in the walkthrough artifact. Are you satisfied with this scope to start development?"*
-3. Wait for the confirmation ("Yes").
-
-#### STATE 3: ARCHIVING AND TRANSITION (Trigger: "Yes")
-After the user confirms the scope:
-1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must be standardized (e.g., `YYYY-MM-DD-feature-slug-scope.md`).
-2. **Branch Strategy (Git Flow):** Contextualize yourself with the current repository by autonomously running `git --no-pager log -n 8 --oneline --decorate`.
-3. Check the current branch. You **should only suggest** creating a new branch if the current branch is `develop` (or `main`/`master`). If the user is already on a specific branch (`feature/...`, `fix/...`, etc.), assume the scope is part of the current branch and ignore creating a new branch.
-4. If it's necessary to create a new branch, suggest the appropriate name:
+#### STATE 2: BRANCH STRATEGY (Trigger: `/planejamento ok`)
+Upon receiving the `/planejamento ok` command:
+1. **Branch Strategy (Git Flow):** Contextualize yourself with the current repository by autonomously running `git --no-pager log -n 8 --oneline --decorate` and `git branch --show-current`.
+2. Check the current branch. If the current branch is `develop` (or `main`/`master`), you **must suggest** creating a new branch.
+3. If it's necessary to create a new branch, suggest the appropriate name:
    | Work Type | Branch Pattern | Example |
    |---|---|---|
    | New feature | `feature/<short-description>` | `feature/insights-endpoint` |
@@ -50,7 +39,22 @@ After the user confirms the scope:
    | Refactoring | `refactor/<short-description>` | `refactor/extract-prompt-utils` |
    | Documentation | `docs/<short-description>` | `docs/insights-readme` |
    And provide the command for creation: `git checkout -b <branch-name>`.
-5. **Transition:** Stop and present the exact following message:
+   Make an explicit pause asking the user: *"Please create the branch and reply with 'Ready', or let me know if we should proceed on the current branch."*
+4. If the user is already on a specific feature/fix branch, you can skip this pause and proceed directly to STATE 3.
+
+#### STATE 3: SCOPE CLOSURE (Trigger: "Ready" or Already on correct branch)
+1. Generate the **Features List (Scope)** as an artifact named `walkthrough.md` so it doesn't pollute the chat. To do this, consult and fill out the template `templates/template_planejamento.md` and write the result to the `walkthrough.md` artifact file.
+   - For the "Project Name" and "Branch" fields inside the template, extract the context by autonomously running `git rev-parse --show-toplevel` (using only the last folder) and `git branch --show-current`.
+   - The BDD (Behavior Driven Development) block bridges the gap between business rules and implemented code.
+   - You must describe requirements in structured natural language using the classic Gherkin syntax: Given (Context), When (Action), and Then (Expected Result).
+2. Make an explicit pause asking the user:
+   *"I have generated the features list in the walkthrough artifact. Are you satisfied with this scope to start development?"*
+3. Wait for the confirmation ("Yes").
+
+#### STATE 4: ARCHIVING AND TRANSITION (Trigger: "Yes")
+After the user confirms the scope:
+1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must be standardized (e.g., `YYYY-MM-DD-feature-slug-scope.md`).
+2. **Transition:** Stop and present the exact following message:
    > *"📐 Scope documented and reviewed. The next step is to start creating the technical artifacts (The How). Execute `/artefatos` to start the architecture phase."*
 
 ---

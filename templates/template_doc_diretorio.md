@@ -1,5 +1,7 @@
 # 📁 [Directory Name / Module]
 
+> **Projeto:** [Project Name]
+> **Branch:** [Branch Name]
 > **Versão da Documentação:** 1.0.0
 > **Última Atualização:** [YYYY-MM-DD]
 > **Status:** [Active / In Development / Legacy]

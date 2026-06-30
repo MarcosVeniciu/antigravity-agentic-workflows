@@ -1,5 +1,10 @@
 # 🛡️ Resilience and Fault Tolerance Review Checklist
 
+> **Projeto:** [Project Name]
+> **Branch:** [Branch Name]
+> **Data:** [YYYY-MM-DD]
+> **Autor:** [Name]
+
 > **Purpose:** Protect the code from external unpredictability (failing networks, duplication, bottlenecks). AIs usually program focusing exclusively on the "happy path", assuming external systems never fail.
 
 ## How to Audit

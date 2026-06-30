@@ -1,5 +1,9 @@
 # Projeto: [Project Name]
 
+> **Branch:** [Branch Name]
+> **Data:** [YYYY-MM-DD]
+> **Autor:** [Name]
+
 ## Resumo do Escopo
 [Brief description of what was decided in the debate phase]
 
