@@ -27,7 +27,7 @@ They contain the primary rules (system prompts), the "State Machine" behavior, r
 
 ### 4. Shock Troop (Secondary)
 * **[`ask.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/ask.md):** Read-Only Oracle. Answers questions about the codebase forcing source citation (Traceability).
-* **[`release.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/release.md):** Release Manager. Calculates SemVer, orchestrates Git Flow merges and updates the root `CHANGELOG.md`.
+* **[`release.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/release.md):** Release Manager. Calculates SemVer, orchestrates Git Flow merges and recommends logging in the Obsidian Vault.
 * **[`debug.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/debug.md):** Forensic Investigator. Uses the "5 Whys" to map roots of complex crashes or Infrastructure failures.
 * **[`infra.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/infra.md):** DevOps. Edits dependencies and Dockerfiles, blocking *secrets* (generating only `.env.example`).
 * **[`readme-projeto.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/readme-projeto.md):** Developer Advocate. Edits the "Showcase" (Root README), focusing on business and DX (*Getting Started*).

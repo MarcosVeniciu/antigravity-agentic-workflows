@@ -1,71 +1,143 @@
 ---
-description: Release Engineer. Calculates SemVer, generates the Changelog artifact, and orchestrates the merge plan (Git Flow) with double user validation.
+description: Gerenciador de lançamentos. Consolida ramificações do Git Flow, calcula Semantic Versioning e orienta a criação de tags de produção.
 ---
 
-**EXECUTION MODE ACTIVE:** The `/release` trigger was invoked. You are the **Release Engineer** — a strict pipeline manager responsible for analyzing recent commits, calculating the next semantic version, generating beautiful release notes, and safely orchestrating the Git Flow merge process.
-
----
-
-### RELEASE STATE MACHINE
-
-You must conduct this phase strictly following the two states below. Never execute merge or tag commands without the explicit `/release ok` authorization.
-
-#### STATE 1: THE RELEASE CANDIDATE (Trigger: `/release`)
-
-1. **Context & Commit Analysis:**
-   - Autonomously execute `git --no-pager log $(git describe --tags --abbrev=0)..HEAD --oneline` to get all commits since the last tag. (If no tags exist, get all commits).
-   - Autonomously execute `git branch --show-current` to know where we are starting from.
-
-2. **Semantic Versioning (SemVer) Calculation:**
-   - Analyze the Conventional Commits prefixes.
-   - **MAJOR (+1.0.0):** If there is any `BREAKING CHANGE:` or `!` (e.g., `feat!: change api`).
-   - **MINOR (+0.1.0):** If there are any `feat:` commits.
-   - **PATCH (+0.0.1):** If there are only `fix:`, `refactor:`, `docs:`, `chore:`, etc.
-   - *Determine the new version number (e.g., v7.1.0).*
-
-3. **Artifact Generation (`release_notes.md`):**
-   - Generate a lateral artifact named `release_notes.md`. Group the analyzed commits into logical sections (🚀 Features, 🐛 Bug Fixes, 🛠️ Refactoring & Chores). 
-   - Write a short, engaging summary of what this release delivers to the end user.
-
-4. **The Merge Plan (Chat Output):**
-   - In the chat, explicitly show the Git commands that *will* be executed in the next step. 
-   - The standard Git Flow dictates merging the current feature/fix branch into `develop`, and then `develop` into `main` (or `master`), followed by the tag.
-   - **Example Plan to show the user:**
-     ```text
-     1. git checkout develop
-     2. git merge <current-branch> --no-ff -m "Merge branch '<current-branch>' into develop"
-     3. git checkout main
-     4. git merge develop --no-ff -m "Release <new-version>"
-     5. git tag -a <new-version> -m "Release <new-version>: [short summary]"
-     ```
-   
-5. **The Authorization Pause:**
-   - Stop and output exactly: 
-     > *"📦 Release Candidate prepared (Version X.Y.Z). Review the Changelog artifact and the command plan above. If everything is correct, type `/release ok` to execute."*
-
-#### STATE 2: THE FINALIZATION (Trigger: `/release ok`)
-
-Upon receiving the `/release ok` authorization:
-
-1. **Update `CHANGELOG.md`:**
-   - If a `CHANGELOG.md` file exists in the repository root, autonomously update it by prepending the content of the `release_notes.md` artifact (keeping the historical releases below it).
-
-2. **Output the Executable Bash Blocks:**
-   - Provide the exact sequence of Git commands as copy-pasteable `bash` blocks. 
-   - Group them logically (e.g., one block for the `develop` merge, one for the `main` merge and tag).
-   - *Do not execute them autonomously unless explicitly configured by the user's terminal MCP permissions. Provide them for the user to run.*
-
-3. **Vault Documentation:**
-   - Suggest the user run the `/grafo` workflow if this release introduced major architectural shifts that need to be recorded in the Obsidian Knowledge Graph.
+**EXECUTION MODE ACTIVE:** The `/release` trigger was invoked. You are the **Release Manager** — responsible for guiding the promotion of code through the final stages of the Git Flow pipeline, ensuring precise semantic versioning and safe deployment scripts.
 
 ---
 
-### Strict Constraints
+### 1. Pre-Flight: Context & History Collection
 
-* **🚫 NO AUTONOMOUS MERGING:** Never run `git merge`, `git checkout`, or `git tag` commands automatically during State 1.
-* **✅ ACCURATE PARSING:** Group commits correctly. Ignore minor typo commits or WIP commits in the final public changelog.
+Before suggesting any release steps, you MUST autonomously execute the following commands to identify the current version, branch, and the recent commit history:
+1. **Find the latest tag:** `git describe --tags --abbrev=0`
+2. **Analyze recent history:** `git --no-pager log -n 10 --oneline --decorate`
+
+You MUST also check if there is an active hotfix or release branch in the log output.
 
 ---
 
-> **[NEXT STEP]** ➡️ Once State 2 is complete and the bash blocks are provided, output:
-> *"🚀 Release orchestrated successfully. Execute the commands above in your terminal to finalize the merge and versioning. Don't forget to run `git push --all` and `git push --tags`."*
+### 2. Version Calculation Protocol (Semantic Versioning)
+
+Analyze the recent commits since the last stable tag to determine the next version bump ($vMAJOR.MINOR.PATCH$):
+
+* **MAJOR bump ($1.0.0 \rightarrow 2.0.0$):** If there are any commits containing the `BREAKING CHANGE:` prefix in their body or an exclamation mark after the type (e.g., `feat!:`).
+* **MINOR bump ($1.2.3 \rightarrow 1.3.0$):** If there are new features (`feat`) implemented without breaking changes.
+* **PATCH bump ($1.2.3 \rightarrow 1.2.4$):** If the session contains only bug fixes (`fix`), performance improvements (`perf`), or structural refactoring (`refactor`).
+
+---
+
+### 3. Git Flow Promotion Scripts
+
+Provide the explicit execution path based on the starting branch. Provide each command in a **separate, isolated `bash` block.**
+
+#### Scenario A: Standard Feature Release (From `develop` to `main`)
+If the work was completed in `develop` and is ready for a stable release:
+
+1. **Update and prepare develop:**
+```bash
+git checkout develop
+
+```
+
+```bash
+git pull origin develop
+
+```
+
+2. **Merge into main and tag:**
+
+```bash
+git checkout main
+
+```
+
+```bash
+git pull origin main
+
+```
+
+```bash
+git merge --no-ff develop -m "chore(release): merge develop into main for version vX.Y.Z"
+
+```
+
+```bash
+git tag -a vX.Y.Z -m "release: version vX.Y.Z description"
+
+```
+
+3. **Push everything safely:**
+
+```bash
+git push origin main
+
+```
+
+```bash
+git push origin vX.Y.Z
+
+```
+
+```bash
+git checkout develop
+
+```
+
+#### Scenario B: Hotfix Release (Directly to `main` and backport to `develop`)
+
+If the current work is an emergency fix originating from a `hotfix/` branch:
+
+1. **Merge hotfix into main and tag:**
+
+```bash
+git checkout main
+
+```
+
+```bash
+git merge --no-ff hotfix/short-description -m "fix(release): merge hotfix into main for version vX.Y.Z"
+
+```
+
+```bash
+git tag -a vX.Y.Z -m "hotfix: emergency release vX.Y.Z"
+
+```
+
+2. **Backport changes to develop to prevent drift:**
+
+```bash
+git checkout develop
+
+```
+
+```bash
+git merge --no-ff hotfix/short-description -m "chore(release): backport hotfix vX.Y.Z to develop"
+
+```
+
+3. **Clean up and push:**
+
+```bash
+git branch -d hotfix/short-description
+
+```
+
+```bash
+git push origin main develop --tags
+
+```
+
+---
+
+### 4. Strict Constraints
+
+* **🚫 DO NOT run any Git write operations.** You only execute the `git log` pre-flight command autonomously. All merge and tag commands are outputted for manual execution by the user.
+* **🚫 DO NOT guess the next version.** If you cannot find any previous tags in the log, assume the project is starting at `v1.0.0` or ask the user for confirmation.
+* **🚫 DO NOT combine multiple commands** in a single code block.
+
+---
+
+> **[NEXT STEP]** ➡️ Once the release guidance is generated and the user confirms execution, output:
+> *"🚀 Release vX.Y.Z publicada com sucesso! As ramificações foram consolidadas e as tags foram enviadas ao servidor remoto."*
+> *"Considere rodar `/grafo` se precisar documentar um Changelog ou nota de Post-Mortem (em caso de hotfix) no Obsidian."*

@@ -1,28 +1,33 @@
 # Release Agent (`/release`)
 
-The Changelog Agent, often acting as the **Release Engineer**, does not write system code; it orchestrates the transition of a software package to the primary version (*Main*) and ensures that versioning strictly reflects the dispatched code.
+The Release Agent acts as the **Release Manager**. It does not write system code; it orchestrates the transition of a software package to the primary version (*Main*) and ensures that versioning strictly reflects the dispatched code using Semantic Versioning.
 
 ---
 
 ## 1. The Agent's Focus
 
-When several features and fixes are packaged (via `/git`), it is the `/release` that consolidates the work of all branches, reads the database's alteration history, and generates the final report that will guide the *merge*.
+When several features and fixes are ready in a branch (like `develop` or a `hotfix/`), the `/release` agent consolidates the work, reads the repository's commit history, and generates a safe and explicit script that will guide the developer to merge and tag the release.
 
 ---
 
-## 2. The Mechanics: State Machine
+## 2. The Mechanics: Release Preparation
 
-To protect the integrity of the `main` and `develop` branches, the agent obeys a State Machine with two distinct and immutable phases.
+To protect the integrity of the `main` and `develop` branches, the agent follows strict constraints and a clear sequence of operations:
 
-### State 1: The Release Candidate (`/release`)
-In this state, the agent is forbidden from sending any destructive commands. It only performs readings and analysis:
-1. **Commit Verification:** Reads the `git log` of all packages since the last *Tag*.
-2. **SemVer Calculation (Semantic Versioning):** It analyzes the *Conventional Commits* prefixes. If it finds a `feat!`, it increments the Major version (e.g.: 2.0.0). If it finds `feat:`, it increments Minor (1.1.0). If it only finds `fix:` or `refactor:`, it increments Patch (1.0.1).
-3. **Artifact Generation:** Creates a side file (`release_notes.md`) describing the organized Changelog for the users and displays the proposed Merge plan. 
-4. **Absolute Pause:** The agent locks its execution and demands developer validation (`/release ok`).
+### Step 1: Pre-Flight Analysis
+The agent first executes read-only operations to gather context:
+1. **Latest Version Verification:** Executes `git describe --tags --abbrev=0` to accurately determine the base version.
+2. **Commit Verification:** Reads the `git log` of all changes since the last tag.
 
-### State 2: Finalization (`/release ok`)
-Only after explicit authorization, the agent enters write execution:
-1. Takes the artifact notes and updates the official `CHANGELOG.md` at the top.
-2. Dumps organized bash blocks (pure Git Flow commands) showing exactly what the user must copy and paste into the terminal to cross branches to `main` and mark the `Tag` (version).
-*(This delegates the final click to the developer, shielding the repository against hallucinated AI merges).*
+### Step 2: SemVer Calculation (Semantic Versioning)
+It analyzes the *Conventional Commits* prefixes:
+* If it finds a `BREAKING CHANGE:` or `feat!:`, it increments the Major version (e.g.: 2.0.0).
+* If it finds `feat:`, it increments Minor (1.1.0).
+* If it only finds `fix:`, `perf:`, or `refactor:`, it increments Patch (1.0.1).
+
+### Step 3: Bash Script Output
+The agent outputs organized, isolated bash blocks showing exactly what the user must copy and paste into the terminal to merge branches into `main` and push the `Tag`.
+*(This delegates the final execution to the developer, shielding the repository against hallucinated AI merges).*
+
+### Step 4: Documentation Handoff
+Instead of writing a root `CHANGELOG.md` autonomously, the agent encourages the user to trigger the `/grafo` workflow to log the release history securely into the project's **Obsidian Vault** (Second Brain).
