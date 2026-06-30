@@ -1,4 +1,4 @@
-# Changelog Agent (`/changelog`)
+# Release Agent (`/release`)
 
 The Changelog Agent, often acting as the **Release Engineer**, does not write system code; it orchestrates the transition of a software package to the primary version (*Main*) and ensures that versioning strictly reflects the dispatched code.
 
@@ -6,7 +6,7 @@ The Changelog Agent, often acting as the **Release Engineer**, does not write sy
 
 ## 1. The Agent's Focus
 
-When several features and fixes are packaged (via `/git`), it is the `/changelog` that consolidates the work of all branches, reads the database's alteration history, and generates the final report that will guide the *merge*.
+When several features and fixes are packaged (via `/git`), it is the `/release` that consolidates the work of all branches, reads the database's alteration history, and generates the final report that will guide the *merge*.
 
 ---
 
@@ -14,7 +14,7 @@ When several features and fixes are packaged (via `/git`), it is the `/changelog
 
 To protect the integrity of the `main` and `develop` branches, the agent obeys a State Machine with two distinct and immutable phases.
 
-### State 1: The Release Candidate (`/changelog`)
+### State 1: The Release Candidate (`/release`)
 In this state, the agent is forbidden from sending any destructive commands. It only performs readings and analysis:
 1. **Commit Verification:** Reads the `git log` of all packages since the last *Tag*.
 2. **SemVer Calculation (Semantic Versioning):** It analyzes the *Conventional Commits* prefixes. If it finds a `feat!`, it increments the Major version (e.g.: 2.0.0). If it finds `feat:`, it increments Minor (1.1.0). If it only finds `fix:` or `refactor:`, it increments Patch (1.0.1).

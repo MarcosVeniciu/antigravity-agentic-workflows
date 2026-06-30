@@ -33,10 +33,10 @@ graph TD
 
     subgraph Support [Shock Troop - Secondary]
         Ask[Oracle <br> /ask]
-        Changelog[Changelog <br> /changelog]
+        Release[Release <br> /release]
         Debug[Forensics <br> /debug]
         Infra[DevOps <br> /infra]
-        Readme[Showcase <br> /readme]
+        ReadmeProjeto[Showcase <br> /readme-projeto]
         Sync[Synchronizer <br> /sync]
     end
 
@@ -108,8 +108,8 @@ Once the feature is stable, the code must be validated and documented before goi
 Agents isolated from the main flow. They act punctually correcting, cleaning, or assisting the dev.
 
 * **[Oracle Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-ask.md) (`/ask`):** Read-Only tool to ask how the codebase works. Always anchors answers in Obsidian or Files.
-* **[Changelog Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-changelog.md) (`/changelog`):** Acts orchestrating and generating the Release Candidate version and calculates Semantic Versioning (`SemVer`).
+* **[Release Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-release.md) (`/release`):** Acts orchestrating and generating the Release Candidate version and calculates Semantic Versioning (`SemVer`).
 * **[Forensics Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-debug.md) (`/debug`):** Specialist in the *5 Whys* technique. When a Production Crash occurs, generates structured hypotheses to not propose "guessed" solutions.
 * **[DevOps Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-infra.md) (`/infra`):** Handles Docker, requirements, Node modules, and `.env`. Blocked from committing real passwords.
-* **[Showcase Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-advocate.md) (`/readme`):** Developer Advocate. Creates the primary project README focusing on setup ("How to run") and DX.
+* **[Showcase Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-readme-projeto.md) (`/readme-projeto`):** Developer Advocate. Creates the primary project README focusing on setup ("How to run") and DX.
 * **[Synchronizer Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-sync.md) (`/sync`):** Cleaning routine. Forces the AI to reread the project's global laws (`GEMINI.md`, Vault Notes) to recalibrate the "token limit" and cease hallucinations.

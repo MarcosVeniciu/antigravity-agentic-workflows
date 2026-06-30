@@ -1,42 +1,42 @@
-# [Título Descritivo e Atômico]
+# [Descriptive and Atomic Title]
 
-> **Data:** [AAAA-MM-DD]
+> **Data:** [YYYY-MM-DD]
 > **Tipo:** [ADR / Domain Rule / Bug Resolution / Architecture / Convention / Roadmap / Environment]
-> **Status:** [Ativo / Superseded / Deprecated]
+> **Status:** [Active / Superseded / Deprecated]
 
 ---
 
 ## Contexto
 
-*Qual era o problema ou necessidade que motivou esta decisão/implementação? Mantenha em 2-3 frases.*
+*What was the problem or need that motivated this decision/implementation? Keep it to 2-3 sentences.*
 
 ---
 
 ## Decisão / Solução
 
-*O que foi decidido ou implementado? Seja conciso e foque em fatos técnicos acionáveis.*
+*What was decided or implemented? Be concise and focus on actionable technical facts.*
 
 ---
 
 ## Referências no Código
 
-*Arquivos e funções diretamente relacionados:*
+*Directly related files and functions:*
 
-- `path/to/file.py` — `FunctionOrClass` — [Breve descrição do papel]
-- `path/to/another.py` — `AnotherFunction` — [Descrição]
+- `path/to/file.py` — `FunctionOrClass` — [Brief description of the role]
+- `path/to/another.py` — `AnotherFunction` — [Description]
 
 ---
 
 ## Consequências
 
-* **Positivas:** [O que melhorou?]
-* **Negativas / Trade-offs:** [O que foi sacrificado? Qual débito técnico foi introduzido?]
-* **Riscos:** [O que pode dar errado no futuro?]
+* **Positivas:** [What improved?]
+* **Negativas / Trade-offs:** [What was sacrificed? What technical debt was introduced?]
+* **Riscos:** [What could go wrong in the future?]
 
 ---
 
 ## Related Context
 
-*Links bidirecionais para notas relacionadas (OBRIGATÓRIO):*
-- [[nota-que-informou-esta-decisao]]
-- [[nota-irma-do-mesmo-contexto]]
+*Bidirectional links to related notes (MANDATORY):*
+- [[note-that-informed-this-decision]]
+- [[sister-note-of-the-same-context]]

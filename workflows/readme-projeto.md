@@ -136,3 +136,4 @@ Instead of writing directly to the `README.md` file on disk, you MUST first gene
 > *"🌐 The artifact `readme_preview.md` was generated successfully. Please review the content. If everything is correct, say 'ok' so I can apply the changes to the real `README.md` of the project."*
 >
 > *(After the user approves and the file is applied to disk, you can suggest `/git` or `/release` for packaging the project.)*
+ject.)*

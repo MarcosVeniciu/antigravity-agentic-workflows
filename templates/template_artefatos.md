@@ -1,14 +1,14 @@
-# 📐 Plano de Implementação: [Nome da Feature]
+# 📐 Plano de Implementação: [Feature Name]
 
-> **Data:** [AAAA-MM-DD]
-> **Status:** [Em Análise / Aprovado / Em Execução / Concluído]
-> **Autor:** [Nome]
+> **Data:** [YYYY-MM-DD]
+> **Status:** [Under Analysis / Approved / In Execution / Completed]
+> **Autor:** [Name]
 
 ---
 
 ## 🎯 Objetivo
 
-*Descreva o problema que esta implementação resolve e o resultado esperado após a conclusão.*
+*Describe the problem this implementation solves and the expected result upon completion.*
 
 ---
 
@@ -16,17 +16,17 @@
 
 | # | O Quê | Por Quê | Critério de Aceite | Dependências |
 |---|---|---|---|---|
-| 1 | [Descrição da mudança — arquivo/função] | [Regra de negócio ou rationale] | [Condição testável que prova que está feito] | — |
-| 2 | [Próxima mudança] | [Justificativa] | [Critério] | Etapa 1 |
+| 1 | [Description of the change — file/function] | [Business rule or rationale] | [Testable condition that proves it's done] | — |
+| 2 | [Next change] | [Justification] | [Criterion] | Etapa 1 |
 | 3 | ... | ... | ... | ... |
 
 ---
 
 ## 🏗️ Arquitetura e Contratos (Abordagem SDD)
 
-*Gere os diagramas UML estritamente em formato Mermaid.js e documente os contratos/esquemas de validação mockados antes de iniciar a lógica de produção.*
+*Generate UML diagrams strictly in Mermaid.js format and document the mocked contracts/validation schemas before starting production logic.*
 
-> **Futura Nota no Obsidian:** `[[YYYY-MM-DD-slug-da-feature-arquitetura]]`
+> **Futura Nota no Obsidian:** `[[YYYY-MM-DD-feature-slug-architecture]]`
 
 ### Diagrama UML de Sequência
 
@@ -37,11 +37,11 @@ sequenceDiagram
     participant Service
     participant Database
     
-    Client->>API: [Requisição]
-    API->>Service: [Processamento]
-    Service->>Database: [Persistência]
-    Database-->>Service: [Resultado]
-    Service-->>API: [Resposta formatada]
+    Client->>API: [Request]
+    API->>Service: [Processing]
+    Service->>Database: [Persistence]
+    Database-->>Service: [Result]
+    Service-->>API: [Formatted response]
     API-->>Client: [Response]
 ```
 
@@ -57,7 +57,7 @@ classDiagram
 
 ### Contratos e Esquemas (Mocks)
 
-*Defina as interfaces falsas, esquemas de validação (ex: Pydantic, Zod) ou endpoints da API que atuarão como contrato para esta feature.*
+*Define the fake interfaces, validation schemas (e.g., Pydantic, Zod), or API endpoints that will act as the contract for this feature.*
 
 ```python
 # Exemplo de Contrato / Mock
@@ -71,21 +71,21 @@ class FuncionalidadeSchema(BaseModel):
 
 | Arquivo / Módulo | Tipo de Mudança | Risco |
 |---|---|---|
-| `path/to/file.py` | Aditiva (novo código) | Baixo — sem efeitos colaterais |
-| `path/to/existing.py` | Mutativa (modificação) | Médio — pode afetar testes existentes |
+| `path/to/file.py` | Additive (new code) | Low — no side effects |
+| `path/to/existing.py` | Mutative (modification) | Medium — may affect existing tests |
 
 ---
 
 ## ✅ Checklist de Qualidade (Pré-Aprovação)
 
-- [ ] Cada etapa possui critério de aceite testável
-- [ ] Diagramas referenciam componentes reais do codebase
-- [ ] Análise de impacto cobre todos os arquivos afetados
-- [ ] Nenhum código de produção foi incluído neste plano
+- [ ] Each step has a testable acceptance criterion
+- [ ] Diagrams reference real components from the codebase
+- [ ] Impact analysis covers all affected files
+- [ ] No production code was included in this plan
 
 ---
 
 ## Related Context
 
-*Links para notas do vault que informaram este plano:*
-- [[nota-relevante]]
+*Links to vault notes that informed this plan:*
+- [[relevant-note]]

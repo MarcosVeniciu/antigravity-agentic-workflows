@@ -72,8 +72,8 @@ Browse the specific documentation for each command/agent:
 * **Phase 1: Engineering & Requirements:** [`/planejamento`](docs/agente-planejamento.md) | [`/artefatos`](docs/agente-artefatos.md)
 * **Phase 2: TDD & Coding:** [`/testes`](docs/agente-testes.md) | [`/codigo`](docs/agente-codigo.md) | [`/testar`](docs/agente-testar.md) | [`/refatorar`](docs/agente-refatorar.md)
 * **Phase 3: Audit & Review:** [`/review`](docs/agente-review.md) | [`/aplicar-review`](docs/agente-aplicar-review.md)
-* **Phase 4: Packaging & Documentation:** [`/docs`](docs/agente-docs.md) | [`/grafo`](docs/agente-grafo.md) | [`/git`](docs/agente-git.md) | [`/changelog`](docs/agente-changelog.md)
-* **Ad-hoc Support:** [`/ask`](docs/agente-ask.md) | [`/debug`](docs/agente-debug.md) | [`/infra`](docs/agente-infra.md) | [`/sync`](docs/agente-sync.md) | [`/readme`](docs/agente-advocate.md)
+* **Phase 4: Packaging & Documentation:** [`/docs`](docs/agente-docs.md) | [`/grafo`](docs/agente-grafo.md) | [`/git`](docs/agente-git.md) | [`/release`](docs/agente-release.md)
+* **Ad-hoc Support:** [`/ask`](docs/agente-ask.md) | [`/debug`](docs/agente-debug.md) | [`/infra`](docs/agente-infra.md) | [`/sync`](docs/agente-sync.md) | [`/readme-projeto`](docs/agente-readme-projeto.md)
 
 ---
 <p align="center">

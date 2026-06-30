@@ -1,24 +1,24 @@
-# Projeto: [Nome do Projeto]
+# Projeto: [Project Name]
 
 ## Resumo do Escopo
-[Breve descrição do que foi decidido na fase de debate]
+[Brief description of what was decided in the debate phase]
 
 ## Funcionalidades (BDD)
-Funcionalidade: [Nome da Funcionalidade]
-  Para que [motivo ou benefício]
-  Como um [papel do usuário ou sistema]
-  Eu quero [ação ou desejo]
+Funcionalidade: [Feature Name]
+  Para que [reason or benefit]
+  Como um [user or system role]
+  Eu quero [action or desire]
 
-  Cenário: [Nome do cenário 1]
-    Dado que [contexto inicial / pré-condição]
-    E [outra pré-condição, se houver]
-    Quando [ação principal executada]
-    Então [resultado esperado observável / pós-condição]
-    E [outro resultado esperado, se houver]
+  Cenário: [Scenario name 1]
+    Dado que [initial context / precondition]
+    E [another precondition, if any]
+    Quando [main action executed]
+    Então [observable expected result / postcondition]
+    E [another expected result, if any]
 
-  Cenário: [Nome do cenário 2]
+  Cenário: [Scenario name 2]
     ...
 
 ## Related Context
-- [[link-para-arquivos-ou-ADRs-relevantes-no-vault]]
-- [Outras referências importantes que deram contexto a este escopo]
+- [[link-to-relevant-files-or-ADRs-in-the-vault]]
+- [Other important references that provided context to this scope]
