@@ -43,7 +43,11 @@ Based on the parsed error, classify the root cause:
 #### 1.3. Scope the Fix
 
 * **Minimal change:** Apply the smallest possible code change that resolves the error. Do not introduce unrelated improvements.
-* **One fix at a time:** Use the `task.md` created in step 1.1 to address one failure at a time. Do not try to fix multiple unrelated errors in the same step.
+* **The Iterative Update Rule:** You MUST NOT complete all tasks in a single burst and update the `task.md` only at the end. Instead, you must:
+  1. Select the first pending task and mark it as in-progress `[/]` in `task.md`.
+  2. Execute the code changes for that specific task.
+  3. Update the `task.md` marking the task as completed `[x]`.
+  4. Move to the next task and repeat.
 
 ---
 

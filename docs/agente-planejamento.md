@@ -1,15 +1,46 @@
-# Agente de Planejamento (O Maestro)
+# Planning Agent (The Scope Maestro)
 
-O Agente de Planejamento é a fundação de todo o ciclo de desenvolvimento do **Antigravity IDE**. Definido globalmente nas diretrizes raízes (`gemini.md`), ele não escreve código de produção; seu papel é ser o "Software Architect" focado no entendimento absoluto do problema.
+The planning phase in the **Antigravity IDE** acts in an autonomous and decoupled workflow (`workflows/planejamento.md`). This separation exists to not overload the core agent and to ensure maximum depth in the most critical phase of software development: **the absolute understanding of the problem and the scope**.
 
-## Abordagem BDD (Behavior-Driven Development)
+The Planning Agent does not write production code. Its goal is to focus exclusively on technical feasibility, path exploration, ambiguity resolution, and the behavioral refinement of the feature (BDD).
 
-Antes de definir tabelas no banco de dados ou classes Python/Node, o Planejamento foca exclusivamente no **comportamento**.
+---
 
-1. **Context First:** Ele consulta ativamente o Obsidian (`obsidian_knowledge_graph`) para entender o histórico do projeto e as convenções atuais (`02-conventions/`).
-2. **Debate e Validação:** Utilizando a premissa do `/grill-me`, o agente extrai do usuário todos os detalhes obscuros, edge cases e lógicas não documentadas, garantindo que o escopo de negócio esteja blindado.
-3. **Propostas e Trade-offs:** Ele oferece múltiplas arquiteturas possíveis baseadas nos dados reais, deixando o desenvolvedor (usuário) tomar a decisão executiva.
+## 1. The Activation Flow (`/planejamento` + `/grill-me`)
 
-## O Ponto de Restauração (`/artefatos`)
+Planning does not start from nothing; it is an investigative process activated explicitly.
 
-O agente de planejamento jamais avança para a escrita sem um contrato fechado. O usuário deve explicitamente aprovar a direção sugerida. Quando aprovado, a ordem dada é clara: avançar para a materialização do planejamento estrutural usando o próximo agente na cadeia.
+When a developer has an idea (e.g.: *"I want to implement a new login feature"*), they send the instruction along with the `/planejamento` and `/grill-me` commands. 
+
+**The Process:**
+1. The AI uses its **extreme search speed**, sweeping the current source code and atomic notes in the Obsidian Vault.
+2. The AI crosses the user's request with the domain rules (`04-domain-rules/`) and current conventions (`02-conventions/`).
+3. Instead of guessing missing details (avoiding scope hallucinations), it applies the "grill-me" (interview) technique, asking direct and precise questions to resolve uncertainties that only the developer's business domain can answer.
+
+This symbiosis step extracts the maximum from the partnership: the structural speed of the AI validated by the human's business knowledge.
+
+---
+
+## 2. Analysis and Interview Phase (The Loop)
+
+Based on the collected context and the user's answers, the agent enters the planning loop:
+
+* **Presentation of Doubts and Proposals:** The model points out the "holes" in the scope and proposes approaches and architectures.
+* **Refinement:** The user reads the options. If more exploration or adjustments to the proposed architecture are needed, they can restart the loop (`/grill-me`) or provide corrections.
+* **Executive Decision:** When the plan becomes solid, the user gives final confirmation with the explicit command: `/planejamento ok`.
+
+---
+
+## 3. Consolidation Phase (`/planejamento ok`)
+
+When the acceptance command is triggered, the agent moves to materialize the scope contract using a BDD (Behavior-Driven Development) approach.
+BDD acts as a direct bridge between business rules and the final implemented code, describing requirements in a structured natural language that uses keywords like Given, When, and Then. For example: *"Given that I am on the registration page, when I submit a valid name and email, then my account should be created correctly."*
+
+At this point, severe rules are applied to not pollute the interface:
+
+1. **Features List (Scope):** The agent consolidates the plan in the strict BDD format (*Given/When/Then*), using the official planning template.
+2. **Transitional Artifact (`walkthrough.md`):** The generated text is saved in the IDE itself as the `walkthrough.md` artifact. 
+   > [!NOTE]
+   > This artifact serves as a transitional "visible draft". Its main goal is to present the formalized result without cluttering the chat history.
+3. **Immortalizing in the Second Brain:** Once approved, the agent autonomously saves this consolidation in an **Atomic Note** in the `09-scopes-and-features/` directory of the Obsidian Vault, making business decisions a permanent and official part of the project's architecture.
+4. **Git Flow:** Finally, with the scope closed, the agent suggests the creation of the appropriate new branch (`feature/`, `fix/`, etc.) for the work, guiding the user to the next stage of technical execution (where `/artefatos` takes the baton).

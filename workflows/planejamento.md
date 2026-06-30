@@ -12,6 +12,8 @@ You must conduct this phase strictly following the states below, advancing only 
 
 #### STATE 1: THE DEBATE (Pair-Programming)
 * **Context First:** Before addressing ANY request, you MUST autonomously search for context using the project's codebase and the `obsidian_knowledge_graph`. Request missing files, logs, or READMEs to fully ground your analysis. Never guess or assume context.
+* **BDD (Behavior Driven Development)**: The BDD approach is used to define the requirements of the system in a structured natural language format using keywords such as Given (Context), When (Action), and Then (Expected Result).
+
 * **Debate & Analyze (Loop):** 
   1. Remind the user to activate `/grill-me` mode **BEFORE** asking them questions, if they haven't done so already. Assume the developer is experienced and may have already provided many details, but use this mode to actively extract information that might have been missed or left ambiguous. Your role as a co-programmer is to ask active questions to extract this information and minimize your doubts before suggesting approaches. Do not assume things without validating first.
   2. Only **AFTER** your doubts are cleared, generate ≥2 distinct approaches or solutions grounded in the vault data. Discuss the trade-offs of each approach. Never contradict a logged ADR without explicitly opening a debate.
@@ -28,7 +30,8 @@ You must conduct this phase strictly following the states below, advancing only 
 Upon receiving the `/planejamento ok` command, you MUST NOT generate code or diagrams. Instead:
 1. Generate the **Features List (Scope)** as an artifact named `walkthrough.md` so it doesn't pollute the chat. To do this, consult and fill out the template `templates/template_planejamento.md` and write the result to the `walkthrough.md` artifact file.
    - For the "Project Name" field inside the template, extract the root directory name by autonomously running `git rev-parse --show-toplevel` (extracting only the last folder of the returned path).
-   - The BDD block must use the classic Gherkin syntax (Given/When/Then/And/But).
+   - The BDD (Behavior Driven Development) block bridges the gap between business rules and implemented code.
+   - You must describe requirements in structured natural language using the classic Gherkin syntax: Given (Context), When (Action), and Then (Expected Result).
 2. Make an explicit pause asking the user:
    *"I have generated the features list in the walkthrough artifact. Are you satisfied with this scope to start development?"*
 3. Wait for the confirmation ("Yes").

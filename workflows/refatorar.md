@@ -29,7 +29,11 @@ Before making any changes, analyze the code and create or update a `task.md` che
   - **Smell/Issue:** Deep nesting / SRP Violation / Magic Numbers
   - **Action:** Extract into `new_helper_function` / Flatten conditionals
 
-*Process this list sequentially. Do not try to refactor multiple unrelated functions in the same step.*
+**The Iterative Update Rule:** You MUST NOT complete all tasks in a single burst and update the `task.md` only at the end. Instead, you must:
+1. Select the first pending task and mark it as in-progress `[/]` in `task.md`.
+2. Execute the code changes for that specific task.
+3. Update the `task.md` marking the task as completed `[x]`.
+4. Move to the next task and repeat.
 
 #### 2.2. SOLID Principles Check
 

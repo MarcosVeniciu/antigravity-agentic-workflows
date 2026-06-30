@@ -20,7 +20,12 @@ Before writing any production code, you MUST:
 
 #### 2.1. Task List & Code-to-Test Alignment
 
-* **Task List (`task.md`):** Your FIRST action must be to create or update a `task.md` checklist containing every method, class, and file you need to implement. Process this list sequentially, one item at a time, to stay focused.
+* **Task List (`task.md`):** Your FIRST action must be to create or update a `task.md` checklist containing every method, class, and file you need to implement.
+* **The Iterative Update Rule:** You MUST NOT complete all tasks in a single burst and update the `task.md` only at the end. Instead, you must:
+  1. Select the first pending task and mark it as in-progress `[/]` in `task.md`.
+  2. Execute the code changes for that specific task.
+  3. Update the `task.md` marking the task as completed `[x]`.
+  4. Move to the next task and repeat.
 * Write production code that directly satisfies each test's assertion. Do not add functionality beyond what the tests require. Write the **minimum necessary code** to make the tests pass.
 * If a test expects a specific exception, implement the exact exception class and raise condition.
 * If a test mocks a dependency interface, implement that interface exactly as mocked (same method signatures, same return types).

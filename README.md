@@ -1,118 +1,81 @@
 # 🪐 Antigravity Agentic Workflows
 
 <p align="center">
-  <em>Um ecossistema de Engenharia de Software orientado a Agentes de IA baseado em Máquina de Estados, "Second Brain" (Obsidian) e Separação de Responsabilidades.</em>
+  <em>An AI Agent-driven Software Engineering ecosystem based on State Machines, "Second Brain" (Obsidian), and Separation of Concerns.</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/AI-Gemini%20%7C%20Claude-blue.svg" alt="AI Agentic Workflows">
+  <img src="https://img.shields.io/badge/Architecture-State%20Machine-orange.svg" alt="State Machine">
+  <img src="https://img.shields.io/badge/Knowledge-Obsidian%20Vault-purple.svg" alt="Obsidian Vault">
 </p>
 
 ---
 
-## 🎯 O Problema
+## 🎯 The Pitch (Why Antigravity?)
 
-Trabalhar com LLMs em bases de código grandes frequentemente resulta no problema do "gatilho rápido": a IA tenta refatorar arquivos inteiros ou cuspir código antes de entender completamente o escopo, as regras de negócio ou a arquitetura. Isso gera regressões, perda de contexto e frustração.
+Working with LLMs on large codebases frequently results in the "trigger-happy" problem: the AI tries to refactor entire files before understanding the context, causing regressions and knowledge loss.
 
-## 🚀 A Solução: Antigravity IDE Ecosystem
+The **Antigravity IDE Ecosystem** solves this by enforcing a **Strict State Machine** and deep integration with a **"Second Brain"** (Obsidian Vault via MCP). 
 
-Este repositório contém a configuração e os *prompts* de um ecossistema completo de agentes para o **Antigravity IDE** (ou IDEs similares baseadas no Claude/Gemini). 
+Each AI agent has restricted permissions and an isolated scope — from requirements engineering and diagramming, through the TDD pipeline and static Code Review, down to atomic documentation generation. 
 
-A arquitetura resolve o problema do "gatilho rápido" impondo uma **Máquina de Estados Estrita**. Cada agente possui uma "Persona" focada, restrições de permissão (Read-Only vs. Write) e depende de **Approval Gates** (aprovação humana) para avançar no ciclo de desenvolvimento.
-
-O coração do sistema é o **"Second Brain"** (Vault do Obsidian via MCP), que atua como a única fonte da verdade para regras de negócio, ADRs (Architecture Decision Records) e histórico de bugs.
+**The principle is absolute: AI suggests, human orchestrates and approves.**
 
 ---
 
-## ⚙️ Arquitetura dos Agentes (Máquina de Estados)
+## 🚀 Getting Started (5-Minute Quick Setup)
 
-O ciclo de vida do software é dividido em comandos `/slash` estritos. Um agente nunca executa o trabalho de outro.
+### 1. Prerequisites
+* An IDE compatible with AI ecosystems (e.g., local Gemini/Claude setup).
+* The **Obsidian** app installed locally.
 
-### 🔗 Cadeia de Comando (Fluxo Completo)
+### 2. Installation
 
-```mermaid
-graph TD
-  subgraph Planejamento
-    A["/planejamento<br/>(Scope & BDD)"] --> B["/artefatos<br/>(SDD & Blueprints)"]
-  end
-  
-  subgraph TDD_Loop
-    B --> B2["/infra<br/>(Optional)"]
-    B2 --> C
-    B --> C["/testes<br/>(Red Phase)"]
-    C --> D["/codigo<br/>(Green Phase)"]
-    D --> E{"Tests<br/>Pass?"}
-    E -- "❌ No" --> F["/testar<br/>(Reactive Fix)"]
-    F --> E
-    E -- "✅ Yes" --> H["/refatorar<br/>(Clean Code)"]
-  end
-  
-  subgraph Auditoria
-    H --> G["/review<br/>(Audit Categories)"]
-    G --> G2["/aplicar-review<br/>(Fixes)"]
-    G2 --> E2{"Tests<br/>Pass?"}
-    E2 -- "❌ No" --> F
-    E2 -- "✅ Yes" --> G3{"More Reviews?<br/>(Arq/Sec/Perf)"}
-    G3 -- "Yes" --> G
-  end
-  
-  subgraph Fechamento
-    G3 -- "No" --> I["/docs<br/>(Documentation)"]
-    I --> J["/grafo<br/>(Obsidian)"]
-    J --> K["/git<br/>(Feature Packaging)"]
-  end
+```bash
+# Clone the repository
+git clone https://github.com/MarcosVeniciu/antigravity-agentic-workflows.git
+cd antigravity-agentic-workflows
 ```
 
-### 🕵️‍♂️ Consulta & Contexto
-* **`/ask` (O Oráculo):** Modo *estritamente Read-Only*. Consulta o Obsidian Vault e a base de código para debater arquitetura ou explicar fluxos, com a garantia absoluta de que não tentará modificar arquivos.
+### 3. Engaging the "Second Brain"
+1. Open Obsidian.
+2. Add the `vault/` folder (or the repository root) as a Vault.
+3. Enable the MCP (Model Context Protocol) server to connect the knowledge base to the AI.
 
-### 📐 Engenharia de Requisitos (BDD & SDD)
-* **`/planejamento` (O Analista de Negócios):** Entrevista o usuário para definir o escopo da feature, critérios de aceite (BDD) e atualiza o backlog no Vault. Só avança com `/planejamento ok`.
-* **`/artefatos` (O Arquiteto de Software):** Pega os requisitos aprovados e gera o *Software Design Document* (SDD), incluindo diagramas Mermaid (Sequência, Classes) e contratos de API. Zero código de produção é escrito aqui.
+### 4. First Run
+Start your workflow by validating the repository rules or planning a new feature:
 
-### 🧪 Desenvolvimento Orientado a Testes (TDD)
-* **`/testes` (O Engenheiro de QA - Fase Red):** Escreve *apenas* a suíte de testes (caminhos felizes e edge cases) com base nos artefatos aprovados. 
-* **`/codigo` (O Desenvolvedor - Fase Green):** Escreve o código mínimo e necessário de produção para fazer os testes passarem.
-* **`/testar` (O Bombeiro):** Agente reativo acionado exclusivamente quando os testes falham. Analisa o traceback e ajusta a lógica.
+```bash
+# Consult the Oracle (Read-Only Context)
+/ask Explain how the current microservices architecture is designed.
 
-### 🔍 Auditoria & Refatoração
-* **`/review` (O Auditor):** Executa checklists rigorosos (Segurança, Performance, Arquitetura) baseados em regras documentadas no Vault. Gera um relatório de auditoria (`analysis_results.md`).
-* **`/aplicar-review` (O Executor):** Lê o relatório do auditor e aplica as correções cirurgicamente.
-
-### 📦 Release Management
-* **`/changelog` (O Engenheiro de Release):** Analisa os commits no padrão *Conventional Commits*, calcula o Semantic Versioning (Major, Minor, Patch), gera o `release_notes.md` e prepara os comandos do Git para as tags. Só executa os comandos após um `/release ok`.
-
----
-
-## 🧠 O "Second Brain" (Integração com Obsidian)
-
-O ecossistema não depende da memória volátil da janela de contexto da IA. Ele utiliza um Servidor MCP (Model Context Protocol) para se conectar a um Vault do Obsidian no repositório:
-
-```text
-vault/
-├── 01-adrs/               # Decisões arquiteturais documentadas
-├── 02-conventions/        # Padrões de código e linting
-├── 03-pivots-and-bugs/    # Histórico forense de bugs resolvidos
-├── 04-domain-rules/       # Regras de negócio core
-├── 05-architecture-map/   # Mapas de componentes e integrações
-├── 06-roadmap-and-state/  # Débito técnico, WIP e roadmap
-├── 07-environment-setup/  # Build, deploy e configuração de ambiente
-├── 08-templates/          # Templates obrigatórios dos agentes
-└── 09-scopes-and-features/# Requisitos e BDDs
+# Start the Development Cycle (BDD)
+/planejamento
 ```
-> *Antes de qualquer ação, os agentes são instruídos a ler estas pastas autonomamente para se contextualizarem.*
 
 ---
 
-## 🛠️ Como Instalar e Utilizar
+## 📚 Deep Delegation (Technical Manuals)
 
-1. Copie a pasta `workflows/` e `agent_commands/` para o diretório de configurações do seu IDE (ex: `~/.gemini/config/`).
-2. Configure o seu Vault do Obsidian para o repositório atual e ative a conexão MCP.
-3. Inicie seu fluxo de trabalho com `/planejamento` ou consulte o projeto com `/ask`.
+To keep this file focused and concise, all detailed documentation regarding the state machine, phase transition rules, and descriptions of internal workflows has been moved to specialized directories. 
+
+See below:
+
+### 🗺️ Ecosystem and Principles
+* **[Overview and State Machine](docs/README.md)**: Complete diagram of the command chain and software lifecycle.
+* **[Core Agent (`gemini.md`)](docs/agente-core-gemini.md)**: The core philosophy of Human-AI Co-Programming and the mandatory integration with the Obsidian Vault.
+
+### 🤖 Specialist Agents (Workflows)
+Browse the specific documentation for each command/agent:
+
+* **Phase 1: Engineering & Requirements:** [`/planejamento`](docs/agente-planejamento.md) | [`/artefatos`](docs/agente-artefatos.md)
+* **Phase 2: TDD & Coding:** [`/testes`](docs/agente-testes.md) | [`/codigo`](docs/agente-codigo.md) | [`/testar`](docs/agente-testar.md) | [`/refatorar`](docs/agente-refatorar.md)
+* **Phase 3: Audit & Review:** [`/review`](docs/agente-review.md) | [`/aplicar-review`](docs/agente-aplicar-review.md)
+* **Phase 4: Packaging & Documentation:** [`/docs`](docs/agente-docs.md) | [`/grafo`](docs/agente-grafo.md) | [`/git`](docs/agente-git.md) | [`/changelog`](docs/agente-changelog.md)
+* **Ad-hoc Support:** [`/ask`](docs/agente-ask.md) | [`/debug`](docs/agente-debug.md) | [`/infra`](docs/agente-infra.md) | [`/sync`](docs/agente-sync.md) | [`/readme`](docs/agente-advocate.md)
 
 ---
-
-## 💡 Princípios de Design
-
-* **Think First, Code Later:** O planejamento e os testes precedem o código de produção.
-* **No Hallucinations:** Respostas e decisões técnicas devem ser atreladas a arquivos e notas do Vault.
-* **Human-in-the-Loop:** A IA sugere, o humano orquestra e aprova.
-
----
-*Construído como uma experimentação de ponta sobre como times de engenharia trabalharão em colaboração com IAs no futuro.*
+<p align="center">
+  <em>Built as a cutting-edge experiment on how engineering teams will work in collaboration with AIs in the future.</em>
+</p>

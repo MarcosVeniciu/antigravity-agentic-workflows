@@ -23,7 +23,11 @@ Before applying any fix, you MUST:
 * Create or update the `task.md` artifact to list all the findings as tasks. Use `[ ]` for pending, `[/]` for in-progress, and `[x]` for completed tasks. You MUST use this task list to track your progress for each task.
 
 #### 2.2. Surgical Fixes
-* Address the findings identified in the review report one by one, according to your `task.md`.
+* **The Iterative Update Rule:** You MUST NOT complete all tasks in a single burst and update the `task.md` only at the end. Instead, you must:
+  1. Select the first pending task and mark it as in-progress `[/]` in `task.md`.
+  2. Execute the code changes for that specific task.
+  3. Update the `task.md` marking the task as completed `[x]`.
+  4. Move to the next task and repeat.
 * Apply the smallest possible code change to resolve the finding. Do not introduce new features or perform gratuitous refactoring.
 * Focus specifically on the domain of the review (e.g. if it was a security review, focus on OWASP fixes, SQL injection, secrets management; if architectural, focus on dependency injection, boundaries).
 
