@@ -4,37 +4,45 @@ The Audit phase comes into action after technical consolidation (complete TDD cy
 
 ---
 
-## 1. The Four Analysis Categories
+## 1. The Four Analysis Categories & Templates
 
-To ensure an expert vision, the audit is divided into 4 fronts:
-1. **Security:** Evaluates attack vectors, injections, authentication flaws, and data leakage.
-2. **Architecture:** Evaluates excessive coupling, escape from design patterns, severe violation of SOLID principles not covered by refactoring, and structural duplication.
-3. **Resilience:** Analyzes fault tolerance, *circuit breakers*, generic exception handling (avoiding *swallowing exceptions*), and resource leaks.
-4. **Performance:** Identifies memory bottlenecks, database calls (N+1 query problem), and inefficient loops.
+To ensure an expert vision, the audit is divided into specific fronts, each mapped to a strict template in the `08-templates/` directory of the Obsidian Vault:
+1. **General (`/review`):** Uses `template_review_geral.md` to check for hallucinations, AI traces, and structure.
+2. **Architecture (`/review arquitetura`):** Uses `template_review_arquitetura.md` for domain leakage, DIP, and DTO checks.
+3. **Resilience (`/review resiliencia`):** Uses `template_review_resiliencia.md` for idempotency, fault tolerance, and generic exception handling.
+4. **Security (`/review seguranca`):** Uses `template_review_seguranca.md` for OWASP, injections, and data schemas.
+5. **Performance (`/review performance`):** Uses `template_review_performance.md` for memory bottlenecks, cyclomatic/asymptotic scaling.
 
 > [!TIP]
 > **Context Reset Tip (Optional):**
 > While not mandatory, it is an excellent practice to **start a new chat** in the IDE before running the `/review` commands.
-> Since the model "forgets" the struggles, motivations, and attempts it had while coding the feature, it will do a much more **impartial** code analysis, coldly evaluating the current base. Staying in the same chat helps with speed, but opening a new one elevates the rigor of the review.
+> Since the model "forgets" the struggles and attempts it had while coding, it will do a much more **impartial** code analysis.
 
 ---
 
-## 2. The Isolated Context Philosophy
+## 2. Automated Target Discovery
 
-One of the greatest challenges for AIs is to act as "Experts" in many domains simultaneously. Asking an AI to analyze security while at the same time optimizing performance and improving architecture drastically dilutes its "point of attention" (*Attention Mechanism*), generating generic reports.
-
-In the Antigravity IDE, the process is isolated and continuous:
-* **One problem at a time:** The agent is triggered focusing on only one category at a time (e.g.: ` /review security `). It wears the security analyst persona.
-* Instead of doing all 4 evaluations together, it runs the analysis, we fix it (`/aplicar-review`), we test it (`/testar`), and then we run the next evaluation.
+Instead of manually telling the agent what to review, the agent autonomously executes `git status -s` and `git branch --show-current`. This guarantees that it evaluates exactly what is being modified in the current scope, crossing this information with the original BDD and SDD artifacts.
 
 ---
 
-## 3. The Report and Traceability
+## 3. The Isolated Context Philosophy & Review Chain
 
-The `/review` agent generates a technical report (based on a template) not just to throw suggestions in the chat, but to save in the **Obsidian Vault**.
+One of the greatest challenges for AIs is to act as "Experts" in many domains simultaneously. By dealing with one domain at a time, the AI maintains a hyper-focused "Attention Mechanism".
 
-This report has:
-* Flaw identifications.
-* Rigorous correction suggestions.
-* Empty fields (which will serve as a workspace for the `/aplicar-review` agent to annotate what it actually did).
-* **Bidirectional Links:** The audit document points to the scope (BDD) and design (SDD) note from which this feature originated, ensuring total traceability.
+The Review Chain dictates a sequential flow:
+1. General Review -> `/aplicar-review` -> Test
+2. Architecture -> `/aplicar-review` -> Test
+3. Resilience -> `/aplicar-review` -> Test
+4. Security -> `/aplicar-review` -> Test
+5. Performance -> `/aplicar-review` -> Test -> Move to `/docs`
+
+---
+
+## 4. The Report and Traceability
+
+The `/review` agent generates its technical report in two formats:
+1. **Ephemeral Artifact (`audit_report.md`):** Saved in the IDE chat workspace so the developer can see the flaws without flooding the chat stream.
+2. **Permanent Storage (Vault):** It autonomously saves the report in the `10-review-reports/` directory using the `obsidian_knowledge_graph` MCP tool (e.g., `projeto_2026-07-01_feature_review-resiliencia.md`).
+
+This report features flaw identifications, rigorous correction suggestions, bidirectional links to original SDDs, and strategically left blank fields which will serve as a workspace for the `/aplicar-review` agent to annotate its fixes.
