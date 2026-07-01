@@ -80,8 +80,8 @@ You must generate this report as an artifact in the chat and ALSO save it in the
 Suggest the next step which is ALWAYS to apply the current review before moving to the next.
 
 > **[NEXT STEP — CONDITIONAL]:**
-> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review architecture`."*
-> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review resilience`."*
-> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review security`."*
-> * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review performance`."*
-> * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. This is the final step of the audit cycle."*
+> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review architecture`."*
+> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review resilience`."*
+> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review security`."*
+> * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review performance`."*
+> * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. Test them. This is the final step of the audit cycle."*

@@ -63,4 +63,4 @@ pytest path/to/test_file.py -v
 > *"🛡️ Audit fixes applied. **Mandatory Action:** Run the test suite in your terminal to ensure nothing was broken."*
 > 
 > *"If any test **fails** ❌: Execute `/testar` pasting the error output."*
-> *"If the tests continue to **pass** ✅: The code is validated. Execute `/docs` to generate and update the final project documentation."*
+> *"If the tests continue to **pass** ✅: Check your Review Chain. Execute the next specific review (e.g., `/review arquitetura`, `/review resiliencia`). If this was the last review (Performance), execute `/docs`."*
