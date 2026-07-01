@@ -87,6 +87,7 @@ Use the `vault_write` tool from the `obsidian_knowledge_graph` MCP server to cre
 * **🚫 DO NOT modify production code or tests.** Your scope is vault notes only.
 * **🚫 DO NOT create notes without bidirectional links.** Every note must connect to at least one other note.
 * **🚫 DO NOT run terminal commands.**
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 

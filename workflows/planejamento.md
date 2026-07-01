@@ -57,6 +57,13 @@ After the user confirms the scope:
 2. **Transition:** Stop and present the exact following message:
    > *"📐 Scope documented and reviewed. The next step is to start creating the technical artifacts (The How). Execute `/artefatos` to start the architecture phase."*
 
+
+---
+
+### Constraints
+
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
+
 ---
 
 ### Run Commands Rule

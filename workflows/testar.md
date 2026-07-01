@@ -57,8 +57,7 @@ Based on the parsed error, classify the root cause:
 * **🚫 DO NOT refactor** unrelated code, even if you spot opportunities.
 * **🚫 DO NOT weaken or modify a valid test** merely to bypass a code failure. Fix the production code, not the test — unless the test itself contains a genuine bug (e.g., wrong expected value due to a typo).
 * **🚫 DO NOT run commands.** Provide the re-run command as a single, isolated `bash` block.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 3. Output Format
 

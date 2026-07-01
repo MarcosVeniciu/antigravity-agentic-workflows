@@ -65,8 +65,7 @@ For functions that process collections, loops, or batch data, you MUST include a
 * **🚫 NO PRODUCTION LOGIC:** Do absolutely NOT write, modify, or generate any production/business logic beyond the empty signatures (stubs).
 * **🚫 NO TEST EXECUTION:** Do not run test commands. Only provide them as copy-pasteable `bash` blocks. Ensure you include flags to show print statements (e.g., `pytest -s -v`).
 * **✅ Tests MUST fail:** The generated tests define behavior that does not yet exist.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 5. Output Format
 

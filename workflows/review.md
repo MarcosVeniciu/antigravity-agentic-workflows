@@ -66,6 +66,13 @@ You must generate this report as an artifact in the chat and ALSO save it in the
 
 *(Note: Use the exact markdown structure defined in the specific template you fetched in step 1.2 to format both outputs).*
 
+
+---
+
+### Constraints
+
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
+
 ---
 
 ### 4. The Review Chain (Next Step Logic)

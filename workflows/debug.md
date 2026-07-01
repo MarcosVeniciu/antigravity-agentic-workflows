@@ -70,8 +70,7 @@ Propose **at least 2 approaches** to fix the bug, with trade-offs:
 * **🚫 DO NOT apply fixes automatically.** Present the analysis and proposed solutions. Wait for user approval before any code change.
 * **🚫 DO NOT run commands.** Provide diagnostic commands as copy-pasteable `bash` blocks for the user to run.
 * **🚫 DO NOT guess.** If you need more evidence (logs, config files, environment details), ask the user explicitly.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 5. Prevention Recommendation
 

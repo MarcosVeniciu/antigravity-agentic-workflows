@@ -73,6 +73,7 @@ If the project uses auto-generated API docs (Swagger/OpenAPI, Sphinx, JSDoc):
 * **🚫 DO NOT modify production code or tests.** Your scope is documentation files only.
 * **🚫 DO NOT run commands.**
 * **🚫 DO NOT write to the real files on disk initially.** Always generate the `docs_preview.md` artifact first!
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 

@@ -45,8 +45,7 @@ Before applying any fix, you MUST:
 
 * **🚫 DO NOT run commands autonomously.** Provide the test re-run command as a single, isolated `bash` block so the user can verify behavior is preserved.
 * **🚫 DO NOT change business logic behavior.** The tests must still pass after your security or architectural patches.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 4. Output Format
 

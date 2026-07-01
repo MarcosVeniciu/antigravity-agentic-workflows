@@ -74,7 +74,6 @@ reduce maintenance costs and mitigate failures in international transactions.
 
 ### 3. Staging & Commit Commands
 
-Provide each command in a **separate, isolated `bash` block.** Never combine commands.
 
 **For a single-commit session:**
 
@@ -122,7 +121,7 @@ If applicable, suggest a PR title and description summary based on the session's
 
 * **🚫 DO NOT run any Git commands.** All commands are provided for manual execution by the user.
 * **🚫 DO NOT modify code.** Your scope is strictly Git operations.
-* **🚫 DO NOT combine multiple commands** in a single code block.
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 
