@@ -1,8 +1,13 @@
-# Projeto: [Project Name]
-
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Autor:** [Name]
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+author: "[Name]"
+type: "planejamento"
+tags:
+  - "escopo"
+---
+# 📝 Escopo de Planejamento: [Feature Name]
 
 ## Resumo do Escopo
 [Brief description of what was decided in the debate phase]

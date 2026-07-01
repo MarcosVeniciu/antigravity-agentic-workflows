@@ -1,10 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+status: "[Under Analysis / Approved / In Execution / Completed]"
+author: "[Name]"
+type: "artefatos"
+tags:
+  - "plano-de-implementacao"
+---
 # 📐 Plano de Implementação: [Feature Name]
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Status:** [Under Analysis / Approved / In Execution / Completed]
-> **Autor:** [Name]
 
 ---
 
@@ -28,7 +32,7 @@
 
 *Generate UML diagrams strictly in Mermaid.js format and document the mocked contracts/validation schemas before starting production logic.*
 
-> **Futura Nota no Obsidian:** `[[YYYY-MM-DD-feature-slug-architecture]]`
+> **Futura Nota no Obsidian:** `[[{projeto}_{YYYY-MM-DD}_[descrição-amigável]]]`
 
 ### Diagrama UML de Sequência
 

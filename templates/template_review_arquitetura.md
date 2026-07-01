@@ -1,9 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+author: "[Name]"
+type: "review-arquitetura"
+tags:
+  - "review"
+  - "arquitetura"
+---
 # 🏗️ Architecture and Coupling Review Checklist
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Autor:** [Name]
 
 > **Purpose:** Ensure strict layer isolation, preservation of domain boundaries, structured communication, and adherence to SOLID principles.
 

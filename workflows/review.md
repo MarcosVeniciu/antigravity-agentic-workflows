@@ -6,8 +6,15 @@ description: Methodological code audit based on strict Obsidian checklists. Exec
 
 ---
 
-### 1. Template Resolution via Knowledge Graph
+### 1. Context Gathering & Template Resolution
 
+#### 1.1. Context Discovery & Artifact Retrieval
+Before starting the review, you must understand *what* you are reviewing and *why*:
+1. Execute `git branch --show-current` to determine the active branch.
+2. Execute `git status -s` to identify the files modified or untracked in this branch. **These are your target files for the review.**
+3. Query the `obsidian_knowledge_graph` MCP vault to find any artifacts generated in previous steps for this specific branch (e.g., implementation plans, requirement docs). You must read these artifacts to evaluate if the code meets the intended business rules and architectural decisions.
+
+#### 1.2. Template Fetching
 Fetch the specific review checklist from the `08-templates/` directory in the `obsidian_knowledge_graph` MCP vault:
 
 | User Command | Template to Fetch | Focus Area |
@@ -18,7 +25,7 @@ Fetch the specific review checklist from the `08-templates/` directory in the `o
 | `/review arquitetura` | `template_review_arquitetura.md` | Domain leakage, dependency inversion, DTOs. |
 | `/review resiliencia` | `template_review_resiliencia.md` | Idempotency, transactions, graceful degradation. |
 
-**Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
+Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) to fill the template headers alongside the Branch Name.
 
 **If the template is not found, PAUSE and inform the user.**
 
@@ -45,33 +52,19 @@ Do not just glance at the code. For every checklist item:
 
 ### 3. Report Output Format
 
-You must generate this report as an artifact named `audit_report.md` so the user can see it laterally without flooding the chat.
-Additionally, you MUST save this same report in the `obsidian_knowledge_graph` MCP vault (e.g., in `03-pivots-and-bugs/reviews/` or an appropriate directory).
+You must generate this report as an artifact in the chat and ALSO save it in the `obsidian_knowledge_graph` MCP vault.
 
-**Artifact Name:** `audit_report.md`
+**3.1. Ephemeral Chat Artifact (IDE UI)**
+- **Artifact Name:** `audit_report.md`
+- *Purpose:* So the user can see it laterally without flooding the chat.
 
-```markdown
-## Code Review Report: [Mode]
+**3.2. Permanent Storage (Obsidian Vault)**
+- **Directory:** `10-review-reports/`
+- **File Name Pattern:** `{projeto}_{YYYY-MM-DD}_[descrição-amigável].md`
+  - Example: `meuprojeto_2026-07-01_feature_adiciona-novo-gateway-pagamento_review-resiliencia.md`
+- *Purpose:* To maintain a searchable, permanent history of code quality gates without overwriting previous reviews. Use the context gathered in Step 1.1 to construct this filename.
 
-### Summary
-- Files Reviewed: X
-- Findings: Y (🔴 Critical: N, 🟡 Major: N, 🔵 Minor: N)
-
-### Findings
-
-#### [ ] [Finding #1] — [Severity Emoji] [Title]
-- **File:** `path/to/file.py` (L42-L58)
-- **Evidence:** [Exact mechanical proof, e.g., "Nested loop iterating over query O(n^2)"]
-- **Refactoring Recommendation:** [Direct instruction for the /aplicar-review agent, e.g., "Extract ID list and use IN() clause in the main query"]
-- **Resolution (to be filled by `/aplicar-review`):** 
-  - *[Leave this space empty for the next agent to document what was done]*
-
----
-
-## Related Context
-- [Link to Implementation Plan / SDD]
-- [Link to Features List or Architecture map]
-```
+*(Note: Use the exact markdown structure defined in the specific template you fetched in step 1.2 to format both outputs).*
 
 ---
 

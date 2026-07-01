@@ -10,9 +10,13 @@ description: Work packaging with Git Flow. Prepares staging and generates semant
 
 Before suggesting any Git operations, you MUST:
 
-1. **Assess the scope:** Determine whether this session's work constitutes a `feat`, `fix`, `refactor`, `docs`, `chore`, or `ci` change.
-2. **Read the vault:** Query `02-conventions/` in the `obsidian_knowledge_graph` MCP vault for any project-specific Git conventions (commit message format).
-3. **Identify changed files:** List all files created, modified, or deleted during this session.
+1. **Determine the Branch Name:**
+   - Execute `git branch --show-current`.
+   - **Constraint:** If the output is `main` (or `master`), you MUST stop and ask the user for clarification or warn them about the risk of polluting the main branch.
+
+2. **Identify Changed Files:**
+   - Execute `git status -s` to list all files created, modified, or deleted during this session.
+   - **Contextual Search:** Use the `obsidian_knowledge_graph` MCP vault to read related documentation (e.g., `09-scopes-and-features/` or implementation plans) for these files to understand the context of the changes.
 
 ---
 

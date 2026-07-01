@@ -20,6 +20,7 @@ Execute the following reads in this exact order:
     * `04-domain-rules/` — Active business rules.
     * `05-architecture-map/` — Current component structure.
     * `06-roadmap-and-state/` — Current WIP and tech debt.
+    * `10-review-reports/` — Recent code quality audits.
 
 #### 1.3. Session Artifacts
 * Re-read any implementation plans, task lists, or diagrams generated during this session (from `/artefatos`).

@@ -53,7 +53,7 @@ Upon receiving the `/planejamento ok` command:
 
 #### STATE 4: ARCHIVING AND TRANSITION (Trigger: "Yes")
 After the user confirms the scope:
-1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must be standardized (e.g., `YYYY-MM-DD-feature-slug-scope.md`).
+1. **Save to Vault:** Autonomously use the `vault_write` tool to save the formatted note with the template (including the BDD and Related Context) into the `09-scopes-and-features/` directory of your Obsidian vault. The filename must follow the standard: `{projeto}_{YYYY-MM-DD}_[descrição-amigável].md` (e.g., `meuprojeto_2026-07-01_feature-slug-scope.md`).
 2. **Transition:** Stop and present the exact following message:
    > *"📐 Scope documented and reviewed. The next step is to start creating the technical artifacts (The How). Execute `/artefatos` to start the architecture phase."*
 

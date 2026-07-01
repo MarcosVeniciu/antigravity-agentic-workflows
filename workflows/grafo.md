@@ -11,7 +11,7 @@ description: Project archivist. Documents architectural decisions, business rule
 Before creating any note, you MUST:
 
 1. **Review the session:** Analyze what was built, decided, and solved during this development session (from `/artefatos` through `/docs`).
-2. **Read the template:** Fetch `08-templates/template_grafo.md` from the vault. Use its structure as the formatting standard for every note you create.
+2. **Choose the template:** Based on the type of note you are creating, fetch the most appropriate template from `08-templates/` in the vault (`template_changelog.md`, `template_post_mortem.md`, `template_adr.md`, or `template_generic.md`). Use its structure as the formatting standard.
 3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
 4. **Check existing notes:** Query the vault to ensure you are not creating duplicate notes for topics already covered.
 
@@ -30,9 +30,10 @@ A note MUST cover **one, and only one,** specific concept or sub-topic. NEVER ge
 
 #### 2.2. Naming Convention
 
-File names follow: `YYYY-MM-DD-[main-slug]-[sub-concept].md`
+File names MUST follow the pattern: `{projeto}_{YYYY-MM-DD}_[descrição-amigável].md`
 
-* Use lowercase, hyphens for spaces.
+* Example: `meuprojeto_2026-07-01_architecture-api-routing.md`
+* Use lowercase, hyphens for spaces in the description.
 * Never prepend folder prefixes to the file name.
 * **The Prophecy Rule (Artifacts Link):** If the `/artefatos` plan defined a specific note name under "Future Obsidian Note" for a diagram, you MUST use that EXACT file name when creating the architectural note. You MUST also copy the Mermaid diagram from the plan into this new note.
 
@@ -47,12 +48,14 @@ File names follow: `YYYY-MM-DD-[main-slug]-[sub-concept].md`
 | Component maps, integrations, data flows | `05-architecture-map/` |
 | Tech debt, WIP, roadmap updates | `06-roadmap-and-state/` |
 | Build, deploy, environment configuration | `07-environment-setup/` |
+| Code review and audit reports | `10-review-reports/` |
+| Version releases and changelogs | `11-releases/` |
 
 ---
 
 ### 3. Formatting & Metadata
 
-Every note MUST use the template structure from `08-templates/template_grafo.md`, which includes:
+Every note MUST use the structure of the chosen template from `08-templates/`, which generally includes:
 
 * **YAML Frontmatter:** With relevant `tags`, `date`, and `status`.
 * **Body:** Concise and focused on actionable technical knowledge. No essays.

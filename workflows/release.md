@@ -10,7 +10,9 @@ description: Release manager. Consolidates Git Flow branches, calculates Semanti
 
 Before suggesting any release steps, you MUST autonomously execute the following commands to identify the current version, branch, and the recent commit history:
 1. **Find the latest tag:** `git describe --tags --abbrev=0`
-2. **Analyze recent history:** `git --no-pager log -n 10 --oneline --decorate`
+2. **Check current project root:** `git rev-parse --show-toplevel`
+3. **Get current branch:** `git branch --show-current`
+4. **Analyze recent history:** `git --no-pager log -n 10 --oneline --decorate`
 
 You MUST also check if there is an active hotfix or release branch in the log output.
 

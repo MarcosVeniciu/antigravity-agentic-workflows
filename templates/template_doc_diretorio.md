@@ -1,10 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+version: "1.0.0"
+date: "[YYYY-MM-DD]"
+status: "[Active / In Development / Legacy]"
+type: "docs"
+tags:
+  - "documentacao"
+---
 # 📁 [Directory Name / Module]
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Versão da Documentação:** 1.0.0
-> **Última Atualização:** [YYYY-MM-DD]
-> **Status:** [Active / In Development / Legacy]
 
 ---
 

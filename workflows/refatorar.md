@@ -96,4 +96,4 @@ pytest path/to/test_file.py -v
 > *"If the tests **pass** ✅: Your codebase is ready and clean!*
 >
 > *⚠️ **System Recommendation:** Open a **new chat** for the Audit and Closing phases. This resets the token limit, eliminating the noise from previous attempts and ensuring maximum precision in security and architecture reviews.*
-> *In the new chat, simply execute `/review` or `/review [category]` to start."*
+> *In the new chat, simply execute `/review` or `/review architecture` to start."*
