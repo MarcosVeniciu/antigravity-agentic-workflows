@@ -66,6 +66,8 @@ For each new environment variable:
 * **Show install commands** as individual, copy-pasteable `bash` blocks. One command per block.
 * **Do not run commands.** The user will execute them manually.
 * **Show a diff summary** of all files changed (dependency files, Dockerfiles, .env.example).
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
+
 
 ---
 

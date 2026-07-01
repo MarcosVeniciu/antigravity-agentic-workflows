@@ -6,22 +6,22 @@ While `/review` is the "mind" that points out the structural and security proble
 
 ## 1. The Executor's Focus
 
-The primary goal of this agent is to apply the suggestions listed in the audit report (Obsidian Vault) to the codebase.
+The primary goal of this agent is to apply the suggestions listed in the audit report to the codebase.
 
 Its activation is immediate and isolated:
-1. Once the report of, for example, Performance is generated in Obsidian, this agent is called.
-2. It assumes the persona and the focus of solving only that restricted scope (closing the "tunnel vision" to avoid causing breakages due to inattention to overly broad contexts).
+1. Once the report (e.g., Performance) is generated, this agent is called.
+2. It parses the `audit_report.md` artifact and creates a `task.md` checklist containing all the identified flaws.
+3. Using the **Iterative Update Rule**, it addresses **one task at a time** (marking `[/]` and then `[x]`), preventing it from getting overwhelmed and breaking working logic.
 
 ---
 
 ## 2. Decision Logging and Report Filling
 
 This agent does more than just write code; it updates the project's evidence:
-* The Obsidian report generated in the previous step has **Execution Fields** purposely left blank.
-* When `/aplicar-review` finishes the code modification, it has the autonomous obligation to **write in the atomic note** what it actually did.
-* If the audit suggestion was followed strictly, it signals so. If the suggestion was ignored or an alternative path had to be adopted due to library incompatibility, it documents this disagreement and the implemented solution.
-
-This ensures that the report in the Vault tells the real story of the fix, and not just an ignored "wish list".
+* The report generated in the previous step has **Execution Fields** (Resolution) purposely left blank.
+* When `/aplicar-review` finishes a code modification, it updates the `audit_report.md` artifact by checking the box and filling the resolution field with exactly what was done.
+* **Vault Synchronization:** Crucially, it must also update the permanent copy of the report saved in the Obsidian Vault using the MCP tool.
+* If a suggestion was ignored or an alternative path was adopted, it documents this disagreement in the resolution field. This ensures that the report in the Vault tells the real story of the fix.
 
 ---
 
@@ -29,6 +29,6 @@ This ensures that the report in the Vault tells the real story of the fix, and n
 
 The Audit phase is inherently risky, as review-based refactoring alters the guts of the project.
 
-Therefore, as soon as `/aplicar-review` delivers the technical fix, the flow rule blocks the immediate advance to the next audit category. Before that, the developer is instructed to run the validation suite:
+Therefore, as soon as `/aplicar-review` delivers the technical fix, the flow rule blocks the immediate advance to the next audit category. Before that, the developer is instructed to run the validation suite (via a provided isolated `bash` block containing the test execution command):
 * If the performance/architecture/security alteration introduced a *bug*, we activate `/testar` (Firefighter Agent) to debug.
-* If everything remains "green", it means the review alteration was applied cleanly, and we are authorized to invoke the auditor again (`/review`) for the next remaining category.
+* If everything remains "green", we are authorized to invoke the auditor (`/review [type]`) again for the next remaining category in the Review Chain.

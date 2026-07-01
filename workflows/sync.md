@@ -63,6 +63,7 @@ After re-reading, produce a structured status report:
 * **🚫 DO NOT modify any files.** This is a read-only operation.
 * **🚫 DO NOT run commands.**
 * **✅ DO report** any discrepancies between what the vault says and what the current code shows.
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 

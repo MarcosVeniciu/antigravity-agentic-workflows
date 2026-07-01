@@ -11,8 +11,9 @@ Its role is to take the Features List defined in the planning stage and translat
 The main premise of the artifacts agent is to bridge the gap between the business rule and the final algorithm using the rigor of **SDD**.
 
 In this phase, the agent does not write logic (algorithms, loops, conditional rules in code), but rather **contracts**. This involves:
-- **Diagramming:** Creation of architectural diagrams in Mermaid.js (Class Diagram, Sequence Diagram, or Flowcharts) visually mapping how components will integrate.
-- **Contracts:** Rigorous definition of interfaces, API mocks, database schemas, and payloads.
+- **Pre-Flight Context Gathering:** It mandatorily reads the Scope Note from `09-scopes-and-features/` as the single source of truth, and crosses it with existing `05-architecture-map/` and `04-domain-rules/` via the `obsidian_knowledge_graph` MCP vault.
+- **Diagramming:** Creation of architectural diagrams in Mermaid.js (Sequence, Class, Flowchart, ER) visually mapping how components will integrate. Quoted labels are strictly enforced for safe syntax.
+- **Contracts:** Rigorous definition of interfaces, API mocks, database schemas (e.g., Pydantic/Zod), and payloads.
 
 ---
 
@@ -26,15 +27,16 @@ By defining classes, sequence diagrams, and contracts in advance, the artifacts 
 
 ---
 
-## 3. The Implementation Plan
+## 3. The Implementation Plan Artifact
 
-Using the `template_artefatos.md`, the agent generates an atomic sequence of implementation steps, where each step is broken down into:
+Using `08-templates/template_artefatos.md`, the agent generates a **SINGLE ARTIFACT** named `implementation_plan.md` containing an atomic sequence of implementation steps. Each step is broken down into:
 - **What:** Which file to create or modify.
 - **Why:** What is the linked business logic (link to BDD).
 - **Acceptance Criteria:** The testable trigger for the feature.
 - **Dependencies:** What needs to exist before this file is touched.
 
-The agent also executes an **Impact Analysis**, listing all existing modules and files that will mutate to accommodate the new feature, preventing breakages in healthy parts of the system.
+The agent also executes an **Impact Analysis** inside the artifact, listing all existing modules and files that will mutate to accommodate the new feature, preventing breakages in healthy parts of the system.
+No production code or terminal commands are allowed in this step.
 
 ---
 
@@ -42,7 +44,7 @@ The agent also executes an **Impact Analysis**, listing all existing modules and
 
 To finalize the scope shielding, this agent acts as an architectural librarian:
 
-1. As soon as the user approves the technical artifacts, the model saves the implementation plan in the **Obsidian Vault** (e.g., folder `01-adrs/` or `05-architecture-map/`).
-2. It creates mandatory **bidirectional links** (e.g., `[[2024-01-01-login-scope]]`) linking the newly created SDD back to the BDD file generated in the planning phase.
+1. As soon as the user approves the technical artifacts (`/artefatos ok`), the model autonomously saves the `implementation_plan.md` contents in the **Obsidian Vault** (e.g., folder `01-adrs/` or `05-architecture-map/`).
+2. It creates mandatory **bidirectional links** (e.g., `[[YYYY-MM-DD-feature-slug-scope]]`) linking the newly created SDD back to the BDD Scope Note generated in the planning phase.
 
 This ensures that every technical alteration has perfect traceability back to its originating business rule.

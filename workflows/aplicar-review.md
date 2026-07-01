@@ -45,8 +45,7 @@ Before applying any fix, you MUST:
 
 * **🚫 DO NOT run commands autonomously.** Provide the test re-run command as a single, isolated `bash` block so the user can verify behavior is preserved.
 * **🚫 DO NOT change business logic behavior.** The tests must still pass after your security or architectural patches.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 4. Output Format
 
@@ -64,4 +63,4 @@ pytest path/to/test_file.py -v
 > *"🛡️ Audit fixes applied. **Mandatory Action:** Run the test suite in your terminal to ensure nothing was broken."*
 > 
 > *"If any test **fails** ❌: Execute `/testar` pasting the error output."*
-> *"If the tests continue to **pass** ✅: The code is validated. Execute `/docs` to generate and update the final project documentation."*
+> *"If the tests continue to **pass** ✅: Check your Review Chain. Execute the next specific review (e.g., `/review arquitetura`, `/review resiliencia`). If this was the last review (Performance), execute `/docs`."*

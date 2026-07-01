@@ -19,20 +19,36 @@ The test, surgically generated in the previous phase, creates a narrow corridor 
 ### Cognitive Reduction and the `task.md` Artifact
 In architectures or more complex features, attempting to process dozens of tests and their logical correlations at the same time can cause an attention *overflow* (token limits) and algorithmic quality degradation.
 
-To circumvent this, this agent can make use of the `task.md` artifact. By creating a purely sequential implementation list, it does not need to keep all the project's complexity in mind all the time. It picks a task from the list, builds it, satisfies the referenced test, and moves on, breaking a giant problem into simple-to-solve gears.
+To circumvent this, this agent employs the **Iterative Update Rule**. It creates a `task.md` checklist containing every method, class, and file to implement. Then, instead of building everything in a single burst, it selectively works on one pending task `[/]`, makes the code changes, marks it completed `[x]`, and then moves to the next. It breaks a giant problem into simple-to-solve gears.
 
 ---
 
-## 2. Docstrings and Domain Patterns
+## 2. Structural Quality and SOLID
+
+While the focus is making tests pass, structural quality is maintained via explicit constraints:
+- **SOLID Principles:** Whenever the agent applies a SOLID principle, it MUST explicitly describe it in the code comments or docstrings, preventing subjective interpretations.
+- **Explicit over Implicit:** It favors explicit type hints and error handling.
+- **Standardized Tags:** If there is tech debt outside the immediate scope, it uses standard developer tags (e.g., `TODO`, `FIXME`, `OPTIMIZE`, `HACK`) rather than trying to fix it out of bounds.
+
+---
+
+## 3. Docstrings and Domain Patterns
 
 The agent is not only focused on raw code. Its second vital responsibility is to ensure code maintainability by tying it to Domain Rules.
-* **Rigid Docstrings:** When documenting methods or classes, it mandatorily links the reasoning to the "Second Brain" (Obsidian), leaving clear references of where the technical rule came from, e.g.: `Ref: Obsidian note [[2026-06-24-login-rules]]`.
+* **Structured Docstrings:** Every new or modified structure must receive a complete docstring (e.g., Google Style) defining Purpose, Arguments, Returns, Raises, and Domain Context.
+* **Rigid Links to Obsidian:** When referencing domain or architecture rules, it mandatorily links the reasoning to the "Second Brain" (Obsidian), leaving clear references of where the technical rule came from, using the exact format: `Ref: Obsidian note [[note-name]]` (e.g., `[[2026-06-24-login-rules]]`).
 
 ---
 
-## 3. The Context in the TDD Flow
+## 4. Strict Terminal Constraints
+
+The Code Agent is restricted from running terminal commands autonomously. It only generates the production code, and then provides a **single, isolated bash block** containing exactly the test execution command (e.g., `pytest path/to/test_file.py -v`) for the user to copy and run manually.
+
+---
+
+## 5. The Context in the TDD Flow
 
 This agent acts sandwiched in the development cycle:
 1. It is activated only after the **Tests Agent** (`/testes`) has prepared the validation suite.
-2. Its primary focus is solely "code that works". Issues of architectural standardization or deep readability improvements ("pretty code") are not its primary responsibility at this moment. 
-3. Once the code fulfills the function, it is passed on to the **Test Agent** (in case of a terminal failure) or straight to the **Refactor Agent** (where aesthetic improvements and SOLID principles are polished on a now stable base).
+2. Its primary focus is solely "code that works". 
+3. Once the code fulfills the function, it is passed on to the **Test Agent** (in case of a terminal failure) or straight to the **Refactor Agent** (`/refatorar`) where deeper aesthetic improvements and structural best practices are polished on a now stable base.

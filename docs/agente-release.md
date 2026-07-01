@@ -18,6 +18,7 @@ To protect the integrity of the `main` and `develop` branches, the agent follows
 The agent first executes read-only operations to gather context:
 1. **Latest Version Verification:** Executes `git describe --tags --abbrev=0` to accurately determine the base version.
 2. **Commit Verification:** Reads the `git log` of all changes since the last tag.
+3. **Environment Context:** Confirms current position via `git branch --show-current` and `git rev-parse --show-toplevel`.
 
 ### Step 2: SemVer Calculation (Semantic Versioning)
 It analyzes the *Conventional Commits* prefixes:
@@ -25,9 +26,12 @@ It analyzes the *Conventional Commits* prefixes:
 * If it finds `feat:`, it increments Minor (1.1.0).
 * If it only finds `fix:`, `perf:`, or `refactor:`, it increments Patch (1.0.1).
 
-### Step 3: Bash Script Output
-The agent outputs organized, isolated bash blocks showing exactly what the user must copy and paste into the terminal to merge branches into `main` and push the `Tag`.
-*(This delegates the final execution to the developer, shielding the repository against hallucinated AI merges).*
+### Step 3: Scenario-Based Bash Script Output
+The agent identifies if it's dealing with:
+* **Scenario A (Standard Feature Release):** Merging from `develop` to `main`, and then pushing.
+* **Scenario B (Hotfix Release):** Merging an emergency fix into `main` and backporting it to `develop` to prevent code drift.
+
+It outputs organized, strictly isolated bash blocks showing exactly what the user must copy and paste into the terminal. Chaining commands (`&&`) is forbidden. *(This delegates the final execution to the developer, shielding the repository against hallucinated AI merges).*
 
 ### Step 4: Documentation Handoff
 Instead of writing a root `CHANGELOG.md` autonomously, the agent encourages the user to trigger the `/grafo` workflow to log the release history securely into the project's **Obsidian Vault** (Second Brain).

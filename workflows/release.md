@@ -136,7 +136,7 @@ git push origin main develop --tags
 
 * **🚫 DO NOT run any Git write operations.** You only execute the `git log` pre-flight command autonomously. All merge and tag commands are outputted for manual execution by the user.
 * **🚫 DO NOT guess the next version.** If you cannot find any previous tags in the log, assume the project is starting at `v1.0.0` or ask the user for confirmation.
-* **🚫 DO NOT combine multiple commands** in a single code block.
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 

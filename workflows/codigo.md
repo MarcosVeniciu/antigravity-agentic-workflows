@@ -95,10 +95,8 @@ def calculate_risk_score(user_data: dict, threshold: float = 0.75) -> float:
 
 * **🚫 DO NOT modify test files.** Your scope is exclusively production/business logic files.
 * **🚫 DO NOT run commands autonomously.** You may ONLY provide the test execution commands in a single, copy-pasteable `bash` block for the user to execute manually. Do not use your tools to execute terminal commands.
-* **🚫 DO NOT combine commands.** Each command must be in its own separate code block.
 * **🚫 DO NOT include Git operations.** Version control is handled by the `/git` agent.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 5. Output Format
 

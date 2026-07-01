@@ -72,6 +72,7 @@ Before presenting the artifacts to the user, self-audit against these criteria:
 * **No command execution:** Do not run any terminal commands.
 * **Save Technical Note:** When the user approves the artifacts (e.g., typing `/artefatos ok`), you MUST save the `implementation_plan.md` contents into the Obsidian vault (e.g., in `01-adrs/` or `05-architecture-map/` depending on the template).
 * **Traceability:** In the `## Related Context` section of the note, you MUST include a **bidirectional link** back to the original BDD Scope Note from the vault (e.g., `[[YYYY-MM-DD-feature-slug-scope]]`).
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ---
 

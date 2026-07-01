@@ -66,6 +66,13 @@ You must generate this report as an artifact in the chat and ALSO save it in the
 
 *(Note: Use the exact markdown structure defined in the specific template you fetched in step 1.2 to format both outputs).*
 
+
+---
+
+### Constraints
+
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
+
 ---
 
 ### 4. The Review Chain (Next Step Logic)
@@ -73,8 +80,8 @@ You must generate this report as an artifact in the chat and ALSO save it in the
 Suggest the next step which is ALWAYS to apply the current review before moving to the next.
 
 > **[NEXT STEP — CONDITIONAL]:**
-> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review architecture`."*
-> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review resilience`."*
-> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review security`."*
-> * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. After that, we will proceed to `/review performance`."*
-> * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. This is the final step of the audit cycle."*
+> * If `/review`: *"🔎 General review completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review architecture`."*
+> * If `/review arquitetura`: *"🏗️ Architecture completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review resilience`."*
+> * If `/review resiliencia`: *"🛡️ Resilience completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review security`."*
+> * If `/review seguranca`: *"🔒 Security completed. Execute `/aplicar-review` to apply these corrections. Test them, and then proceed to `/review performance`."*
+> * If `/review performance`: *"⚡ Performance completed. Execute `/aplicar-review` to apply these corrections. Test them. This is the final step of the audit cycle."*

@@ -8,6 +8,8 @@ The Infrastructure Agent is not part of the main TDD loop (which focuses solely 
 
 The focus is to maintain a reproducible environment. If the developer asks to "add FastAPI and Redis to the project", it will not focus on the router's business rule, it will focus on updating `requirements.txt`/`pyproject.toml`, updating `docker-compose.yml` to accommodate the Redis image, and updating the team's environment variables documentation.
 
+Before making changes, it autonomously queries the `obsidian_knowledge_graph` MCP vault (looking into `07-environment-setup/` and `02-conventions/`) to understand the current container standards and package management strategy.
+
 ---
 
 ## 2. Restrictive Quality Standards
@@ -21,5 +23,5 @@ When suggesting the installation of a new dependency required by the Planning Ar
 This agent updates the configuration contracts, but it has the block of **never committing real passwords**. 
 When new database connections are required in the infrastructure, it works by adding clean variables solely in the `.env.example` file, filling it only with *placeholder* values (`DB_PASS=YOUR_PASSWORD_HERE`), keeping the repository immune to credential leaks.
 
-### Manual Control (`Bash`)
-Just like the critical spheres of Git, the DevOps Agent does not execute `docker-compose up` or `npm install` alone. It generates the perfect command line at the end of its analysis, but pushes the manual execution of the commands to the user.
+### Diff Summary and Manual Control (`Bash`)
+The agent does not execute `docker-compose up` or `npm install` alone. It shows a **diff summary** of all files changed (dependency files, Dockerfiles, etc.), and generates the exact command line at the end of its analysis. It outputs these commands in **strictly isolated bash blocks** (no chaining with `&&`), pushing the manual execution of the commands to the user for maximum safety.

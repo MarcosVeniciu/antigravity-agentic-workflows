@@ -74,8 +74,7 @@ Before making any changes, analyze the code and create or update a `task.md` che
 
 * **🚫 DO NOT run commands.** Provide the test re-run command as a single, isolated `bash` block so the user can verify behavior is preserved.
 * **🚫 DO NOT add new features.** Refactoring is structural improvement, not feature development.
-
----
+* **🚫 DO NOT combine terminal commands.** Each command MUST be in its own separate, isolated bash code block. Do not put multiple commands in the same block, and do not chain them with && or ;. This allows the user to copy each command individually.
 
 ### 5. Output Format
 

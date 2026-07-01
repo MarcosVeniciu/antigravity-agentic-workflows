@@ -8,7 +8,12 @@ The Git Agent acts as the "Release Engineer". Its mission is to close the develo
 
 Instead of executing arbitrary commands or dumping massive changes into a single chaotic *commit*, this agent ensures the repository's cleanliness. It analyzes the breadth of files generated/modified by the cycle and suggests manual commands so that the user themselves has control and awareness of what is being uploaded.
 
-It acts in the spheres of *staging* separation (e.g.: grouping only code changes in one step, and documentation changes in a subsequent step) and creating semantic messages for the *branch*.
+It acts in the spheres of *staging* separation (grouping only code changes in one step, and documentation changes in a subsequent step) and creating semantic messages for the *branch*.
+
+### Pre-Flight Protections
+Before suggesting any commits, it automatically evaluates the current environment:
+- **Branch Check:** It executes `git branch --show-current`. If it detects the user is on `main` or `master`, it pauses and warns the user about the risk of polluting the protected branch.
+- **Context Search:** It executes `git status -s` to list modified files and autonomously queries the `obsidian_knowledge_graph` MCP vault to understand the feature context before generating commit messages.
 
 ---
 
@@ -30,7 +35,7 @@ The rule forces the elaboration of a message with a **Narrative Body** divided i
 2. **The Solution Justification:** (Why it was done this way and not that way).
 3. **Impacts:** (Making *Breaking Changes* explicit or required new environment variables).
 
-This creates a Git history focused on business or architectural pain points, accounting for *why* the bits changed, since *what* changed is already explicit in the lines of the file itself.
+This creates a Git history focused on business or architectural pain points, accounting for *why* the bits changed.
 
 ### Commands in Isolated Blocks
-The agent does not execute destructive or terminal write routines autonomously. It provides the `git add` and `git commit` commands in isolated Markdown copy blocks. This is an intentional choice to ensure final human quality control before remote submission (`push`).
+The agent does not execute destructive or terminal write routines autonomously. It provides the `git add` and `git commit` commands in isolated Markdown copy blocks. This ensures final human quality control before remote submission (`push`). Combinations like `&&` are strictly forbidden so the developer can copy-paste individually.
