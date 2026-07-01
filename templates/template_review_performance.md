@@ -1,9 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+author: "[Name]"
+type: "review-performance"
+tags:
+  - "review"
+  - "performance"
+---
 # ⚡ Performance Review Checklist
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Autor:** [Name]
 
 > **Purpose:** Quantitative audit focused on mathematical limits, database optimization, and mitigating AI-generated anti-patterns.
 

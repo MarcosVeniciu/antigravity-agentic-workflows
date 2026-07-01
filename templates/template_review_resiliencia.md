@@ -1,9 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+author: "[Name]"
+type: "review-resiliencia"
+tags:
+  - "review"
+  - "resiliencia"
+---
 # 🛡️ Resilience and Fault Tolerance Review Checklist
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Autor:** [Name]
 
 > **Purpose:** Protect the code from external unpredictability (failing networks, duplication, bottlenecks). AIs usually program focusing exclusively on the "happy path", assuming external systems never fail.
 

@@ -17,6 +17,7 @@ Before diagnosing a bug, proposing any solution, writing tests, or making code c
 7. `07-environment-setup/` (Build configurations, deployment, and environment specs)
 8. `08-templates/` (Standard templates for artifacts and documents)
 9. `09-scopes-and-features/` (Scope definitions, behavior-driven requirements, and feature lists)
+10. `10-review-reports/` (Code review reports, quality audits, and refactoring analyses)
 
 #### Missing Documentation Protocol  
 * **Do NOT create or modify notes autonomously during standard conversation.**  

@@ -1,10 +1,12 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+type: "[domain-rule / convention / roadmap / environment]"
+status: "[Active / Superseded / Deprecated]"
+tags: []
+---
 # [Descriptive and Atomic Title]
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Tipo:** [ADR / Domain Rule / Bug Resolution / Architecture / Convention / Roadmap / Environment]
-> **Status:** [Active / Superseded / Deprecated]
 
 ---
 

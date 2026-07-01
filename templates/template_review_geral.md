@@ -1,9 +1,14 @@
+---
+project: "[Project Name]"
+branch: "[Branch Name]"
+date: "[YYYY-MM-DD]"
+author: "[Name]"
+type: "review-geral"
+tags:
+  - "review"
+  - "geral"
+---
 # 🔎 General Review Checklist (Quality & Anti-Hallucination)
-
-> **Projeto:** [Project Name]
-> **Branch:** [Branch Name]
-> **Data:** [YYYY-MM-DD]
-> **Autor:** [Name]
 
 > **Purpose:** Ensure comprehensive code quality, single responsibility, readability, and shield the code against AI model anti-patterns and hallucinations.
 

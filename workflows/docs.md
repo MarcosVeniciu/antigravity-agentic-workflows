@@ -28,7 +28,7 @@ For each directory that was significantly modified or newly created:
 3. **Fill every section** of the template in the preview artifact using data extracted from the actual code — not assumptions or generic descriptions.
 3. **Key sections to fill:**
     * **Overview:** The architectural purpose of this directory within the system (not "what the files do" but "why this module exists").
-    * **Architecture and Data Flow:** How data enters, transforms, and exits this module. **CRITICAL:** You MUST copy the Mermaid.js diagram generated in the `/artefatos` phase and paste it here. You MUST also include the Obsidian note link defined in the artifact plan (e.g., `**Reference Note:** [[YYYY-MM-DD-slug-architecture]]`) right above the diagram.
+    * **Architecture and Data Flow:** How data enters, transforms, and exits this module. **CRITICAL:** You MUST copy the Mermaid.js diagram generated in the `/artefatos` phase and paste it here. You MUST also include the Obsidian note link defined in the artifact plan (e.g., `**Reference Note:** [[{projeto}_{YYYY-MM-DD}_[descrição-amigável]]]`) right above the diagram.
     * **Component Mapping:** One entry per file/subdirectory with its responsibility and public interface.
     * **Design Decisions & Trade-offs:** Document the *why* behind structural choices (patterns used, alternatives rejected).
     * **Testing Strategy:** How this module is tested, which mocking strategies are used, and critical test scenarios.
