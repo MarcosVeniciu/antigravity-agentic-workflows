@@ -6,7 +6,7 @@ The Audit phase comes into action after technical consolidation (complete TDD cy
 
 ## 1. The Four Analysis Categories & Templates
 
-To ensure an expert vision, the audit is divided into specific fronts, each mapped to a strict template in the `08-templates/` directory of the Obsidian Vault:
+To ensure an expert vision, the audit is divided into specific fronts, each mapped to a strict template in the `08-templates-and-workflows/` directory of the Obsidian Vault:
 1. **General (`/review`):** Uses `template_review_geral.md` to check for hallucinations, AI traces, and structure.
 2. **Architecture (`/review arquitetura`):** Uses `template_review_arquitetura.md` for domain leakage, DIP, and DTO checks.
 3. **Resilience (`/review resiliencia`):** Uses `template_review_resiliencia.md` for idempotency, fault tolerance, and generic exception handling.

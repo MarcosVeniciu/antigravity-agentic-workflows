@@ -15,7 +15,7 @@ Before starting the review, you must understand *what* you are reviewing and *wh
 3. Query the `obsidian_knowledge_graph` MCP vault to find any artifacts generated in previous steps for this specific branch (e.g., implementation plans, requirement docs). You must read these artifacts to evaluate if the code meets the intended business rules and architectural decisions.
 
 #### 1.2. Template Fetching
-Fetch the specific review checklist from the `08-templates/` directory in the `obsidian_knowledge_graph` MCP vault:
+Fetch the specific review checklist from the `08-templates-and-workflows/` directory in the `obsidian_knowledge_graph` MCP vault:
 
 | User Command | Template to Fetch | Focus Area |
 |---|---|---|

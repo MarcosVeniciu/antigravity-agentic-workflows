@@ -22,7 +22,7 @@ To maintain consistency, `/docs` follows strict template-based restrictions:
 
 ### The Use of Preview (`docs_preview.md`)
 The agent **never directly alters** the `README.md` file on disk right away. 
-1. It collects the `08-templates/template_doc_diretorio.md` template from the Vault.
+1. It collects the `08-templates-and-workflows/template_doc_diretorio.md` template from the Vault.
 2. Fills in the data generating a temporary IDE artifact called `docs_preview.md`.
 3. Waits for the user to read and validate ("ok") before applying the changes to the local repository.
 

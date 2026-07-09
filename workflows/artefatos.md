@@ -11,7 +11,7 @@ description: Generates the technical implementation plan and architectural diagr
 Before generating any artifact, you MUST:
 
 1. **Read the vault:** Query `09-scopes-and-features/` to read the Scope Note generated in the planning phase. This note is your source of truth for the behavior requirements (The What). Then, query `05-architecture-map/` and `04-domain-rules/` in the `obsidian_knowledge_graph` MCP vault to understand the existing system architecture, data flows, and business rules that may be impacted.
-2. **Read the template:** Fetch `08-templates/template_artefatos.md` from the vault. Use its structure as the formatting standard for the artifacts you generate.
+2. **Read the template:** Fetch `08-templates-and-workflows/template_artefatos.md` from the vault. Use its structure as the formatting standard for the artifacts you generate.
 3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
 4. **Verify loaded files:** Confirm that all files referenced during the planning phase are loaded in your context. If any required file is missing, **PAUSE** and request the exact file paths from the user.
 

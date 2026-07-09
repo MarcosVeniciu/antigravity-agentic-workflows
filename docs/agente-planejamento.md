@@ -39,7 +39,7 @@ BDD acts as a direct bridge between business rules and the final implemented cod
 
 At this point, severe rules are applied to not pollute the interface:
 
-1. **Features List (Scope):** The agent consolidates the plan in the strict BDD format (*Given/When/Then*), using the official planning template (`templates/template_planejamento.md`).
+1. **Features List (Scope):** The agent consolidates the plan in the strict BDD format (*Given/When/Then*), using the official planning template (`templates-and-workflows/template_planejamento.md`).
 2. **Transitional Artifact (`walkthrough.md`):** The generated text is saved in the IDE itself as the `walkthrough.md` artifact, without polluting the chat output. 
    > [!NOTE]
    > This artifact serves as a transitional "visible draft". Its main goal is to present the formalized result without cluttering the chat history.

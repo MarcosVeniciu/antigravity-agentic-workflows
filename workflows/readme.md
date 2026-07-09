@@ -19,7 +19,7 @@ They contain the primary rules (system prompts), the "State Machine" behavior, r
 * **[`refatorar.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/refatorar.md):** (Clean Code Specialist). Polish Phase. Applies SOLID principles and breaks down *code smells* in the green code, without altering behavior.
 
 ### 3. Audit & Closure
-* **[`review.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/review.md):** (Code Auditor). Static QA Phase. Reads the code and `templates/` to point out Security, Architecture, Performance, and Resilience flaws.
+* **[`review.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/review.md):** (Code Auditor). Static QA Phase. Reads the code and `templates-and-workflows/` to point out Security, Architecture, Performance, and Resilience flaws.
 * **[`aplicar-review.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/aplicar-review.md):** (Resolution Specialist). Cadenced execution to fix the flaws raised by the Auditor.
 * **[`docs.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/docs.md):** (Technical Writer). Updates the internal folder literature, mandatorily generating `docs_preview.md`.
 * **[`grafo.md`](file:///d:/Codigos/antigravity-agentic-workflows/workflows/grafo.md):** (The Archivist). Connects business decisions and bug resolutions to the Obsidian Vault (Second Brain), using the "Prophecy Rule" and atomicity.

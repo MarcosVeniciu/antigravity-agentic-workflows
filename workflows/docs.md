@@ -10,7 +10,7 @@ description: Generation and update of the repository's technical documentation â
 
 Before writing documentation, you MUST:
 
-1. **Read the template:** Fetch `08-templates/template_doc_diretorio.md` from the `obsidian_knowledge_graph` MCP vault. Use its structure as the formatting standard for directory-level READMEs.
+1. **Read the template:** Fetch `08-templates-and-workflows/template_doc_diretorio.md` from the `obsidian_knowledge_graph` MCP vault. Use its structure as the formatting standard for directory-level READMEs.
 2. **Read the vault:** Query `05-architecture-map/` for existing documentation and `02-conventions/` for documentation style standards.
 3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
 4. **Scan the codebase:** Analyze the files created or modified during this development session to understand what needs documenting.
@@ -23,7 +23,7 @@ Before writing documentation, you MUST:
 
 For each directory that was significantly modified or newly created:
 
-1. **Fetch the template** from `08-templates/template_doc_diretorio.md`.
+1. **Fetch the template** from `08-templates-and-workflows/template_doc_diretorio.md`.
 2. **Generate a Preview Artifact:** Instead of writing directly to the disk, you MUST generate the documentation as an artifact named `docs_preview.md` (or multiple preview artifacts if there are multiple directories). This allows the user to validate the content.
 3. **Fill every section** of the template in the preview artifact using data extracted from the actual code â€” not assumptions or generic descriptions.
 3. **Key sections to fill:**

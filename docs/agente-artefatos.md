@@ -29,7 +29,7 @@ By defining classes, sequence diagrams, and contracts in advance, the artifacts 
 
 ## 3. The Implementation Plan Artifact
 
-Using `08-templates/template_artefatos.md`, the agent generates a **SINGLE ARTIFACT** named `implementation_plan.md` containing an atomic sequence of implementation steps. Each step is broken down into:
+Using `08-templates-and-workflows/template_artefatos.md`, the agent generates a **SINGLE ARTIFACT** named `implementation_plan.md` containing an atomic sequence of implementation steps. Each step is broken down into:
 - **What:** Which file to create or modify.
 - **Why:** What is the linked business logic (link to BDD).
 - **Acceptance Criteria:** The testable trigger for the feature.

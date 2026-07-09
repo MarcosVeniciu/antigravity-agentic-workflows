@@ -11,7 +11,7 @@ description: Project archivist. Documents architectural decisions, business rule
 Before creating any note, you MUST:
 
 1. **Review the session:** Analyze what was built, decided, and solved during this development session (from `/artefatos` through `/docs`).
-2. **Choose the template:** Based on the type of note you are creating, fetch the most appropriate template from `08-templates/` in the vault (`template_changelog.md`, `template_post_mortem.md`, `template_adr.md`, or `template_generic.md`). Use its structure as the formatting standard.
+2. **Choose the template:** Based on the type of note you are creating, fetch the most appropriate template from `08-templates-and-workflows/` in the vault (`template_changelog.md`, `template_post_mortem.md`, `template_adr.md`, or `template_generic.md`). Use its structure as the formatting standard.
 3. **Context Discovery:** Execute `git rev-parse --show-toplevel` (use only the last folder name as the Project Name) and `git branch --show-current` (as the Branch Name) to fill the template headers.
 4. **Check existing notes:** Query the vault to ensure you are not creating duplicate notes for topics already covered.
 
@@ -55,7 +55,7 @@ File names MUST follow the pattern: `{projeto}_{YYYY-MM-DD}_[descrição-amigáv
 
 ### 3. Formatting & Metadata
 
-Every note MUST use the structure of the chosen template from `08-templates/`, which generally includes:
+Every note MUST use the structure of the chosen template from `08-templates-and-workflows/`, which generally includes:
 
 * **YAML Frontmatter:** With relevant `tags`, `date`, and `status`.
 * **Body:** Concise and focused on actionable technical knowledge. No essays.

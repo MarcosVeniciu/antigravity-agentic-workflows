@@ -15,7 +15,7 @@ Before diagnosing a bug, proposing any solution, writing tests, or making code c
 5. `01-adrs/` (Architectural and technical decisions)  
 6. `06-roadmap-and-state/` (Tech debt, current Work in Progress, and open issues)  
 7. `07-environment-setup/` (Build configurations, deployment, and environment specs)
-8. `08-templates/` (Standard templates for artifacts and documents)
+8. `08-templates-and-workflows/` (Standard templates for artifacts and documents)
 9. `09-scopes-and-features/` (Scope definitions, behavior-driven requirements, and feature lists)
 10. `10-review-reports/` (Code review reports, quality audits, and refactoring analyses)
 
