@@ -38,3 +38,13 @@ In the uninterrupted development flow, the agent acts as a stateless "safety net
 3. **Review Phase:** Triggered if applying an audit (`/aplicar-review`) breaks tests. Once green, it returns the flow to the next step of the **Review Chain**.
 
 Because it acts independently of the global state, its mission ends the moment the tests pass, seamlessly returning control to the user's current track.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/testar.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-testar-EXECUTION.md`

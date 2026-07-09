@@ -40,3 +40,13 @@ This agent does not act in isolation. The development flow heavily depends on wh
 3. Once the test suite is created, it passes the baton to the **Code Agent** (`/codigo`), whose exclusive mission will be to make that suite pass (Green Phase).
 
 Having an agent that focuses 100% only on structuring tests prevents the model from trying to write the validation and the implementation simultaneously, which would frequently result in biased tests (tests created just to pass on the specific logic that the AI just came up with).
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/testes.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-testes-EXECUTION.md`

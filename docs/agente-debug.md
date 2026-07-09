@@ -31,3 +31,13 @@ For each hypothesis, it requests evidence. If diagnostic commands are needed (li
 This agent's process does not end with correcting the logical failure.
 If a bug escaped, it means the QA layer failed structurally. As a golden closure of its forensic investigation, it is obliged to recommend a **Future Prevention**. 
 The AI will always require the documentation of this new error in Obsidian (`/grafo`) or ask for the creation of a new integration test (E2E) to ensure that specific problem doesn't haunt the repository twice.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/debug.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-debug-EXECUTION.md`

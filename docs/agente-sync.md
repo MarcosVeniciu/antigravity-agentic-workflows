@@ -32,3 +32,13 @@ The agent is blocked from creating code. It executes silently (reading files via
 At the end of this re-reading shock, it must prove to the developer that its brain has realigned with the original master plan. 
 
 It issues a **"Context Sync Report"**. It is a structured artifact that summarizes the status of the codebase for the user: showing which modules it successfully re-anchored and explicitly pointing out any divergence or conflict discovered during the scan (e.g.: "The Obsidian rules regarding the database are diverging from the `database.py` file that I just analyzed").
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/sync.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-sync-EXECUTION.md`

@@ -28,3 +28,13 @@ No public documentation is written to the repository silently. The AI first draf
 
 ### Bash Command Limitations
 Any installation commands provided must be inside separate, isolated bash blocks. Command chaining is strictly forbidden.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/readme-projeto.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-readme-projeto-EXECUTION.md`

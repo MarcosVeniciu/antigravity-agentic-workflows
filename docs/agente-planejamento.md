@@ -45,3 +45,16 @@ At this point, severe rules are applied to not pollute the interface:
    > This artifact serves as a transitional "visible draft". Its main goal is to present the formalized result without cluttering the chat history.
 3. **Immortalizing in the Second Brain:** Once approved, the agent autonomously uses the `vault_write` tool to save this consolidation as an **Atomic Note** in the `09-scopes-and-features/` directory of the Obsidian Vault, making business decisions a permanent and official part of the project's architecture.
 4. **Git Flow Strategy:** Finally, with the scope closed, the agent suggests the creation of the appropriate new branch (`feature/`, `fix/`, `refactor/`, etc.) based on the current branch context, guiding the user to the next stage of technical execution (where `/artefatos` takes the baton).
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/planejamento.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-planejamento-STATE1-DEBATE.md`
+- `workflow-planejamento-STATE2-CHECK.md`
+- `workflow-planejamento-STATE3-SCOPE.md`
+- `workflow-planejamento-STATE4-AGREEMENT.md`

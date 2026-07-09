@@ -32,3 +32,13 @@ The Audit phase is inherently risky, as review-based refactoring alters the guts
 Therefore, as soon as `/aplicar-review` delivers the technical fix, the flow rule blocks the immediate advance to the next audit category. Before that, the developer is instructed to run the validation suite (via a provided isolated `bash` block containing the test execution command):
 * If the performance/architecture/security alteration introduced a *bug*, we activate `/testar` (Firefighter Agent) to debug.
 * If everything remains "green", we are authorized to invoke the auditor (`/review [type]`) again for the next remaining category in the Review Chain.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/aplicar-review.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-aplicar-review-EXECUTION.md`

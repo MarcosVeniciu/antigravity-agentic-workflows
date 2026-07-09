@@ -46,3 +46,13 @@ The `/review` agent generates its technical report in two formats:
 2. **Permanent Storage (Vault):** It autonomously saves the report in the `10-review-reports/` directory using the `obsidian_knowledge_graph` MCP tool (e.g., `projeto_2026-07-01_feature_review-resiliencia.md`).
 
 This report features flaw identifications, rigorous correction suggestions, bidirectional links to original SDDs, and strategically left blank fields which will serve as a workspace for the `/aplicar-review` agent to annotate its fixes.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/review.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-review-EXECUTION.md`

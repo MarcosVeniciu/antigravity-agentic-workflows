@@ -52,3 +52,13 @@ This agent acts sandwiched in the development cycle:
 1. It is activated only after the **Tests Agent** (`/testes`) has prepared the validation suite.
 2. Its primary focus is solely "code that works". 
 3. Once the code fulfills the function, it is passed on to the **Test Agent** (in case of a terminal failure) or straight to the **Refactor Agent** (`/refatorar`) where deeper aesthetic improvements and structural best practices are polished on a now stable base.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/codigo.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-codigo-EXECUTION.md`

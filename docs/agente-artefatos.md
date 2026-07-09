@@ -48,3 +48,13 @@ To finalize the scope shielding, this agent acts as an architectural librarian:
 2. It creates mandatory **bidirectional links** (e.g., `[[YYYY-MM-DD-feature-slug-scope]]`) linking the newly created SDD back to the BDD Scope Note generated in the planning phase.
 
 This ensures that every technical alteration has perfect traceability back to its originating business rule.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/artefatos.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-artefatos-EXECUTION.md`

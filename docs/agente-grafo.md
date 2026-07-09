@@ -31,3 +31,13 @@ Isolated notes in the Vault do not exist. Standardization imposes the following 
 
 ### MCP Vault Integration
 Notes are written directly into the Obsidian Vault utilizing the `vault_write` tool from the MCP, bypassing standard terminal commands and guaranteeing structural placement.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/grafo.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-grafo-EXECUTION.md`

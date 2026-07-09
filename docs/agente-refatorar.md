@@ -35,3 +35,13 @@ Its role is the final quality seal:
 2. As a mandatory final step that does not deal with algorithms that "do not yet exist", the AI can focus all the processing of its token window purely on architectural reading.
 3. Once its flow is finished, the project reaches commercial stability and the cycle concludes with the application of safe refactoring (because the green suite guarantees that nothing was actually broken).
 4. After refactoring, it proactively advises the user to start a **new chat session** for the Audit (`/review`) phases, resetting the token window and ensuring maximum QA accuracy.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/refatorar.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-refatorar-EXECUTION.md`

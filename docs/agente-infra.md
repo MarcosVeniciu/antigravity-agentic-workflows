@@ -25,3 +25,13 @@ When new database connections are required in the infrastructure, it works by ad
 
 ### Diff Summary and Manual Control (`Bash`)
 The agent does not execute `docker-compose up` or `npm install` alone. It shows a **diff summary** of all files changed (dependency files, Dockerfiles, etc.), and generates the exact command line at the end of its analysis. It outputs these commands in **strictly isolated bash blocks** (no chaining with `&&`), pushing the manual execution of the commands to the user for maximum safety.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/infra.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-infra-EXECUTION.md`

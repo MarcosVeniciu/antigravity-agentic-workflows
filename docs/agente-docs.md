@@ -35,3 +35,13 @@ If files or folders were created or deleted, the agent formats and suggests the 
 
 ### Bash Command Limits
 Terminal commands (if any) are always provided in single, isolated bash blocks for manual execution. No combinations (`&&`) are allowed.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/docs.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-docs-EXECUTION.md`

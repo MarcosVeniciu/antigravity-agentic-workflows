@@ -35,3 +35,13 @@ It outputs organized, strictly isolated bash blocks showing exactly what the use
 
 ### Step 4: Documentation Handoff
 Instead of writing a root `CHANGELOG.md` autonomously, the agent encourages the user to trigger the `/grafo` workflow to log the release history securely into the project's **Obsidian Vault** (Second Brain).
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/release.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-release-EXECUTION.md`

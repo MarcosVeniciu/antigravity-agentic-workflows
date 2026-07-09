@@ -29,3 +29,13 @@ If the Oracle cannot find the information in the Vault or Code, it is programmed
 
 ### Bash Constraints
 It does not run any terminal commands autonomously, nor provides bash blocks for execution (no `pytest`, no `git`), unless explicitly asked by the user "What is the command to do X?". When it does provide commands, they must be isolated without chaining (`&&`).
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/ask.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-ask-EXECUTION.md`

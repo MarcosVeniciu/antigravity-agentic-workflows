@@ -39,3 +39,14 @@ This creates a Git history focused on business or architectural pain points, acc
 
 ### Commands in Isolated Blocks
 The agent does not execute destructive or terminal write routines autonomously. It provides the `git add` and `git commit` commands in isolated Markdown copy blocks. This ensures final human quality control before remote submission (`push`). Combinations like `&&` are strictly forbidden so the developer can copy-paste individually.
+
+
+---
+
+## 🔀 Dynamic State Machine Router
+
+This agent is built using the **State Machine Router (Dynamic Context)** architecture. To prevent prompt hallucination, the trigger in `workflows/git.md` is purely a lightweight router.
+
+When invoked, the agent dynamically fetches its heavy execution instructions from the Obsidian Vault (`08-templates-and-workflows/`) using the MCP:
+- `workflow-git-STATE1-VERIFICATION.md`
+- `workflow-git-STATE2-COMMIT.md`

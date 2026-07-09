@@ -4,6 +4,17 @@ The foundation of artificial intelligence within the **Antigravity IDE** lies in
 
 ---
 
+## 🔀 The Router and Execution Architecture (Dynamic Context)
+
+To completely eliminate prompt hallucination and cognitive overload, **Antigravity IDE** employs a strict "Router" vs "Execution" dichotomy for all agents:
+
+1. **Lightweight Routers (`workflows/`):** The agent files in the `workflows/` directory act merely as State Machine Routers. They contain almost zero heavy logic. Their sole purpose is to identify the current trigger (e.g., `/planejamento`, `/codigo`) and determine the state.
+2. **Dynamic Execution via MCP (`templates-and-workflows/`):** Once the state is identified, the router commands the AI to use the `obsidian_knowledge_graph` MCP tool to fetch the exact, heavy instructions from the `templates-and-workflows/` directory.
+
+By dynamically loading only the exact execution template needed for the current phase/state, the AI's context window remains completely clean and hyper-focused on the immediate task.
+
+---
+
 ## 🗺️ The Ecosystem (Workflows)
 
 ```mermaid
