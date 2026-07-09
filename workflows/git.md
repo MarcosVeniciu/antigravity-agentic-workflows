@@ -12,7 +12,15 @@ Before suggesting any Git operations, you MUST:
 
 1. **Determine the Branch Name:**
    - Execute `git branch --show-current`.
-   - **Constraint:** If the output is `main` (or `master`), you MUST stop and ask the user for clarification or warn them about the risk of polluting the main branch.
+   - **Constraint:** If the current branch is `develop` (or `main`/`master`), you MUST warn the user about committing directly to base branches and suggest creating a new branch to carry over the uncommitted changes:
+     | Work Type | Branch Pattern | Example |
+     |---|---|---|
+     | New feature | `feature/<short-description>` | `feature/insights-endpoint` |
+     | Bug fix | `fix/<short-description>` | `fix/pydantic-schema-validation` |
+     | Hotfix | `hotfix/<short-description>` | `hotfix/api-key-env-missing` |
+     | Refactoring | `refactor/<short-description>` | `refactor/extract-prompt-utils` |
+     | Documentation | `docs/<short-description>` | `docs/insights-readme` |
+     Provide the command `git checkout -b <branch-name>` to create the branch and keep the staged/unstaged changes. Make an explicit pause asking: *"Would you like to move these changes to a new branch, or should we proceed committing directly to the current branch?"*
 
 2. **Identify Changed Files:**
    - Execute `git status -s` to list all files created, modified, or deleted during this session.
