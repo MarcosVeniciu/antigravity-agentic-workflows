@@ -65,18 +65,18 @@ O projeto está migrando da estrutura monolítica anterior (`Old_version`) para 
 ```text
 antigravity-agentic-workflows/
 ├── agents/                       # Definições de agentes / Roteadores de estado (Workflows / Slash Commands)
-│   ├── planejamento.md
-│   ├── codigo.md
-│   └── review.md
+│   ├── planejamento.md           # Fase 1: Concepção & Contratos
+│   ├── testes.md                 # Fase 2: TDD Red Phase (SDET)
+│   ├── codigo.md                 # Fase 2: TDD Green Phase (Implementation)
+│   ├── testar.md                 # Fase 2: Reactive Debugger
+│   ├── refatorar.md              # Fase 2: Refactor Phase (Clean Code)
+│   └── ...
 ├── skills/                       # Skills modulares do ecossistema
 │   ├── planejamento/
-│   │   ├── SKILL.md              # Painel de controle e trigger da skill
-│   │   ├── resources/            # Templates (ex: template_planejamento.md)
-│   │   └── references/           # Execuções pesadas (ex: STATE1-DEBATE.md)
-│   ├── review/
-│   │   ├── SKILL.md
-│   │   ├── resources/            # Templates de review (segurança, resiliência, etc.)
-│   │   └── references/           # workflow-review-EXECUTION.md
+│   ├── testes/                   # SKILL.md, references/EXECUTION.md, resources/
+│   ├── codigo/                   # SKILL.md, references/EXECUTION.md, resources/
+│   ├── testar/                   # SKILL.md, references/EXECUTION.md, resources/
+│   ├── refatorar/                # SKILL.md, references/EXECUTION.md, resources/
 │   └── ...
 ├── prompts/                      # Prompts base e governança global do sistema
 │   └── gemini.md                 # System prompt / Regras centrais do agente
