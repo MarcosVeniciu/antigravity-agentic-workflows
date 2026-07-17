@@ -56,26 +56,57 @@ Start your workflow by validating the repository rules or planning a new feature
 
 ---
 
+## 🏗️ Reorganização Arquitetural & Estrutura Proposta
+
+O projeto está migrando da estrutura monolítica anterior (`Old_version`) para uma arquitetura **modular baseada em Skills** alinhada às capacidades nativas da Antigravity IDE.
+
+### 📐 Estrutura de Diretórios Proposta
+
+```text
+antigravity-agentic-workflows/
+├── agents/                       # Definições de agentes / Roteadores de estado (Workflows / Slash Commands)
+│   ├── planejamento.md
+│   ├── codigo.md
+│   └── review.md
+├── skills/                       # Skills modulares do ecossistema
+│   ├── planejamento/
+│   │   ├── SKILL.md              # Painel de controle e trigger da skill
+│   │   ├── resources/            # Templates (ex: template_planejamento.md)
+│   │   └── references/           # Execuções pesadas (ex: STATE1-DEBATE.md)
+│   ├── review/
+│   │   ├── SKILL.md
+│   │   ├── resources/            # Templates de review (segurança, resiliência, etc.)
+│   │   └── references/           # workflow-review-EXECUTION.md
+│   └── ...
+├── prompts/                      # Prompts base e governança global do sistema
+│   └── gemini.md                 # System prompt / Regras centrais do agente
+└── docs/                         # Documentação técnica e onboarding para desenvolvedores humanos
+    ├── arquitetura-agentes.md
+    └── guia-uso.md
+```
+
+### 📊 Comparativo Arquitetural
+
+| Aspecto | `Old_version` (Legado) | Nova Estrutura Proposta | Vantagem Principal |
+| :--- | :--- | :--- | :--- |
+| **Templates & Execução** | Misturados em `templates-and-workflows/` | Co-localizados em `skills/<nome>/resources` e `references` | **Encapsulamento por Domínio**: Cada skill carrega seus próprios templates e referências |
+| **Escalabilidade** | Manutenção complexa em diretórios únicos soltos | Adição modular de pastas por Skill | **Baixo Acoplamento**: Adicionar novas capacidades não afeta arquivos globais |
+| **Integração com a IDE** | Leitura passiva de manuais | Descoberta nativa via `SKILL.md` (Frontmatter YAML) | **Injeção Ativa de Contexto**: A IDE injeta o `SKILL.md` no prompt sob demanda |
+| **Automação** | Ausência de scripts dedicados | `skills/<nome>/scripts/` | **Automação Homologada**: Execução segura de scripts sem alucinações |
+
+---
+
 ## 📚 Deep Delegation (Technical Manuals)
 
-To keep this file focused and concise, all detailed documentation regarding the state machine, phase transition rules, and descriptions of internal workflows has been moved to specialized directories. 
+To keep this file focused and concise, all detailed documentation regarding the state machine, phase transition rules, and descriptions of internal workflows can be found in specialized directories.
 
 See below:
 
 ### 🗺️ Ecosystem and Principles
-* **[Overview and State Machine](docs/README.md)**: Complete diagram of the command chain and software lifecycle.
-* **[Core Agent (`gemini.md`)](docs/agente-core-gemini.md)**: The core philosophy of Human-AI Co-Programming and the mandatory integration with the Obsidian Vault.
-
-### 🤖 Specialist Agents (Workflows)
-Browse the specific documentation for each command/agent:
-
-* **Phase 1: Engineering & Requirements:** [`/planejamento`](docs/agente-planejamento.md) | [`/artefatos`](docs/agente-artefatos.md)
-* **Phase 2: TDD & Coding:** [`/testes`](docs/agente-testes.md) | [`/codigo`](docs/agente-codigo.md) | [`/testar`](docs/agente-testar.md) | [`/refatorar`](docs/agente-refatorar.md)
-* **Phase 3: Audit & Review:** [`/review`](docs/agente-review.md) | [`/aplicar-review`](docs/agente-aplicar-review.md)
-* **Phase 4: Packaging & Documentation:** [`/docs`](docs/agente-docs.md) | [`/grafo`](docs/agente-grafo.md) | [`/git`](docs/agente-git.md) | [`/release`](docs/agente-release.md)
-* **Ad-hoc Support:** [`/ask`](docs/agente-ask.md) | [`/debug`](docs/agente-debug.md) | [`/infra`](docs/agente-infra.md) | [`/sync`](docs/agente-sync.md) | [`/readme-projeto`](docs/agente-readme-projeto.md)
+* **[Guia de Skills](docs-antigravity/guia-skills.md)**: Manual de referência sobre criação e estrutura de Skills.
+* **[Fluxo de Desenvolvimento](docs-antigravity/guia-fluxo-desenvolvimento.md)**: Guia completo sobre as fases do ecossistema agentificado.
 
 ---
 <p align="center">
   <em>Built as a cutting-edge experiment on how engineering teams will work in collaboration with AIs in the future.</em>
-</p>
+</p>
