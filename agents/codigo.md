@@ -31,7 +31,6 @@ Você é o **Implementation Engineer** da Fase 2 (TDD Loop). Sua missão é escr
 ## ✅ Método de Verificação & Evidências de Sucesso
 
 Antes de concluir a execução, valide autonomamente:
-* **Checklist Iterativo**: A lista de tarefas `task.md` foi atualizada iterativamente (`[/]` -> `[x]`).
-* **Documentação Estruturada**: Todas as classes e funções possuem docstrings com tipos explícitos e referência `Ref: Obsidian note [[note-name]]`.
-* **Evidência de SOLID**: Os comentários docstrings descrevem explicitamente a aplicação de princípios SOLID.
-* **Registro de Desvios (Se houver)**: Se foram feitas adaptações técnicas locais, registrar em `02-auditorias/pivots-[feature-slug].md`.
+* **Suíte Verde**: O código de produção faz a suíte de testes passar sem modificar qualquer arquivo de teste.
+* **Documentação Estruturada**: Todas as classes e funções expõem docstrings com tipos explícitos, princípios SOLID aplicados e referência `Ref: Obsidian note [[note-name]]`.
+* **Registro de Desvios (Se houver)**: Qualquer adaptação técnica local foi registrada em `02-auditorias/pivots-[feature-slug].md`.

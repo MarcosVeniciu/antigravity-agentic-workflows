@@ -69,11 +69,11 @@ Para manter o desempenho ideal do modelo de IA e garantir controle absoluto sobr
 
 ### 🚀 Fase 4: Encerramento, Documentação & Publicação (A Entrega)
 * **Objetivo:** Atualizar a documentação do repositório, gerar changelog de release e consolidar o trabalho no versionamento de código.
-* **Agentes / Workflows:** `/docs`, `/release` e `/git`.
+* **Agentes / Workflows:** `/docs` e `/release` (usando a skill `skills/git` para versionamento local).
 * **Entrada:** Leitura do histórico de decisões no Obsidian (`01-concepcao/`, `02-auditorias/`) e código auditado final.
 * **Saída:** 
   * Documentação de API/sistema atualizada e release notes gravadas em `03-releases/changelog-vX.X.md`.
-  * Commits semânticos estruturados e unificação de branch (`merge`/`pull request`).
+  * Commit semântico estruturado de encerramento da fase (Phase Handover via `skills/git`). O envio remoto (`git push`) é feito manualmente pelo usuário.
 
 ---
 
@@ -91,23 +91,27 @@ sequenceDiagram
 
     U->>C1: Solicita Feature (/planejamento + /artefatos)
     C1->>V: Salva 01-concepcao/sdd-[slug].md com type: sdd
+    C1-->>C1: Micro-checkpoints & Phase Squash (skills/git)
     Note over C1: Encerra Chat 1 (Reset de Contexto)
 
     U->>C2: Inicia Fase 2 (/testes + /codigo)
     C2->>V: Busca por tag #plan_implement e feature: [slug]
     C2-->>C2: Ciclo TDD (Red -> Green -> Refactor)
     C2->>V: Registra 02-auditorias/pivots-[slug].md (opcional)
+    C2-->>C2: Micro-checkpoints & Phase Squash (skills/git)
     Note over C2: Encerra Chat 2 (Reset de Contexto)
 
     U->>C3: Inicia Fase 3 (/review-*)
     C3->>V: Lê código limpo e contratos
     C3-->>C3: Audita e Aplica Correções
     C3->>V: Salva 02-auditorias/audit-[slug].md (Checklist 100% verde)
+    C3-->>C3: Micro-checkpoints & Phase Squash (skills/git)
     Note over C3: Encerra Chat 3 (Reset de Contexto)
 
     U->>C4: Inicia Fase 4 (/docs + /release)
     C4->>V: Consolida decisões de 01-, 02- e gera 03-releases/
-    C4-->>U: Commit Semântico & Finalização da Branch
+    C4-->>C4: Commit Semântico Final (skills/git)
+    C4-->>U: Finalização da Feature (git push manual pelo usuário)
 ```
 
 ---

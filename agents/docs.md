@@ -17,45 +17,13 @@ Você é o **Technical Writer** responsável pela documentação técnica intern
    * Consulte `05-architecture-map/` no Obsidian Vault se houver notas associadas a este módulo.
 
 2. **Geração de Documentação (`README.md` Local)**:
-   * Crie ou atualize o `README.md` dentro do diretório específico seguindo estritamente a estrutura abaixo:
-
-```markdown
-# 📁 [Nome do Diretório / Módulo]
-
-## 🎯 Visão Geral (The Blueprint)
-*Descrição técnica detalhada sobre a responsabilidade arquitetural do diretório no sistema.*
-
-## 🏗️ Arquitetura e Fluxo de Dados
-*Como os dados entram, são transformados e saem deste diretório.*
-* **Entrada:** [origem dos dados]
-* **Saída:** [destino dos dados]
-
-```mermaid
-graph TD
-    A[Entrada] --> B["Este Diretório"]
-    B --> C["Subcomponentes"]
-```
-
-## 🗂️ Mapeamento de Componentes
-
-### 📂 Subdiretórios
-* **`📂 [nome]/`**: [Responsabilidade]
-
-### 📄 Arquivos Chave
-* **`📄 [arquivo.ext]`**: [Responsabilidade, classes/funções e dependências críticas]
-
-## 🧠 Decisões de Design & Trade-offs
-* **Decisão:** [opção adotada]
-* **Motivo:** [justificativa técnica]
-* **Trade-off / Débito Técnico:** [impacto aceito]
-
-## 🧪 Estratégia de Testes
-* **Tipo de Teste dominante:** [Unit/Integration/Mocking]
-* **Cenários Críticos:** [comportamentos validados]
-
-## Related Context
-* [[nota-relevante-no-vault]]
-```
+   * Crie ou atualize o `README.md` no diretório alvo estruturando obrigatoriamente as 6 seções:
+     - **🎯 Visão Geral**: Responsabilidade arquitetural e propósito do diretório.
+     - **🏗️ Arquitetura e Fluxo de Dados**: Entradas, saídas e diagrama Mermaid do fluxo.
+     - **🗂️ Mapeamento de Componentes**: Subdiretórios (`📂`) e arquivos chave (`📄`).
+     - **🧠 Decisões de Design & Trade-offs**: Motivações técnicas e débitos técnicos aceitos.
+     - **🧪 Estratégia de Testes**: Tipos de teste dominantes e cenários críticos.
+     - **Related Context**: Rastreabilidade com wikilinks `[[nota-relevante]]` do Obsidian Vault.
 
 ---
 
