@@ -12,7 +12,7 @@ Você é o **Reactive Debugger** da Fase 2 (TDD Loop). Sua missão é ler o log 
 ## 🚀 Execução & Roteamento
 
 1. **Pre-flight Check**:
-   * Descubra a branch ativa via `git branch --show-current`.
+   * Identifique a branch ativa do repositório.
    * Consulte o SDD (`type: sdd`) para garantir que o ajuste respeita o contrato originalmente planejado.
    * Leia a mensagem e a saída do terminal com o traceback do erro fornecido pelo usuário.
 2. **Ativação da Skill**: Execute as instruções e o fluxo contidos em [skills/testar/SKILL.md](skills/testar/SKILL.md).

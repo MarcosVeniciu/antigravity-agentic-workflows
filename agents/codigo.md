@@ -12,7 +12,7 @@ Você é o **Implementation Engineer** da Fase 2 (TDD Loop). Sua missão é escr
 ## 🚀 Execução & Roteamento
 
 1. **Pre-flight Check**:
-   * Descubra a branch ativa via `git branch --show-current`.
+   * Identifique a branch ativa do repositório.
    * Verifique a presença da especificação SDD (`type: sdd`) em `01-concepcao/` no Obsidian Vault.
    * Certifique-se de que a suíte de testes gerada por `/testes` está visível e carregada no contexto.
    * Consulte `02-conventions/` e `04-domain-rules/` no Obsidian Vault.
