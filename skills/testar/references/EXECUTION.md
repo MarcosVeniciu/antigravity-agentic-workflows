@@ -41,14 +41,5 @@ Classifique a falha em uma das seguintes categorias:
 
 1. Declare a **causa raiz em uma frase concisa**.
 2. Apresente os blocos de código corrigidos contendo o caminho do arquivo.
-3. Forneça o comando de re-execução em um bloco `bash` isolado:
-
-```bash
-pytest path/to/test_file.py -v
-```
-
-4. Finalize com os próximos passos:
-   > *"🛠️ Ajuste cirúrgico aplicado.*
-   > *Execute o comando acima no terminal para testar novamente.*
-   > *Se persistirem falhas ❌: Cole o novo log de erro e acione `/testar`.*
-   > *Se todos passarem ✅: Prossiga para `/refatorar` para realizar a limpeza estrutural do código."*
+3. Forneça o comando de re-execução em um bloco `bash` isolado.
+4. Ao concluir, se persistirem falhas sugira `/testar` novamente. Se todos passarem, sugira `/refatorar`.

@@ -32,9 +32,10 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 
 ---
 
-## ✅ Checklist de Validação
+## ✅ Checklist de Validação & Método de Verificação
 
 - [ ] A lista de tarefas `task.md` foi mantida e atualizada iterativamente?
 - [ ] O código respeita os princípios SOLID (com indicação nos comentários/docstrings)?
 - [ ] Todos os métodos possuem Type Hints e docstrings padronizadas?
 - [ ] O comando de teste foi fornecido em bloco `bash` isolado sem execução autônoma?
+- [ ] Execute os testes unitários e confirme 100% verde?

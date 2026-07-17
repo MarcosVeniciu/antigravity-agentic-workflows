@@ -16,7 +16,7 @@ Consulte as referências e templates para cada etapa do fluxo:
 1. **Pre-flight & Leitura de Contexto**:
    * Busque no Obsidian Vault a especificação de escopo gerada na Fase 1 (`01-concepcao/bdd-[feature-slug].md`).
    * Leia as regras de arquitetura em `05-architecture-map/` e `04-domain-rules/`.
-   * Identifique a branch atual executando `git branch --show-current`.
+   * Identifique a branch Git ativa.
 
 2. **Geração do Desenho Técnico (SDD)**:
    * Consulte o guia detalhado em [references/sdd_execution.md](references/sdd_execution.md) para construir o plano de implementação, diagramas e mocks de contrato.
@@ -28,7 +28,7 @@ Consulte as referências e templates para cada etapa do fluxo:
    * O assistente aguarda a confirmação/feedback do usuário antes de prosseguir para a gravação no Vault.
 
 4. **Persistência no Obsidian Vault & Próximo Passo**:
-   * Salve o conteúdo do plano aprovado via MCP (`vault_write`) em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`).
+   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`).
    * Adicione o link bidirecional para o escopo BDD originário (`[[bdd-feature-slug]]`).
    * Apresente ao usuário a instrução da próxima etapa:
      * Sugerir `/testes` para iniciar a fase Red do TDD.

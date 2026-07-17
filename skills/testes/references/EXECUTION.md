@@ -6,9 +6,9 @@
 
 ## 1. Pre-Flight: Coleta de Contexto
 
-Antes de criar qualquer arquivo de teste, você MUST:
+Antes de criar qualquer arquivo de teste:
 
-1. **Buscar SDD no Obsidian Vault**: Execute busca MCP por `type: sdd` e `feature: [slug]`. O documento `01-concepcao/sdd-[feature-slug].md` contém a arquitetura, assinaturas de API e diagramas aprovados.
+1. **Buscar SDD no Obsidian Vault**: Localize a nota `01-concepcao/sdd-[feature-slug].md` contendo a arquitetura, assinaturas de API e diagramas aprovados.
 2. **Consultar Convenções (`02-conventions/`)**: Verifique as normas do projeto para suítes de teste (diretórios, sufixos de arquivo e bibliotecas homologadas).
 3. **Inspecionar Testes Existentes**: Avalie fixtures e utilitários já disponíveis no repositório para evitar duplicação.
 
@@ -27,47 +27,15 @@ Para cada requisito especificado no SDD, projete testes nas seguintes 4 categori
 
 ---
 
-## 3. Estrutura Padrão (AAA Pattern) & Profiling Nativo
+## 3. Estrutura Padrão & Templates
 
-### 3.1. Estrutura AAA
+### 3.1. Padrão AAA (Arrange, Act, Assert)
 
-Todo teste deve ser organizado de forma legível utilizando Arrange, Act e Assert:
-
-```python
-def test_exemplo_calculo_taxa():
-    # Arrange
-    valor = 100.0
-    taxa_esperada = 15.0
-    
-    # Act
-    resultado = calcular_taxa(valor)
-    
-    # Assert
-    assert resultado == taxa_esperada
-```
+Todo teste deve ser organizado utilizando os blocos `# Arrange`, `# Act` e `# Assert` explicitamente demarcados.
 
 ### 3.2. Profiling Nativo de Performance
 
-Para funções que lidam com coleções de dados ou batch processing, obrigatoriamente inclua um teste de escala gerando o relatório via `print()` para leitura do `/review performance`:
-
-```python
-import time
-
-def test_scaling_processar_lote():
-    tamanhos = [10, 100, 1000]
-    print("\n=== PERFORMANCE REPORT: processar_lote ===")
-    print("| N (Items) | Time (ms) |")
-    print("|-----------|-----------|")
-    
-    for n in tamanhos:
-        dados = list(range(n))
-        inicio = time.perf_counter()
-        processar_lote(dados)
-        fim = time.perf_counter()
-        duracao_ms = (fim - inicio) * 1000
-        print(f"| {n:<9} | {duracao_ms:<9.2f} |")
-    print("============================================")
-```
+Para funções que lidam com coleções ou batch processing, inclua obrigatoriamente um teste de escala. Utilize o template padronizado em [profiling_template.md](../resources/profiling_template.md).
 
 ---
 
@@ -83,11 +51,5 @@ Se os métodos ou classes testados ainda não existirem nos arquivos de código-
 
 1. Apresente os blocos completos dos arquivos de teste gerados.
 2. Apresente o bloco com os stubs nos arquivos de produção.
-3. Forneça o comando de execução dos testes em um bloco `bash` isolado:
-
-```bash
-pytest path/to/test_file.py -s -v
-```
-
-4. Finalize com a indicação de transição de fase:
-   > *"🔴 Suíte de testes comportamentais e stubs de métodos criados com sucesso. Execute o comando acima para confirmar o status VERMELHO e em seguida acione `/codigo` para implementar a lógica de produção."*
+3. Forneça o comando de execução dos testes em um bloco `bash` isolado.
+4. Ao concluir, sugira confirmar o status VERMELHO e acionar `/codigo` para a implementação.

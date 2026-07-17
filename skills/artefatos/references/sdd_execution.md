@@ -8,11 +8,6 @@ Este documento detalha o protocolo de execução da abordagem **Software Design 
 
 A abordagem SDD traduz os requisitos de comportamento (BDD) definidos na Fase 1 em especificações de arquitetura e contratos antes que qualquer código de aplicação seja escrito.
 
-### Benefícios Chave
-* **Redução de Carga Cognitiva**: Evita que a IA precise "adivinhar" nomes de classes, rotas ou estruturas de dados durante a escrita de código.
-* **Eliminação de Alucinações de Escopo**: Define claramente os limites de cada componente e arquivo.
-* **Rastreabilidade Bidirecional**: Vincula cada escolha técnica diretamente a uma regra de negócio validada no BDD.
-
 ---
 
 ## 2. Componentes Obrigatórios do Plano de Implementação
@@ -62,11 +57,3 @@ Antes de gerar o artefato final para o usuário, execute esta verificação inte
 - [ ] Todos os rótulos do Mermaid com caracteres especiais utilizam aspas duplas.
 - [ ] A análise de impacto contempla todos os arquivos que serão tocados.
 - [ ] Não há nenhum trecho de código funcional de produção ou testes no plano.
-
----
-
-## 4. Regras de Emissão e Persistência
-
-1. **Geração de Artefato Único**: O plano completo é gravado em `implementation_plan.md` no diretório da sessão.
-2. **Pausa Interativa**: O artefato é emitido com `RequestFeedback: true`.
-3. **Persistência no Obsidian**: Após a aprovação do usuário (clique em Proceed), grave o plano via `vault_write` em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`) contendo o link bidirecional para a nota BDD (`[[bdd-feature-slug]]`).

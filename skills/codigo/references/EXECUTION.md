@@ -6,7 +6,7 @@
 
 ## 1. Pre-Flight: Verificação de Contexto
 
-Antes de escrever código de produção, você MUST:
+Antes de escrever código de produção:
 
 1. **Carregar o SDD**: Consulte no Obsidian Vault a nota `01-concepcao/sdd-[feature-slug].md` (`type: sdd`) para garantir alinhamento com a arquitetura definida.
 2. **Carregar a Suíte de Testes**: Verifique se os testes gerados pelo `/testes` estão disponíveis no contexto. Se não estiverem, **PAUSE** e solicite a inclusão dos arquivos de teste.
@@ -18,12 +18,8 @@ Antes de escrever código de produção, você MUST:
 
 ### 2.1. Lista de Tarefas & Atualização Iterativa (`task.md`)
 
-* Sua PRIMEIRA ação deve ser criar ou atualizar o checklist `task.md` detalhando cada arquivo, função ou método a ser implementado.
-* **Regra de Atualização Iterativa:**
-  1. Selecione a primeira tarefa pendente e marque como em progresso `[/]` em `task.md`.
-  2. Escreva as alterações para essa tarefa específica.
-  3. Atualize o `task.md` marcando como concluída `[x]`.
-  4. Avance para a próxima tarefa.
+* Crie ou atualize o checklist `task.md` detalhando cada arquivo, função ou método a ser implementado.
+* Gerencie iterativamente o checklist, atualizando o status (`[ ]` → `[/]` → `[x]`) conforme progride.
 
 ### 2.2. Qualidade Estrutural & Princípios SOLID
 
@@ -33,28 +29,9 @@ Antes de escrever código de produção, você MUST:
 
 ### 2.3. Docstrings Estruturadas & Vínculo ao Obsidian
 
-Todas as novas funções e classes devem conter docstrings estruturadas (estilo Google/NumPy):
+Todas as novas funções e classes devem conter docstrings estruturadas (estilo Google/NumPy) com seções `Args`, `Returns`, `Raises` e `Domain Context` (com `Ref: Obsidian note [[nome-da-nota]]`).
 
-```python
-def calcular_score_risco(dados_usuario: dict, limite: float = 0.75) -> float:
-    """Calcula a pontuação de risco para os dados do usuário.
-
-    Args:
-        dados_usuario: Dicionário contendo dados do perfil.
-        limite: Score mínimo para considerar alto risco.
-
-    Returns:
-        float entre 0.0 e 1.0 representando o nível de risco.
-
-    Raises:
-        ValueError: Se faltarem chaves obrigatórias em dados_usuario.
-
-    Domain Context:
-        Implementa o algoritmo de ponderação definido na regra BR-042.
-        Ref: Obsidian note [[2026-07-17-regras-risco]]
-    """
-    # ... código mínimo ...
-```
+Consulte o exemplo padronizado em [docstring_example.py](../resources/examples/docstring_example.py).
 
 ---
 
@@ -68,14 +45,5 @@ def calcular_score_risco(dados_usuario: dict, limite: float = 0.75) -> float:
 ## 4. Formato de Saída
 
 1. Apresente os blocos de código de produção completos com o caminho dos arquivos.
-2. Forneça o comando para re-executar os testes em um bloco `bash` isolado:
-
-```bash
-pytest path/to/test_file.py -v
-```
-
-3. Finalize com as orientações de encadeamento:
-   > *"🟢 Código de produção implementado (Green Phase).*
-   > *Execute o comando acima no terminal para validar os testes.*
-   > *Se algum teste **falhar** ❌: Copie a saída do erro e execute o comando `/testar`.*
-   > *Se todos os testes **passarem** ✅: Execute `/refatorar` para realizar o polimento estrutural do código limpo."*
+2. Forneça o comando para re-executar os testes em um bloco `bash` isolado.
+3. Ao concluir, apresente o comando de teste. Se algum teste falhar, sugira `/testar`. Se todos passarem, sugira `/refatorar`.

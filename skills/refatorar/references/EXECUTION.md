@@ -26,10 +26,7 @@ Identifique os alvos de refatoração no código e monte a lista de tarefas:
 
 ### 2.2. Técnicas Recomendadas
 
-* **Guard Clauses (Retornos Precoces):** Substitua blocos `if/else` aninhados por validações iniciais que retornam imediatamente.
-* **Extração de Funções:** Divida blocos de código com mais de 20 linhas em funções helpers bem nomeadas.
-* **Constantes Nomeadas:** Substitua valores numéricos soltos no código por constantes configuráveis.
-* **Desacoplamento (DIP/SRP):** Garanta que classes não dependam diretamente de instâncias concretas quando houver abstração disponível.
+Aplique as técnicas de Clean Code mais adequadas ao contexto: Guard Clauses (retornos precoces), Extração de Funções (>20 linhas), Constantes Nomeadas e Desacoplamento (DIP/SRP).
 
 ---
 
@@ -48,15 +45,5 @@ Identifique os alvos de refatoração no código e monte a lista de tarefas:
    - **Por Quê:** Code Smell ou Princípio SOLID abordado.
    - **Como:** Técnica aplicada.
 2. Apresente os blocos de código refatorados.
-3. Forneça o comando de validação dos testes em um bloco `bash` isolado:
-
-```bash
-pytest path/to/test_file.py -v
-```
-
-4. Finalize com o encerramento da Fase 2 e transição para a Fase 3:
-   > *"✨ Refatoração estrutural concluída.*
-   > *Execute o comando acima para garantir que o comportamento foi 100% preservado.*
-   > 
-   > *⚠️ **Recomendação de Arquitetura (Reset de Contexto):** A Fase 2 (TDD Loop) foi finalizada com sucesso. Para iniciar a Fase 3 (Auditorias Especializadas de Arquitetura, Segurança e Performance), abra um **novo chat efêmero** na IDE.*
-   > *No novo chat, execute `/review` ou `/review-arquitetura` para iniciar o ciclo de auditoria."*
+3. Forneça o comando de validação dos testes em um bloco `bash` isolado.
+4. Ao concluir, sugira abertura de um novo chat efêmero para a Fase 3 (`/review`).

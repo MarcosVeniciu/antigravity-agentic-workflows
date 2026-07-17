@@ -30,9 +30,10 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 
 ---
 
-## ✅ Checklist de Validação
+## ✅ Checklist de Validação & Método de Verificação
 
 - [ ] Suíte inclui Happy Path, Edge Cases, Exceções e Profiling de Performance?
 - [ ] O relatório de performance imprime a tabela formatada no `stdout`?
 - [ ] Nenhum método em arquivos de produção possui lógica implementada?
 - [ ] O comando de teste foi fornecido em bloco `bash` isolado (com `-s -v`)?
+- [ ] Execute os testes e confirme que todos falham com stubs (status VERMELHO esperado)?

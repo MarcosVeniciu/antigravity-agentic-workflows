@@ -22,39 +22,19 @@ Ao registrar ou atualizar uma nota no vault, identifique a categoria e a pasta d
 
 ---
 
-## 🛠️ Protocolo de Execução & Ferramentas MCP
+## 🛠️ Protocolo de Execução
 
-1. **Pre-Flight Check (Busca de Duplicados)**:
-   * Antes de criar uma nova nota, consulte a base existente no vault usando `vault_read` ou `search_simple`.
-   * Se a nota já existir, utilize `vault_patch` para atualizar em vez de duplicar.
-
-2. **Formatação de Metadados (YAML Frontmatter)**:
-   Toda nota gerada DEVE incluir obrigatoriamente o bloco inicial:
-   ```yaml
-   ---
-   type: adr | pivot | domain_rule | convention
-   feature: [slug-da-feature ou "global"]
-   project: antigravity
-   date: YYYY-MM-DD
-   description: "Resumo da decisão em uma frase"
-   tags:
-     - tag1
-     - tag2
-   ---
-   ```
-
-3. **Links Bidirecionais (`[[nota]]`)**:
-   * Referencie notas existentes relacionadas no corpo da nota utilizando a sintaxe wikilink `[[nome-da-nota]]`.
-
-4. **Escrita via MCP**:
-   * Execute `vault_write` para novas notas ou `vault_patch` para edições cirúrgicas.
+1. **Pre-Flight (Busca de Duplicados)**: Antes de criar uma nova nota, busque no vault para verificar se já existe. Se existir, atualize-a em vez de duplicar.
+2. **Formatação de Metadados**: Toda nota DEVE incluir o YAML Frontmatter conforme o template correspondente em `resources/`.
+3. **Links Bidirecionais**: Referencie notas existentes relacionadas utilizando a sintaxe wikilink `[[nome-da-nota]]`.
+4. **Persistência**: Salve novas notas ou atualize existentes no vault.
 
 ---
 
 ## ⛔ Regras & Restrições
 
 1. **Memória de Longo Prazo Estrita**: Não grave notas temporárias de rascunho no Obsidian. Grave apenas decisões consolidadas, regras de negócio confirmadas e resoluções de bugs.
-2. **Zero Alucinação de Metadados**: O campo `feature` deve bater exatamente com a branch Git ativa (`git branch --show-current`) ou ser `"global"`.
+2. **Zero Alucinação de Metadados**: O campo `feature` deve corresponder à branch Git ativa ou ser `"global"`.
 3. **Imutabilidade de Histórico**: Não apague notas de ADRs anteriores; crie uma nova ADR que sobrepõe a anterior e vincule via `[[adr-antiga]]`.
 
 ---
@@ -64,4 +44,4 @@ Ao registrar ou atualizar uma nota no vault, identifique a categoria e a pasta d
 - [ ] A nota contém o bloco YAML Frontmatter completo com `type`, `feature`, `project`, `date`, `description` e `tags`?
 - [ ] O caminho de destino no vault respeita a estrutura oficial (`00-core-rules/`, `01-concepcao/`, `02-auditorias/`)?
 - [ ] Foram incluídos links bidirecionais (`[[nota]]`) para contextos relacionados?
-- [ ] A operação MCP (`vault_write` / `vault_patch`) foi executada com sucesso?
+- [ ] A operação de persistência no vault foi executada com sucesso?
