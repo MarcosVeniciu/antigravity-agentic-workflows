@@ -48,3 +48,4 @@ NotebookLM is strictly **user-governed** for external manuals and macro research
 * **Single Command per Block:** Present exactly one command per code block. Never group multiple commands or write multi-line commands in a single block; if there are multiple commands, separate them into individual blocks.
 * **IDE Allowed Commands Exception:** The only exception to this rule is the set of commands in the IDE's allowed list that the agent is permitted to execute directly in the terminal. All other commands must be displayed in the chat for the user to execute.
 
+---
