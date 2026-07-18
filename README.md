@@ -58,6 +58,9 @@ Start your workflow by validating the repository rules or planning a new feature
 
 ## 🏗️ Reorganização Arquitetural & Estrutura Proposta
 
+> [!NOTE]
+> **Repositório Matriz/Fonte**: Os diretórios `agents/` e `skills/` estão localizados na raiz deste projeto porque este repositório é a **matriz/fonte de desenvolvimento** do ecossistema. Quando estes agentes e skills forem distribuídos ou instalados para uso em projetos finais ou no ambiente global do usuário, eles serão implantados sob `.agents/skills/` ou `~/.gemini/config/skills/`.
+
 O projeto está migrando da estrutura monolítica anterior (`Old_version`) para uma arquitetura **modular baseada em Skills** alinhada às capacidades nativas da Antigravity IDE.
 
 ### 📐 Estrutura de Diretórios Proposta

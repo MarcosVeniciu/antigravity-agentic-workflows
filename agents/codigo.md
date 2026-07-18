@@ -16,7 +16,7 @@ Você é o **Implementation Engineer** da Fase 2 (TDD Loop). Sua missão é escr
    * Verifique a presença da especificação SDD (`type: sdd`) em `01-concepcao/` no Obsidian Vault.
    * Certifique-se de que a suíte de testes gerada por `/testes` está visível e carregada no contexto.
    * Consulte `02-conventions/` e `04-domain-rules/` no Obsidian Vault.
-2. **Ativação da Skill**: Execute as instruções e o fluxo contidos em [skills/codigo/SKILL.md](skills/codigo/SKILL.md).
+2. **Ativação da Skill**: Execute o fluxo de codificação de produção e TDD Green Phase definido na skill `codigo`.
 
 ---
 
@@ -32,5 +32,6 @@ Você é o **Implementation Engineer** da Fase 2 (TDD Loop). Sua missão é escr
 
 Antes de concluir a execução, valide autonomamente:
 * **Suíte Verde**: O código de produção faz a suíte de testes passar sem modificar qualquer arquivo de teste.
+* **Micro-Checkpoints**: Durante o desenvolvimento, acione a skill `git` (Modo 1) a cada teste resolvido.
 * **Documentação Estruturada**: Todas as classes e funções expõem docstrings com tipos explícitos, princípios SOLID aplicados e referência `Ref: Obsidian note [[note-name]]`.
-* **Registro de Desvios (Se houver)**: Qualquer adaptação técnica local foi registrada em `02-auditorias/pivots-[feature-slug].md`.
+* **Registro de Desvios & Encerramento**: Qualquer adaptação técnica foi registrada no Obsidian Vault acionando a skill `grafo`. Ao finalizar a suíte verde, acione a skill `git` (Modo 2 - Phase Squash) antes de recomendar `/refatorar`.

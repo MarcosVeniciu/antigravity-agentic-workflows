@@ -27,6 +27,7 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 1. **Protocolo AAA**: Todo teste deve conter os blocos Arrange, Act e Assert explicitamente demarcados.
 2. **Stubs Limpos**: Se a classe ou método testado não existir no código de produção, crie a assinatura básica com `pass` em seu respectivo arquivo para garantir importação limpa.
 3. **Mocks na Fronteira**: Mocar chamadas de banco de dados, APIs de terceiros e operações de sistema de arquivos.
+4. **Micro-Checkpoint**: Ao concluir a suíte de testes vermelha e os stubs, utilize a skill `git` (Modo 1) para salvar o checkpoint da Red Phase (`checkpoint(testes): ...`).
 
 ---
 
@@ -36,4 +37,5 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 - [ ] O relatório de performance imprime a tabela formatada no `stdout`?
 - [ ] Nenhum método em arquivos de produção possui lógica implementada?
 - [ ] O comando de teste foi fornecido em bloco `bash` isolado (com `-s -v`)?
+- [ ] O micro-checkpoint do teste vermelho foi gravado acionando a skill `git` (Modo 1)?
 - [ ] Execute os testes e confirme que todos falham com stubs (status VERMELHO esperado)?

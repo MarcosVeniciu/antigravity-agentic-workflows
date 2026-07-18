@@ -26,7 +26,7 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 
 1. **Correção Mínima em Produção**: Ajustar estritamente o código que causa o erro. Zero refatorações adicionais ou adição de novas features.
 2. **Preservar a Vontade dos Testes**: Não alterar assertions dos testes para forçar passagem verde, salvo caso haja erro evidente de digitação/sintaxe no próprio teste.
-3. **Resumo Cirúrgico**: Explicar a causa raiz em uma única frase concisa antes de apresentar o bloco de código corrigido.
+3. **Resumo Cirúrgico & Checkpoint**: Explicar a causa raiz em uma única frase concisa antes de apresentar o código e salvar o micro-checkpoint acionando a skill `git` (Modo 1).
 
 ---
 
@@ -35,4 +35,5 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 - [ ] A causa raiz foi identificada e classificada corretamente?
 - [ ] O código de produção foi corrigido com o menor impacto possível?
 - [ ] Os testes não foram enfraquecidos ou alterados sem justificativa?
+- [ ] O micro-checkpoint de correção foi realizado acionando a skill `git` (Modo 1)?
 - [ ] O comando de re-teste foi fornecido em bloco `bash` isolado?

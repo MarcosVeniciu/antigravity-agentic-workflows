@@ -16,19 +16,21 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 
 ---
 
-## 📁 Recursos & Templates
+## 📁 Recursos, Exemplo & Templates
 
+* **Exemplo de Docstring & Tipagem**: [docstring_example.py](examples/docstring_example.py)
 * **Template de Checklist Iterativo (`task.md`)**: [task_template.md](resources/task_template.md)
-* **Template de Pivots & Desvios Locais**: [pivot_template.md](resources/pivot_template.md) (salvo em `02-auditorias/pivots-[slug].md` se houver adaptações no TDD).
+* **Template de Pivots & Desvios Locais**: [pivot_template.md](resources/pivot_template.md) (salvo em `02-auditorias/pivots-[slug].md` via skill `grafo` se houver adaptações no TDD).
 
 ---
 
 ## ⛔ Regras Universais & Restrições
 
 1. **Código Mínimo Necessário**: Escrever estritamente o código que faz a asserção do teste passar. Zero código morto ou funcionalidades não testadas.
-2. **Atualização Iterativa do `task.md`**: Nunca concluir todas as tarefas de uma vez. Marcar `[/]` ao iniciar um item e `[x]` ao finalizar a alteração correspondente.
-3. **Docstrings e Tipagem Explícita**: Usar Type Hints e docstrings detalhadas com o link formal `Ref: Obsidian note [[note-name]]`.
-4. **Promoção de Regras (`Promote-on-Impact`)**: Se durante a escrita for alterada uma convenção global, criar a nota correspondente em `00-core-rules/adrs/` (`type: adr`).
+2. **Micro-Checkpoints Locais**: A cada componente implementado ou asserção resolvida, acione o Modo 1 da skill `git` (`git commit -m "checkpoint(codigo): ..."`).
+3. **Atualização Iterativa do `task.md`**: Nunca concluir todas as tarefas de uma vez. Marcar `[/]` ao iniciar um item e `[x]` ao finalizar a alteração correspondente.
+4. **Docstrings e Tipagem Explícita**: Usar Type Hints e docstrings detalhadas com o link formal `Ref: Obsidian note [[note-name]]`.
+5. **Promoção de Regras (`Promote-on-Impact`)**: Se durante a escrita for alterada uma convenção global, criar a nota correspondente em `00-core-rules/adrs/` (`type: adr`) via skill `grafo`.
 
 ---
 
@@ -37,5 +39,6 @@ Consulte as instruções operacionais detalhadas no arquivo de referência:
 - [ ] A lista de tarefas `task.md` foi mantida e atualizada iterativamente?
 - [ ] O código respeita os princípios SOLID (com indicação nos comentários/docstrings)?
 - [ ] Todos os métodos possuem Type Hints e docstrings padronizadas?
+- [ ] Foram gerados micro-checkpoints intermediários usando a skill `git` (Modo 1)?
 - [ ] O comando de teste foi fornecido em bloco `bash` isolado sem execução autônoma?
-- [ ] Execute os testes unitários e confirme 100% verde?
+- [ ] Confirmado 100% verde na suíte de testes unitários?

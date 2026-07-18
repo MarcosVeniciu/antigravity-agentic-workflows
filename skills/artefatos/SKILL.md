@@ -27,12 +27,11 @@ Consulte as referências e templates para cada etapa do fluxo:
    * O artefato gerado apresentará o botão **Proceed** no painel visual da IDE.
    * O assistente aguarda a confirmação/feedback do usuário antes de prosseguir para a gravação no Vault.
 
-4. **Persistência no Obsidian Vault & Próximo Passo**:
-   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`).
+4. **Persistência no Obsidian Vault & Handover**:
+   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`) acionando a skill `grafo`.
    * Adicione o link bidirecional para o escopo BDD originário (`[[bdd-feature-slug]]`).
-   * Apresente ao usuário a instrução da próxima etapa:
-     * Sugerir `/testes` para iniciar a fase Red do TDD.
-     * Caso a nova funcionalidade exija novos pacotes ou infraestrutura, sugerir `/infra`.
+   * Acione a skill `git` (Modo 2 - Phase Squash) para consolidar a fase em um commit semântico limpo.
+   * Apresente ao usuário a instrução da próxima etapa (sugerir `/testes` ou `/infra`).
 
 ---
 
@@ -60,4 +59,5 @@ A cada geração de artefato, valide autonomamente:
 - [ ] Os diagramas Mermaid utilizam rótulos entre aspas e correspondem a componentes reais da aplicação?
 - [ ] Foram definidos mocks de contratos tipados (Pydantic, Zod, OpenAPI)?
 - [ ] A análise de impacto inclui todos os arquivos e módulos afetados?
-- [ ] O salvamento final no Obsidian contém link bidirecional para a especificação BDD originária?
+- [ ] O salvamento final no Obsidian contém link bidirecional via skill `grafo`?
+- [ ] O commit semântico final da fase de artefatos foi consolidado via skill `git` (Modo 2)?

@@ -25,7 +25,8 @@ Consulte a referência de cada estado antes de agir:
 ## 🛠️ Recursos & Templates
 
 * **Template BDD**: [template_planejamento.md](resources/template_planejamento.md) (utilizado no STATE 3).
-* **Persistência Obsidian**: No STATE 4, o escopo BDD é salvo via MCP (`vault_write`) em `01-concepcao/bdd-[feature-slug].md`.
+* **Persistência Obsidian**: No STATE 4, o escopo BDD é salvo em `01-concepcao/bdd-[feature-slug].md` acionando a skill `grafo`.
+* **Handover Git**: No encerramento da Fase 1 (STATE 4), o commit semântico consolidado é realizado acionando a skill `git` (Modo 2 - Phase Squash).
 
 ---
 
@@ -43,4 +44,5 @@ A cada mudança de estado ou geração de artefato, valide autonomamente:
 - [ ] O artefato possui metadados válidos (`UserFacing: true`, `RequestFeedback` adequado)?
 - [ ] O artefato contém orientações claras sobre como interagir usando os botões da IDE?
 - [ ] Os cenários de teste contêm sintaxe BDD pura (`Dado...`, `Quando...`, `Então...`)?
-- [ ] A nota do Obsidian final foi direcionada para `01-concepcao/bdd-[feature-slug].md`?
+- [ ] A nota do Obsidian final foi direcionada para `01-concepcao/bdd-[feature-slug].md` acionando a skill `grafo`?
+- [ ] O commit semântico final da Fase 1 foi consolidado acionando a skill `git` (Modo 2)?

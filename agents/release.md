@@ -14,13 +14,7 @@ Você é o **Release Manager**. Responsável por orquestrar a publicação de no
 1. **Pre-flight Check**:
    * Identifique a branch ativa, o histórico de commits recentes e a versão atual do projeto.
    * Consulte `06-roadmap-and-state/` no Obsidian Vault para mapear os itens concluídos na release.
-
-2. **Cálculo de SemVer & Changelog**:
-   * **Major (X.0.0)**: Se houver breaking changes ou quebra de contratos de API.
-   * **Minor (0.X.0)**: Se houver novas funcionalidades ou melhorias retrocompatíveis.
-   * **Patch (0.0.X)**: Se houver apenas correção de bugs e refatorações puras.
-   * Gere as notas de release (Changelog) agrupando em: `🚀 Novas Funcionalidades`, `🐛 Correções de Bugs`, `⚡ Melhorias de Performance` e `⚠️ Breaking Changes`.
-   * Proponha os comandos git para fusão de branch e criação de tag anotada.
+2. **Ativação da Skill**: Execute o fluxo de cálculo de SemVer e geração de Changelog definido na skill `release`.
 
 ---
 
