@@ -1,39 +1,40 @@
 ---
 name: "testar"
-description: "Skill de depuração reativa e correção de erros de teste. Analisa logs do terminal e aplica ajustes mínimos cirúrgicos no código de produção."
+description: "Reactive debugging and test error fix skill. Analyzes terminal logs and applies minimal surgical adjustments to production code."
 ---
 
-# Skill: Depuração Reativa & Correção de Testes (`skills/testar`)
+# Skill: Reactive Debugging & Test Fixing (`skills/testar`)
 
-Gerencia a fase de depuração reativa (Reactive Debugger) do ciclo TDD, isolando a causa raiz a partir do traceback do terminal e corrigindo cirurgicamente o código de produção.
-
----
-
-## 🛠️ Guia de Execução
-
-Consulte as instruções operacionais detalhadas no arquivo de referência:
-* [Guia de Execução Reactive Debugger](references/EXECUTION.md)
+Manages the reactive debugging phase (Reactive Debugger) of the TDD cycle, isolating root causes from terminal tracebacks and surgically fixing production code. Always communicate with the user in Portuguese.
 
 ---
 
-## 📁 Recursos & Templates
+## 🛠️ Execution Guide
 
-* **Template de Checklist de Erros (`task.md`)**: [error_checklist_template.md](resources/error_checklist_template.md)
-
----
-
-## ⛔ Regras Universais & Restrições
-
-1. **Correção Mínima em Produção**: Ajustar estritamente o código que causa o erro. Zero refatorações adicionais ou adição de novas features.
-2. **Preservar a Vontade dos Testes**: Não alterar assertions dos testes para forçar passagem verde, salvo caso haja erro evidente de digitação/sintaxe no próprio teste.
-3. **Resumo Cirúrgico & Checkpoint**: Explicar a causa raiz em uma única frase concisa antes de apresentar o código e salvar o micro-checkpoint acionando a skill `git` (Modo 1).
+Consult detailed operational instructions in the reference file:
+* [Reactive Debugger Execution Guide](references/EXECUTION.md)
 
 ---
 
-## ✅ Checklist de Validação
+## 📁 Resources & Templates
 
-- [ ] A causa raiz foi identificada e classificada corretamente?
-- [ ] O código de produção foi corrigido com o menor impacto possível?
-- [ ] Os testes não foram enfraquecidos ou alterados sem justificativa?
-- [ ] O micro-checkpoint de correção foi realizado acionando a skill `git` (Modo 1)?
-- [ ] O comando de re-teste foi fornecido em bloco `bash` isolado?
+* **Error Checklist Template (`task.md`)**: [error_checklist_template.md](resources/error_checklist_template.md)
+
+---
+
+## ⛔ Universal Rules & Constraints
+
+1. **Minimal Production Fix**: Strictly adjust the code causing the error. Zero additional refactorings or feature additions.
+2. **Preserve Test Intent**: Do not alter test assertions to force green passing, except in cases of obvious typos/syntax errors in the test itself.
+3. **Surgical Summary & Checkpoint**: Explain root cause in a single concise sentence before presenting code and saving micro-checkpoint by invoking the `git` skill (Mode 1).
+
+---
+
+## ✅ Validation Checklist
+
+- [ ] Was the root cause identified and classified correctly?
+- [ ] Was production code fixed with minimal possible impact?
+- [ ] Were tests preserved without unjustified changes or weakening?
+- [ ] Was fix micro-checkpoint recorded by invoking the `git` skill (Mode 1)?
+- [ ] Was re-test command provided in an isolated `bash` block?
+

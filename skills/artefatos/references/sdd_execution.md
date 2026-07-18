@@ -1,59 +1,60 @@
-# Diretrizes de Execução SDD & Desenho Arquitetural
+# SDD Execution Guidelines & Architectural Design
 
-Este documento detalha o protocolo de execução da abordagem **Software Design Description (SDD)** aplicada durante a Fase 2 (`/artefatos`).
-
----
-
-## 1. Abordagem SDD (Software Design Description)
-
-A abordagem SDD traduz os requisitos de comportamento (BDD) definidos na Fase 1 em especificações de arquitetura e contratos antes que qualquer código de aplicação seja escrito.
+This document details the execution protocol for the **Software Design Description (SDD)** approach applied during Phase 2 (`/artefatos`).
 
 ---
 
-## 2. Componentes Obrigatórios do Plano de Implementação
+## 1. SDD (Software Design Description) Approach
 
-Ao gerar o artefato `implementation_plan.md`, a instrução deve obrigatoriamente contemplar:
+The SDD approach translates behavior requirements (BDD) defined in Phase 1 into architecture specifications and contracts before any application code is written.
 
-### 2.1. Plano Sequencial Atomicamente Estruturado
-Cada etapa deve ser numerada e especificar:
-* **O Quê**: Descrição clara da alteração (arquivo a criar/modificar e função a implementar).
-* **Por Quê**: A regra de negócio ou justificativa arquitetural que motiva esta etapa.
-* **Critério de Aceite**: A condição específica e testável que comprova a conclusão.
-* **Dependências**: Quais etapas anteriores precisam estar concluídas antes de iniciar esta.
+---
 
-### 2.2. Diagramação UML em Mermaid.js
-Apresente visualmente a arquitetura utilizando o tipo de diagrama mais adequado à complexidade:
-* **Diagrama de Sequência (`sequenceDiagram`)**: Para interações entre múltiplos componentes, chamadas de API ou fluxos de dados.
-* **Diagrama de Classes (`classDiagram`)**: Para novos modelos de dados, serviços, classes ou hierarquias.
-* **Fluxograma (`flowchart`)**: Para lógica condicional complexa, máquinas de estados ou árvores de decisão.
-* **Diagrama ER (`erDiagram`)**: Para alterações em esquema de banco de dados.
+## 2. Mandatory Components of the Implementation Plan
 
-> **Importante:** Todos os rótulos de nós contendo caracteres especiais ou parênteses devem obrigatoriamente estar entre aspas duplas (`id["Rótulo (Extra)"]`) para evitar falhas de sintaxe na renderização do Mermaid.
+When generating the `implementation_plan.md` artifact, instructions must mandatorily include:
 
-### 2.3. Especificação de Contratos (Mocks)
-Defina explicitamente os contratos de interface ou esquemas de validação (ex: Pydantic, Zod, TypeScript Interfaces, OpenAPI schemas) que atuarão como a especificação formal para o desenvolvimento.
+### 2.1. Atomically Structured Sequential Plan
+Each step must be numbered and specify:
+* **What**: Clear description of the change (file to create/modify and function to implement).
+* **Why**: The business rule or architectural justification motivating this step.
+* **Acceptance Criteria**: The specific and testable condition proving completion.
+* **Dependencies**: Which previous steps must be completed prior to starting this one.
+
+### 2.2. Mermaid.js UML Diagramming
+Visually present architecture using the diagram type most suitable for the complexity:
+* **Sequence Diagram (`sequenceDiagram`)**: For multi-component interactions, API calls, or data flows.
+* **Class Diagram (`classDiagram`)**: For new data models, services, classes, or hierarchies.
+* **Flowchart (`flowchart`)**: For complex conditional logic, state machines, or decision trees.
+* **ER Diagram (`erDiagram`)**: For database schema changes.
+
+> **Important:** All node labels containing special characters or parentheses must mandatorily be enclosed in double quotes (`id["Label (Extra)"]`) to prevent syntax errors in Mermaid rendering.
+
+### 2.3. Contract Specification (Mocks)
+Explicitly define interface contracts or validation schemas (e.g. Pydantic, Zod, TypeScript Interfaces, OpenAPI schemas) that act as formal specifications for development.
 
 ```python
-# Exemplo de Contrato Pydantic
+# Example Pydantic Contract
 from pydantic import BaseModel, Field
 
-class RequisicaoExemplo(BaseModel):
-    id: str = Field(..., description="ID único do recurso")
-    ativo: bool = Field(True, description="Status de ativação")
+class ExampleRequest(BaseModel):
+    id: str = Field(..., description="Unique resource ID")
+    active: bool = Field(True, description="Activation status")
 ```
 
-### 2.4. Análise de Impacto Mapeada
-Enumere os módulos e arquivos existentes que sofrerão mutação ou adição, classificando-os em:
-* **Additive (novo código)**: Adição de novas funções/classes sem alterar comportamento existente (Risco Baixo).
-* **Mutative (modificação)**: Alteração de comportamento em arquivo existente (Risco Médio/Alto — verificar testes existentes).
+### 2.4. Mapped Impact Analysis
+List existing modules and files that will be added or modified, classifying them into:
+* **Additive (new code)**: Adding new functions/classes without changing existing behavior (Low Risk).
+* **Mutative (modification)**: Behavior change in an existing file (Medium/High Risk — verify existing tests).
 
 ---
 
-## 3. Quality Gates (Auto-Auditoria)
+## 3. Quality Gates (Self-Audit)
 
-Antes de gerar o artefato final para o usuário, execute esta verificação interna:
-- [ ] Todas as etapas do plano sequencial possuem critérios de aceite testáveis.
-- [ ] Os diagramas Mermaid utilizam caminhos e nomes de componentes reais da codebase.
-- [ ] Todos os rótulos do Mermaid com caracteres especiais utilizam aspas duplas.
-- [ ] A análise de impacto contempla todos os arquivos que serão tocados.
-- [ ] Não há nenhum trecho de código funcional de produção ou testes no plano.
+Before generating the final artifact for the user, execute this internal check:
+- [ ] All steps in the sequential plan have testable acceptance criteria.
+- [ ] Mermaid diagrams use real paths and component names from the codebase.
+- [ ] All Mermaid labels with special characters use double quotes.
+- [ ] Impact analysis covers all touched files.
+- [ ] No functional production code or test code snippets are in the plan.
+

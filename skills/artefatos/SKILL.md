@@ -1,63 +1,64 @@
 ---
 name: "artefatos"
-description: "Skill de geração de artefatos de implementação e arquitetura SDD (Fase 2). Traduz especificações BDD em diagramas UML Mermaid, contratos tipados e análise de impacto via artefatos interativos."
+description: "Implementation artifacts and SDD architecture generation skill (Phase 2). Translates BDD specifications into Mermaid UML diagrams, typed contracts, and impact analysis via interactive artifacts."
 ---
 
-# Skill: Geração de Artefatos & Desenho de Arquitetura SDD (`skills/artefatos`)
+# Skill: Artifact Generation & SDD Architecture Design (`skills/artefatos`)
 
-Gerencia a **Fase 2 (Desenho Técnico & Contratos SDD)** preenchendo o abismo entre os requisitos BDD e o desenvolvimento de código através da geração de artefatos interativos com interrupções para aprovação direta na IDE.
-
----
-
-## 🔄 Fluxo Operacional
-
-Consulte as referências e templates para cada etapa do fluxo:
-
-1. **Pre-flight & Leitura de Contexto**:
-   * Busque no Obsidian Vault a especificação de escopo gerada na Fase 1 (`01-concepcao/bdd-[feature-slug].md`).
-   * Leia as regras de arquitetura e convenções em `00-core-rules/` e especificações de contrato em `01-concepcao/`.
-   * Identifique a branch Git ativa.
-
-2. **Geração do Desenho Técnico (SDD)**:
-   * Consulte o guia detalhado em [references/sdd_execution.md](references/sdd_execution.md) para construir o plano de implementação, diagramas e mocks de contrato.
-   * Utilize a estrutura base do template em [resources/template_artefatos.md](resources/template_artefatos.md).
-   * Gere o artefato interativo `implementation_plan.md` no diretório da sessão com `UserFacing: true` e **`RequestFeedback: true`**.
-
-3. **Pausa Interativa & Aprovação do Usuário**:
-   * O artefato gerado apresentará o botão **Proceed** no painel visual da IDE.
-   * O assistente aguarda a confirmação/feedback do usuário antes de prosseguir para a gravação no Vault.
-
-4. **Persistência no Obsidian Vault & Handover**:
-   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` acionando a skill `grafo`.
-   * Adicione o link bidirecional para o escopo BDD originário (`[[bdd-feature-slug]]`).
-   * Acione a skill `git` (Modo 2 - Phase Squash) para consolidar a fase em um commit semântico limpo.
-   * Apresente ao usuário a instrução da próxima etapa (sugerir `/testes` ou `/infra`).
+Manages **Phase 2 (Technical Design & SDD Contracts)**, bridging the gap between BDD requirements and code development through interactive artifacts with approval pauses directly in the IDE. Always communicate with the user in Portuguese.
 
 ---
 
-## 🛠️ Recursos & Referências
+## 🔄 Operational Workflow
 
-* **Template do Artefato**: [resources/template_artefatos.md](resources/template_artefatos.md)
-* **Manual de Execução SDD & Diagramas**: [references/sdd_execution.md](references/sdd_execution.md)
+Consult references and templates for each step of the workflow:
+
+1. **Pre-flight & Context Reading**:
+   * Search the Obsidian Vault for the scope specification generated in Phase 1 (`01-concepcao/bdd-[feature-slug].md`).
+   * Read architecture rules and conventions in `00-core-rules/` and contract specifications in `01-concepcao/`.
+   * Identify the active Git branch.
+
+2. **Generating Technical Design (SDD)**:
+   * Consult the detailed guide in [references/sdd_execution.md](references/sdd_execution.md) to build the implementation plan, diagrams, and contract mocks.
+   * Use the base template structure in [resources/template_artefatos.md](resources/template_artefatos.md).
+   * Generate the interactive artifact `implementation_plan.md` in the session directory with `UserFacing: true` and **`RequestFeedback: true`**.
+
+3. **Interactive Pause & User Approval**:
+   * The generated artifact will render a **Proceed** button in the IDE visual panel.
+   * The assistant waits for user confirmation/feedback before proceeding to persist in the Vault.
+
+4. **Obsidian Vault Persistence & Handover**:
+   * Save the approved plan content in the vault under `01-concepcao/sdd-[feature-slug].md` by invoking the `grafo` skill.
+   * Add a bidirectional link to the originating BDD scope (`[[bdd-feature-slug]]`).
+   * Trigger the `git` skill (Mode 2 - Phase Squash) to consolidate the phase into a clean semantic commit.
+   * Present the next step instruction to the user (suggesting `/testes` or `/infra`).
 
 ---
 
-## ⛔ Regras Universais & Restrições
+## 🛠️ Resources & References
 
-1. **Think First, Code Later**: Proibido escrever código-fonte de produção ou criar suítes de testes nesta fase.
-2. **Consultar o Vault (Pre-flight Check)**: Toda decisão de design deve se fundamentar nas regras e mapas já registrados no Obsidian.
-3. **Controle Interativo via Artefatos**: Sempre defina `RequestFeedback: true` ao emitir o `implementation_plan.md`.
-4. **Sintaxe Segura em Mermaid**: Utilize aspas em todos os rótulos de nós em diagramas Mermaid para evitar erros de renderização.
+* **Artifact Template**: [resources/template_artefatos.md](resources/template_artefatos.md)
+* **SDD Execution Manual & Diagrams**: [references/sdd_execution.md](references/sdd_execution.md)
 
 ---
 
-## ✅ Checklist de Validação & Método de Verificação
+## ⛔ Universal Rules & Constraints
 
-A cada geração de artefato, valide autonomamente:
-- [ ] O artefato `implementation_plan.md` possui metadados válidos (`UserFacing: true`, `RequestFeedback: true`)?
-- [ ] O plano sequencial possui o quê, por quê, critérios de aceite e dependências para cada etapa?
-- [ ] Os diagramas Mermaid utilizam rótulos entre aspas e correspondem a componentes reais da aplicação?
-- [ ] Foram definidos mocks de contratos tipados (Pydantic, Zod, OpenAPI)?
-- [ ] A análise de impacto inclui todos os arquivos e módulos afetados?
-- [ ] O salvamento final no Obsidian contém link bidirecional via skill `grafo`?
-- [ ] O commit semântico final da fase de artefatos foi consolidado via skill `git` (Modo 2)?
+1. **Think First, Code Later**: Writing production source code or creating test suites during this phase is forbidden.
+2. **Consult Vault (Pre-flight Check)**: All design decisions must be grounded in rules and maps already documented in Obsidian.
+3. **Interactive Control via Artifacts**: Always set `RequestFeedback: true` when issuing `implementation_plan.md`.
+4. **Safe Mermaid Syntax**: Use double quotes on all node labels in Mermaid diagrams to prevent rendering syntax errors.
+
+---
+
+## ✅ Validation Checklist & Verification Method
+
+With every artifact generation, autonomously validate:
+- [ ] Does the `implementation_plan.md` artifact have valid metadata (`UserFacing: true`, `RequestFeedback: true`)?
+- [ ] Does the sequential plan include what, why, acceptance criteria, and dependencies for each step?
+- [ ] Do Mermaid diagrams use quoted node labels and correspond to real application components?
+- [ ] Were typed contract mocks defined (Pydantic, Zod, OpenAPI)?
+- [ ] Does impact analysis include all affected files and modules?
+- [ ] Does final storage in Obsidian include a bidirectional link via the `grafo` skill?
+- [ ] Was the final semantic commit of the artifacts phase consolidated via the `git` skill (Mode 2)?
+

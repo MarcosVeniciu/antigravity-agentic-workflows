@@ -1,40 +1,41 @@
 ---
 name: "refatorar"
-description: "Skill de refatoração estrutural e Clean Code. Aplica princípios SOLID, elimina Code Smells e otimiza a legibilidade sem alterar comportamento."
+description: "Structural refactoring and Clean Code skill. Applies SOLID principles, eliminates Code Smells, and optimizes readability without altering behavior."
 ---
 
-# Skill: Clean Code & Refatoração Estrutural (`skills/refatorar`)
+# Skill: Clean Code & Structural Refactoring (`skills/refatorar`)
 
-Gerencia a etapa final do ciclo TDD (Refactor Phase), aprimorando o design interno, reduzindo a complexidade ciclomática e aplicando princípios SOLID em código já funcional e 100% verde.
-
----
-
-## 🛠️ Guia de Execução
-
-Consulte as instruções operacionais detalhadas no arquivo de referência:
-* [Guia de Execução Clean Code Specialist](references/EXECUTION.md)
+Manages the final step of the TDD cycle (Refactor Phase), enhancing internal design, reducing cyclomatic complexity, and applying SOLID principles to fully functional, 100% green code. Always communicate with the user in Portuguese.
 
 ---
 
-## 📁 Recursos & Templates
+## 🛠️ Execution Guide
 
-* **Template de Checklist de Refatoração (`task.md`)**: [refactor_checklist_template.md](resources/refactor_checklist_template.md)
-
----
-
-## ⛔ Regras Universais & Restrições
-
-1. **Preservar Comportamento**: Nenhuma refatoração pode alterar a saída ou os contratos de classe/função já testados.
-2. **Não Quebrar Testes**: Se qualquer teste falhar durante a refatoração, a mudança deve ser desfeita imediatamente.
-3. **Eliminar Code Smells**: Foco em funções longas (>20 linhas), aninhamentos profundos, números mágicos e duplicidades.
-4. **Micro-Checkpoints & Squash**: Salvar um micro-checkpoint com a skill `git` (Modo 1) após refatorar cada componente. Ao concluir toda a refatoração, acione a skill `git` (Modo 2 - Phase Squash) para consolidar a Fase 2.
+Consult detailed operational instructions in the reference file:
+* [Clean Code Specialist Execution Guide](references/EXECUTION.md)
 
 ---
 
-## ✅ Checklist de Validação
+## 📁 Resources & Templates
 
-- [ ] Todos os testes continuam passando 100% verdes após as alterações?
-- [ ] Foram explicadas as razões da refatoração (Qual smell/princípio SOLID foi abordado)?
-- [ ] Foram aplicadas Guard Clauses para eliminar `if/else` aninhados?
-- [ ] Foram gerados micro-checkpoints (Modo 1) e o squash final de fase via a skill `git` (Modo 2)?
-- [ ] Foi sugerida a abertura de um novo chat efêmero para a Fase 3 (`/review`)?
+* **Refactoring Checklist Template (`task.md`)**: [refactor_checklist_template.md](resources/refactor_checklist_template.md)
+
+---
+
+## ⛔ Universal Rules & Constraints
+
+1. **Preserve Behavior**: No refactoring may alter the output or contracts of previously tested classes/functions.
+2. **Do Not Break Tests**: If any test fails during refactoring, the change must be reverted immediately.
+3. **Eliminate Code Smells**: Focus on long functions (>20 lines), deep nesting, magic numbers, and duplication.
+4. **Micro-Checkpoints & Squash**: Save a micro-checkpoint using the `git` skill (Mode 1) after refactoring each component. Upon completing all refactoring, trigger the `git` skill (Mode 2 - Phase Squash) to consolidate Phase 2.
+
+---
+
+## ✅ Validation Checklist
+
+- [ ] All tests remain 100% green passing after changes?
+- [ ] Were reasons for refactoring explained (Which smell/SOLID principle was addressed)?
+- [ ] Were Guard Clauses applied to eliminate nested `if/else`?
+- [ ] Were micro-checkpoints (Mode 1) and final phase squash generated via the `git` skill (Mode 2)?
+- [ ] Was opening a new ephemeral chat for Phase 3 (`/review`) suggested?
+

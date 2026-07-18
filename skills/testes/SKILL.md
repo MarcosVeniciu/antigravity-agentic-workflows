@@ -1,41 +1,42 @@
 ---
 name: "testes"
-description: "Skill de automação TDD Red Phase. Constrói suítes de teste de comportamento (AAA), mocks de borda e relatórios nativos de profiling Big-O."
+description: "TDD Red Phase automation skill. Builds behavioral test suites (AAA), edge mocks, and native Big-O profiling reports."
 ---
 
-# Skill: TDD Red Phase & Design de Testes (`skills/testes`)
+# Skill: TDD Red Phase & Test Design (`skills/testes`)
 
-Gerencia a fase inicial do ciclo TDD (Red Phase), construindo suítes comportamentais completas e stubs de métodos sem implementar lógica de produção.
-
----
-
-## 🛠️ Guia de Execução
-
-Consulte as instruções operacionais detalhadas no arquivo de referência:
-* [Guia de Execução SDET (Red Phase)](references/EXECUTION.md)
+Manages the initial step of the TDD cycle (Red Phase), building complete behavioral test suites and method stubs without implementing production logic. Always communicate with the user in Portuguese.
 
 ---
 
-## 📁 Recursos & Templates
+## 🛠️ Execution Guide
 
-* **Template de Profiling Nativo**: [profiling_template.md](resources/profiling_template.md) (para testes de performance e análise Big-O com `print()`).
-
----
-
-## ⛔ Regras Universais & Restrições
-
-1. **Protocolo AAA**: Todo teste deve conter os blocos Arrange, Act e Assert explicitamente demarcados.
-2. **Stubs Limpos**: Se a classe ou método testado não existir no código de produção, crie a assinatura básica com `pass` em seu respectivo arquivo para garantir importação limpa.
-3. **Mocks na Fronteira**: Mocar chamadas de banco de dados, APIs de terceiros e operações de sistema de arquivos.
-4. **Micro-Checkpoint**: Ao concluir a suíte de testes vermelha e os stubs, utilize a skill `git` (Modo 1) para salvar o checkpoint da Red Phase (`checkpoint(testes): ...`).
+Consult detailed operational instructions in the reference file:
+* [SDET Execution Guide (Red Phase)](references/EXECUTION.md)
 
 ---
 
-## ✅ Checklist de Validação & Método de Verificação
+## 📁 Resources & Templates
 
-- [ ] Suíte inclui Happy Path, Edge Cases, Exceções e Profiling de Performance?
-- [ ] O relatório de performance imprime a tabela formatada no `stdout`?
-- [ ] Nenhum método em arquivos de produção possui lógica implementada?
-- [ ] O comando de teste foi fornecido em bloco `bash` isolado (com `-s -v`)?
-- [ ] O micro-checkpoint do teste vermelho foi gravado acionando a skill `git` (Modo 1)?
-- [ ] Execute os testes e confirme que todos falham com stubs (status VERMELHO esperado)?
+* **Native Profiling Template**: [profiling_template.md](resources/profiling_template.md) (for performance tests and Big-O analysis with `print()`).
+
+---
+
+## ⛔ Universal Rules & Constraints
+
+1. **AAA Protocol**: Every test must contain Arrange, Act, and Assert blocks explicitly demarcated.
+2. **Clean Stubs**: If the tested class or method does not exist in production code, create the basic signature with `pass` in its respective file to ensure clean imports.
+3. **Boundary Mocks**: Mock database calls, third-party APIs, and filesystem operations.
+4. **Micro-Checkpoint**: Upon completing the red test suite and stubs, use the `git` skill (Mode 1) to save the Red Phase checkpoint (`checkpoint(testes): ...`).
+
+---
+
+## ✅ Validation Checklist & Verification Method
+
+- [ ] Does suite cover Happy Path, Edge Cases, Exceptions, and Performance Profiling?
+- [ ] Does performance report print formatted table to `stdout`?
+- [ ] Do production file methods contain zero implemented business logic?
+- [ ] Was test command provided in an isolated `bash` block (with `-s -v`)?
+- [ ] Was red test micro-checkpoint recorded by invoking the `git` skill (Mode 1)?
+- [ ] Run tests and confirm all fail with stubs (expected RED status)?
+

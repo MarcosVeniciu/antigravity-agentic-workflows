@@ -1,69 +1,70 @@
 ---
 name: "docs"
-description: "Skill de documentação técnica do projeto (Technical Writer & Developer Advocate). Gera e atualiza a vitrine principal (README.md raiz) e a documentação interna de diretórios (README.md locais e docstrings)."
+description: "Project technical documentation skill (Technical Writer & Developer Advocate). Generates and updates root showcase (primary README.md) and internal directory documentation (local README.md files and docstrings)."
 ---
 
 # Skill: Technical Writer & Developer Advocate (`skills/docs`)
 
-Esta skill orienta a padronização e criação da documentação do repositório, alternando autonomamente entre a **Vitrine da Raiz (`README.md` principal)** e a **Documentação Técnica Local (`README.md` de módulos/subpastas)**.
+This skill guides the standardization and creation of repository documentation, autonomously switching between **Root Showcase (primary `README.md`)** and **Local Technical Documentation (module/subdirectory `README.md`)**. Always communicate with the user in Portuguese.
 
 ---
 
-## 📁 Recursos & Templates
+## 📁 Resources & Templates
 
-* **Template de Raiz (Developer Advocate)**: [template_readme_raiz.md](resources/template_readme_raiz.md)
-* **Template Local (Technical Writer)**: [template_readme_local.md](resources/template_readme_local.md)
-
----
-
-## 🔄 Fluxo Operacional
-
-### Modo 1: Vitrine Principal do Projeto (`README.md` Raiz)
-Ativado quando o alvo for a raiz do repositório ou o contexto for onboarding/setup global.
-
-1. **Pre-flight & Inspeção Global**:
-   * Leia o `README.md` atual na raiz do projeto (se existir).
-   * Consulte o Obsidian Vault (`01-concepcao/` e `00-core-rules/`) para entender o escopo do projeto, stack e requisitos de ambiente.
-   * Verifique manifestos de dependência (`package.json`, `pyproject.toml`, etc.) para extrair os comandos reais de setup.
-
-2. **Construção da Vitrine (`README.md` Raiz)**:
-   * Utilize a estrutura base em `resources/template_readme_raiz.md`.
-   * Preencha todas as seções principais: Visão de Negócio, Stack Tecnológica, Arquitetura em Alto Nível (Mermaid), Getting Started (Onboarding) e Comandos Úteis.
-
-### Modo 2: Documentação Local de Módulos (`README.md` Local)
-Ativado quando o alvo for um subdiretório ou módulo específico da aplicação.
-
-1. **Pre-flight & Análise de Módulo**:
-   * Inspecione o diretório alvo e mapeie suas classes, funções, DTOs e fluxos de entrada/saída.
-   * Consulte o Obsidian Vault (`01-concepcao/` ou `00-core-rules/`) para identificar notas associadas ao módulo.
-
-2. **Construção da Documentação (`README.md` Local)**:
-   * Utilize a estrutura base em `resources/template_readme_local.md`.
-   * Preencha rigorosamente as 6 seções sem omitir nenhuma:
-     1. **🎯 Visão Geral**
-     2. **🏗️ Arquitetura e Fluxo de Dados** (com diagrama Mermaid)
-     3. **🗂️ Mapeamento de Componentes**
-     4. **🧠 Decisões de Design & Trade-offs**
-     5. **🧪 Estratégia de Testes**
-     6. **Related Context** (wikilinks Obsidian `[[nota]]`)
-
-3. **Inclusão de Docstrings**:
-   * Verifique se as funções e classes do módulo contêm docstrings tipadas com sintaxe `Ref: Obsidian note [[nota]]`.
+* **Root Template (Developer Advocate)**: [template_readme_raiz.md](resources/template_readme_raiz.md)
+* **Local Template (Technical Writer)**: [template_readme_local.md](resources/template_readme_local.md)
 
 ---
 
-## ⛔ Regras & Restrições
+## 🔄 Operational Workflow
 
-1. **Sem Comandos Obsoletos ou Falsos**: Todos os comandos documentados na seção de setup/testes devem ser validados contra as configurações reais do workspace.
-2. **Sem Código de Produção**: Proibido alterar a lógica de funcionamento da aplicação (permitido apenas ajuste de docstrings).
-3. **Respeito aos Templates**: Manter a estrutura dos templates correspondentes (seja o de Raiz ou as 6 seções obrigatórias do Local).
+### Mode 1: Primary Project Showcase (Root `README.md`)
+Activated when the target is the repository root or the context is global onboarding/setup.
+
+1. **Pre-flight & Global Inspection**:
+   * Read current `README.md` at the project root (if existing).
+   * Consult the Obsidian Vault (`01-concepcao/` and `00-core-rules/`) to understand project scope, tech stack, and environment requirements.
+   * Check dependency manifests (`package.json`, `pyproject.toml`, etc.) to extract real setup commands.
+
+2. **Building the Showcase (Root `README.md`)**:
+   * Use the base structure in `resources/template_readme_raiz.md`.
+   * Fill out all main sections: Business Vision, Tech Stack, High-Level Architecture (Mermaid), Getting Started (Onboarding), and Useful Commands.
+
+### Mode 2: Local Module Documentation (Local `README.md`)
+Activated when the target is a specific subdirectory or application module.
+
+1. **Pre-flight & Module Analysis**:
+   * Inspect target directory and map its classes, functions, DTOs, and input/output flows.
+   * Consult the Obsidian Vault (`01-concepcao/` or `00-core-rules/`) to identify notes associated with the module.
+
+2. **Building Documentation (Local `README.md`)**:
+   * Use the base structure in `resources/template_readme_local.md`.
+   * Strictly complete all 6 sections without omitting any:
+     1. **🎯 Overview**
+     2. **🏗️ Architecture & Data Flow** (with Mermaid diagram)
+     3. **🗂️ Component Mapping**
+     4. **🧠 Design Decisions & Trade-offs**
+     5. **🧪 Testing Strategy**
+     6. **Related Context** (Obsidian wikilinks `[[note]]`)
+
+3. **Including Docstrings**:
+   * Verify whether module functions and classes contain typed docstrings featuring `Ref: Obsidian note [[note]]` syntax.
 
 ---
 
-## ✅ Checklist de Validação
+## ⛔ Rules & Constraints
 
-- [ ] Modo Raiz: Os comandos de instalação e inicialização foram validados contra o workspace?
-- [ ] Modo Local: O `README.md` local contém todas as 6 seções obrigatórias?
-- [ ] Ambas: Os diagramas Mermaid possuem sintaxe válida (rótulos entre aspas)?
-- [ ] Rastreabilidade: Wikilinks Obsidian `[[nota]]` estão presentes no contexto correspondente?
+1. **No Obsolete or Fake Commands**: All documented setup/testing commands must be validated against real workspace configurations.
+2. **No Production Code Changes**: Modifying application execution logic is prohibited (only docstring adjustments allowed).
+3. **Template Adherence**: Maintain the structure of corresponding templates (whether Root or the 6 mandatory sections of Local).
+
+---
+
+## ✅ Validation Checklist
+
+- [ ] Root Mode: Installation and startup commands were validated against the workspace?
+- [ ] Local Mode: Local `README.md` contains all 6 mandatory sections?
+- [ ] Both: Mermaid diagrams feature valid syntax (quoted node labels)?
+- [ ] Traceability: Obsidian wikilinks `[[note]]` are present in corresponding context?
+
 

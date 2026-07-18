@@ -1,55 +1,56 @@
 ---
 name: "release"
-description: "Skill de gerenciamento de releases (Release Manager). Calcula Semantic Versioning (SemVer), gera Changelogs estruturados e orquestra a publicação de versões."
+description: "Release management skill (Release Manager). Calculates Semantic Versioning (SemVer), generates structured Changelogs, and orchestrates version publication."
 ---
 
 # Skill: Release Management & SemVer (`skills/release`)
 
-Esta skill orienta a consolidação de alterações da branch de desenvolvimento, o cálculo do versionamento semântico (SemVer) e a geração de notas de lançamento (Changelog).
+This skill guides the consolidation of development branch changes, calculation of semantic versioning (SemVer), and generation of release notes (Changelog). Always communicate with the user in Portuguese.
 
 ---
 
-## 🛠️ Guia de Execução & Regras SemVer
+## 🛠️ Execution Guide & SemVer Rules
 
-Consulte as regras de versionamento semântico em:
-* [Guia de Regras SemVer](references/semver_rules.md)
-
----
-
-## 📁 Recursos & Templates
-
-* **Template do Changelog**: [template_changelog.md](resources/template_changelog.md)
+Consult semantic versioning rules in:
+* [SemVer Rules Guide](references/semver_rules.md)
 
 ---
 
-## 🔄 Fluxo Operacional
+## 📁 Resources & Templates
 
-1. **Pre-flight & Inspeção de Commits**:
-   * Analise o histórico de commits recentes na branch ativa e a versão atual registrada no projeto.
-   * Consulte no Obsidian Vault em `03-releases/` os itens marcados como concluídos.
-
-2. **Cálculo do SemVer**:
-   * **Major (X.0.0)**: Quebra de compatibilidade/contrato.
-   * **Minor (0.X.0)**: Novas funcionalidades retrocompatíveis.
-   * **Patch (0.0.X)**: Correções de bug e refatorações retrocompatíveis.
-
-3. **Geração do Changelog**:
-   * Estruture as notas utilizando o template em `resources/template_changelog.md`.
-
-4. **Comandos Git Propostos**:
-   * Proponha os comandos git em bloco `bash` isolado para mesclagem de branch e criação de tag anotada.
+* **Changelog Template**: [template_changelog.md](resources/template_changelog.md)
 
 ---
 
-## ⛔ Regras & Restrições
+## 🔄 Operational Workflow
 
-1. **Proibido Force Push**: Nunca proponha `git push --force`.
-2. **Tags Anotadas Obrigatórias**: Releases de produção devem ser acompanhadas de tag anotada (`git tag -a vX.Y.Z`).
+1. **Pre-flight & Commit Inspection**:
+   * Analyze recent commit history on the active branch and current registered project version.
+   * Consult `03-releases/` in the Obsidian Vault for items marked as completed.
+
+2. **SemVer Calculation**:
+   * **Major (X.0.0)**: Breaking changes/contract shifts.
+   * **Minor (0.X.0)**: Backward-compatible new features.
+   * **Patch (0.0.X)**: Backward-compatible bug fixes and refactorings.
+
+3. **Changelog Generation**:
+   * Structure release notes using the template in `resources/template_changelog.md`.
+
+4. **Proposed Git Commands**:
+   * Propose git commands in an isolated `bash` block for branch merging and annotated tag creation.
 
 ---
 
-## ✅ Checklist de Validação
+## ⛔ Rules & Constraints
 
-- [ ] O bump de versão está estritamente justificado pelo tipo de commit?
-- [ ] O Changelog foi categorizado em Funcionalidades, Correções, Performance e Breaking Changes?
-- [ ] Os comandos Git para tag anotada foram fornecidos em bloco `bash` isolado?
+1. **Force Push Prohibited**: Never propose `git push --force`.
+2. **Mandatory Annotated Tags**: Production releases must be accompanied by an annotated tag (`git tag -a vX.Y.Z`).
+
+---
+
+## ✅ Validation Checklist
+
+- [ ] Is the version bump strictly justified by commit types?
+- [ ] Was the Changelog categorized into Features, Fixes, Performance, and Breaking Changes?
+- [ ] Were Git commands for annotated tags provided in an isolated `bash` block?
+

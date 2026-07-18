@@ -1,19 +1,20 @@
-# Checklist: Review de Arquitetura & Acoplamento
+# Checklist: Architecture & Coupling Review
 
-Este documento orienta a auditoria e a correção cirúrgica de isolamento de camadas, acoplamento, Inversão de Dependência e DTOs.
-
----
-
-## 🔄 Fase 1 — Auditoria (Localização de Evidências)
-* Verificar vazamento de infraestrutura no domínio (imports de `flask`, `SQLAlchemy`, `boto3`, `requests` em entidades/use cases).
-* Checar dependências ocultas (instanciação direta de clientes de banco/API no corpo de métodos sem injeção).
-* Identificar mutação de argumentos de entrada (`list.append`, `dict['key'] = val` em objetos recebidos).
-* Mapear "God Classes" com múltiplas responsabilidades.
+This document guides the audit and surgical fix of layer isolation, coupling, Dependency Inversion, and DTOs.
 
 ---
 
-## 🛠️ Fase 2 — Aplicação Cirúrgica
-* Extrair acessos diretos à infraestrutura para interfaces/portas (Repository Pattern / Inversão de Dependência).
-* Exigir que clientes externos sejam injetados via construtor (`__init__`).
-* Forçar imutabilidade criando cópias defensivas de coleções recebidas.
-* Decompor God Classes em serviços especializados menores (`ParserService`, `PersistenceService`).
+## 🔄 Phase 1 — Audit (Locating Evidence)
+* Check infrastructure leakage in domain logic (`flask`, `SQLAlchemy`, `boto3`, `requests` imports in entities/use cases).
+* Check hidden dependencies (direct instantiation of DB/API clients inside method bodies without injection).
+* Identify input argument mutation (`list.append`, `dict['key'] = val` on received objects).
+* Map "God Classes" with multiple responsibilities.
+
+---
+
+## 🛠️ Phase 2 — Surgical Application
+* Extract direct infrastructure access to interfaces/ports (Repository Pattern / Dependency Inversion).
+* Require external clients to be injected via constructor (`__init__`).
+* Enforce immutability by creating defensive copies of received collections.
+* Decompose God Classes into smaller specialized services (`ParserService`, `PersistenceService`).
+

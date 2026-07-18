@@ -1,19 +1,20 @@
-# Checklist: Review de Resiliência & Tolerância a Falhas
+# Checklist: Resilience & Fault Tolerance Review
 
-Este documento orienta a auditoria e a correção cirúrgica de timeouts de rede, idempotência, integridade de transações e estratégias de retry.
-
----
-
-## 🔄 Fase 1 — Auditoria (Localização de Evidências)
-* Mapear chamadas de rede sem `timeout` explícito definido.
-* Mapear operações de escrita contendo múltiplos passos sem bloco transacional.
-* Identificar falta de chave de idempotência em endpoints de processamento de eventos/webhooks.
-* Detectar retries imediatos em loops `while True` sem backoff exponencial.
+This document guides the audit and surgical fix of network timeouts, idempotency, transaction integrity, and retry strategies.
 
 ---
 
-## 🛠️ Fase 2 — Aplicação Cirúrgica
-* Injetar parâmetro de timeout rígido (ex: `timeout=5.0`) em todas as chamadas HTTP/DB.
-* Envolver escritas encadeadas em `with db.transaction():` garantindo rollback.
-* Adicionar checagem por Event ID/Hash antes de reprocessar webhooks.
-* Utilizar bibliotecas de retry com backoff exponencial e jitter (ex: `tenacity`).
+## 🔄 Phase 1 — Audit (Locating Evidence)
+* Map network calls without explicit `timeout` defined.
+* Map multi-step write operations lacking transactional blocks.
+* Identify missing idempotency keys in event/webhook processing endpoints.
+* Detect immediate retries in `while True` loops without exponential backoff.
+
+---
+
+## 🛠️ Phase 2 — Surgical Application
+* Inject strict timeout parameters (e.g. `timeout=5.0`) into all HTTP/DB calls.
+* Wrap chained writes in `with db.transaction():` ensuring rollback.
+* Add Event ID/Hash checks prior to reprocessing webhooks.
+* Use retry libraries with exponential backoff and jitter (e.g. `tenacity`).
+
