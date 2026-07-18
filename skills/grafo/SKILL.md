@@ -26,10 +26,13 @@ When registering or updating a note in the vault, identify the category and corr
 
 ## 🛠️ Execution Protocol
 
-1. **Pre-Flight (Duplicate Search)**: Prior to creating a new note, search the vault to verify if it already exists. If existing, update it rather than duplicating.
-2. **Metadata Formatting**: Every note MUST include YAML Frontmatter per the corresponding template in `resources/`.
-3. **Bidirectional Links**: Reference related existing notes using wikilink syntax `[[note-name]]`.
-4. **Persistence**: Save new notes or update existing ones in the vault.
+1. **Pre-Flight (Duplicate & Tag Search)**: 
+   * Search the vault to verify if the note already exists. If existing, update it rather than duplicating.
+   * Run the `tag_list` tool to inspect existing tags in the vault. **Reuse** existing tags instead of introducing minor variations (e.g., use `#api-rest` if it exists rather than generating `#api` or `#rest-api`).
+2. **Backlinks & Impact Check**: Prior to modifying any core conventions or global rules in `00-core-rules/`, read the note and inspect its `backlinks` to identify and alert the user of potential downstream impacts.
+3. **Metadata Formatting**: Every note MUST include YAML Frontmatter per the corresponding template in `resources/`.
+4. **Link Integrity**: Verify that any internal wikilink `[[note-name]]` targets an existing note (run a quick check using `search_simple` or `vault_list` if in doubt). Avoid orphan links unless creating the destination immediately.
+5. **Incremental Persistence (`vault_patch`)**: Prefer using `vault_patch` with `targetType: "frontmatter"` (for metadata updates) or `targetType: "heading"` (for logs/sections updates) rather than overwriting the entire file via `vault_write`.
 
 ---
 
@@ -45,6 +48,9 @@ When registering or updating a note in the vault, identify the category and corr
 
 - [ ] Does the note contain the full YAML Frontmatter block with `type`, `feature`, `project`, `date`, `description`, and `tags`?
 - [ ] Does the target path in the vault respect official structure (`00-core-rules/`, `01-concepcao/`, `02-auditorias/`)?
-- [ ] Were bidirectional links (`[[note]]`) included for related contexts?
+- [ ] Were existing tags validated via `tag_list` to prevent pollution?
+- [ ] Did you check `backlinks` if modifying any note in `00-core-rules/`?
+- [ ] Were bidirectional links (`[[note]]`) verified to prevent orphan links?
+- [ ] Was `vault_patch` prioritized for modifying existing files instead of full-file rewrites?
 - [ ] Was the vault persistence operation executed successfully?
 

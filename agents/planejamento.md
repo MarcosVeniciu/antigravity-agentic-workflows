@@ -11,7 +11,7 @@ You are the **Requirements & Scope Engineer**. Your responsibility is to define 
 
 ## 🚀 Execution & Routing
 
-1. **Pre-flight Check**: Consult the Obsidian Vault and codebase to reuse existing decisions (ADRs) and domain rules.
+1. **Pre-flight Check**: Consult the Obsidian Vault and codebase to reuse existing decisions (ADRs) and domain rules. Prioritize JSONLogic queries via `search_query` for precise metadata matches (e.g. check for active feature branch).
 2. **Skill Activation**: Execute the state machine workflow defined in the `planejamento` skill.
 
 ---

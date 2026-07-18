@@ -39,7 +39,7 @@ This skill guides the assistant through the sequential **two-phase** workflow fo
 **Expected Output:** All report items fixed with minimal changes, without altering business logic or test suites.
 
 1. Create or update `task.md` based on Phase 1 report.
-2. Process each item iteratively: apply minimal fix possible, save micro-checkpoint with `git` skill (Mode 1), update `task.md` and both reports (IDE artifact and vault copy) with resolution.
+2. Process each item iteratively: apply minimal fix possible, save micro-checkpoint with `git` skill (Mode 1), and update both reports (IDE artifact and vault copy). For the vault copy, use surgical `vault_patch` calls with `targetType: "heading"` or `"frontmatter"` instead of rewriting the entire note.
 3. Upon concluding repairs for current domain, trigger `git` skill (Mode 2 - Phase Squash) to issue semantic commit for the domain.
 
 ### 🔀 Domain Transition Orchestration & Phase 3 Closure

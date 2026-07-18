@@ -14,13 +14,13 @@ Manages **Phase 2 (Technical Design & SDD Contracts)**, bridging the gap between
 Consult references and templates for each step of the workflow:
 
 1. **Pre-flight & Context Reading**:
-   * Search the Obsidian Vault for the scope specification generated in Phase 1 (`01-concepcao/bdd-[feature-slug].md`).
-   * Read architecture rules and conventions in `00-core-rules/` and contract specifications in `01-concepcao/`.
+   * Search the Obsidian Vault for the scope specification generated in Phase 1 (`01-concepcao/bdd-[feature-slug].md`) using highly efficient JSONLogic `search_query` targeting type and feature.
+   * Read architecture rules and conventions in `00-core-rules/` and contract specifications in `01-concepcao/`. Check backlinks if modifying core rules.
    * Identify the active Git branch.
 
 2. **Generating Technical Design (SDD)**:
    * Consult the detailed guide in [references/sdd_execution.md](references/sdd_execution.md) to build the implementation plan, diagrams, and contract mocks.
-   * Use the base template structure in [resources/template_artefatos.md](resources/template_artefatos.md).
+   * Use the base template structure in [resources/template_artefatos.md](resources/template_artefatos.md), structuring a clean Frontmatter YAML block.
    * Generate the interactive artifact `implementation_plan.md` in the session directory with `UserFacing: true` and **`RequestFeedback: true`**.
 
 3. **Interactive Pause & User Approval**:

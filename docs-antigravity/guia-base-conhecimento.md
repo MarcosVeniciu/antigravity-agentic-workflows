@@ -159,3 +159,32 @@ Em vez de depender exclusivamente do caminho ou nome do arquivo:
 
 ### 🔄 Promoção de Regras (`Promote-on-Impact`)
 Caso durante a resolução de um bug em uma nota `type: pivot` seja descoberta uma diretriz que altera o padrão global do projeto, o agente deve **promover** essa decisão criando uma nota em `00-core-rules/adrs/` com `type: adr`, atualizando a base estática universal.
+
+---
+
+## 7. Práticas de Alta Eficiência com o Obsidian MCP (Instruções Operacionais)
+
+Para garantir o melhor aproveitamento do Obsidian MCP, todos os agentes devem seguir rigorosamente as práticas operacionais abaixo ao interagir com o cofre:
+
+### 🔍 7.1. Busca Estruturada por Frontmatter (`search_query`)
+* **Regra:** Sempre prefira a busca por metadados `search_query` (usando JsonLogic) à busca textual `search_simple` quando estiver rastreando documentos de ciclo de vida (SDDs, BDDs, Auditorias, Pivots).
+* **Eficiência:** Evita o carregamento e leitura desnecessária de corpos de texto, limitando a busca aos campos `type`, `feature`, e `project` do YAML Frontmatter.
+
+### 🏷️ 7.2. Higienização e Reutilização de Tags (`tag_list`)
+* **Regra:** **Antes** de criar qualquer nota ou adicionar novas tags a um documento existente, o agente deve executar a ferramenta `tag_list` para listar todas as tags em uso no cofre.
+* **Consistência:** Se uma tag conceitualmente idêntica existir (ex: `#api-rest` em vez de criar `#API` ou `#rest-api`), o agente **deve** reutilizar a tag existente. Isso previne a poluição e a fragmentação do grafo.
+
+### ⛓️ 7.3. Rastreabilidade de Impacto via Backlinks (`backlinks`)
+* **Regra:** Antes de modificar qualquer nota em `00-core-rules/` (especialmente `conventions.md` e ADRs), o agente deve inspecionar os `backlinks` retornados pelo `vault_read` da nota alvo.
+* **Análise de Impacto:** O agente deve analisar quais planos de feature (`type: sdd`) ou revisões em andamento dependem daquela regra, alertando o usuário sobre possíveis quebras de consistência na arquitetura antes de proceder.
+
+### 📝 7.4. Edição Cirúrgica de Conteúdo (`vault_patch`)
+* **Regra:** Evite reescrever arquivos inteiros utilizando `vault_write` para atualizações de progresso ou anexação de dados. Prefira `vault_patch`.
+* **Uso Recomendado:**
+  * Use `targetType: "frontmatter"` para mutações de metadados (ex: atualizar o status ou tags).
+  * Use `targetType: "heading"` para adicionar relatórios, checklists de auditoria ou novos logs de pivot sob um cabeçalho específico (ex: `# 3. Histórico de Pivots`).
+
+### 🔗 7.5. Prevenção de Links Órfãos
+* **Regra:** Ao criar links internos utilizando a sintaxe `[[Nome da Nota]]`, o agente deve primeiro validar se a nota destino realmente existe através de `search_simple` ou `vault_list`. 
+* **Higiene do Grafo:** Links para notas inexistentes são estritamente proibidos, exceto quando a criação da nova nota de destino faz parte do plano imediato e explícito do agente.
+

@@ -13,8 +13,8 @@ You are the **Technical Architect & Blueprint Generator**. You translate BDD spe
 
 1. **Pre-flight Check**:
    * Identify the active Git branch of the repository.
-   * Read the scope BDD specification in the Obsidian Vault under `01-concepcao/bdd-[feature-slug].md`.
-   * Consult the Obsidian Vault (`00-core-rules/` and `01-concepcao/`) to align the architectural proposal with existing domain rules and conventions.
+   * Locate and read the BDD specification in the Obsidian Vault using `search_query` (JSONLogic) targeting the active `feature` and `type: bdd`.
+   * Consult the Obsidian Vault (`00-core-rules/` and `01-concepcao/`) to align the architectural proposal with existing domain rules and conventions. Prioritize `search_query` and verify backlinks for global notes.
 2. **Skill Activation**: Execute the artifact generation and SDD architecture flow defined in the `artefatos` skill.
 
 ---

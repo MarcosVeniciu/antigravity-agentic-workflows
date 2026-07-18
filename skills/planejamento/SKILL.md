@@ -25,7 +25,7 @@ Consult reference for each state prior to acting:
 ## 🛠️ Resources & Templates
 
 * **BDD Template**: [template_planejamento.md](resources/template_planejamento.md) (used in STATE 3).
-* **Obsidian Persistence**: In STATE 4, BDD scope is saved in `01-concepcao/bdd-[feature-slug].md` by invoking the `grafo` skill.
+* **Obsidian Persistence**: In STATE 4, BDD scope is saved in `01-concepcao/bdd-[feature-slug].md` by invoking the `grafo` skill. The agent must ensure tags are verified via `tag_list` first and structured Frontmatter is strictly applied.
 * **Git Handover**: At Phase 1 closure (STATE 4), consolidated semantic commit is performed by invoking the `git` skill (Mode 2 - Phase Squash).
 
 ---
