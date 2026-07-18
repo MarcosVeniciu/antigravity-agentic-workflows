@@ -40,11 +40,17 @@ Esta skill orienta o assistente no fluxo sequencial de **duas fases** para audit
 
 1. Crie ou atualize o `task.md` a partir do relatório da Fase 1.
 2. Processe cada item iterativamente: aplique a menor correção possível, salve um micro-checkpoint com a skill `git` (Modo 1), atualize o `task.md` e ambos os relatórios (artefato IDE e cópia no vault) com a resolução.
-3. Ao concluir a esteira, acione a skill `git` (Modo 2 - Phase Squash) para emitir o commit semântico final da fase de revisão.
+3. Ao concluir os reparos do domínio atual, acione a skill `git` (Modo 2 - Phase Squash) para emitir o commit semântico do domínio.
 
-**Esteira de qualidade:** `geral` → `arquitetura` → `resiliencia` → `seguranca` → `performance` → `/docs`
+### 🔀 Orquestração de Transição entre Domínios e Encerramento da Fase 3
+- **Execução Encadeada / Default (`/review`)**: Inicia por `arquitetura`. A aprovação do relatório do usuário (`RequestFeedback: true`) autoriza a transição direta para o próximo domínio da esteira padrão (`arquitetura` ➔ `seguranca` ➔ `performance` ➔ `resiliencia`).
+- **Modo Qualidade Geral (`/review geral`)**: Ao concluir a auditoria de Qualidade Geral, o agente recomenda a transição para a Fase 4 (`/docs`) OU o início das revisões técnicas por `/review arquitetura`.
+- **Chamada Individual (`/review [domínio]`)**: Pode ser executada em qualquer ordem. Ao concluir um domínio individual, o agente lê a nota `02-auditorias/audit-[feature-slug].md` no vault, identifica quais dos 4 domínios técnicos ainda faltam e recomenda a execução de um dos restantes.
+- **Encerramento da Fase 3**: Quando todos os 4 domínios técnicos (`arquitetura`, `seguranca`, `performance`, `resiliencia`) ou o escopo planejado de auditoria estiverem concluídos e 100% validados (`[x]`), emita:
+  > **[NEXT STEP]** ➡️ *"🛡️ Todas as auditorias especializadas foram concluídas e validadas com sucesso. É recomendado que você inicie um novo chat para a Fase 4 de Documentação & Release. Execute `/docs` para iniciar."*
 
 ---
+
 
 ## ⛔ Regras & Restrições
 

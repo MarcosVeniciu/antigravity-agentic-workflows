@@ -34,7 +34,13 @@ Antes de concluir cada fase, valide autonomamente os seguintes pontos:
 * **Validação da Fase 1**:
   * O relatório `audit_report_[tipo].md` foi gerado no chat como artefato interativo (`UserFacing: true`, **`RequestFeedback: true`**), pausando a execução até a aprovação do usuário.
   * Uma cópia permanente do relatório foi salva no Obsidian Vault sob `02-auditorias/audit-[feature-slug].md` acionando a skill `grafo`.
-* **Validação da Fase 2**:
+* **Validação da Fase 2 & Redirecionamento NEXT STEP**:
   * O relatório `audit_report_[tipo].md` e a cópia no Obsidian Vault foram atualizados marcando os checkboxes `[x]` e preenchendo o campo de Resolução de cada item.
-  * Acione a skill `git` (Modo 2 - Phase Squash) ao finalizar a esteira de correções para gerar o commit semântico limpo de revisão.
-  * O comando para re-executar os testes é fornecido explicitamente ao usuário para validar que nada foi quebrado.
+  * Acione a skill `git` (Modo 2 - Phase Squash) ao finalizar a esteira de correções do domínio atual para gerar o commit semântico de revisão.
+  * **Comportamento das Instruções [NEXT STEP]**:
+    * **Ao finalizar `/review geral`**: Exiba a opção de avançar para a Fase 4 (`/docs`) ou prosseguir com os reviews técnicos (`/review arquitetura`):
+      > **[NEXT STEP]** ➡️ *"📋 Auditoria de Qualidade Geral concluída. Para ir à fase de documentação, é recomendado que você inicie um novo chat para a Fase 4 e execute `/docs`. Se desejar prosseguir com os reviews técnicos, execute `/review arquitetura`."*
+    * **Ao finalizar um domínio individual (`/review [domínio]`)**: Consulte os 4 domínios técnicos em `02-auditorias/audit-[feature-slug].md` e recomende um dos domínios restantes.
+    * **Ao concluir todos os domínios técnicos da Fase 3**: Exiba explicitamente o encerramento da fase:
+      > **[NEXT STEP]** ➡️ *"🛡️ Todas as auditorias especializadas foram concluídas e validadas com sucesso. É recomendado que você inicie um novo chat para a Fase 4 de Documentação & Release. Execute `/docs` para iniciar."*
+

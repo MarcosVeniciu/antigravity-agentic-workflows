@@ -33,4 +33,6 @@ Antes de concluir a execução, valide autonomamente os seguintes pontos:
 * **Cobertura Quadripartida**: Os testes cobrem Happy Path, Edge Cases, Exceções e Performance (Profiling Nativo com `print()`).
 * **Padrão AAA**: Todas as funções de teste estão estruturadas com Arrange-Act-Assert.
 * **Isolamento & Micro-Checkpoint**: Dependências externas estão mockadas. Acione a skill `git` (Modo 1) para salvar o checkpoint da suíte de testes vermelha.
-* **Hand-off**: O modelo exibiu a indicação clara para o usuário executar `/codigo` no próximo passo.
+* **Hand-off**: Ao concluir o suporte de testes e checkpoint de git (Modo 1), exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"🧪 Suíte de testes criada e falhando conforme o contrato SDD (Fase Red). O próximo passo é implementar o código de produção mínimo. Execute `/codigo` para iniciar a implementação."*
+

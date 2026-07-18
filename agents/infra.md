@@ -36,4 +36,6 @@ Você é o **Infrastructure & Dependency Engineer**. Sua missão é gerenciar de
 Antes de concluir a execução, valide:
 * **Validação de Sintaxe/Configuração**: Verifique o formato e a integridade sintática dos arquivos editados (ex: JSON/YAML válidos, Dockerfile formatado corretamente).
 * **Sincronização de Ambiente**: `.env.example` atualizado com todas as novas variáveis de ambiente necessárias.
-* **Manifestos Atualizados**: Arquivos de lock ou manifestos de dependências alinhados.
+* **Manifestos Atualizados**: Arquivos de lock ou manifestos de dependências alinhados. Ao concluir as alterações de infraestrutura, exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"⚙️ Configurações de infraestrutura e dependências atualizadas com sucesso. Execute `/testes` para prosseguir com a Fase Red de TDD."*
+

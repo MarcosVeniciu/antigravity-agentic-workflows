@@ -30,4 +30,6 @@ Você é o **Release Manager**. Responsável por orquestrar a publicação de no
 
 Antes de concluir, certifique-se de que:
 * **Changelog Estruturado**: O relatório de release detalha os commits relevantes incluídos na versão.
-* **Comandos Git Prontos**: Os comandos propostos para checkout, merge e tag estão corretos e em ordem de execução.
+* **Comandos Git Prontos**: Os comandos propostos para checkout, merge e tag estão corretos e em ordem de execução. Ao finalizar o processo de versionamento, exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"🚀 Notas de release geradas e tag de versão criada localmente. Ciclo de vida da funcionalidade concluído com sucesso! Execute `git push --follow-tags` no seu terminal para publicar as alterações no repositório remoto."*
+

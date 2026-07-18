@@ -34,4 +34,6 @@ Antes de concluir a execução, valide autonomamente:
 * **Suíte Verde**: O código de produção faz a suíte de testes passar sem modificar qualquer arquivo de teste.
 * **Micro-Checkpoints**: Durante o desenvolvimento, acione a skill `git` (Modo 1) a cada teste resolvido.
 * **Documentação Estruturada**: Todas as classes e funções expõem docstrings com tipos explícitos, princípios SOLID aplicados e referência `Ref: Obsidian note [[note-name]]`.
-* **Registro de Desvios & Encerramento**: Qualquer adaptação técnica foi registrada no Obsidian Vault acionando a skill `grafo`. Ao finalizar a suíte verde, acione a skill `git` (Modo 2 - Phase Squash) antes de recomendar `/refatorar`.
+* **Registro de Desvios & Encerramento**: Qualquer adaptação técnica foi registrada no Obsidian Vault acionando a skill `grafo`. Ao finalizar a suíte verde, acione a skill `git` (Modo 2 - Phase Squash) e exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"🟢 Código de produção implementado e suíte de testes 100% verde (Fase Green). O próximo passo é refatorar a estrutura do código. Execute `/refatorar` para iniciar a fase de refatoração Clean Code."*
+

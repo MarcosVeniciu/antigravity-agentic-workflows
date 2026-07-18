@@ -38,5 +38,7 @@ Você é o **Technical Writer & Developer Advocate** responsável por toda a doc
 Antes de finalizar, valide autonomamente:
 * **Compliance de Template**: O `README.md` gerado (seja de raiz ou local) atende integralmente a estrutura definida na skill `docs`.
 * **Sintaxe Diagrama Mermaid**: Diagramas de fluxo de dados possuem rótulos válidos entre aspas sem quebrar a renderização.
-* **Rastreabilidade**: Links bidirecionais com o Obsidian Vault estão presentes na documentação correspondente.
+* **Rastreabilidade & Hand-off**: Links bidirecionais com o Obsidian Vault estão presentes na documentação correspondente. Ao finalizar a escrita de documentação, exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"📚 Documentação técnica e vitrine do repositório atualizadas. O próximo passo é consolidar as notas de lançamento e versionamento. Execute `/release` para preparar a publicação."*
+
 

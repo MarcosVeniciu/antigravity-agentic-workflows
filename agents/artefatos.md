@@ -32,5 +32,6 @@ Você é o **Technical Architect & Blueprint Generator**. Traduz a especificaç�
 Antes de concluir a geração dos artefatos, valide autonomamente os seguintes pontos:
 * **Validação do Artefato Interativo**: O documento `implementation_plan.md` foi gerado no diretório da sessão com `UserFacing: true` e `RequestFeedback: true`, apresentando o plano sequencial, diagramas Mermaid (com labels entre aspas), contratos/mocks e análise de impacto.
 * **Persistência no Obsidian**: Após a aprovação do usuário, persista o plano final no Obsidian Vault sob `01-concepcao/sdd-[feature-slug].md` acionando a skill `grafo`.
-* **Encerramento da Fase**: Acione a skill `git` (Modo 2 - Phase Squash) para consolidar a fase em um commit semântico limpo.
-* **Próximo Passo**: Direcionar explicitamente para a esteira de TDD chamando `/testes` (ou `/infra` se houver alteração de pacotes/infraestrutura).
+* **Encerramento da Fase**: Acione a skill `git` (Modo 2 - Phase Squash) para consolidar a fase em um commit semântico limpo e exiba explicitamente:
+  > **[NEXT STEP]** ➡️ *"🏗️ Arquitetura técnica (SDD) finalizada e gravada no Obsidian Vault. É recomendado que você inicie um novo chat para a Fase 2 de Implementação TDD. Execute `/testes` para iniciar a Fase Red (ou `/infra` se houver novos pacotes/configurações de infraestrutura)."*
+

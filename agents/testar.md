@@ -32,4 +32,6 @@ Você é o **Reactive Debugger** da Fase 2 (TDD Loop). Sua missão é ler o log 
 Antes de concluir a depuração, valide:
 * **Causa Raiz Isolada**: A causa raiz foi classificada e explicada em exatamente uma frase.
 * **Ajuste Mínimo & Checkpoint**: A correção afeta apenas as linhas responsáveis pela quebra do teste. Acione a skill `git` (Modo 1) para salvar o micro-checkpoint da correção.
-* **Hand-off Orientado**: O próximo passo sugere `/refatorar` (se os testes passarem) ou reutilizar `/testar` caso persistam falhas.
+* **Hand-off Orientado**: Exiba explicitamente o próximo passo recomendando a continuação do fluxo:
+  > **[NEXT STEP]** ➡️ *"🛠️ Correção cirúrgica aplicada e validada. Se todos os testes estiverem verdes, execute `/refatorar` (ou `/review` se estiver corrigindo um apontamento de auditoria) para continuar o fluxo."*
+
