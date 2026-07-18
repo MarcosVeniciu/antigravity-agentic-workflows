@@ -20,6 +20,8 @@ Ao registrar ou atualizar uma nota no vault, identifique a categoria e a pasta d
 | **Regra de Domínio / Negócio** | `domain_rule` | `00-core-rules/domain-glossary.md` | [template_domain_rule.md](resources/template_domain_rule.md) |
 | **Convenção de Código** | `convention` | `00-core-rules/conventions.md` | [template_domain_rule.md](resources/template_domain_rule.md) |
 
+> 💡 **Separação de Responsabilidades**: Artefatos do ciclo de vida da feature (`bdd`, `sdd`, `audit`) são formatados e salvos diretamente por suas respectivas skills de domínio (`planejamento`, `artefatos`, `review`) utilizando seus próprios templates locais. A skill `grafo` foca exclusivamente no gerenciamento atômico de decisões, convenções e pivots.
+
 ---
 
 ## 🛠️ Protocolo de Execução

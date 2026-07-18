@@ -23,7 +23,7 @@ Ativado quando o alvo for a raiz do repositório ou o contexto for onboarding/se
 
 1. **Pre-flight & Inspeção Global**:
    * Leia o `README.md` atual na raiz do projeto (se existir).
-   * Consulte o Obsidian Vault (`09-scopes-and-features/`, `05-architecture-map/`, `07-environment-setup/`) para entender o escopo do projeto, stack e requisitos de ambiente.
+   * Consulte o Obsidian Vault (`01-concepcao/` e `00-core-rules/`) para entender o escopo do projeto, stack e requisitos de ambiente.
    * Verifique manifestos de dependência (`package.json`, `pyproject.toml`, etc.) para extrair os comandos reais de setup.
 
 2. **Construção da Vitrine (`README.md` Raiz)**:
@@ -35,7 +35,7 @@ Ativado quando o alvo for um subdiretório ou módulo específico da aplicação
 
 1. **Pre-flight & Análise de Módulo**:
    * Inspecione o diretório alvo e mapeie suas classes, funções, DTOs e fluxos de entrada/saída.
-   * Consulte o Obsidian Vault (`05-architecture-map/`) para identificar notas associadas ao módulo.
+   * Consulte o Obsidian Vault (`01-concepcao/` ou `00-core-rules/`) para identificar notas associadas ao módulo.
 
 2. **Construção da Documentação (`README.md` Local)**:
    * Utilize a estrutura base em `resources/template_readme_local.md`.

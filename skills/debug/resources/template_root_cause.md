@@ -30,4 +30,4 @@
 
 ## 5. Plano de Prevenção & Testes
 - [ ] Criar teste de regressão em `[caminho_teste]` reproduzindo o cenário.
-- [ ] Salvar resolução no Obsidian Vault em `03-pivots-and-bugs/bug-[slug].md`.
+- [ ] Salvar resolução no Obsidian Vault em `02-auditorias/pivots-[feature-slug].md`.

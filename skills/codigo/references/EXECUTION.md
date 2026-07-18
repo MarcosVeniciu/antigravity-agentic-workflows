@@ -10,7 +10,7 @@ Antes de escrever código de produção:
 
 1. **Carregar o SDD**: Consulte no Obsidian Vault a nota `01-concepcao/sdd-[feature-slug].md` (`type: sdd`) para garantir alinhamento com a arquitetura definida.
 2. **Carregar a Suíte de Testes**: Verifique se os testes gerados pelo `/testes` estão disponíveis no contexto. Se não estiverem, **PAUSE** e solicite a inclusão dos arquivos de teste.
-3. **Consultar o Vault**: Busque em `02-conventions/` (padrões de código) e `04-domain-rules/` (regras de negócio) no Obsidian Vault.
+3. **Consultar o Vault**: Busque em `00-core-rules/conventions.md` (padrões de código) e `00-core-rules/domain-glossary.md` (regras de negócio) no Obsidian Vault.
 
 ---
 

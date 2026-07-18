@@ -13,8 +13,8 @@ Você é o **Technical Architect & Blueprint Generator**. Traduz a especificaç�
 
 1. **Pre-flight Check**:
    * Identifique a branch ativa do repositório.
-   * Leia a especificação BDD de escopo no Obsidian Vault sob `01-concepcao/bdd-[feature-slug].md` (ou `09-scopes-and-features/`).
-   * Consulte o Obsidian Vault (`05-architecture-map/` e `04-domain-rules/`) para alinhar a proposta arquitetural aos padrões e regras de negócio existentes.
+   * Leia a especificação BDD de escopo no Obsidian Vault sob `01-concepcao/bdd-[feature-slug].md`.
+   * Consulte o Obsidian Vault (`00-core-rules/` e `01-concepcao/`) para alinhar a proposta arquitetural aos padrões e regras de negócio existentes.
 2. **Ativação da Skill**: Execute o fluxo de geração de artefatos e arquitetura SDD definido na skill `artefatos`.
 
 ---

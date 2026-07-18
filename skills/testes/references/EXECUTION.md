@@ -9,7 +9,7 @@
 Antes de criar qualquer arquivo de teste:
 
 1. **Buscar SDD no Obsidian Vault**: Localize a nota `01-concepcao/sdd-[feature-slug].md` contendo a arquitetura, assinaturas de API e diagramas aprovados.
-2. **Consultar Convenções (`02-conventions/`)**: Verifique as normas do projeto para suítes de teste (diretórios, sufixos de arquivo e bibliotecas homologadas).
+2. **Consultar Convenções (`00-core-rules/conventions.md`)**: Verifique as normas do projeto para suítes de teste (diretórios, sufixos de arquivo e bibliotecas homologadas).
 3. **Inspecionar Testes Existentes**: Avalie fixtures e utilitários já disponíveis no repositório para evitar duplicação.
 
 ---

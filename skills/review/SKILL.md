@@ -9,15 +9,15 @@ Esta skill orienta o assistente no fluxo sequencial de **duas fases** para audit
 
 ---
 
-## 🎯 Mapeamento de Domínios & Templates
+## 🎯 Mapeamento de Domínios, Templates & Checklists
 
-| Gatilho / Subcomando | Foco | Template em `resources/` |
-|---|---|---|
-| `/review` (Default) | Qualidade geral, legibilidade, alucinações de IA, docstrings e testes | [template_geral.md](resources/template_geral.md) |
-| `/review arquitetura` | Isolamento de camadas, acoplamento, Inversão de Dependência, DTOs | [template_arquitetura.md](resources/template_arquitetura.md) |
-| `/review seguranca` | OWASP Top 10, injeção de SQL/OS, sanitização, segredos hardcoded | [template_seguranca.md](resources/template_seguranca.md) |
-| `/review performance` | Complexidade ciclomática V(G) > 10, Big-O, N+1 no ORM, geradores | [template_performance.md](resources/template_performance.md) |
-| `/review resiliencia` | Timeouts de rede, idempotência, transações no banco, retries | [template_resiliencia.md](resources/template_resiliencia.md) |
+| Gatilho / Subcomando | Foco | Template em `resources/` | Checklist em `references/` |
+|---|---|---|---|
+| `/review` (Default) | Qualidade geral, legibilidade, alucinações de IA, docstrings e testes | [template_geral.md](resources/template_geral.md) | [checklist_geral.md](references/checklist_geral.md) |
+| `/review arquitetura` | Isolamento de camadas, acoplamento, Inversão de Dependência, DTOs | [template_arquitetura.md](resources/template_arquitetura.md) | [checklist_arquitetura.md](references/checklist_arquitetura.md) |
+| `/review seguranca` | OWASP Top 10, injeção de SQL/OS, sanitização, segredos hardcoded | [template_seguranca.md](resources/template_seguranca.md) | [checklist_seguranca.md](references/checklist_seguranca.md) |
+| `/review performance` | Complexidade ciclomática V(G) > 10, Big-O, N+1 no ORM, geradores | [template_performance.md](resources/template_performance.md) | [checklist_performance.md](references/checklist_performance.md) |
+| `/review resiliencia` | Timeouts de rede, idempotência, transações no banco, retries | [template_resiliencia.md](resources/template_resiliencia.md) | [checklist_resiliencia.md](references/checklist_resiliencia.md) |
 
 ---
 
@@ -26,10 +26,10 @@ Esta skill orienta o assistente no fluxo sequencial de **duas fases** para audit
 **Resultado esperado:** Um relatório de auditoria técnica completo emitido como artefato interativo e persistido no vault via skill `grafo`.
 
 1. **Coleta de Contexto**: Identifique a branch ativa e os arquivos alterados/criados. Cruze com o SDD da feature no vault para contextualizar a análise.
-2. **Execução**: Carregue o template do domínio correspondente e aplique os critérios de `references/checklists.md`. Não altere nenhum arquivo de código-fonte durante a Fase 1.
+2. **Execução**: Carregue o template do domínio correspondente de `resources/` e aplique os critérios do checklist de `references/checklist_[tipo].md`. Não altere nenhum arquivo de código-fonte durante a Fase 1.
 3. **Emissão do Relatório**:
    * **Artefato interativo**: `audit_report_[tipo].md` com `RequestFeedback: true`.
-   * **Vault**: Salve em `10-review-reports/{projeto}_{YYYY-MM-DD}_[descrição]_[tipo].md` acionando a skill `grafo`.
+   * **Vault**: Salve em `02-auditorias/audit-[feature-slug].md` acionando a skill `grafo`.
 4. Aguarde a aprovação do usuário (Proceed) antes de avançar à Fase 2.
 
 ---

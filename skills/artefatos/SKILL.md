@@ -15,7 +15,7 @@ Consulte as referências e templates para cada etapa do fluxo:
 
 1. **Pre-flight & Leitura de Contexto**:
    * Busque no Obsidian Vault a especificação de escopo gerada na Fase 1 (`01-concepcao/bdd-[feature-slug].md`).
-   * Leia as regras de arquitetura em `05-architecture-map/` e `04-domain-rules/`.
+   * Leia as regras de arquitetura e convenções em `00-core-rules/` e especificações de contrato em `01-concepcao/`.
    * Identifique a branch Git ativa.
 
 2. **Geração do Desenho Técnico (SDD)**:
@@ -28,7 +28,7 @@ Consulte as referências e templates para cada etapa do fluxo:
    * O assistente aguarda a confirmação/feedback do usuário antes de prosseguir para a gravação no Vault.
 
 4. **Persistência no Obsidian Vault & Handover**:
-   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` (ou `05-architecture-map/`) acionando a skill `grafo`.
+   * Salve o conteúdo do plano aprovado no vault em `01-concepcao/sdd-[feature-slug].md` acionando a skill `grafo`.
    * Adicione o link bidirecional para o escopo BDD originário (`[[bdd-feature-slug]]`).
    * Acione a skill `git` (Modo 2 - Phase Squash) para consolidar a fase em um commit semântico limpo.
    * Apresente ao usuário a instrução da próxima etapa (sugerir `/testes` ou `/infra`).

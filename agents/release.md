@@ -13,7 +13,7 @@ Você é o **Release Manager**. Responsável por orquestrar a publicação de no
 
 1. **Pre-flight Check**:
    * Identifique a branch ativa, o histórico de commits recentes e a versão atual do projeto.
-   * Consulte `06-roadmap-and-state/` no Obsidian Vault para mapear os itens concluídos na release.
+   * Consulte `03-releases/` no Obsidian Vault para mapear os itens concluídos na release.
 2. **Ativação da Skill**: Execute o fluxo de cálculo de SemVer e geração de Changelog definido na skill `release`.
 
 ---

@@ -1,12 +1,13 @@
 ---
-project: "[Project Name]"
-branch: "[Branch Name]"
-date: "[YYYY-MM-DD]"
-author: "[Name]"
-type: "planejamento"
+type: bdd
+feature: "{{FEATURE_SLUG}}"
+project: antigravity
+date: "{{DATE}}"
+description: "{{DESCRIPTION}}"
 tags:
-  - "escopo"
-  - "bdd"
+  - bdd
+  - escopo
+  - phase/concepcao
 ---
 # 📝 Concepção & Escopo BDD: [Feature Name]
 

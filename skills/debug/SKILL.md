@@ -26,7 +26,7 @@ Consulte a metodologia detalhada em:
 
 1. **Pre-flight & Extração de Evidências**:
    * Analise o log/stacktrace fornecido pelo usuário (exceção, status HTTP, componente afetado).
-   * Consulte no Obsidian Vault `03-pivots-and-bugs/` e `07-environment-setup/` para mapear bugs similares resolvidos no passado.
+   * Consulte no Obsidian Vault `02-auditorias/` (`pivots-[feature-slug].md`) e `00-core-rules/` para mapear bugs similares resolvidos no passado.
 
 2. **Formulação de Hipóteses & Causa Raiz**:
    * Elabore 2 hipóteses ranqueadas por probabilidade baseadas no fluxo de execução dos 5 Whys.
@@ -37,7 +37,7 @@ Consulte a metodologia detalhada em:
    * Aguarde a aprovação do usuário (botão **Proceed**) antes de editar qualquer linha de código.
 
 4. **Persistência no Obsidian Vault**:
-   * Após aprovação, sugira documentar a resolução em `03-pivots-and-bugs/bug-[slug].md` via a skill transversal `grafo`.
+   * Após aprovação, sugira documentar a resolução em `02-auditorias/pivots-[feature-slug].md` via a skill transversal `grafo`.
 
 ---
 
@@ -54,4 +54,4 @@ Consulte a metodologia detalhada em:
 - [ ] As 2 hipóteses foram analisadas com prós e contras no artefato?
 - [ ] O documento `root_cause_analysis.md` foi emitido com `RequestFeedback: true`?
 - [ ] A solução prevê um teste de regressão para impedir o retorno da falha?
-- [ ] Foi sugerida a persistência do aprendizado no vault sob `03-pivots-and-bugs/`?
+- [ ] Foi sugerida a persistência do aprendizado no vault sob `02-auditorias/pivots-[feature-slug].md`?

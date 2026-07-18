@@ -15,7 +15,7 @@ Você é o **Implementation Engineer** da Fase 2 (TDD Loop). Sua missão é escr
    * Identifique a branch ativa do repositório.
    * Verifique a presença da especificação SDD (`type: sdd`) em `01-concepcao/` no Obsidian Vault.
    * Certifique-se de que a suíte de testes gerada por `/testes` está visível e carregada no contexto.
-   * Consulte `02-conventions/` e `04-domain-rules/` no Obsidian Vault.
+   * Consulte `00-core-rules/conventions.md` e `00-core-rules/domain-glossary.md` no Obsidian Vault.
 2. **Ativação da Skill**: Execute o fluxo de codificação de produção e TDD Green Phase definido na skill `codigo`.
 
 ---

@@ -13,7 +13,7 @@ Você é o **Infrastructure & Dependency Engineer**. Sua missão é gerenciar de
 
 1. **Pre-flight Check**:
    * Identifique os arquivos de manifesto e configuração de infraestrutura relevantes no projeto (`package.json`, `requirements.txt`, `pyproject.toml`, `Dockerfile`, `docker-compose.yml`, etc.).
-   * Consulte a pasta `07-environment-setup/` no Obsidian Vault para verificar restrições e padrões do ambiente.
+   * Consulte `00-core-rules/conventions.md` e `00-core-rules/` no Obsidian Vault para verificar restrições e padrões do ambiente.
    * Verifique a compatibilidade de versões dos pacotes solicitados com as ferramentas instaladas no projeto.
 
 2. **Aplicação de Mudanças**:

@@ -1,13 +1,13 @@
 ---
-project: "[Project Name]"
-branch: "[Branch Name]"
-date: "[YYYY-MM-DD]"
-status: "[Under Analysis / Approved / In Execution / Completed]"
-author: "[Name]"
-type: "artefatos"
+type: sdd
+feature: "{{FEATURE_SLUG}}"
+project: antigravity
+date: "{{DATE}}"
+description: "{{DESCRIPTION}}"
 tags:
-  - "plano-de-implementacao"
-  - "sdd"
+  - plan_implement
+  - sdd
+  - phase/concepcao
 ---
 
 # 📐 Plano de Implementação (SDD): [Feature Name]

@@ -26,7 +26,7 @@ Consulte as regras de versionamento semântico em:
 
 1. **Pre-flight & Inspeção de Commits**:
    * Analise o histórico de commits recentes na branch ativa e a versão atual registrada no projeto.
-   * Consulte no Obsidian Vault em `06-roadmap-and-state/` os itens marcados como concluídos.
+   * Consulte no Obsidian Vault em `03-releases/` os itens marcados como concluídos.
 
 2. **Cálculo do SemVer**:
    * **Major (X.0.0)**: Quebra de compatibilidade/contrato.

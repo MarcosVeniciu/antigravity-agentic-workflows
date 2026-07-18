@@ -8,7 +8,7 @@
 
 Antes de refatorar qualquer arquivo:
 1. **Verificar Cobertura de Testes**: Certifique-se de que os testes existentes estão passando verdes. Nunca refatore código sem cobertura de testes funcional.
-2. **Consultar Convenções (`02-conventions/`)**: Garanta que os nomes extraídos e padrões estejam alinhados com as diretrizes do projeto no Obsidian Vault.
+2. **Consultar Convenções (`00-core-rules/conventions.md`)**: Garanta que os nomes extraídos e padrões estejam alinhados com as diretrizes do projeto no Obsidian Vault.
 
 ---
 
