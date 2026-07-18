@@ -18,9 +18,9 @@ On the very first user message of a chat, execute context alignment before answe
 3. Start your response with this exact header:
 
 ```text
-🤖 Antigravity ativo na branch: `[Nome da Branch]`
-📂 Contexto carregado do Obsidian: `[Lista de arquivos lidos]`
-🎯 Objetivo atual da fase: `[Resumo de 1 frase do objetivo da fase]`
+* 🤖 Antigravity ativo na branch: `[Nome da Branch]`
+* 📂 Contexto carregado do Obsidian: `[Lista de arquivos lidos]`
+* 🎯 Objetivo atual da fase: `[Resumo de 1 frase do objetivo da fase]`
 ```
 
 ---
@@ -37,3 +37,14 @@ Query the local vault relative to root BEFORE diagnosis, specs, or code changes.
 NotebookLM is strictly **user-governed** for external manuals and macro research.
 * **Autonomous Query:** PROHIBITED.
 * **Execution Rule:** Only query NotebookLM if explicitly commanded by the user OR after asking and receiving explicit user permission.
+
+---
+
+## 4. TERMINAL & COMMAND EXECUTION RULES
+
+* **Execution Restriction:** Do not execute terminal commands for running or executing code unless explicitly requested by the user.
+* **Manual Execution Commands:** Always show the commands in the chat for the user to run them manually.
+* **Command Formatting:** Format all manual commands using ` ```bash ` code blocks.
+* **Single Command per Block:** Present exactly one command per code block. Never group multiple commands or write multi-line commands in a single block; if there are multiple commands, separate them into individual blocks.
+* **IDE Allowed Commands Exception:** The only exception to this rule is the set of commands in the IDE's allowed list that the agent is permitted to execute directly in the terminal. All other commands must be displayed in the chat for the user to execute.
+
