@@ -9,27 +9,21 @@ tags:
   - escopo
   - phase/concepcao
 ---
-# 📝 Concepção & Escopo BDD: [Feature Name]
+# 📝 Concepção & Escopo BDD: {{FEATURE_NAME}}
 
 ## 1. Solução Escolhida (Decisão da Fase 1)
-[Resumo da solução técnica aprovada na fase de debate, destacando a abordagem selecionada e as premissas adotadas]
+{{DECISION_SUMMARY}}
 
 ## 2. Especificação de Comportamento (BDD)
-Funcionalidade: [Feature Name]
-  Para que [benefício ou valor de negócio]
-  Como um [papel de usuário ou componente do sistema]
-  Eu quero [ação ou desejo funcional]
+Funcionalidade: {{FEATURE_NAME}}
+  Para que {{BUSINESS_VALUE}}
+  Como um {{USER_ROLE}}
+  Eu quero {{FUNCTIONAL_DESIRE}}
 
-  Cenário: [Nome do Cenário 1]
-    Dado que [contexto inicial / pré-condição]
-    E [outra pré-condição, se houver]
-    Quando [ação principal executada]
-    Então [resultado observável esperado / pós-condição]
-    E [outro resultado esperado, se houver]
-
-  Cenário: [Nome do Cenário 2]
-    ...
+  Cenário: {{SCENARIO_1}}
+    Dado que {{CONTEXT}}
+    Quando {{ACTION}}
+    Então {{EXPECTED_RESULT}}
 
 ## 3. Contexto Relacionado & ADRs
-- [[link-para-adrs-ou-regras-no-vault]]
-- [Outras referências relevantes consultadas no projeto]
+- [[{{OBSIDIAN_LINK}}]]

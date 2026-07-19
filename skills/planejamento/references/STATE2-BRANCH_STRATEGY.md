@@ -1,30 +1,16 @@
-# STATE 2: BRANCH STRATEGY
+# STATE 2: BRANCH STRATEGY (Governança Git Flow)
 
-Defina a estratégia de versionamento Git Flow para o escopo aprovado.
+Você está no STATE 2. O objetivo aqui é garantir a saúde e a rastreabilidade do histórico de versionamento do repositório antes de documentar o escopo final.
 
----
+## 📌 Diretrizes de Execução
+1. **Auditoria de Branch**: Execute o script local `scripts/validate_branch.sh` para verificar em qual branch o desenvolvedor está situado.
+2. **Geração do Artefato**: Crie o arquivo `estrategia_branch.md` configurado com `RequestFeedback: true`.
 
-## 📌 Diretrizes
-1. **Contexto Git**: Inspecione autonomamente a branch ativa e os commits recentes.
-2. **Gerar Artefato**: Crie `estrategia_branch.md` (`UserFacing: true`, `RequestFeedback: true`).
-
-## 📄 Estrutura do Artefato
-- Diagnóstico da branch atual.
-- Proposta da nova branch (`feature/`, `fix/`, `refactor/`).
-- Bloco de código isolado contendo apenas o comando de checkout (sem `&&` ou `;`):
+## 📄 Estrutura Exigida do Artefato
+- **Diagnóstico da Branch**: Informar a ramificação atual e alertar se ela viola o Git Flow.
+- **Comando de Checkout Limpo**: Forneça um bloco de código markdown ISOLADO contendo unicamente o comando de criação da branch sem concatenadores (`&&` ou `;`):
   ```bash
   git checkout -b feature/nome-da-feature
   ```
-     - **Guia de Interação por Botões da UI**:
-       > *Use o botão de **Copiar** no bloco de código acima, execute o comando no seu terminal e clique em **Proceed** para avançar para a especificação do escopo BDD.*
 
-3. **Restrições de Formatação**:
-   - Não encadeie comandos de terminal com `&&` ou `;`. O bloco deve conter o comando limpo para cópia imediata.
-
----
-
-## ✅ Evidência de Sucesso
-- Artefato `estrategia_branch.md` com `RequestFeedback: true`.
-- Nome da branch no padrão da convenção (`feature/`, `fix/`, `refactor/`).
-- Bloco de código limpo com comando único.
-
+**Instruções de UI:** Instrua o usuário a usar o botão "Copiar" nativo da interface no bloco de código acima, rodar em seu terminal e, em seguida, clicar em Proceed para avançar.

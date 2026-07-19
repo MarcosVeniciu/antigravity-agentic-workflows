@@ -1,24 +1,12 @@
-# STATE 3: SCOPE CLOSURE
+# STATE 3: SCOPE CLOSURE (Modelagem Gherkin BDD)
 
-Consolide a especificação do escopo em BDD Gherkin.
+Você está no STATE 3. O objetivo aqui é fechar o escopo funcional transformando as discussões do debate em um contrato comportamental incontestável.
 
----
+## 📌 Diretrizes de Execução
+1. **Coleta de Metadados**: Extraia dinamicamente o nome final da branch criada no passo anterior e converta o título da feature em um slug válido.
+2. **Geração do Artefato**: Crie o arquivo `especificacao_escopo_bdd.md` a partir do modelo bruto contido em `resources/template_planejamento.md`, configurado com `RequestFeedback: true`.
 
-## 📌 Diretrizes
-1. **Captura de Metadados**: Obtenha o nome do repositório e a branch criada/ativa.
-2. **Gerar Artefato**: Crie `especificacao_escopo_bdd.md` (`UserFacing: true`, `RequestFeedback: true`) a partir do template [template_planejamento.md](../resources/template_planejamento.md).
-
-## 📄 Estrutura do Artefato
-- Decisão Técnica Escolhida (da proposta do STATE 1).
-- Metadados do Projeto e Branch (capturados no STATE 2).
-- Cenários BDD puramente em Gherkin (`Dado/Quando/Então`).
-- Links e referências do Obsidian Vault.
-- Orientação: Clicar em **Proceed** para aprovar o escopo e autorizar a persistência no Obsidian.
-
----
-
-## ✅ Evidência de Sucesso
-- Artefato gerado com base no template em `skills/planejamento/resources/template_planejamento.md`.
-- Todos os cenários em BDD puro (`Dado...`, `Quando...`, `Então...`).
-- Configurado com `RequestFeedback: true`.
-
+## 📄 Estrutura Exigida do Artefato
+- **Solução Consensualizada**: Resumo breve de qual abordagem do STATE 1 foi a vencedora.
+- **Cenários em BDD Puro**: Escrita estrita em sintaxe Gherkin (`Dado / Quando / Então`), cobrindo o fluxo feliz e caminhos de exceção discutidos.
+- **Instruções de UI**: Indicar que ao clicar em **Proceed**, o usuário aprova e carimba o escopo definitivo, autorizando sua persistência permanente no cofre do Obsidian.
