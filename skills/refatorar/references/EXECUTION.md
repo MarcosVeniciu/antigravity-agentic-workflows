@@ -1,49 +1,33 @@
-# Manual de Execução Clean Code Specialist (`/refatorar`)
+# Manual de Execução: Clean Code Specialist (`/refatorar`)
 
-**MODO DE EXECUÇÃO ATIVO:** O gatilho `/refatorar` foi acionado. Você é o **Clean Code Specialist**. Sua missão é refatorar estruturalmente o código recém-desenvolvido na fase de implementação, melhorando seu design e legibilidade mantendo 100% de integridade dos testes.
-
----
-
-## 1. Pre-Flight: Verificação de Segurança
-
-Antes de refatorar qualquer arquivo:
-1. **Verificar Cobertura de Testes**: Certifique-se de que os testes existentes estão passando verdes. Nunca refatore código sem cobertura de testes funcional.
-2. **Consultar Convenções (`00-core-rules/conventions.md`)**: Garanta que os nomes extraídos e padrões estejam alinhados com as diretrizes do projeto no Obsidian Vault.
+Este guia detalha os padrões técnicos para eliminação de Code Smells e aplicação de princípios SOLID durante a Refactor Phase.
 
 ---
 
-## 2. Catálogo de Refatorações & Princípios
+## 1. Catálogo de Refatorações Recomendadas
 
-### 2.1. Checklist de Tarefas (`task.md`)
+### 1.1. Guard Clauses (Eliminação de Aninhamento Profundo)
+* **Sintaxe/Problema**: Retornos aninhados dentro de múltiplos blocos `if/else`. Aumenta a complexidade ciclomática.
+* **Solução**: Inverta a lógica. Valide as condições de borda/erro no início da função e retorne ou levante exceções imediatamente.
 
-Identifique os alvos de refatoração no código e monte a lista de tarefas:
+### 1.2. Extract Function / Method (SRP - Single Responsibility)
+* **Sintaxe/Problema**: Métodos que realizam validação, cálculo, formatação e persistência no mesmo bloco de código.
+* **Solução**: Isole sub-tarefas em funções privadas/internas com nomes declarativos (ex: `_validar_payload()`) e tipagem explícita.
 
-- `[ ]` **Alvo:** `funcao_ou_classe`
-  - **Smell:** SRP / Aninhamento Profundo / Código Duplicado / Número Mágico
-  - **Ação:** Extrair função auxiliar / Guard Clause / Substituir por constante
+### 1.3. Constantes Nomeadas (Eliminação de Magic Numbers)
+* **Sintaxe/Problema**: Números, strings ou valores literais repetidos na lógica (ex: `if status == 3:` ou `taxa = val * 0.08`).
+* **Solução**: Substitua por constantes explicitamente nomeadas em UPPER_CASE (ex: `STATUS_PROCESSANDO = 3`) no topo do módulo ou classe.
 
-*Processe um item por vez, atualizando o `task.md` iterativamente (`[/]` -> `[x]`).*
-
-### 2.2. Técnicas Recomendadas
-
-Aplique as técnicas de Clean Code mais adequadas ao contexto: Guard Clauses (retornos precoces), Extração de Funções (>20 linhas), Constantes Nomeadas e Desacoplamento (DIP/SRP).
-
----
-
-## 3. Segurança & Restrições
-
-* **🚫 NÃO adicione novas funcionalidades.**
-* **🚫 NÃO altere as assinaturas públicas dos testes.**
-* **✅ Atualize docstrings** se a refatoração extraiu novas exceções ou alterou a organização interna.
+### 1.4. Inversão de Dependência (DIP)
+* **Sintaxe/Problema**: Instanciação direta de serviços externos, repositórios ou integrações dentro do domínio de negócio.
+* **Solução**: Injete dependências via construtor utilizando interfaces ou abstrações genéricas.
 
 ---
 
-## 4. Formato de Saída
+## 2. Validação Pós-Refatoração
 
-1. Liste para cada refatoração efetuada:
-   - **O Quê:** Elemento refatorado.
-   - **Por Quê:** Code Smell ou Princípio SOLID abordado.
-   - **Como:** Técnica aplicada.
-2. Apresente os blocos de código refatorados.
-3. Forneça o comando de validação dos testes em um bloco `bash` isolado.
-4. Ao concluir, sugira abertura de um novo chat efêmero para a Fase 3 (`/review`).
+- [ ] Funções possuem apenas um nível de abstração?
+- [ ] Módulos/Classes respeitam o princípio SRP (Single Responsibility)?
+- [ ] Todas as constantes mágicas foram substituídas por nomes descritivos?
+- [ ] Docstrings e Type Hints foram atualizados para novas funções extraídas?
+- [ ] A suíte inteira de testes rodou e continua 100% verde?

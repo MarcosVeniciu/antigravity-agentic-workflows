@@ -1,41 +1,41 @@
 ---
 name: "refatorar"
-description: "Structural refactoring and Clean Code skill. Applies SOLID principles, eliminates Code Smells, and optimizes readability without altering behavior."
+description: "Habilidade técnica de refatoração estrutural, Clean Code e SOLID. Focada em eliminar Code Smells (SRP, nesting, magic numbers) e otimizar legibilidade, exigindo 100% de testes verdes."
 ---
 
-# Skill: Clean Code & Structural Refactoring (`skills/refatorar`)
+# Skill: Clean Code & Refatoração Estrutural (`skills/refatorar`)
 
-Manages the final step of the TDD cycle (Refactor Phase), enhancing internal design, reducing cyclomatic complexity, and applying SOLID principles to fully functional, 100% green code. Always communicate with the user in Portuguese.
-
----
-
-## 🛠️ Execution Guide
-
-Consult detailed operational instructions in the reference file:
-* [Clean Code Specialist Execution Guide](references/EXECUTION.md)
+Esta habilidade rege as regras de negócio para a reestruturação e melhoria do design interno do código funcional. Nenhuma alteração deve quebrar testes ou alterar contratos comportamentais. Sempre comunique-se com o usuário em Português.
 
 ---
 
-## 📁 Resources & Templates
+## 📖 Recursos e Documentação sob Demanda
 
-* **Refactoring Checklist Template (`task.md`)**: [refactor_checklist_template.md](resources/refactor_checklist_template.md)
+Quando o workflow solicitar ou houver dúvida sobre as técnicas, acesse os recursos abaixo via ferramenta `view_file` (ou gere o artefato usando o template):
 
----
-
-## ⛔ Universal Rules & Constraints
-
-1. **Preserve Behavior**: No refactoring may alter the output or contracts of previously tested classes/functions.
-2. **Do Not Break Tests**: If any test fails during refactoring, the change must be reverted immediately.
-3. **Eliminate Code Smells**: Focus on long functions (>20 lines), deep nesting, magic numbers, and duplication.
-4. **Micro-Checkpoints & Squash**: Save a micro-checkpoint using the `git` skill (Mode 1) after refactoring each component. Upon completing all refactoring, trigger the `git` skill (Mode 2 - Phase Squash) to consolidate Phase 2.
+* **Manual Detalhado de Refatoração**: `@/.agents/skills/refatorar/references/EXECUTION.md`
+* **Template do Checklist de Refatoração**: `@/.agents/skills/refatorar/resources/refactor_checklist_template.md`
 
 ---
 
-## ✅ Validation Checklist
+## ⛔ Regras Universais de Proteção (Strict Constraints)
 
-- [ ] All tests remain 100% green passing after changes?
-- [ ] Were reasons for refactoring explained (Which smell/SOLID principle was addressed)?
-- [ ] Were Guard Clauses applied to eliminate nested `if/else`?
-- [ ] Were micro-checkpoints (Mode 1) and final phase squash generated via the `git` skill (Mode 2)?
-- [ ] Was opening a new ephemeral chat for Phase 3 (`/review`) suggested?
+1. **Preservação Rígida de Comportamento**: Nenhuma refatoração pode alterar retornos, exceções disparadas ou contratos públicos da funcionalidade.
+2. **Zero Regressão de Testes**: Se um teste falhar após a edição do código, a refatoração está errada. Reverta a alteração imediatamente.
+3. **Proibição de Novas Features**: Refatorar é limpar o código existente, não adicionar regras de negócio novas.
+4. **Foco Cirúrgico em Code Smells**:
+   * Métodos/Funções muito grandes (> 20 linhas) $\rightarrow$ *Extract Method / Function*.
+   * Aninhamento profundo (`if` dentro de `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
+   * Valores soltos no código $\rightarrow$ *Named Constants*.
+   * Múltiplas responsabilidades no mesmo componente $\rightarrow$ *Extract Class / Module (SRP)*.
 
+---
+
+## ✅ Matriz de Evidências da Refatoração
+
+Sempre que concluir o ciclo de refatoração no Workflow, apresente ao usuário um resumo formatado das mudanças:
+
+| Elemento Refatorado | Code Smell / Princípio SOLID | Técnica Aplicada |
+| :--- | :--- | :--- |
+| Exemplo: `calcular()` | Aninhamento profundo | Guard Clause (Retorno precoce) |
+| Exemplo: `processar()`| Violava o SRP (> 35 linhas)| Extract Method (`_validar`) |
