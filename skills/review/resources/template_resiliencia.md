@@ -1,50 +1,34 @@
 ---
-project: "[Project Name]"
-branch: "[Branch Name]"
-date: "[YYYY-MM-DD]"
-author: "[Name]"
+project: "{{PROJECT_NAME}}"
+branch: "{{BRANCH_NAME}}"
+date: "{{DATE}}"
 type: "review-resiliencia"
 tags:
   - "review"
   - "resiliencia"
 ---
-# 🛡️ Resilience and Fault Tolerance Review Checklist
+# 🧯 Relatório de Auditoria: Resiliência & Tolerância a Falhas
 
-> **Purpose:** Protect the code from external unpredictability (failing networks, duplication, bottlenecks). AIs usually program focusing exclusively on the "happy path", assuming external systems never fail.
+## 📊 Metadados da Revisão
+* **Contrato/SDD Associado:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
+* **Status Global:** 🟡 Em Auditoria (Fase 1)
 
-## How to Audit
-Assume that every network operation (HTTP, database, file read) will silently fail, hang indefinitely, or be duplicated. Verify if the code reacts defensively or enters a structural panic.
+## 🔍 Desvios Detetados e Evidências
 
----
+### 🚨 [RES-01] Fragilidade em Operação I/O ou Transação
+* **Status:** - [ ] Pendente de Correção
+* **Criticidade:** [Alta | Média | Baixa]
+* **Localização:** `caminho/do/arquivo.py:linhas`
+* **Evidência Mecânica:**
+```python
+# O agente injetará aqui a chamada HTTP sem timeout ou a escrita multi-step sem bloco transacional
 
-## 1. Network Operations, Timeouts & Fallbacks
-**How to Measure:** Inspect all outbound network calls (HTTP clients, database queries, cache connections).
-- [ ] **Missing Timeouts:** Do functions make HTTP requests or DB connections without explicitly defining a strict timeout (e.g., `requests.get(url)` instead of `requests.get(url, timeout=5)`)?
-- [ ] **Graceful Degradation:** If a non-critical external service (e.g., analytics tracker, notification sender) fails or times out, does it crash the entire main business flow?
-- **Resolution (to be filled by Phase 2):** 
+```
 
-## 2. Idempotency and Safe Retries
-**How to Measure:** Analyze event-processing endpoints, webhook receivers, and retry loops.
-- [ ] **Idempotency Keys:** If the external consumer executes the exact same request (same payload) twice in a row due to a network hiccup, will the system duplicate the entity in the database or send two emails?
-- [ ] **Immediate Retries (Thundering Herd):** Does the code use immediate `while True` loops for retries without implementing an exponential backoff and jitter strategy?
-- **Resolution (to be filled by Phase 2):** 
-
-## 3. Atomicity and Transactional Integrity
-**How to Measure:** Look for functions that perform multiple state-changing operations in a sequence (e.g., subtract user balance, then insert a receipt).
-- [ ] **Partial Failures:** Are multi-step database writes executed without a transactional block? If the final step fails, does the initial one become permanent, generating corrupted or inconsistent data?
-- **Resolution (to be filled by Phase 2):** 
-
-## 4. Limits and Defensive Pagination
-**How to Measure:** Check database read operations, API data fetching, and file processing loops.
-- [ ] **Unbounded Memory Consumption:** Do functions request records from the database or external APIs using unbounded calls (e.g., `.all()` or fetching without a `LIMIT`)? 
-- **Resolution (to be filled by Phase 2):** 
+* **Impacto no Sistema:** * **Correção Cirúrgica Proposta:** * **Resolução:** [Aguardando Aplicação da Fase 2]
 
 ---
 
-## Severity Guide
+## 📈 Conclusão da Fase 1
 
-| Emoji | Severity | Action Required |
-|---|---|---|
-| 🔴 | Critical | Potential for data corruption, infinite hangs, or cascading system failure. Must fix. |
-| 🟡 | Major | Missing timeouts, lack of idempotency on non-critical endpoints. Should fix. |
-| 🔵 | Minor | Logging improvements for retries. Can fix in a follow-up. |
+* **Total de Apontamentos:** * **RequestFeedback:** true
