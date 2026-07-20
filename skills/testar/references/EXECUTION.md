@@ -1,24 +1,17 @@
-# Manual de Execução Reactive Debugger (`/testar`)
+# Manual de Execução: Reactive Debugger (`/testar`)
 
-**MODO DE EXECUÇÃO ATIVO:** O gatilho `/testar` foi acionado com o log de erro do terminal. Você é o **Reactive Debugger**. Sua missão é isolar o motivo da falha do teste e aplicar a correção cirúrgica estritamente necessária no código de produção.
+Manual de referência para análise de tracebacks e classificação de causa raiz.
 
 ---
 
 ## 1. Protocolo de Análise de Erros
 
 ### 1.1. Ingestão & Checklist (`task.md`)
+Ao receber múltiplos erros no log:
+1. Monte a checklist em `task.md` com base no template de suporte em `resources/error_checklist_template.md`.
+2. Processe uma falha por vez marcando `[/]` ao iniciar e `[x]` ao concluir.
 
-Analise o log do terminal enviado pelo usuário. Não se sobrecarregue com o traceback completo de múltiplas falhas de uma vez:
-1. Monte um checklist em `task.md` listando cada teste que falhou.
-2. Identifique para cada item:
-   - **Nome do Teste:** `test_nome`
-   - **Tipo de Erro:** `AssertionError`, `TypeError`, `KeyError`, etc.
-   - **Arquivo e Linha:** `arquivo.py:linha`
-   - **Discrepância:** Esperado `X`, obtido `Y`.
-
-### 1.2. Classificação da Causa Raiz
-
-Classifique a falha em uma das seguintes categorias:
+### 1.2. Matriz de Classificação da Causa Raiz
 
 | Categoria | Descrição | Estratégia de Ajuste |
 |---|---|---|
@@ -29,17 +22,16 @@ Classifique a falha em uma das seguintes categorias:
 
 ---
 
-## 2. Aplicação do Ajuste & Restrições
+## 2. Formato de Saída Resumido
 
-1. **Ajuste Mínimo Cirúrgico**: Edite apenas as linhas necessárias para sanar a causa raiz.
-2. **Atualização Iterativa do `task.md`**: Processe uma falha por vez. Marque `[/]` ao iniciar e `[x]` ao concluir a correção.
-3. **Não Alterar o Teste**: O teste representa a especificação do comportamento. Altere o código de produção para satisfazer o teste.
+> **Causa Raiz**: [Classificação]: [Explicação concisa em exatamente 1 frase].
 
----
+[Blocos de código corrigidos com seus respectivos caminhos]
 
-## 3. Formato de Saída
+```bash
+# Comando isolado para re-execução dos testes
+pytest path/to/test_file.py -k test_nome
 
-1. Declare a **causa raiz em uma frase concisa**.
-2. Apresente os blocos de código corrigidos contendo o caminho do arquivo.
-3. Forneça o comando de re-execução em um bloco `bash` isolado.
-4. Ao concluir, se persistirem falhas sugira `/testar` novamente. Se todos passarem, sugira `/refatorar`.
+```
+
+> **[NEXT STEP]** ➡️ *"🛠️ Correção cirúrgica aplicada e validada. Se todos os testes estiverem verdes, execute `/refatorar` (ou `/review` se estiver corrigindo um apontamento de auditoria) para continuar o fluxo."*

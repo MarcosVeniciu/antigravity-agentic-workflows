@@ -1,40 +1,35 @@
 ---
 name: "testar"
-description: "Reactive debugging and test error fix skill. Analyzes terminal logs and applies minimal surgical adjustments to production code."
+description: "Reactive debugging and test error fix skill. Isolates root causes from terminal tracebacks and applies minimal surgical adjustments to production code."
 ---
 
 # Skill: Reactive Debugging & Test Fixing (`skills/testar`)
 
-Manages the reactive debugging phase (Reactive Debugger) of the TDD cycle, isolating root causes from terminal tracebacks and surgically fixing production code. Always communicate with the user in Portuguese.
+Esta skill orienta a depuração reativa durante a Fase 2 (TDD Loop), aplicando intervenções cirúrgicas no código de produção a partir da análise de logs de falha do terminal.
 
 ---
 
-## 🛠️ Execution Guide
+## 📁 Recursos de Suporte
 
-Consult detailed operational instructions in the reference file:
-* [Reactive Debugger Execution Guide](references/EXECUTION.md)
-
----
-
-## 📁 Resources & Templates
-
-* **Error Checklist Template (`task.md`)**: [error_checklist_template.md](resources/error_checklist_template.md)
+* 📖 **Manual Detalhado de Depuração**: `@/.agents/skills/testar/references/EXECUTION.md`
+* 📋 **Template de Diagnóstico (`task.md`)**: `@/.agents/skills/testar/resources/error_checklist_template.md`
 
 ---
 
-## ⛔ Universal Rules & Constraints
+## ⛔ Regras e Restrições Universais
 
-1. **Minimal Production Fix**: Strictly adjust the code causing the error. Zero additional refactorings or feature additions.
-2. **Preserve Test Intent**: Do not alter test assertions to force green passing, except in cases of obvious typos/syntax errors in the test itself.
-3. **Surgical Summary & Checkpoint**: Explain root cause in a single concise sentence before presenting code and saving micro-checkpoint by invoking the `git` skill (Mode 1).
+1. **Ajuste Mínimo Cirúrgico**: Edite estritamente as linhas de produção responsáveis pelo erro. Zero refatoração oportunista, novos recursos ou alteração de código limpo.
+2. **Preservação da Especificação do Teste**: Nunca altere asserções ou expectativas do teste para obter sinal verde, exceto em caso de erros óbvios de sintaxe ou digitação no próprio arquivo de teste.
+3. **Resumo da Causa Raiz**: A causa raiz da falha deve ser explicada e classificada em **exatamente uma frase concisa** no início do parecer.
+4. **Micro-Checkpoint**: Acione a skill `git` (Modo 1) imediatamente após a correção para persitir a alteração.
 
 ---
 
-## ✅ Validation Checklist
+## ✅ Checklist de Entrega
 
-- [ ] Was the root cause identified and classified correctly?
-- [ ] Was production code fixed with minimal possible impact?
-- [ ] Were tests preserved without unjustified changes or weakening?
-- [ ] Was fix micro-checkpoint recorded by invoking the `git` skill (Mode 1)?
-- [ ] Was re-test command provided in an isolated `bash` block?
-
+- [ ] Causa raiz identificada e sintetizada em 1 frase.
+- [ ] Ajuste aplicado estritamente em código de produção.
+- [ ] Testes preservados intactos.
+- [ ] Micro-checkpoint salvo via skill `git` (Modo 1).
+- [ ] Comando de re-execução dos testes fornecido isoladamente em bloco `bash`.
+- [ ] Mensagem de [NEXT STEP] orientando o uso de `/refatorar` (ou `/review`) exibida.
