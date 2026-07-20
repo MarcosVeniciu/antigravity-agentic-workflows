@@ -1,42 +1,42 @@
 ---
 name: "testes"
-description: "TDD Red Phase automation skill. Builds behavioral test suites (AAA), edge mocks, and native Big-O profiling reports."
+description: "Automação TDD Red Phase. Constrói testes unitários/integração no padrão AAA, stubs neutros, mocks na fronteira e testes de profiling de performance."
 ---
 
 # Skill: TDD Red Phase & Test Design (`skills/testes`)
 
-Manages the initial step of the TDD cycle (Red Phase), building complete behavioral test suites and method stubs without implementing production logic. Always communicate with the user in Portuguese.
+Esta habilidade rege a construção técnica de suítes de teste comportamentais e a criação de assinaturas limpas de código de produção.
 
 ---
 
-## 🛠️ Execution Guide
+## 🛠️ Recursos & Referências
 
-Consult detailed operational instructions in the reference file:
-* [SDET Execution Guide (Red Phase)](references/EXECUTION.md)
-
----
-
-## 📁 Resources & Templates
-
-* **Native Profiling Template**: [profiling_template.md](resources/profiling_template.md) (for performance tests and Big-O analysis with `print()`).
+* **Guia de Execução SDET**: [references/EXECUTION.md](references/EXECUTION.md)
+* **Template de Profiling Big-O**: [resources/profiling_template.md](resources/profiling_template.md)
 
 ---
 
-## ⛔ Universal Rules & Constraints
+## ⛔ Regras Invioláveis de Código & Testes
 
-1. **AAA Protocol**: Every test must contain Arrange, Act, and Assert blocks explicitly demarcated.
-2. **Clean Stubs**: If the tested class or method does not exist in production code, create the basic signature with `pass` in its respective file to ensure clean imports.
-3. **Boundary Mocks**: Mock database calls, third-party APIs, and filesystem operations.
-4. **Micro-Checkpoint**: Upon completing the red test suite and stubs, use the `git` skill (Mode 1) to save the Red Phase checkpoint (`checkpoint(testes): ...`).
+1. **Zero Lógica de Produção**:
+   * É estritamente proibido incluir regras de negócio no código de produção.
+   * Crie apenas a estrutura (classes e assinaturas de métodos) retornando `pass` ou `raise NotImplementedError`.
+
+2. **Protocolo AAA (Arrange-Act-Assert)**:
+   * Todo teste DEVE conter explicitamente os três blocos demarcados com comentários `# Arrange`, `# Act` e `# Assert`.
+
+3. **Mocks na Fronteira (Isolation)**:
+   * Isole chamadas de banco de dados, APIs externas, e I/O de arquivos utilizando `unittest.mock` / `pytest-mock`.
+
+4. **Independência de Execução**:
+   * Não execute testes autonomamente via terminal no agente. Forneça o comando pytest formatado em um bloco `bash` para uso do desenvolvedor (ex: `pytest -v -s tests/`).
 
 ---
 
-## ✅ Validation Checklist & Verification Method
+## 📋 Checklist de Validação da Suíte
 
-- [ ] Does suite cover Happy Path, Edge Cases, Exceptions, and Performance Profiling?
-- [ ] Does performance report print formatted table to `stdout`?
-- [ ] Do production file methods contain zero implemented business logic?
-- [ ] Was test command provided in an isolated `bash` block (with `-s -v`)?
-- [ ] Was red test micro-checkpoint recorded by invoking the `git` skill (Mode 1)?
-- [ ] Run tests and confirm all fail with stubs (expected RED status)?
-
+Antes de finalizar a resposta, valide se a suíte atende aos 4 pilares:
+- [ ] **Happy Path**: Cobre o comportamento esperado para entradas válidas.
+- [ ] **Edge Cases**: Testa coleções vazias, valores limites (`0`, `-1`, `MAX_INT`) e nulos.
+- [ ] **Exceptions**: Assegura que exceções corretas são disparadas com entradas inválidas (`pytest.raises`).
+- [ ] **Performance**: Contém teste com laço de medição ($N=10, 100, 1000$) imprimindo tabela no `stdout`.

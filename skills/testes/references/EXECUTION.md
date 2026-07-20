@@ -1,55 +1,48 @@
-# Manual de Execução SDET (Red Phase) (`/testes`)
+# Guia de Referência: Test Design & SDET Execution (Red Phase)
 
-**MODO DE EXECUÇÃO ATIVO:** O gatilho `/testes` foi acionado. Você é o **SDET (Software Development Engineer in Test)**. Sua missão é traduzir as especificações de contrato (`sdd-[feature-slug].md`) da Fase 1 em testes executáveis que definem o comportamento esperado da funcionalidade.
-
----
-
-## 1. Pre-Flight: Coleta de Contexto
-
-Antes de criar qualquer arquivo de teste:
-
-1. **Buscar SDD no Obsidian Vault**: Localize a nota `01-concepcao/sdd-[feature-slug].md` contendo a arquitetura, assinaturas de API e diagramas aprovados.
-2. **Consultar Convenções (`00-core-rules/conventions.md`)**: Verifique as normas do projeto para suítes de teste (diretórios, sufixos de arquivo e bibliotecas homologadas).
-3. **Inspecionar Testes Existentes**: Avalie fixtures e utilitários já disponíveis no repositório para evitar duplicação.
+Este documento serve como guia de consulta técnica para a construção de suítes de testes comportamentais da Fase 2 (Red Phase) sob o paradigma TDD.
 
 ---
 
-## 2. Design da Suíte de Testes (Categorização Quadripartida)
+## 🎯 Princípios de Teste na Red Phase
 
-Para cada requisito especificado no SDD, projete testes nas seguintes 4 categorias:
+1. **Garantia de Falha Esperada (Red Condition)**:
+   * Todos os testes gerados devem obrigatoriamente FALHAR nos stubs.
+   * As falhas aceitáveis são `NotImplementedError`, `AttributeError` ou asserções com retorno `None`/`pass`.
+   * Testes não devem falhar por erros de sintaxe ou erros de importação (por isso os stubs de código são criados primeiro).
 
-| Categoria | Descrição | Exemplo |
-|---|---|---|
-| **Happy Path** | Fluxo nominal com entradas válidas. | `test_criar_usuario_com_sucesso` |
-| **Edge Cases** | Limites de fronteira, arrays vazios, nulos e limites máximos. | `test_payload_com_string_vazia` |
-| **Exceções & Erros** | Tratamento de erros, tipos inválidos e exceções de domínio. | `test_lancar_excecao_se_email_duplicado` |
-| **Performance & Scaling** | Profiling com variação de $N$ ($10, 100, 1000$) para análise Big-O. | `test_processamento_lote_scaling` |
-
----
-
-## 3. Estrutura Padrão & Templates
-
-### 3.1. Padrão AAA (Arrange, Act, Assert)
-
-Todo teste deve ser organizado utilizando os blocos `# Arrange`, `# Act` e `# Assert` explicitamente demarcados.
-
-### 3.2. Profiling Nativo de Performance
-
-Para funções que lidam com coleções ou batch processing, inclua obrigatoriamente um teste de escala. Utilize o template padronizado em [profiling_template.md](../resources/profiling_template.md).
+2. **Isolamento de Camadas (Mocking Inviolável)**:
+   * **Bancos de Dados**: Nunca realize chamadas reais a BDs. Mantenha fixtures com `unittest.mock` ou `pytest-mock`.
+   * **APIs de Terceiros**: Mapeie os contratos de resposta (payloads JSON) e faça o mock no nível de transporte (ex: `httpx`, `requests`).
+   * **I/O e FileSystem**: Utilize `tmp_path` nativo do Pytest ou mocks para manipulação de arquivos.
 
 ---
 
-## 4. Geração de Stubs de Produção
+## 📐 Estrutura Padrão AAA (Arrange-Act-Assert)
 
-Se os métodos ou classes testados ainda não existirem nos arquivos de código-fonte:
-* Crie o arquivo de produção e defina **apenas a assinatura da classe ou função** com `pass` ou `raise NotImplementedError`.
-* **🚫 JAMAIS implemente a lógica interna** durante o acionamento do agente `/testes`.
+Todo teste deve seguir rigorosamente os três blocos demarcados:
+
+```python
+def test_deve_lancar_excecao_quando_email_invalido():
+    # Arrange (Preparação do cenário e dados de entrada)
+    payload_invalido = {"nome": "Dev", "email": "email_invalido"}
+    servico = UsuarioService()
+
+    # Act & Assert (Execução e verificação do comportamento)
+    with pytest.raises(EmailInvalidoException):
+        servico.cadastrar(payload_invalido)
+
+```
 
 ---
 
-## 5. Formato da Resposta de Saída
+## 📊 Matriz Quadripartida de Cenários de Teste
 
-1. Apresente os blocos completos dos arquivos de teste gerados.
-2. Apresente o bloco com os stubs nos arquivos de produção.
-3. Forneça o comando de execução dos testes em um bloco `bash` isolado.
-4. Ao concluir, sugira confirmar o status VERMELHO e acionar `/codigo` para a implementação.
+Para cada contrato definido no SDD (`01-concepcao/sdd-[slug].md`), projete testes cobrindo as seguintes frentes:
+
+| Categoria | Foco da Cobertura | Tipo de Verificação |
+| --- | --- | --- |
+| **Happy Path** | Fluxo nominal com payloads válidos | Verificação de estado retornado e efeitos colaterais. |
+| **Edge Cases** | Limites (`0`, `MAX_INT`), arrays vazios, nulos, strings longas | Tolerância a fronteiras e entradas atípicas. |
+| **Exceptions** | Regras de negócio violadas, tipos de dados errados | Disparo correto de exceções customizadas de domínio. |
+| **Performance** | Análise empírica Big-O com variação de $N$ ($10, 100, 1000$) | Impressão formatada de tempo no `stdout`. |

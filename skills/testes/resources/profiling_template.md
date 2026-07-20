@@ -1,26 +1,31 @@
-# Template: Relatório Nativo de Profiling (Big-O)
-
-Este template orienta a estrutura de relatórios de tempo de execução impressos no `stdout` pelos testes de performance.
-
-```python
 import time
 import pytest
 
-def test_performance_[NOME_DA_FUNCAO]():
+def test_performance_{{FUNCTION_NAME}}():
+    """
+    [PROFILING] Análise de Escala e Performance Big-O para {{FUNCTION_NAME}}.
+    Mede a variação do tempo de execução em milissegundos conforme $N$ cresce.
+    """
+    # Arrange
     sizes = [10, 100, 1000]
-    print("\n=== PERFORMANCE REPORT: [NOME_DA_FUNCAO] ===")
-    print("| N (Items) | Time (ms) |")
-    print("|-----------|-----------|")
+    print("\n==================================================")
+    print(f"=== PERFORMANCE REPORT: {{FUNCTION_NAME}} ===")
+    print("| N (Itens)   | Tempo (ms)  |")
+    print("|-------------|-------------|")
     
     for n in sizes:
+        # Gerador do dataset proporcional ao N
         dataset = [i for i in range(n)]
         
+        # Act
         start = time.perf_counter()
-        # Chama a função de lote
-        [NOME_DA_FUNCAO](dataset)
+        # Invocação do stub ou função de lote
+        {{MODULE_NAME}}.{{FUNCTION_NAME}}(dataset)
         end = time.perf_counter()
         
         elapsed_ms = (end - start) * 1000
-        print(f"| {n:<9} | {elapsed_ms:<9.2f} |")
-    print("============================================")
-```
+        
+        # Assert (Logging de performance via stdout)
+        print(f"| {n:<11} | {elapsed_ms:<11.3f} |")
+        
+    print("==================================================")
