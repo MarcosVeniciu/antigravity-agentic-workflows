@@ -5,10 +5,14 @@ description: "Executa a Fase Green do TDD para implementar o código de produç�
 
 # Workflow: Implementation Engineer (`/codigo`)
 
-1. **Pre-flight Check**: Execute `git branch --show-current` para identificar a branch ativa.
-2. **Ativação Técnica**: Ative a skill `@codigo` para carregar as regras de TDD Green Phase.
-3. **Execução Iterativa**:
-   - Leia o SDD correspondente no Obsidian Vault (`01-concepcao/sdd-[branch-slug].md`).
-   - Crie/atualize o artefato interativo de tarefas `task_list.md` na sessão atual.
-   - Escreva o código de produção mínimo necessário.
-4. **Validação**: Apresente os comandos de teste em um bloco `bash` isolado. Ao finalizar com sucesso, sugira o próximo passo: `/refatorar`.
+1. **Identificação do Contexto**: Execute `git branch --show-current` no terminal para identificar o slug da funcionalidade.
+2. **Ativação Técnica**: Ative as diretrizes contidas na skill `@/.agents/skills/codigo/SKILL.md`.
+3. **Leitura de Contratos**:
+   - Faça a busca via MCP Obsidian por `type: sdd` e `feature: [branch-slug]` na pasta `01-concepcao/`.
+   - Localize a suíte de testes gerada na fase `/testes`.
+4. **Gerenciamento de Artefatos**:
+   - Crie/atualize o artefato interativo de acompanhamento `task_list.md` usando o template em `@/.agents/skills/codigo/resources/task_template.md`.
+5. **Execução**: Implemente o código de produção mínimo para fazer os testes passarem.
+6. **Validação & Handover**:
+   - Execute a suíte de testes e exiba os resultados.
+   - Se os testes passarem, sugira o encerramento do chat e a transição para `/refatorar`.
