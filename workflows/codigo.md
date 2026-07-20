@@ -24,6 +24,7 @@ description: "Executa a Fase Green do TDD para implementar o código de produç�
    * Escreva o código mínimo para fazer o teste passar.
    * A suite de testes retornou 100% verde? **Ative a skill `@git` no Mode 1 (Micro-Checkpoint)** para criar um ponto de restauração seguro.
 3. **Mecanismo de Auto-Correção e Rollback**:
-   * Se durante uma etapa de refatoração ou implementação o código quebrar e você não conseguir resolver o erro após 2 tentativas consecutivas, **não continue poluindo o contexto**.
-   * **Invoque a skill `@git` no Mode 3 (Rollback/Recovery)** executando `git reset --hard HEAD` para limpar o escopo e retornar imediatamente ao último checkpoint estável conhecido.
-   * Recomece a lógica a partir do ponto seguro com uma abordagem diferente.
+   * Se durante uma etapa de implementação o código quebrar e você não conseguir resolver o erro após 2 tentativas consecutivas, **não continue poluindo o contexto**.
+   * **Invoque a skill `@git` no Mode 3 (Rollback/Recovery)** executando `git reset --hard HEAD` para restaurar o último estado estável.
+   * **Instrução de Handover**: Notifique o usuário sobre o rollback e instrua-o explicitamente a:
+     > *"Abre um novo chat limpo, execute o comando `/testar` e forneça o log/traceback do erro impresso no terminal para que o agente de correção cirúrgica atue de forma isolada."*
