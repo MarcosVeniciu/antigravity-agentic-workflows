@@ -10,14 +10,14 @@ tags:
   - core
 ---
 
-# Regra de Negócio: {{TITLE}}
+# Business Rule: {{TITLE}}
 
-## Definição Ubíqua
-Descreva a regra de negócio em linguagem clara e objetiva.
+## Ubiquitous Definition
+Describe the business rule in clear and objective terms.
 
-## Critérios de Aceitação & Restrições
-* Restrição 1
-* Restrição 2
+## Acceptance Criteria & Constraints
+* Constraint 1
+* Constraint 2
 
-## Impacto no Sistema
-Sistemas, componentes e cálculos afetados por esta regra.
+## System Impact
+Systems, components, and calculations affected by this rule.

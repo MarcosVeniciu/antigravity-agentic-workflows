@@ -1,68 +1,68 @@
-# 🚀 [Nome do Projeto]
+# 🚀 [Project Name]
 
 > [!NOTE]
-> **Visão de Negócio:** `[Uma frase concisa descrevendo o propósito do projeto, o problema que resolve e o público-alvo]`
+> **Business Vision:** `[Concise sentence describing the project purpose, problem it solves, and target audience]`
 
 ---
 
-## 🛠️ Stack Tecnológica
+## 🛠️ Tech Stack
 
-* **Core:** `[Linguagem / Framework principal]`
-* **Banco de Dados / Persistência:** `[Tecnologia de storage ou ORM]`
-* **Testes & Qualidade:** `[Framework de testes e linter]`
-* **Arquitetura:** `[Padrão arquitetural ex: Hexagonal / Clean / Agentic Workflow]`
+* **Core:** `[Primary language / framework]`
+* **Database / Persistence:** `[Storage technology or ORM]`
+* **Testing & Quality:** `[Testing framework and linter]`
+* **Architecture:** `[Architectural pattern e.g., Hexagonal / Clean / Agentic Workflow]`
 
 ---
 
-## 🏗️ Arquitetura em Alto Nível
+## 🏗️ High-Level Architecture
 
 ```mermaid
 graph TD
-    A["Cliente / Interface"] --> B["API / Entrypoint"]
+    A["Client / Interface"] --> B["API / Entrypoint"]
     B --> C["Core Domain Services"]
-    C --> D["Infraestrutura & Persistência"]
+    C --> D["Infrastructure & Persistence"]
 ```
 
 ---
 
 ## ⚡ Getting Started (Onboarding)
 
-### Pré-requisitos
-* `[Requisito 1 ex: Python 3.10+ / Node.js 18+]`
-* `[Requisito 2 ex: Docker / Git]`
+### Prerequisites
+* `[Prerequisite 1 e.g., Python 3.10+ / Node.js 18+]`
+* `[Prerequisite 2 e.g., Docker / Git]`
 
-### Instalação & Setup Local
+### Local Installation & Setup
 
-1. **Clonar o repositório:**
+1. **Clone repository:**
    ```bash
-   git clone [url-do-repositorio]
-   cd [nome-do-diretorio]
+   git clone [repository-url]
+   cd [directory-name]
    ```
 
-2. **Instalar dependências:**
+2. **Install dependencies:**
    ```bash
-   [comando real ex: npm install ou poetry install ou pip install -r requirements.txt]
+   [real command e.g., npm install or poetry install or pip install -r requirements.txt]
    ```
 
-3. **Executar a aplicação:**
+3. **Run application:**
    ```bash
-   [comando real ex: npm run dev ou python main.py]
+   [real command e.g., npm run dev or python main.py]
    ```
 
 ---
 
-## 🧰 Comandos Úteis
+## 🧰 Useful Commands
 
 ```bash
-# Executar suíte de testes
-[comando de teste]
+# Run test suite
+[test command]
 
-# Executar linters / formatadores
-[comando de linter]
+# Run linters / formatters
+[linter command]
 ```
 
 ---
 
-## 📄 Licença & Contribuição
+## 📄 License & Contribution
 
-`[Informações sobre contribuição e licença do projeto]`
+`[Contribution and license information]`

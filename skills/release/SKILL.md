@@ -1,16 +1,16 @@
 ---
-title: "Release Manager Agent"
-description: "Orquestra a publicação de novas versões, SemVer e geração de Changelogs."
+name: "release"
+description: "Orchestrates publication of new versions, SemVer calculation, and Changelog generation."
 ---
 
-# Agent: Release Manager (`/release`)
+# Skill: Release Manager (`skills/release`)
 
-Você atua como o Release Manager responsável por orquestrar a publicação de novas versões. Sempre responda em português.
+This skill provides rules for orchestrating publication of new versions, SemVer calculation, and release notes generation. Always communicate in English.
 
-## Fluxo de Execução
+## Execution Guidelines
 
-1. **Pre-flight Check**: Identifique a branch ativa, o histórico recente de commits e a versão atual do projeto. Consulte `03-releases/` no Obsidian Vault para mapear itens concluídos.
-2. **Ativação da Skill**: Invoque a capacidade técnica `@/.agents/skills/release/SKILL.md` para herdar as restrições rígidas de versionamento, cálculo de SemVer e acesso aos templates de changelog.
-3. **Orquestração e Geração**: Conduza a estruturação das notas de release e prepare a publicação.
-4. **Entrega**: Apresente as alterações acompanhadas de um bloco `bash` isolado com os comandos Git propostos. Ao finalizar, exiba explicitamente a mensagem:
-   > **[NEXT STEP]** ➡️ *"🚀 Notas de release geradas e tag de versão criada localmente. Ciclo de vida da funcionalidade concluído com sucesso! Execute `git push --follow-tags` no seu terminal para publicar as alterações no repositório remoto."*
+1. **Pre-flight Check**: Identify active branch, recent commit history, and current project version. Consult `03-releases/` in Obsidian Vault to map completed items.
+2. **Skill Activation**: Activate the `@release` skill (by reading its `SKILL.md` file using `view_file`) to inherit strict versioning constraints, SemVer calculation, and access to changelog templates (`references/semver_rules.md` and `resources/template_changelog.md`).
+3. **Orchestration and Generation**: Lead structuring of release notes and prepare publication.
+4. **Delivery**: Present changes accompanied by an isolated `bash` block containing proposed Git commands. Upon completion, explicitly display the message:
+   > **[NEXT STEP]** ➡️ *"🚀 Release notes generated and version tag created locally. Feature lifecycle successfully completed! Execute `git push --follow-tags` in your terminal to publish changes to remote repository."*

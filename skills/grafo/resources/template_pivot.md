@@ -12,14 +12,14 @@ tags:
 
 # Pivot: {{TITLE}}
 
-## Contexto do Bug / Desvio Técnico
-Descreva a falha, exceção em runtime ou desvio identificado durante a implementação/TDD.
+## Bug Context / Technical Deviation
+Describe failure, runtime exception, or deviation identified during implementation/TDD.
 
-## Solução Adotada & Refatoração
-Explique a correção aplicada e por que ela difere da abordagem original.
+## Adopted Solution & Refactoring
+Explain applied fix and why it differs from original approach.
 
-## Lições Aprendidas & Prevenção
-Orientações para que o problema não se repita em futuras features.
+## Lessons Learned & Prevention
+Guidelines so the issue does not recur in future features.
 
-## Referências
-* Relacionado a: [[sdd-{{FEATURE_SLUG}}]]
+## References
+* Related to: [[sdd-{{FEATURE_SLUG}}]]

@@ -1,58 +1,59 @@
-# 📋 Guia e Modelo para `.env.example`
+# 📋 Guide and Template for `.env.example`
 
-Este modelo define as diretrizes e a estrutura padrão para a criação e atualização do arquivo `.env.example`.
-
----
-
-## ⚠️ Regras Obrigatórias
-
-1. **NUNCA Inclua Segredos Reais**:
-   * Utilize apenas valores genéricos, placeholders descritivos ou URLs de desenvolvimento local.
-   * *Exemplo correto:* `DATABASE_URL=postgresql://user:password@localhost:5432/dbname`
-   * *Exemplo incorreto:* `DATABASE_URL=postgresql://admin:SecretPass123!@192.168.1.50:5432/production`
-
-2. **Organização por Seções**:
-   * Agrupe as variáveis por contexto (Aplicação, Banco de Dados, Autenticação, APIs Externas) utilizando comentários claros (`#`).
-
-3. **Documentação Inline**:
-   * Para variáveis opcionais ou com valores numéricos/flags, insira um comentário na linha acima explicando o formato esperado e o valor padrão (default).
+This template defines guidelines and standard structure for creating and updating `.env.example` files.
 
 ---
 
-## 📑 Modelo Padrão (Template)
+## ⚠️ Mandatory Rules
+
+1. **NEVER Include Real Secrets**:
+   * Use only generic values, descriptive placeholders, or local development URLs.
+   * *Correct example:* `DATABASE_URL=postgresql://user:password@localhost:5432/dbname`
+   * *Incorrect example:* `DATABASE_URL=postgresql://admin:SecretPass123!@192.168.1.50:5432/production`
+
+2. **Organization by Section**:
+   * Group variables by context (Application, Database, Authentication, External APIs) using clear comments (`#`).
+
+3. **Inline Documentation**:
+   * For optional variables or those with numeric/flag values, insert a comment on the line above explaining expected format and default value.
+
+---
+
+## 📑 Standard Template
 
 ```env
 # ==========================================
-# Configurações Gerais da Aplicação
+# General Application Settings
 # ==========================================
-# Ambiente de execução: development | staging | production
+# Execution environment: development | staging | production
 NODE_ENV=development
-# Porta em que o serviço principal será executado
+# Port on which the main service will run
 PORT=3000
-# URL base do serviço para chamadas internas e redirects
+# Base service URL for internal calls and redirects
 APP_URL=http://localhost:3000
 
 # ==========================================
-# Banco de Dados & Cache
+# Database & Cache
 # ==========================================
-# String de conexão do banco de dados (PostgreSQL/MySQL)
+# Database connection string (PostgreSQL/MySQL)
 DATABASE_URL=postgresql://postgres:postgres@localhost:5432/app_db
-# Instância do Redis para sessão/cache
+# Redis instance for session/cache
 REDIS_HOST=127.0.0.1
 REDIS_PORT=6379
 
 # ==========================================
-# Autenticação & Segurança
+# Authentication & Security
 # ==========================================
-# Chave secreta para assinatura de tokens JWT (mínimo 32 caracteres em prod)
+# Secret key for JWT token signing (minimum 32 chars in prod)
 JWT_SECRET=your-super-secret-jwt-key-here
-# Tempo de expiração do token (ex: 1d, 7d, 1h)
+# Token expiration time (e.g., 1d, 7d, 1h)
 JWT_EXPIRES_IN=1d
 
 # ==========================================
-# Integrações & Serviços Externos
+# Integrations & External Services
 # ==========================================
-# Chave de API da OpenAI (obtida no portal da OpenAI)
+# OpenAI API key (obtained from OpenAI portal)
 OPENAI_API_KEY=sk-proj-placeholder_key_here
-# URL do serviço de mensageria / Webhook
-WEBHOOK_URL=[https://api.exemplo.com/v1/webhook](https://api.exemplo.com/v1/webhook)
+# Messaging service URL / Webhook
+WEBHOOK_URL=https://api.example.com/v1/webhook
+```

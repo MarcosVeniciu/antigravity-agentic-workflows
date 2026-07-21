@@ -7,28 +7,31 @@ tags:
   - "review"
   - "resiliencia"
 ---
-# 🧯 Relatório de Auditoria: Resiliência & Tolerância a Falhas
+# 🧯 Audit Report: Resilience & Fault Tolerance
 
-## 📊 Metadados da Revisão
-* **Contrato/SDD Associado:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
-* **Status Global:** 🟡 Em Auditoria (Fase 1)
+## 📊 Review Metadata
+* **Associated Contract/SDD:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
+* **Global Status:** 🟡 Under Audit (Phase 1)
 
-## 🔍 Desvios Detetados e Evidências
+## 🔍 Detected Deviations and Evidence
 
-### 🚨 [RES-01] Fragilidade em Operação I/O ou Transação
-* **Status:** - [ ] Pendente de Correção
-* **Criticidade:** [Alta | Média | Baixa]
-* **Localização:** `caminho/do/arquivo.py:linhas`
-* **Evidência Mecânica:**
+### 🚨 [RES-01] Fragility in I/O Operation or Transaction
+* **Status:** - [ ] Pending Fix
+* **Criticality:** [High | Medium | Low]
+* **Location:** `path/to/file.py:lines`
+* **Mechanical Evidence:**
 ```python
-# O agente injetará aqui a chamada HTTP sem timeout ou a escrita multi-step sem bloco transacional
+# The agent will inject here HTTP call without timeout or multi-step write without transactional block
 
 ```
 
-* **Impacto no Sistema:** * **Correção Cirúrgica Proposta:** * **Resolução:** [Aguardando Aplicação da Fase 2]
+* **System Impact:** 
+* **Proposed Surgical Fix:** 
+* **Resolution:** [Awaiting Phase 2 Application]
 
 ---
 
-## 📈 Conclusão da Fase 1
+## 📈 Phase 1 Conclusion
 
-* **Total de Apontamentos:** * **RequestFeedback:** true
+* **Total Findings:** 
+* **RequestFeedback:** true

@@ -1,39 +1,39 @@
 ---
-description: "Workflow do Reactive Debugger (Fase 2 - TDD Loop). Analisa falhas de testes a partir do log do terminal e aplica correções cirúrgicas no código de produção."
+description: "Reactive Debugger workflow (Phase 2 - TDD Loop). Analyzes test failures from terminal logs and applies surgical fixes to production code."
 ---
 
 # Workflow: Reactive Debugger (`/testar`)
 
-Você é o **Reactive Debugger** da Fase 2 do fluxo de desenvolvimento. Sua missão é ler o log de erro do terminal enviado pelo usuário e aplicar unicamente a correção cirúrgica necessária no código de produção. Sempre comunique-se em Português.
+You are the **Reactive Debugger** for Phase 2 of the development flow. Your mission is to read terminal error logs submitted by the user and apply only the surgical fix required in production code. Always communicate in English.
 
 ---
 
-## 🚀 Passos de Execução
+## 🚀 Execution Steps
 
-1. **Ativação da Skill**:
-   * Carregue as diretrizes técnicas da skill `@/.agents/skills/testar/SKILL.md`.
+1. **Skill Activation**:
+   * Activate the `@testar` skill (by reading its `SKILL.md` file using `view_file`) to load its technical guidelines.
 
-2. **Pre-flight Check & Contexto**:
-   * Identifique a branch ativa com `git branch --show-current`.
-   * Consulte a especificação do contrato SDD ativa no Obsidian via MCP (`type: sdd` e `feature: [branch_slug]`) para garantir alinhamento com a arquitetura original.
-   * Ingestione a mensagem e o traceback de erro de terminal enviados pelo usuário.
+2. **Pre-flight Check & Context**:
+   * Identify active branch with `git branch --show-current`.
+   * Consult active SDD contract specification in Obsidian via MCP (`type: sdd` and `feature: [branch_slug]`) to ensure alignment with original architecture.
+   * Ingest user-submitted error message and terminal traceback.
 
-3. **Isolamento e Correção Cirúrgica**:
-   * Monte/atualize a checklist de erros utilizando o modelo em `@/.agents/skills/testar/resources/error_checklist_template.md`.
-   * Analise a causa raiz e edite **apenas** o código de produção estritamente necessário para fazer o teste passar verde.
+3. **Isolation and Surgical Fix**:
+   * Build/update error checklist using template `resources/error_checklist_template.md` from the `@testar` skill.
+   * Analyze root cause and edit **only** the production code strictly necessary to make tests pass green.
 
-4. **Registro de Checkpoint & Hand-off**:
-   * Execute a skill de Git (Modo 1) para salvar o micro-checkpoint do ajuste.
-   * Apresente o diagnóstico e o comando de re-execução do teste em um bloco `bash` isolado.
-   * Apresente a mensagem de encerramento e orientação do próximo passo do fluxo.
+4. **Checkpoint Registration & Hand-off**:
+   * Execute the `@git` skill (Mode 1) to save adjustment micro-checkpoint.
+   * Present diagnosis and test re-execution command in an isolated `bash` block.
+   * Present closure message and next step guidance in the flow.
 
-## Fluxo de Execução e Tolerância a Falhas
+## Execution Flow and Fault Tolerance
 
-1. **Pre-flight & Base Point**: Antes de iniciar qualquer alteração de código, invoque `@git` para garantir que o workspace está limpo.
-2. **Ciclo Iterativo de Escrita (TDD)**:
-   * Escreva o código mínimo para fazer o teste passar.
-   * A suite de testes retornou 100% verde? **Ative a skill `@git` no Mode 1 (Micro-Checkpoint)** para criar um ponto de restauração seguro.
-3. **Mecanismo de Auto-Correção e Rollback**:
-   * Se durante uma etapa de refatoração ou implementação o código quebrar e você não conseguir resolver o erro após 2 tentativas consecutivas, **não continue poluindo o contexto**.
-   * **Invoque a skill `@git` no Mode 3 (Rollback/Recovery)** executando `git reset --hard HEAD` para limpar o escopo e retornar imediatamente ao último checkpoint estável conhecido.
-   * Recomece a lógica a partir do ponto seguro com uma abordagem diferente.
+1. **Pre-flight & Base Point**: Before starting any code changes, invoke `@git` to ensure workspace is clean.
+2. **Iterative Writing Cycle (TDD)**:
+   * Write minimal code to make test pass.
+   * Test suite returned 100% green? **Activate `@git` skill in Mode 1 (Micro-Checkpoint)** to create a safe restore point.
+3. **Self-Correction and Rollback Mechanism**:
+   * If code breaks during refactoring or implementation and you cannot fix the error after 2 consecutive attempts, **do not continue polluting context**.
+   * **Invoke `@git` skill in Mode 3 (Rollback/Recovery)** running `git reset --hard HEAD` to clear scope and immediately return to last known stable checkpoint.
+   * Restart logic from safe point using a different approach.

@@ -3,23 +3,23 @@ type: pivot
 feature: "[FEATURE_SLUG]"
 project: antigravity
 date: "[YYYY-MM-DD]"
-status: ativo
+status: active
 tags:
   - pivot
   - feature/[FEATURE_SLUG]
   - phase/implementacao
 ---
 
-# 🔄 Registro de Pivot Técnico: [FEATURE_SLUG]
+# 🔄 Technical Pivot Register: [FEATURE_SLUG]
 
-## 1. Contexto & Problema Encontrado
-Descreva o desvio técnico ou limitação encontrada durante a execução do TDD em lote que impediu a implementação estrita do SDD (`01-concepcao/sdd-[FEATURE_SLUG].md`).
+## 1. Context & Problem Found
+Describe technical deviation or limitation encountered during batch TDD execution that prevented strict implementation of the SDD (`01-concepcao/sdd-[FEATURE_SLUG].md`).
 
-## 2. Decisão e Alteração Efetuada
-* **Ajuste de Assinatura/Contrato:** Detalhe o que mudou na interface das funções/classes.
-* **Impacto no Código/Testes:** O que foi adaptado na suíte do lote.
+## 2. Decision and Change Made
+* **Signature/Contract Adjustment:** Detail what changed in function/class interface.
+* **Impact on Code/Tests:** What was adapted in batch suite.
 
-## 3. Rastreabilidade & Promocão
-* **Promovido para ADR Global?**
-  - [ ] **Sim:** Criada nota em `00-core-rules/adrs/adr-[SLUG].md`.
-  - [ ] **Não:** Ajuste isolado restrito a esta feature.
+## 3. Traceability & Promotion
+* **Promoted to Global ADR?**
+  - [ ] **Yes:** Created note in `00-core-rules/adrs/adr-[SLUG].md`.
+  - [ ] **No:** Isolated adjustment restricted to this feature.

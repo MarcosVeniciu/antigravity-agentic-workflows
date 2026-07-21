@@ -1,29 +1,29 @@
 ---
 name: "implementar-plan"
-description: "Inteligência de decomposição arquitetural TDD. Analisa BDD/SDD no Obsidian Vault e gera planos e checklists agrupados por Lotes Contextuais."
+description: "TDD architectural decomposition intelligence. Analyzes BDD/SDD in Obsidian Vault and generates plans and checklists grouped by Context Batches."
 ---
 
-# Skill: Planejamento de Lotes Contextuais (`implementar-plan`)
+# Skill: Context Batch Planning (`implementar-plan`)
 
-Esta habilidade rege a análise de requisitos e a estruturação de planos de implementação TDD otimizados para redução de consumo de tokens.
-
----
-
-## 🛠️ Recursos & Referências
-* **Manual de Decomposição**: [references/EXECUTION.md](references/EXECUTION.md)
-* **Template de Plano**: [resources/plan_template.md](resources/plan_template.md)
-* **Template de Checklist**: [resources/task_template.md](resources/task_template.md)
+This skill governs requirement analysis and structuring of TDD implementation plans optimized for reduced token consumption.
 
 ---
 
-## ⛔ Regras Invioláveis de Planejamento
+## 🛠️ Resources & References
+* **Decomposition Manual**: [references/EXECUTION.md](references/EXECUTION.md)
+* **Plan Template**: [resources/plan_template.md](resources/plan_template.md)
+* **Checklist Template**: [resources/task_template.md](resources/task_template.md)
 
-1. **Agrupamento por Contexto Dependente**:
-   * É proibido criar listas de tarefas puramente baseadas em arquivos isolados.
-   * Mapeie acoplamentos e interdependências. Componentes que dependem diretamente uns dos outros (ex: Modelo + Repositório + Serviço) DEVEM ser agrupados no mesmo **Lote Contextual**.
+---
 
-2. **Estrutura de Lote Integrado**:
-   * Cada lote contextual da checklist deve especificar clareza sobre os testes a serem criados e os códigos de produção correspondentes a serem entregues no mesmo ciclo.
+## ⛔ Inviolable Planning Rules
 
-3. **Inclusão da Fase N (Validação de Fechamento)**:
-   * A checklist obrigatoriamente deve terminar com uma fase de validação global e execução de testes.
+1. **Grouping by Dependent Context**:
+   * Forbidden to create task lists purely based on isolated files.
+   * Map couplings and interdependencies. Components that directly depend on each other (e.g., Model + Repository + Service) MUST be grouped in the same **Context Batch**.
+
+2. **Integrated Batch Structure**:
+   * Each context batch in the checklist must clearly specify tests to be created and corresponding production code to be delivered in the same cycle.
+
+3. **Inclusion of Phase N (Closure Validation)**:
+   * The checklist must mandatorily end with a global validation and test execution phase.

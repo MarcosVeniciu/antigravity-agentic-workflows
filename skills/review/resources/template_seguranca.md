@@ -7,28 +7,31 @@ tags:
   - "review"
   - "seguranca"
 ---
-# 🛡️ Relatório de Auditoria: Segurança & OWASP Top 10
+# 🛡️ Audit Report: Security & OWASP Top 10
 
-## 📊 Metadados da Revisão
-* **Contrato/SDD Associado:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
-* **Status Global:** 🟡 Em Auditoria (Fase 1)
+## 📊 Review Metadata
+* **Associated Contract/SDD:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
+* **Global Status:** 🟡 Under Audit (Phase 1)
 
-## 🔍 Desvios Detetados e Evidências
+## 🔍 Detected Deviations and Evidence
 
-### 🚨 [SEC-01] Vulnerabilidade Detetada
-* **Status:** - [ ] Pendente de Correção
-* **Criticidade:** [Alta | Média | Baixa]
-* **Localização:** `caminho/do/arquivo.py:linhas`
-* **Evidência Mecânica:**
+### 🚨 [SEC-01] Detected Vulnerability
+* **Status:** - [ ] Pending Fix
+* **Criticality:** [High | Medium | Low]
+* **Location:** `path/to/file.py:lines`
+* **Mechanical Evidence:**
 ```python
-# O agente injetará aqui a concatenação insegura, segredo exposto ou falha no IDOR
+# The agent will inject here unsafe concatenation, exposed secret, or IDOR flaw
 
 ```
 
-* **Impacto no Sistema:** * **Correção Cirúrgica Proposta:** * **Resolução:** [Aguardando Aplicação da Fase 2]
+* **System Impact:** 
+* **Proposed Surgical Fix:** 
+* **Resolution:** [Awaiting Phase 2 Application]
 
 ---
 
-## 📈 Conclusão da Fase 1
+## 📈 Phase 1 Conclusion
 
-* **Total de Apontamentos:** * **RequestFeedback:** true
+* **Total Findings:** 
+* **RequestFeedback:** true

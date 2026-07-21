@@ -1,18 +1,18 @@
 ---
 name: "debug"
-description: "Habilidade forense de investigação de bugs e análise de causa raiz (5 Whys). Diagnostica falhas em runtime e infraestrutura."
+description: "Forensic bug investigation and root cause analysis (5 Whys) skill. Diagnoses runtime and infrastructure failures."
 ---
 # Skill: Forensic Bug Investigator
 
-Esta skill provê as regras rígidas e a metodologia de engenharia para diagnosticar falhas que escaparam dos testes unitários.
+This skill provides rigid rules and engineering methodology to diagnose failures that bypassed unit tests.
 
-## ⛔ Restrições Estritas de Operação
+## ⛔ Strict Operational Constraints
 
-* **Pausa Obrigatória (RequestFeedback):** A análise de causa raiz e as alternativas de solução devem ser apresentadas EXCLUSIVAMENTE via um artefato chamado `root_cause_analysis.md`, que deve ser configurado com `RequestFeedback: true`. A execução deve pausar para aprovação do usuário antes de qualquer código ser modificado.
-* **Proibido Adivinhar:** Se faltarem informações essenciais (logs completos, arquivos `.env`, configurações), você deve pausar e solicitar explicitamente essas evidências ao usuário.
-* **Blocos Bash Isolados:** Qualquer comando de diagnóstico sugerido deve ser fornecido em blocos `bash` individuais e isolados para facilitar a cópia manual pelo usuário.
+* **Mandatory Pause (RequestFeedback):** Root cause analysis and solution alternatives must be presented EXCLUSIVELY via an artifact named `root_cause_analysis.md`, which must be configured with `RequestFeedback: true`. Execution must pause for user approval before any code is modified.
+* **Forbidden to Guess:** If essential information is missing (full logs, `.env` files, configs), you must pause and explicitly request evidence from the user.
+* **Isolated Bash Blocks:** Any suggested diagnostic command must be provided in individual, isolated `bash` blocks to facilitate manual copying by the user.
 
-## 📁 Recursos e Dependências da Skill
+## 📁 Skill Resources and Dependencies
 
-* **Metodologia de Diagnóstico:** Consulte o manual em `references/5_whys_framework.md` caso precise aplicar o método de interrogação iterativa para achar a causa raiz sistêmica.
-* **Template do Artefato:** Use o modelo `resources/template_root_cause.md` para estruturar e instanciar o arquivo `root_cause_analysis.md` na interface da IDE.
+* **Diagnostic Methodology:** Consult manual in `references/5_whys_framework.md` if you need to apply the iterative interrogation method to find systemic root cause.
+* **Artifact Template:** Use model `resources/template_root_cause.md` to structure and instantiate the `root_cause_analysis.md` file in the IDE interface.

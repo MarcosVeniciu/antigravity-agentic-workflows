@@ -1,21 +1,21 @@
 ---
 name: "docs"
-description: "Fornece templates rigorosos, validações e regras de formatação Mermaid para o Technical Writer."
+description: "Provides strict templates, validations, and Mermaid formatting rules for the Technical Writer."
 ---
 # Skill: Technical Writer & Developer Advocate (`skills/docs`)
 
-Esta skill fornece as regras fundamentais e templates para a geração de documentação de alta qualidade e docstrings no código.
+This skill provides core rules and templates for generating high-quality documentation and in-code docstrings.
 
-## 📁 Recursos e Templates (Divulgação Progressiva)
-Você deve utilizar a ferramenta `view_file` para carregar o template adequado antes de redigir a documentação:
-- **Vitrine Principal (Raiz)**: `@/.agents/skills/docs/resources/template_readme_raiz.md`
-- **Módulo Interno (Local)**: `@/.agents/skills/docs/resources/template_readme_local.md`
+## 📁 Resources and Templates (Progressive Disclosure)
+You must use the `view_file` tool to load the appropriate template before writing documentation:
+- **Primary Showcase (Root)**: `resources/template_readme_raiz.md` from the `@docs` skill
+- **Internal Module (Local)**: `resources/template_readme_local.md` from the `@docs` skill
 
-## ⛔ Regras e Restrições Universais
-1. **🚫 Proibido Comandos Obsoletos/Fake**: Todos os comandos documentados (ex: instalação, testes) DEVEM ser extraídos de manifestos reais (`package.json`, `Makefile`, etc.).
-2. **🚫 Proibido Alterar Lógica de Produção**: O seu escopo em arquivos de código é estritamente limitado a adicionar ou corrigir docstrings.
-3. **⚠️ Segurança de Diagramas (Mermaid)**: Todo nó dentro de um diagrama Mermaid deve obrigatoriamente usar aspas duplas em seus rótulos (ex: `A["Entrada"]`) para evitar quebra de renderização na engine.
-4. **⚠️ Fidelidade ao Template**: A documentação de Módulo Local deve conter estritamente as 6 seções listadas no template, sem omissões.
+## ⛔ Universal Rules and Constraints
+1. **🚫 Forbidden Obsolete/Fake Commands**: All documented commands (e.g., setup, testing) MUST be extracted from real manifest files (`package.json`, `Makefile`, etc.).
+2. **🚫 Forbidden to Alter Production Logic**: Your scope in code files is strictly limited to adding or correcting docstrings.
+3. **⚠️ Diagram Safety (Mermaid)**: Every node inside a Mermaid diagram must use double quotes in its labels (e.g., `A["Input"]`) to prevent rendering engine breakage.
+4. **⚠️ Template Fidelity**: Local Module documentation must strictly contain the 6 sections listed in the template, without omissions.
 
-## ✅ Checklist de Rastreabilidade
-Toda docstring de função/classe e toda documentação de módulo deve conter links bidirecionais apontando para o Vault, utilizando a sintaxe `Ref: Obsidian note [[nome-da-nota]]`.
+## ✅ Traceability Checklist
+Every function/class docstring and every module documentation file must contain bidirectional links pointing to the Vault using `Ref: Obsidian note [[note-name]]` syntax.

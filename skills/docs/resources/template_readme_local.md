@@ -1,27 +1,27 @@
-# 📂 Documentação do Diretório: `[Nome do Diretório]`
+# 📂 Directory Documentation: `[Directory Name]`
 
-## 🎯 Visão Geral
-* **Propósito:** `[Descrição clara da responsabilidade arquitetural do diretório]`
-* **Camada:** `[Ex: Domínio / Infraestrutura / Aplicação]`
+## 🎯 Overview
+* **Purpose:** `[Clear description of the architectural responsibility of the directory]`
+* **Layer:** `[e.g., Domain / Infrastructure / Application]`
 
-## 🏗️ Arquitetura e Fluxo de Dados
+## 🏗️ Architecture and Data Flow
 ```mermaid
 graph TD
-    A["Entrada / Controller"] --> B["Serviço / Módulo Interno"]
-    B --> C["Saída / Persistência"]
+    A["Input / Controller"] --> B["Service / Internal Module"]
+    B --> C["Output / Persistence"]
 ```
 
-## 🗂️ Mapeamento de Componentes
-* `📄 arquivo_principal.py`: `[Descrição do papel do arquivo]`
-* `📄 utils.py`: `[Funções utilitárias]`
+## 🗂️ Component Mapping
+* `📄 main_file.py`: `[Description of file role]`
+* `📄 utils.py`: `[Utility functions]`
 
-## 🧠 Decisões de Design & Trade-offs
-* **Decisão:** `[Descrição da escolha técnica]`
-* **Motivação:** `[Motivo e alternativas descartadas]`
+## 🧠 Design Decisions & Trade-offs
+* **Decision:** `[Technical choice description]`
+* **Motivation:** `[Reason and discarded alternatives]`
 
-## 🧪 Estratégia de Testes
-* **Tipos de Testes:** `[Unitários / Integração]`
-* **Cenários Críticos:** `[Casos de borda cobertos]`
+## 🧪 Testing Strategy
+* **Test Types:** `[Unit / Integration]`
+* **Critical Scenarios:** `[Covered edge cases]`
 
 ## 🔗 Related Context
-* Obsidian Vault: `[[nome-da-nota-relevante]]`
+* Obsidian Vault: `[[relevant-note-name]]`

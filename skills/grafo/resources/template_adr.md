@@ -12,20 +12,20 @@ tags:
 
 # ADR-{{ADR_NUMBER}}: {{TITLE}}
 
-## Contexto & Problema
-Descreva a motivação da decisão, o cenário técnico e o problema a ser resolvido.
+## Context & Problem
+Describe the decision motivation, technical scenario, and problem to be solved.
 
-## Decisão Tomada
-Descreva a arquitetura, biblioteca ou padrão escolhido e o motivo da escolha.
+## Decision Made
+Describe the architecture, library, or pattern chosen and the reason for choice.
 
-## Consequências
-### Positivas
-* Benefício 1
-* Benefício 2
+## Consequences
+### Positive
+* Benefit 1
+* Benefit 2
 
-### Riscos / Trade-offs
+### Risks / Trade-offs
 * Trade-off 1
 * Trade-off 2
 
-## Relações & Links
-* Raciocínio baseado em: [[outra-nota-ou-adr]]
+## Relationships & Links
+* Reasoning based on: [[another-note-or-adr]]

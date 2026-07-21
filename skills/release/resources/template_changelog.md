@@ -1,19 +1,19 @@
 # 🚀 Release Notes - `v[VERSION]` ([YYYY-MM-DD])
 
-## 🚀 Novas Funcionalidades
-- `[feat]`: `[Descrição da funcionalidade]`
+## 🚀 New Features
+- `[feat]`: `[Feature description]`
 
-## 🐛 Correções de Bugs
-- `[fix]`: `[Descrição da correção]`
+## 🐛 Bug Fixes
+- `[fix]`: `[Fix description]`
 
-## ⚡ Melhorias de Performance & Clean Code
-- `[refactor/perf]`: `[Descrição da melhoria]`
+## ⚡ Performance Improvements & Clean Code
+- `[refactor/perf]`: `[Improvement description]`
 
 ## ⚠️ Breaking Changes
-- `[BREAKING]`: `[Descrição do impacto e migração necessária]`
+- `[BREAKING]`: `[Impact description and required migration]`
 
 ---
-### 📌 Comandos de Publicação
+### 📌 Publishing Commands
 ```bash
 git checkout main
 git merge feature/[branch-name]

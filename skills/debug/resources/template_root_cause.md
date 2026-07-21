@@ -1,33 +1,33 @@
 # 🔍 Root Cause Analysis (RCA) - [Bug Description]
 
-## 1. Contexto & Sintomas
-* **Componente Afetado:** `[caminho/do/arquivo.ext]`
-* **Ambiente / Erro:** `[Stack trace ou status HTTP]`
+## 1. Context & Symptoms
+* **Affected Component:** `[path/to/file.ext]`
+* **Environment / Error:** `[Stack trace or HTTP status]`
 
-## 2. Análise dos 5 Whys (Causa Raiz)
-1. **Por que o erro ocorreu?** `[Resposta]`
-2. **Por que isso aconteceu?** `[Resposta]`
-3. **Por que o estado estava assim?** `[Resposta]`
-4. **Por que não havia validação?** `[Resposta]`
-5. **Por que os testes unitários não pegaram?** `[Causa raiz definitiva]`
+## 2. 5 Whys Analysis (Root Cause)
+1. **Why did the error occur?** `[Answer]`
+2. **Why did this happen?** `[Answer]`
+3. **Why was the state like this?** `[Answer]`
+4. **Why was there no validation?** `[Answer]`
+5. **Why did unit tests fail to catch it?** `[Definitive root cause]`
 
-## 3. Matriz de Hipóteses
-| Hipótese | Causa Provável | Impacto | Evidência |
+## 3. Hypothesis Matrix
+| Hypothesis | Probable Cause | Impact | Evidence |
 |---|---|---|---|
-| H1 (Mais Provável) | `[Descrição]` | Alto | `[Log/Stack Trace]` |
-| H2 (Alternativa) | `[Descrição]` | Médio | `[Config/Env]` |
+| H1 (Most Likely) | `[Description]` | High | `[Log/Stack Trace]` |
+| H2 (Alternative) | `[Description]` | Medium | `[Config/Env]` |
 
-## 4. Alternativas de Solução
-### Solução Recomendada (Opção A)
-* **Ação:** `[Explicação da alteração]`
-* **Prós:** `[Benefícios]`
-* **Contras:** `[Riscos]`
+## 4. Solution Alternatives
+### Recommended Solution (Option A)
+* **Action:** `[Explanation of change]`
+* **Pros:** `[Benefits]`
+* **Cons:** `[Risks]`
 
-### Solução Alternativa (Opção B)
-* **Ação:** `[Explicação da alteração]`
-* **Prós:** `[Benefícios]`
-* **Contras:** `[Riscos]`
+### Alternative Solution (Option B)
+* **Action:** `[Explanation of change]`
+* **Pros:** `[Benefits]`
+* **Cons:** `[Risks]`
 
-## 5. Plano de Prevenção & Testes
-- [ ] Criar teste de regressão em `[caminho_teste]` reproduzindo o cenário.
-- [ ] Salvar resolução no Obsidian Vault em `02-auditorias/pivots-[feature-slug].md`.
+## 5. Prevention Plan & Tests
+- [ ] Create regression test in `[test_path]` reproducing scenario.
+- [ ] Save resolution in Obsidian Vault under `02-auditorias/pivots-[feature-slug].md`.

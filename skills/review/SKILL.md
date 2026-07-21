@@ -1,27 +1,27 @@
 ---
 name: "review"
-description: "Executa auditorias metódicas de código e aplica correções cirúrgicas em duas fases: Fase 1 (Auditoria) e Fase 2 (Correção)."
+description: "Executes methodical code audits and applies surgical fixes in two phases: Phase 1 (Audit) and Phase 2 (Fix)."
 ---
 
 # Skill: Review & Audit Resolution
 
-Esta skill guia as regras técnicas e limitações para as auditorias de qualidade.
+This skill guides technical rules and limitations for quality audits.
 
-## 🎯 Domínios e Progressive Disclosure
-Acesse os recursos abaixo sob demanda (via `view_file`) dependendo do escopo acionado:
-* **Geral**: `resources/template_geral.md` | `references/checklist_geral.md`
-* **Arquitetura**: `resources/template_arquitetura.md` | `references/checklist_arquitetura.md`
-* **Segurança**: `resources/template_seguranca.md` | `references/checklist_seguranca.md`
-* **Performance**: `resources/template_performance.md` | `references/checklist_performance.md`
-* **Resiliência**: `resources/template_resiliencia.md` | `references/checklist_resiliencia.md`
+## 🎯 Domains and Progressive Disclosure
+Access resources below on demand (via `view_file`) depending on activated scope:
+* **General**: `resources/template_geral.md` | `references/checklist_geral.md` from the `@review` skill
+* **Architecture**: `resources/template_arquitetura.md` | `references/checklist_arquitetura.md` from the `@review` skill
+* **Security**: `resources/template_seguranca.md` | `references/checklist_seguranca.md` from the `@review` skill
+* **Performance**: `resources/template_performance.md` | `references/checklist_performance.md` from the `@review` skill
+* **Resilience**: `resources/template_resiliencia.md` | `references/checklist_resiliencia.md` from the `@review` skill
 
-## ⛔ Strict Constraints (Regras Absolutas)
-* **Fase 1 (Auditoria)**: É terminantemente proibido modificar o código-fonte da aplicação. O papel é inspecionar e gerar o `audit_report.md` com `RequestFeedback: true`.
-* **Fase 2 (Correção)**:
-  * 🚫 **Testes Intocáveis**: A suíte de testes não pode ser modificada para forçar aprovação.
-  * 🚫 **Regras de Negócio**: Estritamente proibido alterar o domínio. Foque apenas na infraestrutura da correção (ex: injeção de dependência, sanitização OWASP).
-  * 🚫 **Sem Execução Autônoma**: Forneça comandos de teste em blocos `bash` isolados.
+## ⛔ Strict Constraints (Absolute Rules)
+* **Phase 1 (Audit)**: Strictly forbidden to modify application source code. Role is to inspect and generate `audit_report.md` with `RequestFeedback: true`.
+* **Phase 2 (Fix)**:
+  * 🚫 **Untouchable Tests**: Test suite cannot be modified to force passing.
+  * 🚫 **Business Rules**: Strictly forbidden to alter domain logic. Focus only on fix infrastructure (e.g., dependency injection, OWASP sanitization).
+  * 🚫 **No Autonomous Execution**: Provide test commands in isolated `bash` blocks.
 
-## ✅ Verification Method (Como Validar)
-* O relatório do Vault (`02-auditorias/audit-[feature-slug].md`) deve ser atualizado usando `vault_patch` com `targetType: "heading"` ou `"frontmatter"` para marcar itens com `[x]`.
-* Um commit de squash semântico deve ser gerado antes de redirecionar o usuário com o bloco `[NEXT STEP]`.
+## ✅ Verification Method (How to Validate)
+* Vault report (`02-auditorias/audit-[feature-slug].md`) must be updated using `vault_patch` with `targetType: "heading"` or `"frontmatter"` to mark items as `[x]`.
+* A semantic squash commit must be generated via `@git` skill before redirecting user with `[NEXT STEP]` block.

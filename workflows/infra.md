@@ -1,21 +1,21 @@
 ---
 name: "infra"
-description: "Gerencia atualizações de dependências, Dockerfiles e variáveis de ambiente."
+description: "Manages dependency updates, Dockerfiles, and environment variables."
 ---
 
-# Workflow: Infraestrutura & Dependências (`/infra`)
+# Workflow: Infrastructure & Dependencies (`/infra`)
 
-1. **Ativação do Contexto**:
-   * Consulte as regras técnicas da habilidade em `@/.agents/skills/infra/SKILL.md`.
+1. **Context Activation**:
+   * Activate the `@infra` skill (by reading its `SKILL.md` file using `view_file`) to consult its technical rules.
 
-2. **Diagnóstico & Mapeamento**:
-   * Identifique os manifestos presentes (`package.json`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
-   * Verifique as regras gerais em `00-core-rules/conventions.md` no Obsidian Vault.
+2. **Diagnosis & Mapping**:
+   * Identify present manifests (`package.json`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
+   * Check general rules in `00-core-rules/conventions.md` in the Obsidian Vault.
 
-3. **Aplicação das Alterações**:
-   * Aplique edições cirúrgicas apenas nas dependências solicitadas.
-   * Se houver novas variáveis de ambiente, atualize obrigatoriamente o `.env.example`.
+3. **Applying Changes**:
+   * Apply surgical edits only to requested dependencies.
+   * If there are new environment variables, update `.env.example` mandatorily.
 
-4. **Validação & Encerramento**:
-   * Valide a sintaxe dos arquivos modificados.
-   * Exiba a mensagem final com a indicação para o próximo passo (`/testes`).
+4. **Validation & Closure**:
+   * Validate syntax of modified files.
+   * Display final message indicating the next step (`/testes`).

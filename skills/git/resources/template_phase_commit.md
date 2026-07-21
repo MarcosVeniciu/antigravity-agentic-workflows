@@ -1,8 +1,8 @@
-{{TYPE}}({{SCOPE}}): {{SHORT_SUMMARY}} (Fase {{PHASE_NUMBER}})
+{{TYPE}}({{SCOPE}}): {{SHORT_SUMMARY}} (Phase {{PHASE_NUMBER}})
 
-- Artefatos & Notas do Obsidian: {{ARTIFACTS_LIST}}
-- Status dos Testes: {{TEST_STATUS}}
-- Alterações Principais:
+- Artifacts & Obsidian Notes: {{ARTIFACTS_LIST}}
+- Test Status: {{TEST_STATUS}}
+- Main Changes:
   * {{CHANGE_1}}
   * {{CHANGE_2}}
-- Próxima Fase Recomendada: {{NEXT_AGENT_HANDOVER}}
+- Recommended Next Phase: {{NEXT_AGENT_HANDOVER}}

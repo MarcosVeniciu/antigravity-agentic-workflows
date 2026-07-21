@@ -2,12 +2,12 @@ import time
 import pytest
 
 def test_performance_{{FUNCTION_NAME}}():
-    """Análise de Escala e Performance Big-O para {{FUNCTION_NAME}}."""
+    """Big-O Scale and Performance Analysis for {{FUNCTION_NAME}}."""
     # Arrange
     sizes = [10, 100, 1000]
     print("\n==================================================")
     print(f"=== PERFORMANCE REPORT: {{FUNCTION_NAME}} ===")
-    print("| N (Itens)   | Tempo (ms)  |")
+    print("| N (Items)   | Time (ms)   |")
     print("|-------------|-------------|")
     
     for n in sizes:

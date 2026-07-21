@@ -1,33 +1,33 @@
-"""Exemplo de referência técnica de código de produção para a skill implementar-code."""
+"""Production code technical reference example for the implementar-code skill."""
 
 from typing import Dict, Any
 
 
-def processar_score_credito(dados_cliente: Dict[str, Any], limite_minimo: float = 0.6) -> bool:
-    """Calcula a elegibilidade de crédito do cliente baseado no perfil de risco.
+def process_credit_score(client_data: Dict[str, Any], minimum_threshold: float = 0.6) -> bool:
+    """Calculates client credit eligibility based on risk profile.
 
     Args:
-        dados_cliente: Dicionário contendo os atributos do perfil financeiro.
-        limite_minimo: Limiar mínimo (0.0 a 1.0) para aprovação.
+        client_data: Dictionary containing financial profile attributes.
+        minimum_threshold: Minimum threshold (0.0 to 1.0) for approval.
 
     Returns:
-        bool: True se o cliente for aprovado, False caso contrário.
+        bool: True if client is approved, False otherwise.
 
     Raises:
-        ValueError: Se a chave obrigatória 'cpf' não estiver presente no payload.
+        ValueError: If mandatory key 'tax_id' is not present in payload.
 
     SOLID Principles:
-        - Single Responsibility Principle (SRP): Concentra-se unicamente na regra
-          de elegibilidade sem efetuar persistência ou chamadas externas.
+        - Single Responsibility Principle (SRP): Focuses exclusively on eligibility
+          rule without performing persistence or external calls.
 
     Domain Context:
-        Regra BR-088: Elegibilidade de Crédito para Novos Perfis.
+        Rule BR-088: Credit Eligibility for New Profiles.
         Ref: Obsidian note [[01-concepcao/sdd-[feature-slug].md]]
         Search Tag: #type/sdd #feature/[feature-slug]
     """
-    if "cpf" not in dados_cliente:
-        raise ValueError("O payload do cliente deve conter a chave 'cpf'.")
+    if "tax_id" not in client_data:
+        raise ValueError("Client payload must contain key 'tax_id'.")
 
-    # Implementação de produção mínima
-    score = dados_cliente.get("score_calculado", 0.0)
-    return score >= limite_minimo
+    # Minimal production implementation
+    score = client_data.get("calculated_score", 0.0)
+    return score >= minimum_threshold

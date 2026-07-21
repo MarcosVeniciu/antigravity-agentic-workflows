@@ -1,14 +1,14 @@
-# Exemplo de Sucesso de Modelagem BDD
+# BDD Modeling Success Example
 
-Funcionalidade: Checkout Expresso com Padrão BR-101
-  Para que eu possa reduzir a fricção de compra
-  Como um cliente autenticado na plataforma
-  Eu quero finalizar meu pedido usando o saldo pré-carregado
+Feature: Express Checkout with BR-101 Standard
+  In order to reduce purchasing friction
+  As an authenticated client on the platform
+  I want to complete my order using pre-loaded balance
 
-  Cenário: Checkout com saldo suficiente
-    Dado que o cliente possui R$ 150,00 de saldo na carteira interna
-    E o carrinho de compras totaliza R$ 90,00
-    Quando o cliente aciona o botão "Finalizar com 1-Clique"
-    Então o sistema deve debitar R$ 90,00 do saldo do cliente
-    E o pedido deve ser encaminhado para o status "Aprovado"
-    E a nota Obsidian [[2026-financial-rules]] deve ser respeitada
+  Scenario: Checkout with sufficient balance
+    Given the client has R$ 150.00 balance in internal wallet
+    And the shopping cart totals R$ 90.00
+    When the client triggers the "1-Click Checkout" button
+    Then the system must deduct R$ 90.00 from client balance
+    And the order must be forwarded to "Approved" status
+    And the Obsidian note [[2026-financial-rules]] must be respected

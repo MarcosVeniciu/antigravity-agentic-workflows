@@ -1,33 +1,33 @@
-# Manual de Execução: Clean Code Specialist (`/refatorar`)
+# Execution Manual: Clean Code Specialist (`/refatorar`)
 
-Este guia detalha os padrões técnicos para eliminação de Code Smells e aplicação de princípios SOLID durante a Refactor Phase.
+This guide details technical standards for eliminating Code Smells and applying SOLID principles during the Refactor Phase.
 
 ---
 
-## 1. Catálogo de Refatorações Recomendadas
+## 1. Recommended Refactoring Catalog
 
-### 1.1. Guard Clauses (Eliminação de Aninhamento Profundo)
-* **Sintaxe/Problema**: Retornos aninhados dentro de múltiplos blocos `if/else`. Aumenta a complexidade ciclomática.
-* **Solução**: Inverta a lógica. Valide as condições de borda/erro no início da função e retorne ou levante exceções imediatamente.
+### 1.1. Guard Clauses (Deep Nesting Elimination)
+* **Syntax/Problem**: Nested returns inside multiple `if/else` blocks. Increases cyclomatic complexity.
+* **Solution**: Invert logic. Validate edge/error conditions at function start and return or throw exceptions immediately.
 
 ### 1.2. Extract Function / Method (SRP - Single Responsibility)
-* **Sintaxe/Problema**: Métodos que realizam validação, cálculo, formatação e persistência no mesmo bloco de código.
-* **Solução**: Isole sub-tarefas em funções privadas/internas com nomes declarativos (ex: `_validar_payload()`) e tipagem explícita.
+* **Syntax/Problem**: Methods performing validation, calculation, formatting, and persistence in the same code block.
+* **Solution**: Isolate sub-tasks into private/internal functions with declarative names (e.g., `_validate_payload()`) and explicit typing.
 
-### 1.3. Constantes Nomeadas (Eliminação de Magic Numbers)
-* **Sintaxe/Problema**: Números, strings ou valores literais repetidos na lógica (ex: `if status == 3:` ou `taxa = val * 0.08`).
-* **Solução**: Substitua por constantes explicitamente nomeadas em UPPER_CASE (ex: `STATUS_PROCESSANDO = 3`) no topo do módulo ou classe.
+### 1.3. Named Constants (Magic Numbers Elimination)
+* **Syntax/Problem**: Repeated numbers, strings, or literal values in logic (e.g., `if status == 3:` or `tax = val * 0.08`).
+* **Solution**: Replace with explicitly named UPPER_CASE constants (e.g., `STATUS_PROCESSING = 3`) at module or class top.
 
-### 1.4. Inversão de Dependência (DIP)
-* **Sintaxe/Problema**: Instanciação direta de serviços externos, repositórios ou integrações dentro do domínio de negócio.
-* **Solução**: Injete dependências via construtor utilizando interfaces ou abstrações genéricas.
+### 1.4. Dependency Inversion (DIP)
+* **Syntax/Problem**: Direct instantiation of external services, repositories, or integrations inside domain logic.
+* **Solution**: Inject dependencies via constructor using generic interfaces or abstractions.
 
 ---
 
-## 2. Validação Pós-Refatoração
+## 2. Post-Refactoring Validation
 
-- [ ] Funções possuem apenas um nível de abstração?
-- [ ] Módulos/Classes respeitam o princípio SRP (Single Responsibility)?
-- [ ] Todas as constantes mágicas foram substituídas por nomes descritivos?
-- [ ] Docstrings e Type Hints foram atualizados para novas funções extraídas?
-- [ ] A suíte inteira de testes rodou e continua 100% verde?
+- [ ] Functions have only one level of abstraction?
+- [ ] Modules/Classes respect SRP (Single Responsibility Principle)?
+- [ ] All magic constants replaced with descriptive names?
+- [ ] Docstrings and Type Hints updated for newly extracted functions?
+- [ ] Entire test suite ran and remains 100% green?

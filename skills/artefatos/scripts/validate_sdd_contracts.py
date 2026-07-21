@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script de validação do artefato de arquitetura SDD.
-Garante que o arquivo implementation_plan.md cumpre todos os requisitos formais.
+Validation script for SDD architecture artifacts.
+Ensures implementation_plan.md complies with all formal requirements.
 """
 
 import sys
@@ -12,40 +12,40 @@ from pathlib import Path
 def validate_sdd_file(filepath: str) -> bool:
     path = Path(filepath)
     if not path.exists():
-        print(f"❌ Erro: Arquivo {filepath} não encontrado.")
+        print(f"❌ Error: File {filepath} not found.")
         return False
 
     content = path.read_text(encoding="utf-8")
     errors = []
 
-    # 1. Validação de Seções Obrigatórias
+    # 1. Mandatory Sections Validation
     required_sections = [
-        "## 🎯 Objetivo",
-        "## 📋 Plano Sequencial de Implementação",
-        "## 🏗️ Arquitetura e Contratos",
-        "## 💥 Análise de Impacto",
+        "## 🎯 Goal",
+        "## 📋 Sequential Implementation Plan",
+        "## 🏗️ Architecture and Contracts",
+        "## 💥 Impact Analysis",
     ]
     for section in required_sections:
         if section not in content:
-            errors.append(f"Seção obrigatória ausente: '{section}'")
+            errors.append(f"Missing mandatory section: '{section}'")
 
-    # 2. Validação de rótulos em diagramas Mermaid (aspas em nós)
+    # 2. Mermaid Diagram Labels Validation (quoted nodes)
     if "```mermaid" in content:
-        # Checa padrões sem aspas em rótulos comuns
+        # Check unquoted label patterns in common connections
         unquoted_mermaid = re.findall(r"\w+-->>\w+:\s*[^\"\n]+", content)
         if unquoted_mermaid:
             errors.append(
-                "Rótulos no diagrama Mermaid devem usar aspas duplas. Exemplo de falha: "
+                "Mermaid diagram labels must use double quotes. Example failure: "
                 + unquoted_mermaid[0]
             )
 
     if errors:
-        print("❌ Falha na Validação do SDD:")
+        print("❌ SDD Validation Failure:")
         for err in errors:
             print(f"  - {err}")
         return False
 
-    print("✅ Sucesso: O artefato SDD está em conformidade total com os padrões!")
+    print("✅ Success: SDD artifact is fully compliant with standards!")
     return True
 
 

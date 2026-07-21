@@ -1,14 +1,14 @@
-# Manual de Execução: Git & Micro-Checkpoints
+# Execution Manual: Git & Micro-Checkpoints
 
-Este documento contém os modos de operação e restrições absolutas para a skill de versionamento local.
+This document contains operating modes and absolute constraints for the local versioning skill.
 
-## 🔄 Modos de Operação
+## 🔄 Operating Modes
 
 ### Mode 1: Local Micro-Checkpoint (During Execution)
-Usado continuamente durante a execução da fase para proteger o trabalho contra falhas ou corrupção de código.
+Used continuously during phase execution to protect work against failures or code corruption.
 
-* **Frequência**: Execute a cada marco funcional atingido (ex: teste passando, classe implementada, refatoração feita).
-* **Comando**:
+* **Frequency**: Execute at every functional milestone reached (e.g., test passing, class implemented, refactoring completed).
+* **Command**:
 ```bash
 git add .
 git commit -m "checkpoint({{PHASE_NAME}}): {{SHORT_DESCRIPTION}}"
@@ -16,38 +16,38 @@ git commit -m "checkpoint({{PHASE_NAME}}): {{SHORT_DESCRIPTION}}"
 
 ### Mode 2: Phase Closure & Squash (Phase Handover)
 
-Executado **estritamente ao final da fase**, quando todas as tarefas e verificações foram concluídas com sucesso.
+Executed **strictly at the end of the phase**, when all tasks and verifications are successfully completed.
 
-1. **Captura do Commit Inicial**: O agente identifica o hash do commit anterior aos checkpoints da fase.
-2. **Execução do Soft Reset**: Executa `git reset --soft <START_COMMIT>` para desfazer a pilha de micro-checkpoints mantendo as alterações no staging.
-3. **Commit Semântico Estruturado**: Usa o template em `resources/template_phase_commit.md` para gerar **UM ÚNICO commit final** representativo.
-* Exemplo:
+1. **Initial Commit Capture**: The agent identifies the commit hash prior to phase checkpoints.
+2. **Soft Reset Execution**: Runs `git reset --soft <START_COMMIT>` to undo the stack of micro-checkpoints while keeping changes in staging.
+3. **Structured Semantic Commit**: Uses the template in `resources/template_phase_commit.md` to generate **A SINGLE final representative commit**.
+* Example:
 ```bash
 git commit -m "feat(concepcao): BDD and SDD specifications completed for oauth2
 
-- Artefatos salvos: 01-concepcao/bdd-oauth2.md, 01-concepcao/sdd-oauth2.md
-- Testes: N/A
-- Próxima Fase: Iniciar Chat TDD (/testes)"
+- Saved Artifacts: 01-concepcao/bdd-oauth2.md, 01-concepcao/sdd-oauth2.md
+- Tests: N/A
+- Next Phase: Start TDD Chat (/testes)"
 ```
 
 ### Mode 3: Local Rollback/Recovery (Emergency Revert)
-Usado quando o agente comete um erro crítico, corrompe arquivos ou entra em um loop de refatoração que quebra o código.
+Used when the agent makes a critical mistake, corrupts files, or enters a refactoring loop that breaks the code.
 
-* **Comando para descartar alterações atuais e voltar ao último checkpoint:**
+* **Command to discard current changes and return to last checkpoint:**
 ```bash
 git reset --hard HEAD
 ```
 
-## ⛔ Regras Universais e Restrições
+## ⛔ Universal Rules and Constraints
 
-1. **GIT PUSH PROIBIDO**: Executar `git push` ou enviar alterações para repositórios remotos é estritamente proibido. Sincronização remota é responsabilidade do usuário.
-2. **Commit Limpo de Fase**: Nunca conclua uma fase sem realizar o Squash dos micro-checkpoints intermediários.
-3. **Nomenclatura Semântica**: Siga o padrão Conventional Commits (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`).
+1. **GIT PUSH FORBIDDEN**: Executing `git push` or sending changes to remote repositories is strictly forbidden. Remote sync is the user's responsibility.
+2. **Clean Phase Commit**: Never complete a phase without performing Squash on intermediate micro-checkpoints.
+3. **Semantic Naming**: Follow Conventional Commits pattern (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`).
 
-## ✅ Checklist de Validação (Auto-Auditoria)
+## ✅ Validation Checklist (Self-Audit)
 
-Antes de finalizar o uso desta skill, garanta que:
+Before completing the use of this skill, ensure that:
 
-* [ ] Os micro-checkpoints intermediários foram consolidados via `git reset --soft`.
-* [ ] O commit final usa o formato do `template_phase_commit.md`.
-* [ ] O comando `git push` NÃO foi executado.
+* [ ] Intermediate micro-checkpoints were consolidated via `git reset --soft`.
+* [ ] Final commit uses `template_phase_commit.md` format.
+* [ ] The `git push` command was NOT executed.

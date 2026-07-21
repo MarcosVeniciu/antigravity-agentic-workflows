@@ -1,13 +1,13 @@
-# Lista de Refatorações (`task_list.md`)
+# Refactoring List (`task_list.md`)
 
-Preencha as tarefas abaixo conforme os "Code Smells" identificados na fase de análise.
+Fill out tasks below according to "Code Smells" identified in analysis phase.
 
-- [ ] **Alvo:** `[NOME_DA_FUNCAO_OU_CLASSE]`
-  - **Smell Identificado:** `[SRP / Aninhamento Profundo / Duplicação / Magic Number / etc]`
-  - **Ação Planejada:** `[Guard Clause / Extract Method / Named Constant / etc]`
-  - **Status:** Em Progresso `[/]` ou Planejado `[ ]`
+- [ ] **Target:** `[FUNCTION_OR_CLASS_NAME]`
+  - **Identified Smell:** `[SRP / Deep Nesting / Duplication / Magic Number / etc]`
+  - **Planned Action:** `[Guard Clause / Extract Method / Named Constant / etc]`
+  - **Status:** In Progress `[/]` or Planned `[ ]`
 
-- [ ] **Alvo:** `[NOME_DA_FUNCAO_OU_CLASSE]`
-  - **Smell Identificado:** `[...]`
-  - **Ação Planejada:** `[...]`
+- [ ] **Target:** `[FUNCTION_OR_CLASS_NAME]`
+  - **Identified Smell:** `[...]`
+  - **Planned Action:** `[...]`
   - **Status:** `[ ]`

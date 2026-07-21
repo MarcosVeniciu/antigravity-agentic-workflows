@@ -1,45 +1,45 @@
-# Manual de Execução TDD em Lote e Padrões de Código
+# Batch TDD Execution & Code Standards Manual
 
-## 1. Padrão para Suítes de Teste (AAA & Matriz Quadripartida)
+## 1. Test Suite Pattern (AAA & Four-Partite Matrix)
 
-Para cada lote contextual, a suíte de testes deve cobrir a Matriz Quadripartida:
+For each context batch, the test suite must cover the Four-Partite Matrix:
 
-| Categoria | Foco da Cobertura | Tipo de Verificação |
+| Category | Coverage Focus | Verification Type |
 | --- | --- | --- |
-| **Happy Path** | Fluxo nominal com entradas válidas | Retorno de estado esperado. |
-| **Edge Cases** | Limites (0, `MAX_INT`), nulos e vazios | Resiliência e comportamentos de borda. |
-| **Exceptions** | Violações de contrato/regras de negócio | Disparo de exceções de domínio padronizadas. |
-| **Performance** | Análise de escala Big-O ($N=10, 100, 1000$) | Relatório em `stdout` via `time.perf_counter()`. |
+| **Happy Path** | Nominal flow with valid inputs | Expected state return. |
+| **Edge Cases** | Limits (0, `MAX_INT`), nulls, and empties | Resilience and boundary behavior. |
+| **Exceptions** | Contract / business rule violations | Standard domain exception firing. |
+| **Performance** | Big-O scale analysis ($N=10, 100, 1000$) | `stdout` report via `time.perf_counter()`. |
 
-### Estrutura Padrão AAA em Python:
+### Standard AAA Pattern in Python:
 ```python
-def test_deve_validar_transacao_com_sucesso():
+def test_should_validate_transaction_successfully():
     # Arrange
-    payload_valido = {"valor": 100.0, "conta_id": "ACC-123"}
-    servico = TransacaoService(repo_mock)
+    valid_payload = {"amount": 100.0, "account_id": "ACC-123"}
+    service = TransactionService(repo_mock)
 
     # Act
-    resultado = servico.processar(payload_valido)
+    result = service.process(valid_payload)
 
     # Assert
-    assert resultado.status == "APROVADO"
+    assert result.status == "APPROVED"
 
 ```
 
 ---
 
-## 2. Padrão para Código de Produção (Green Phase & SOLID)
+## 2. Production Code Pattern (Green Phase & SOLID)
 
-* **SRP (Single Responsibility Principle):** Funções enxutas (~20 linhas).
-* **Type Hints Rígidos:** Todas as assinaturas devem conter tipagem de argumentos e retorno.
-* **Docstrings Rastreáveis:** Conecte o código de produção ao Obsidian Vault:
+* **SRP (Single Responsibility Principle):** Lean functions (~20 lines).
+* **Strict Type Hints:** All signatures must contain argument and return typing.
+* **Traceable Docstrings:** Connect production code to the Obsidian Vault:
 
 ```python
-def processar_pagamento(dados: Dict[str, Any]) -> bool:
-    """Processa liquidação financeira de acordo com as regras de domínio.
+def process_payment(data: Dict[str, Any]) -> bool:
+    """Processes financial settlement according to domain rules.
 
     SOLID Principles:
-        - SRP: Exclusivamente focado no cálculo de liquidação.
+        - SRP: Exclusively focused on settlement calculation.
 
     Domain Context:
         Ref: Obsidian note [[01-concepcao/sdd-[feature-slug].md]]
@@ -51,9 +51,9 @@ def processar_pagamento(dados: Dict[str, Any]) -> bool:
 
 ---
 
-## 3. Protocolo de Registro de Pivots Locais
+## 3. Local Pivot Registration Protocol
 
-Se durante a escrita do código em lote for identificada inviabilidade técnica de uma biblioteca ou contrato do SDD:
+If during batch code writing a technical infeasibility of a library or SDD contract is identified:
 
-1. Crie/Atualize o documento `02-auditorias/pivots-[feature-slug].md` no Obsidian Vault usando `resources/pivot_template.md`.
-2. Se a mudança afetar padrões globais, marque para promoção em `00-core-rules/adrs/`.
+1. Create/Update document `02-auditorias/pivots-[feature-slug].md` in the Obsidian Vault using `resources/pivot_template.md`.
+2. If the change affects global patterns, mark for promotion in `00-core-rules/adrs/`.

@@ -3,38 +3,38 @@ type: sdd
 feature: checkout-pix
 project: antigravity
 date: "2026-07-19"
-description: "Especificação de arquitetura técnica e contratos para pagamentos via PIX no checkout"
+description: "Technical architecture specification and contracts for PIX payments at checkout"
 tags:
   - plan_implement
   - sdd
   - phase/concepcao
 ---
 
-# 📐 Plano de Implementação (SDD): Checkout PIX
+# 📐 Implementation Plan (SDD): Checkout PIX
 
 ---
 
-## 📋 Plano Sequencial de Implementação
+## 📋 Sequential Implementation Plan
 
-| # | O Quê | Por Quê | Critério de Aceite | Dependências |
+| # | What | Why | Acceptance Criterion | Dependencies |
 |---|---|---|---|---|
-| 1 | Criar DTO `PixPaymentRequest` em `schemas/pix.py` | Definir contrato de entrada com validação de CPF | Validação Pydantic rejeitando CPF inválido | — |
-| 2 | Criar serviço `PixGatewayService` em `services/pix.py` | Isolar integração HTTP com provedor bancário | Método `generate_qrcode` retornando Payload PIX válido | Etapa 1 |
+| 1 | Create DTO `PixPaymentRequest` in `schemas/pix.py` | Define input contract with tax ID validation | Pydantic validation rejecting invalid tax ID | — |
+| 2 | Create service `PixGatewayService` in `services/pix.py` | Isolate HTTP integration with banking provider | `generate_qrcode` method returning valid PIX Payload | Step 1 |
 
 ---
 
-## 🏗️ Arquitetura e Contratos
+## 🏗️ Architecture and Contracts
 
 ```mermaid
 sequenceDiagram
-    participant User as "Usuário / Web"
+    participant User as "User / Web"
     participant API as "Checkout Controller"
     participant Service as "PixGatewayService"
     
     User->>API: "POST /checkout/pix (Payload)"
     API->>Service: "generate_qrcode(payment_dto)"
     Service-->>API: "PixQrCodeResponse"
-    API-->>User: "201 Created (QR Code + Copia e Cola)"
+    API-->>User: "201 Created (QR Code + Copy-and-Paste)"
 
 ```
 
@@ -42,23 +42,23 @@ sequenceDiagram
 from pydantic import BaseModel, Field
 
 class PixPaymentRequest(BaseModel):
-    order_id: str = Field(..., description="ID do pedido")
-    amount: float = Field(..., gt=0, description="Valor em Reais")
-    tax_id: str = Field(..., description="CPF/CNPJ do pagador")
+    order_id: str = Field(..., description="Order ID")
+    amount: float = Field(..., gt=0, description="Amount in Reais")
+    tax_id: str = Field(..., description="Payer Tax ID (CPF/CNPJ)")
 
 ```
 
 ---
 
-## 💥 Análise de Impacto
+## 💥 Impact Analysis
 
-| Arquivo / Módulo | Tipo de Mudança | Risco | Observações |
+| File / Module | Change Type | Risk | Notes |
 | --- | --- | --- | --- |
-| `app/schemas/pix.py` | Additive | Baixo | Novo esquema de validação |
-| `app/services/pix.py` | Additive | Médio | Novo serviço com dependência externa |
+| `app/schemas/pix.py` | Additive | Low | New validation schema |
+| `app/services/pix.py` | Additive | Medium | New service with external dependency |
 
 ---
 
-## 🔗 Contexto Relacionado (Obsidian Vault)
+## 🔗 Related Context (Obsidian Vault)
 
 * [[bdd-checkout-pix]]

@@ -1,12 +1,12 @@
-# STATE 4: ARCHIVING AND TRANSITION (Encerramento do Phase Gate 1)
+# STATE 4: ARCHIVING AND TRANSITION (Phase Gate 1 Closure)
 
-Você está no STATE 4. Esta é a etapa final de persistência física dos contratos no ecossistema e entrega do controle.
+You are in STATE 4. This is the final stage of physical contract persistence in the ecosystem and control handover.
 
-## 📌 Diretrizes de Execução
-1. **Persistência no Vault**: Escreva a especificação BDD final gerada no estado anterior no caminho físico do Obsidian em `01-concepcao/bdd-[feature-slug].md`. Certifique-se de que o Frontmatter YAML esteja com as tags corretas e sem duplicidades.
-2. **Geração do Artefato**: Crie o arquivo `resumo_concepcao.md` obrigatoriamente configurado com `RequestFeedback: false` (pois este é o fim do fluxo e não bloqueia a IDE).
+## 📌 Execution Guidelines
+1. **Vault Persistence**: Write final BDD specification generated in previous state to physical Obsidian path `01-concepcao/bdd-[feature-slug].md`. Ensure YAML Frontmatter has correct tags without duplicates.
+2. **Artifact Generation**: Create `resumo_concepcao.md` file mandatorily configured with `RequestFeedback: false` (end of flow, does not block IDE).
 
-## 📄 Estrutura Exigida do Artefato
-- **Recibo de Gravação**: Confirmação visual do caminho onde a nota foi salva no Obsidian.
-- **Mensagem de Handover de Fase**: Apresentar textualmente e em destaque o aviso de encerramento do Phase Gate:
-  > **[NEXT STEP]** ➡️ *"📐 Escopo BDD documentado e revisado. O próximo passo é elaborar a arquitetura técnica e os contratos de implementação (SDD). Execute `/artefatos` para iniciar a fase de arquitetura."*
+## 📄 Required Artifact Structure
+- **Save Receipt**: Visual confirmation of path where note was saved in Obsidian.
+- **Phase Handover Message**: Present verbatim and highlighted the Phase Gate closure notice:
+  > **[NEXT STEP]** ➡️ *"📐 BDD scope documented and reviewed. The next step is to draft technical architecture and implementation contracts (SDD). Execute `/artefatos` to start the architecture phase."*

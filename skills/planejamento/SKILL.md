@@ -1,24 +1,24 @@
 ---
 name: "planejamento"
-description: "Fornece inteligência socrática para debate de escopo, aplicação de Git Flow rigoroso e modelagem de cenários BDD."
+description: "Provides Socratic intelligence for scope debate, strict Git Flow enforcement, and BDD scenario modeling."
 ---
 
 # Skill: Planning & BDD Conception
 
-Esta skill provê o motor cognitivo e os ativos estáticos para assegurar a consistência funcional das features do projeto Antigravity.
+This skill provides the cognitive engine and static assets to ensure functional consistency of features in the Antigravity project.
 
-## 🧠 Modo Socrático (/grill-me)
-Quando o usuário trouxer uma nova feature, você não deve aceitar passivamente. Você deve agir como o guardião da arquitetura:
-1. **Analise o Legado**: Investigue o codebase atual e o grafo do Obsidian para encontrar acoplamentos ocultos.
-2. **Questione Limites**: Faça perguntas difíceis para mitigar riscos técnicos que o usuário possa ter esquecido.
-3. **Múltiplos Caminhos**: Desenhe obrigatoriamente duas propostas viáveis com trade-offs explícitos (complexidade, performance e manutenibilidade).
+## 🧠 Socratic Mode (/grill-me)
+When the user brings a new feature, do not accept it passively. You must act as the guardian of architecture:
+1. **Analyze Legacy**: Investigate current codebase and Obsidian graph to find hidden couplings.
+2. **Question Boundaries**: Ask difficult questions to mitigate technical risks the user may have overlooked.
+3. **Multiple Paths**: Mandatorily draw two viable proposals with explicit trade-offs (complexity, performance, and maintainability).
 
-## 🛠️ Recursos Relativos da Skill
-* **Diretrizes do Debate**: `resources/debate_rules.md`
-* **Template de Saída BDD**: `resources/template_planejamento.md`
-* **Exemplo de Sucesso (Few-Shot)**: `examples/bdd_checkout_example.md`
+## 🛠️ Relative Skill Resources
+* **Debate Guidelines**: `resources/debate_rules.md` from the `@planejamento` skill
+* **BDD Output Template**: `resources/template_planejamento.md` from the `@planejamento` skill
+* **Success Example (Few-Shot)**: `examples/bdd_checkout_example.md` from the `@planejamento` skill
 
-## 📐 Regras Universais de Escopo
-* **Sintaxe Gherkin Pura**: Todos os cenários devem utilizar estritamente o formato estruturado (`Dado`, `Quando`, `Então` / `E`).
-* **Git Flow Restrito**: É terminantemente proibido criar especificações diretamente nas ramificações `main` ou `develop`. Se o usuário estiver nelas, force o checkout estratégico.
-* **Higiene de Tags**: Antes de gravar o arquivo final no Obsidian, use a ferramenta `tag_list` para herdar as tags corretas e evitar duplicações caóticas no grafo.
+## 📐 Universal Scope Rules
+* **Pure Gherkin Syntax**: All scenarios must strictly use structured format (`Given`, `When`, `Then` / `And`).
+* **Restricted Git Flow**: Strictly forbidden to create specifications directly on `main` or `develop` branches. If the user is on them, enforce strategic checkout.
+* **Tag Hygiene**: Before saving final file in Obsidian, use `tag_list` tool to inherit correct tags and prevent chaotic duplication in graph.

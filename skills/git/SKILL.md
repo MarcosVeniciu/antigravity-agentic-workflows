@@ -5,11 +5,11 @@ description: "Local version control utility skill. Manages Micro-Checkpoints aga
 
 # Skill: Local Git & Micro-Checkpoints (`skills/git`)
 
-Gerencia o versionamento local do projeto durante o ciclo de vida das fases, fornecendo pontos de restauração rápidos (Micro-Checkpoints) e consolidação semântica (Phase Squash) para a transição de contexto limpa entre os chats. Sempre comunique-se em português.
+Manages local versioning of the project during the phase lifecycle, providing fast restore points (Micro-Checkpoints) and semantic consolidation (Phase Squash) for clean context handover between chats. Always communicate in English.
 
-## 📚 Documentação e Regras
-Para acessar as diretrizes de execução, restrições rigorosas e o checklist de validação de versionamento, a engine deve ler o manual operacional sob demanda via `view_file`:
-* **Manual de Execução:** Leia `@/.agents/skills/git/references/EXECUTION.md`
+## 📚 Documentation and Rules
+To access execution guidelines, strict constraints, and the versioning validation checklist, the engine must read the operational manual on demand via `view_file`:
+* **Execution Manual:** Read `references/EXECUTION.md` from the `@git` skill
 
-## 📋 Recursos Disponíveis
-* **Template de Fechamento de Fase:** Localizado em `@/.agents/skills/git/resources/template_phase_commit.md`. Utilize-o estritamente para o "Mode 2: Phase Closure & Squash".
+## 📋 Available Resources
+* **Phase Closure Template:** Located in `resources/template_phase_commit.md` from the `@git` skill. Use strictly for "Mode 2: Phase Closure & Squash".

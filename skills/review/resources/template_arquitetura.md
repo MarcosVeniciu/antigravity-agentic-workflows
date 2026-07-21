@@ -7,28 +7,31 @@ tags:
   - "review"
   - "arquitetura"
 ---
-# 🏗️ Relatório de Auditoria: Isolamento de Camadas & Acoplamento
+# 🏗️ Audit Report: Layer Isolation & Coupling
 
-## 📊 Metadados da Revisão
-* **Contrato/SDD Associado:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
-* **Status Global:** 🟡 Em Auditoria (Fase 1)
+## 📊 Review Metadata
+* **Associated Contract/SDD:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
+* **Global Status:** 🟡 Under Audit (Phase 1)
 
-## 🔍 Desvios Detetados e Evidências
+## 🔍 Detected Deviations and Evidence
 
-### 🚨 [ARQ-01] Violação de Limite de Camada / Inversão de Dependência
-* **Status:** - [ ] Pendente de Correção
-* **Criticidade:** [Alta | Média | Baixa]
-* **Localização:** `caminho/do/arquivo.py:linhas`
-* **Evidência Mecânica:**
+### 🚨 [ARQ-01] Layer Boundary Violation / Dependency Inversion
+* **Status:** - [ ] Pending Fix
+* **Criticality:** [High | Medium | Low]
+* **Location:** `path/to/file.py:lines`
+* **Mechanical Evidence:**
 ```python
-# O agente injetará aqui a instanciação oculta ou import vazado da infraestrutura
+# The agent will inject here hidden instantiation or leaked infrastructure import
 
 ```
 
-* **Impacto no Sistema:** * **Correção Cirúrgica Proposta:** * **Resolução:** [Aguardando Aplicação da Fase 2]
+* **System Impact:** 
+* **Proposed Surgical Fix:** 
+* **Resolution:** [Awaiting Phase 2 Application]
 
 ---
 
-## 📈 Conclusão da Fase 1
+## 📈 Phase 1 Conclusion
 
-* **Total de Apontamentos:** * **RequestFeedback:** true
+* **Total Findings:** 
+* **RequestFeedback:** true

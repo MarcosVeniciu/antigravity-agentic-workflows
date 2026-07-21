@@ -7,28 +7,31 @@ tags:
   - "review"
   - "geral"
 ---
-# 🔎 Relatório de Auditoria: Qualidade Geral & Anti-Alucinação
+# 🔎 Audit Report: General Quality & Anti-Hallucination
 
-## 📊 Metadados da Revisão
-* **Contrato/SDD Associado:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
-* **Status Global:** 🟡 Em Auditoria (Fase 1)
+## 📊 Review Metadata
+* **Associated Contract/SDD:** [[01-concepcao/sdd-{{FEATURE_SLUG}}]]
+* **Global Status:** 🟡 Under Audit (Phase 1)
 
-## 🔍 Desvios Detetados e Evidências
+## 🔍 Detected Deviations and Evidence
 
-### 🚨 [GERAL-01] Desvio Técnico Detetado
-* **Status:** - [ ] Pendente de Correção
-* **Criticidade:** [Alta | Média | Baixa]
-* **Localização:** `caminho/do/arquivo.py:linhas`
-* **Evidência Mecânica:**
+### 🚨 [GERAL-01] Detected Technical Deviation
+* **Status:** - [ ] Pending Fix
+* **Criticality:** [High | Medium | Low]
+* **Location:** `path/to/file.py:lines`
+* **Mechanical Evidence:**
 ```python
-# O agente injetará aqui o trecho de código com o vício ou alucinação encontrado
+# The agent will inject here the code snippet with the defect or hallucination found
 
 ```
 
-* **Impacto no Sistema:** * **Correção Cirúrgica Proposta:** * **Resolução:** [Aguardando Aplicação da Fase 2]
+* **System Impact:** 
+* **Proposed Surgical Fix:** 
+* **Resolution:** [Awaiting Phase 2 Application]
 
 ---
 
-## 📈 Conclusão da Fase 1
+## 📈 Phase 1 Conclusion
 
-* **Total de Apontamentos:** * **RequestFeedback:** true
+* **Total Findings:** 
+* **RequestFeedback:** true

@@ -1,33 +1,33 @@
-# Plano de Implementação TDD (`implementation_plan.md`)
+# TDD Implementation Plan (`implementation_plan.md`)
 
 **Feature Slug:** `[FEATURE_SLUG]`
-**Branch Git:** `[BRANCH_NAME]`
-**Contratos Lidos:**
+**Git Branch:** `[BRANCH_NAME]`
+**Contracts Read:**
 - BDD: `[[01-concepcao/bdd-[FEATURE_SLUG].md]]`
 - SDD: `[[01-concepcao/sdd-[FEATURE_SLUG].md]]`
 
 ---
 
-## 📐 1. Arquitetura e Estratégia de Lotes
+## 📐 1. Architecture and Batch Strategy
 
-Descreva sucintamente a abordagem arquitetural adotada e como a funcionalidade foi dividida em Unidades Contextuais Independentes para otimização de contexto.
+Succinctly describe the architectural approach adopted and how functionality was divided into Independent Contextual Units for context optimization.
 
 ---
 
-## 🔗 2. Grafo de Dependências Técnicas
+## 🔗 2. Technical Dependency Graph
 
 ```mermaid
 graph TD
-    SubContexto1[Lote 1: Domínio e Persistência] --> SubContexto2[Lote 2: Serviços de Negócio]
-    SubContexto2 --> SubContexto3[Lote 3: Middlewares e Endpoints]
+    SubContext1[Batch 1: Domain and Persistence] --> SubContext2[Batch 2: Business Services]
+    SubContext2 --> SubContext3[Batch 3: Middlewares and Endpoints]
 
 ```
 
 ---
 
-## 🎯 3. Resumo dos Lotes Contextuais
+## 🎯 3. Context Batches Summary
 
-| Lote | Domínio / Responsabilidade | Componentes Afetados | Risco |
+| Batch | Domain / Responsibility | Affected Components | Risk |
 | --- | --- | --- | --- |
-| **Lote 1** | Estruturas base de dados e contratos | `src/domain/`, `src/repositories/` | Baixo |
-| **Lote 2** | Regras de negócio e orquestração | `src/services/` | Médio |
+| **Batch 1** | Base data structures and contracts | `src/domain/`, `src/repositories/` | Low |
+| **Batch 2** | Business rules and orchestration | `src/services/` | Medium |

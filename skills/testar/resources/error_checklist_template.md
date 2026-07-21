@@ -1,7 +1,7 @@
-# Checklist de Diagnóstico de Erro (`task.md`)
+# Error Diagnosis Checklist (`task.md`)
 
-- [ ] **Teste:** `test_[NOME]`
-  - **Tipo:** `AssertionError` / `TypeError`
-  - **Localização:** `[ARQUIVO]:[LINHA]`
-  - **Discrepância:** Esperava `[X]`, recebeu `[Y]`
-  - **Status:** Em Investigação `[/]`
+- [ ] **Test:** `test_[NAME]`
+  - **Type:** `AssertionError` / `TypeError`
+  - **Location:** `[FILE]:[LINE]`
+  - **Discrepancy:** Expected `[X]`, received `[Y]`
+  - **Status:** Under Investigation `[/]`

@@ -1,16 +1,16 @@
-# STATE 2: BRANCH STRATEGY (Governança Git Flow)
+# STATE 2: BRANCH STRATEGY (Git Flow Governance)
 
-Você está no STATE 2. O objetivo aqui é garantir a saúde e a rastreabilidade do histórico de versionamento do repositório antes de documentar o escopo final.
+You are in STATE 2. The objective here is to ensure the health and traceability of repository version history before documenting final scope.
 
-## 📌 Diretrizes de Execução
-1. **Auditoria de Branch**: Execute o script local `scripts/validate_branch.sh` para verificar em qual branch o desenvolvedor está situado.
-2. **Geração do Artefato**: Crie o arquivo `estrategia_branch.md` configurado com `RequestFeedback: true`.
+## 📌 Execution Guidelines
+1. **Branch Audit**: Execute local script `scripts/validate_branch.sh` from the `@planejamento` skill to check which branch the developer is on.
+2. **Artifact Generation**: Create `estrategia_branch.md` file configured with `RequestFeedback: true`.
 
-## 📄 Estrutura Exigida do Artefato
-- **Diagnóstico da Branch**: Informar a ramificação atual e alertar se ela viola o Git Flow.
-- **Comando de Checkout Limpo**: Forneça um bloco de código markdown ISOLADO contendo unicamente o comando de criação da branch sem concatenadores (`&&` ou `;`):
+## 📄 Required Artifact Structure
+- **Branch Diagnosis**: Report current branch and alert if it violates Git Flow.
+- **Clean Checkout Command**: Provide an ISOLATED markdown code block containing solely the branch creation command without joiners (`&&` or `;`):
   ```bash
-  git checkout -b feature/nome-da-feature
+  git checkout -b feature/feature-name
   ```
 
-**Instruções de UI:** Instrua o usuário a usar o botão "Copiar" nativo da interface no bloco de código acima, rodar em seu terminal e, em seguida, clicar em Proceed para avançar.
+**UI Instructions:** Instruct user to use the native "Copy" button in the UI code block above, run it in their terminal, then click Proceed to advance.

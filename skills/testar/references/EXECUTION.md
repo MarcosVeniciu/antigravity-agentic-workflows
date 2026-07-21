@@ -1,37 +1,36 @@
-# Manual de Execução: Reactive Debugger (`/testar`)
+# Execution Manual: Reactive Debugger (`/testar`)
 
-Manual de referência para análise de tracebacks e classificação de causa raiz.
+Reference manual for traceback analysis and root cause classification.
 
 ---
 
-## 1. Protocolo de Análise de Erros
+## 1. Error Analysis Protocol
 
-### 1.1. Ingestão & Checklist (`task.md`)
-Ao receber múltiplos erros no log:
-1. Monte a checklist em `task.md` com base no template de suporte em `resources/error_checklist_template.md`.
-2. Processe uma falha por vez marcando `[/]` ao iniciar e `[x]` ao concluir.
+### 1.1. Ingestion & Checklist (`task.md`)
+Upon receiving multiple errors in the log:
+1. Build the checklist in `task.md` based on support template in `resources/error_checklist_template.md`.
+2. Process one failure at a time marking `[/]` when starting and `[x]` when completed.
 
-### 1.2. Matriz de Classificação da Causa Raiz
+### 1.2. Root Cause Classification Matrix
 
-| Categoria | Descrição | Estratégia de Ajuste |
+| Category | Description | Adjustment Strategy |
 |---|---|---|
-| **Divergência de Tipo** | Retorno ou parâmetro com tipo incompatível. | Ajustar conversão ou type hint em produção. |
-| **Importação Ausente** | Módulo ou método não encontrado. | Adicionar a instrução de importação faltante. |
-| **Erro de Lógica** | Asserção não bate com o valor calculado. | Corrigir a lógica de cálculo em produção. |
-| **Erro de Mock/Fixture** | Fronteira mockada incorretamente. | Ajustar a configuração de mock no teste/fixture. |
+| **Type Mismatch** | Incompatible return or parameter type. | Adjust conversion or type hint in production. |
+| **Missing Import** | Module or method not found. | Add missing import statement. |
+| **Logic Error** | Assertion does not match calculated value. | Fix calculation logic in production. |
+| **Mock/Fixture Error** | Incorrectly mocked boundary. | Adjust mock configuration in test/fixture. |
 
 ---
 
-## 2. Formato de Saída Resumido
+## 2. Summarized Output Format
 
-> **Causa Raiz**: [Classificação]: [Explicação concisa em exatamente 1 frase].
+> **Root Cause**: [Classification]: [Concise explanation in exactly 1 sentence].
 
-[Blocos de código corrigidos com seus respectivos caminhos]
+[Corrected code blocks with respective file paths]
 
 ```bash
-# Comando isolado para re-execução dos testes
-pytest path/to/test_file.py -k test_nome
-
+# Isolated command for test re-execution
+pytest path/to/test_file.py -k test_name
 ```
 
-> **[NEXT STEP]** ➡️ *"🛠️ Correção cirúrgica aplicada e validada. Se todos os testes estiverem verdes, execute `/refatorar` (ou `/review` se estiver corrigindo um apontamento de auditoria) para continuar o fluxo."*
+> **[NEXT STEP]** ➡️ *"🛠️ Surgical fix applied and validated. If all tests are green, execute `/refatorar` (or `/review` if fixing an audit finding) to continue the flow."*
