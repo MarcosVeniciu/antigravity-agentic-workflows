@@ -134,23 +134,24 @@ def main():
             all_high_complexity.extend(result["high_complexity"])
             all_warnings.extend(result["warnings"])
 
-    print("\n=== 📊 AUDIT REPORT: PERFORMANCE & COMPLEXITY ===")
+    sys.stdout.reconfigure(encoding="utf-8")
+    print("\n=== AUDIT REPORT: PERFORMANCE & COMPLEXITY ===")
     print(f"Files scanned: {len(files_to_scan)}\n")
 
     if all_high_complexity:
-        print("⚠️ HIGH CYCLOMATIC COMPLEXITY V(G) >", args.threshold)
+        print(f"[WARN] HIGH CYCLOMATIC COMPLEXITY V(G) > {args.threshold}")
         for fn in all_high_complexity:
-            print(f"  • {fn['file']}:{fn['line']} - Function '{fn['name']}' has V(G) = {fn['complexity']}")
+            print(f"  * {fn['file']}:{fn['line']} - Function '{fn['name']}' has V(G) = {fn['complexity']}")
     else:
-        print("✅ Cyclomatic complexity V(G) within limits (<= 10) for all functions.")
+        print("[OK] Cyclomatic complexity V(G) within limits (<= 10) for all functions.")
 
     print()
     if all_warnings:
-        print("⚠️ ASYMPTOTIC HEURISTIC WARNINGS (Potential Big-O Bottlenecks)")
+        print("[WARN] ASYMPTOTIC HEURISTIC WARNINGS (Potential Big-O Bottlenecks)")
         for w in all_warnings:
-            print(f"  • {w['file']}:{w['line']} [{w['type']}] {w['message']}")
+            print(f"  * {w['file']}:{w['line']} [{w['type']}] {w['message']}")
     else:
-        print("✅ No nested loops or linear searches in loops detected.")
+        print("[OK] No nested loops or linear searches in loops detected.")
 
     print("\n================================================\n")
 
