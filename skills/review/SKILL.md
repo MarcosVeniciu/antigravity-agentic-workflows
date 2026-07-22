@@ -19,6 +19,16 @@ Access resources below on demand (via `view_file`) depending on activated scope:
 * **File Discovery**: Execute `git --no-pager diff develop...HEAD --name-only` to obtain modified file list (fallback to `main...HEAD` if `develop` is absent).
 * **Snippet Inspection**: Inspect changed snippets with `git --no-pager diff <origin>...HEAD --unified=3 -- "<file_path>"` instead of reading full files, controlling `--unified=N` for necessary surrounding context.
 
+## 🛡️ OWASP AppSec Audit Principles & Risk Matrix
+* **Defense in Depth**: Every trust boundary must validate inputs; do not rely solely on client-side controls.
+* **Risk Rating Methodology**: $\text{Risk} = \text{Likelihood} \times \text{Impact}$
+  * **CRÍTICO**: Immediate blocking fix. Direct exposure of infrastructure, user sessions, or database.
+  * **ALTO**: Pre-deploy blocking fix. Significant vulnerability or system failure risk.
+  * **MÉDIO**: Cycle fix. Business logic flaw, missing rate limit, technical security debt.
+  * **BAIXO**: Non-blocking recommendation. Formatting, minor logs, architectural enhancement.
+* **Constructive Remediation**: Every finding must explain root cause, business risk, and include Before/After code snippets.
+* **Privacy & Auditability**: Ensure LGPD/GDPR compliance (no PII or secrets in logs) while maintaining audit trails for security events.
+
 ## ⛔ Strict Constraints (Absolute Rules)
 * **Phase 1 (Audit)**: Strictly forbidden to modify application source code. Role is to inspect and generate `audit_report.md` with `RequestFeedback: true`.
 * **Phase 2 (Fix)**:
