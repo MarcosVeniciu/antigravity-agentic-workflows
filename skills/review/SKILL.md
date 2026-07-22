@@ -15,6 +15,10 @@ Access resources below on demand (via `view_file`) depending on activated scope:
 * **Performance**: `resources/template_performance.md` | `references/checklist_performance.md` from the `@review` skill
 * **Resilience**: `resources/template_resiliencia.md` | `references/checklist_resiliencia.md` from the `@review` skill
 
+## 🔍 Context-Efficient Audit Strategy (Diff Scoping)
+* **File Discovery**: Execute `git --no-pager diff develop...HEAD --name-only` to obtain modified file list (fallback to `main...HEAD` if `develop` is absent).
+* **Snippet Inspection**: Inspect changed snippets with `git --no-pager diff <origin>...HEAD --unified=3 -- "<file_path>"` instead of reading full files, controlling `--unified=N` for necessary surrounding context.
+
 ## ⛔ Strict Constraints (Absolute Rules)
 * **Phase 1 (Audit)**: Strictly forbidden to modify application source code. Role is to inspect and generate `audit_report.md` with `RequestFeedback: true`.
 * **Phase 2 (Fix)**:

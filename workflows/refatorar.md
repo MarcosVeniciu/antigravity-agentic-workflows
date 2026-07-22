@@ -12,9 +12,10 @@ You orchestrate Phase 3 of the development flow (Consolidation Refactoring in Ch
 - Run the project test suite via terminal.
 - 🛑 Proceed only if 100% of tests pass. If they fail, abort and instruct the user to resolve test failures first.
 - Read `01-concepcao/dod-[feature-slug].md` to inspect existing implementation history.
+- Identify origin/base branch (`develop` by default, or `main`). Run `git --no-pager diff <base-branch>...HEAD --name-only` to fetch the list of files modified in the feature branch.
 
 **2. Artifact Planning**
-- Update the interactive `task_list.md` artifact using `replace_file_content` tool to reflect pending refactoring tasks you identify (eliminating Code Smells, applying SOLID, modularization).
+- Update the interactive `task_list.md` artifact using `replace_file_content` tool to reflect pending refactoring tasks strictly scoped to the modified file list (eliminating Code Smells, applying SOLID, modularization).
 
 **3. Technical Execution**
 - Activate the `@refatorar` skill (by reading its `SKILL.md` file using `view_file`) to follow Clean Code and SOLID guidelines.

@@ -39,21 +39,26 @@ This workflow orchestrates the technical implementation of features in Phase 2 (
    * **Write Batch Code (Green):** Implement minimum sufficient production code in `src/` with Type Hints, SOLID, and traceable docstrings.
    * **Update Checklist:** Immediately update the `task_list.md` artifact marking that batch's items as completed (`[x]`).
    * **Append Entry to `dod-[feature-slug].md`:** Add a 1-2 sentence bullet point under `## 2. Linha do Tempo de Desenvolvimento` documenting the implemented sub-change and date.
+   * **Micro-Checkpoint Commit:** Immediately invoke `@git` skill in **Mode 1 (Micro-Checkpoint)** recording commit `checkpoint(implementar): context batch [batch-name] completed and approved` to save the tested code baseline.
 
 ---
 
-### Step 4: Final Phase - Full Suite Validation & Fault Tolerance
-1. Upon reaching `Phase N` of `task_list.md`, provide the developer with the command to execute the complete test suite (e.g., `pytest -v -s tests/` or `npm test`).
-2. **Self-Correction and Rollback Mechanism (Triple-Strike Rule):**
-   * If tests fail, attempt to fix production code (maximum of 3 consecutive attempts in the same session).
-   * If the error persists after 3 attempts, **halt execution**, execute `git reset --hard HEAD` (Mode 3 of `@git` skill) to restore stable state, and instruct the user to open a new clean chat invoking `/testar` or `/debug`.
+### Step 4: Suite Validation, Surgical Corrections & Resilient Rollback (Triple-Strike Rule)
+1. Execute or provide the command to execute the test suite (e.g., `pytest -v -s tests/` or `npm test`).
+2. **Surgical Corrections & Checkpoint per Approved Test:**
+   * If any test fails, analyze the failure root cause and apply a minimal fix in production code.
+   * As soon as a test failure is resolved and approved (100% green for that test item), immediately invoke `@git` skill in **Mode 1 (Micro-Checkpoint)** recording commit `checkpoint(implementar): test [test-name] resolved and passing`.
+3. **Resilient Rollback Mechanism (Triple-Strike Rule):**
+   * If an implementation or correction attempt fails 3 consecutive times in the same session, **halt execution**.
+   * Execute `git reset --hard HEAD` (Mode 3 of `@git` skill) to restore the environment to the **last successful Micro-Checkpoint**, preserving all previously completed and approved batch implementations and test fixes.
+   * Instruct the user to open a fresh clean chat invoking `/testar` or `/debug`.
 
 ---
 
-### Step 5: Finalization Checkpoint & Handover
-1. If all tests pass (100% green):
-   * Invoke `@git` skill in **Mode 1 (Micro-Checkpoint)** recording commit: `feat([feature-slug]): full implementation of test suite and code`.
+### Step 5: Iteration Finalization Checkpoint & Handover
+1. Once all tests for the current implementation iteration pass (100% green):
+   * Invoke `@git` skill in **Mode 1 (Iteration Checkpoint)** recording the final commit of the current implementation iteration: `feat([feature-slug]): completed implementation iteration [iteration-summary]`.
    * Mark `Phase N` as completed in `task_list.md`.
 2. Display official chat closure and phase transition instruction:
 
-> **[NEXT STEP]** ➡️ *"⚙️ Phase 2 Implementation iteration completed successfully with test suite 100% green and execution log appended to `dod-[feature-slug].md`! If all feature changes are complete, open a **NEW CHAT (Chat 3)** for Phase 3 Structural Refactoring by executing `/refatorar`. If further implementation changes are needed, execute `/implementar` again in a new session."*
+> **[NEXT STEP]** ➡️ *"⚙️ Phase 2 Implementation iteration completed successfully with test suite 100% green and execution log appended to `dod-[feature-slug].md`! Saved stable iteration commit as baseline. If all feature changes are complete, open a **NEW CHAT (Chat 3)** for Phase 3 Structural Refactoring by executing `/refatorar`. If further implementation changes are needed for change Y, execute `/implementar` again in a new session."*

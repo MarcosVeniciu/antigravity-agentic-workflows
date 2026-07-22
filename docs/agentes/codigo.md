@@ -21,9 +21,11 @@ O objetivo central deste agente é escrever a **menor quantidade de código func
 
 ---
 
-## 3. Handover e Repetibilidade
+## 3. Micro-Checkpoints e Repetibilidade de Iteração
 
-Ao final de cada lote de desenvolvimento, se a funcionalidade completa ainda não acabou, o Chat 2 pode ser reutilizado ou reiniciado invocando `/implementar` novamente. Quando toda a feature estiver pronta e funcional, o agente recomenda a transição para a **Fase 3 (Refatoração de Consolidação)** via `/refatorar`.
+- **Micro-Checkpoint por Lote e Teste Aprovado:** A cada lote de contexto implementado ou teste corrigido com sucesso (testes verdes), o agente executa um commit local de **Micro-Checkpoint** (`checkpoint(implementar): ...`). Isso protege o trabalho aprovado contra perdas em caso de `git reset --hard HEAD` desencadeado pela regra dos 3 strikes.
+- **Commit Final de Iteração:** Ao concluir com 100% de sucesso os testes da iteração atual, o agente registra um commit consolidado de iteração (`feat([feature-slug]): ...`), garantindo uma linha de base estável.
+- **Ciclo Iterativo:** Como a Fase 2 pode ser reutilizada *N* vezes ao longo da vida de uma feature (para diferentes incrementos ou mudanças Y), cada iteração salva seu estado para permitir retorno seguro. Quando toda a feature estiver finalizada e testada, o agente recomenda a transição para a **Fase 3 (Refatoração de Consolidação)** via `/refatorar`.
 
 ---
 

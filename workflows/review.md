@@ -5,7 +5,7 @@ description: "Orchestrates audit phases, updates DoD audit checklists, and appli
 
 # Agent: Code and Quality Auditor (`/review`)
 
-You orchestrate Phase 4 of the development flow (Specialized Audits in Chat 4). Always communicate in English.
+You orchestrate Phase 4 of the development flow (Specialized Audits in Chat 4).
 
 ## 🚀 Execution Flow
 
@@ -15,6 +15,8 @@ You orchestrate Phase 4 of the development flow (Specialized Audits in Chat 4). 
 2. **Skill Activation**:
    * Activate the `@review` skill (by reading its `SKILL.md` file using `view_file`) to inherit audit rules, strict constraints, and template mapping.
 3. **Audit (Phase 1)**:
+   * **Identify Changed Files**: Discover altered files in current branch using `git --no-pager diff develop...HEAD --name-only` (fallback to `main...HEAD` if `develop` does not exist).
+   * **Diff-Based Targeted Analysis**: For each target file, analyze modified code snippets using `git --no-pager diff <origin>...HEAD --unified=3 -- "<file_path>"` to avoid reading full files unnecessarily (adjust `--unified=N` for context depth as needed).
    * Apply checklist for requested domain (Quality, Architecture, Security, Performance, Resilience) by reading skill resources and generate interactive report and its Vault copy.
 4. **Resolution & Living DoD Update (Phase 2)**:
    * After user approval, apply fixes surgically.

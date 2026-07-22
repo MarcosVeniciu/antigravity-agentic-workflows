@@ -4,7 +4,16 @@ This guide details technical standards for eliminating Code Smells and applying 
 
 ---
 
-## 1. Recommended Refactoring Catalog
+## 1. Branch Scope Isolation (Targeted Refactoring)
+
+Before inspecting code smells, restrict analysis to the current branch's changes:
+1. Identify origin branch (`develop` by default, or `main`).
+2. Run `git --no-pager diff <origin-branch>...HEAD --name-only` to obtain the list of modified files.
+3. Limit code smells detection and refactoring exclusively to files present in this list to prevent scope creep into untouched repository code.
+
+---
+
+## 2. Recommended Refactoring Catalog
 
 ### 1.1. Guard Clauses (Deep Nesting Elimination)
 * **Syntax/Problem**: Nested returns inside multiple `if/else` blocks. Increases cyclomatic complexity.

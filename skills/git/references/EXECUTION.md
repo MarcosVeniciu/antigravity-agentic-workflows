@@ -7,7 +7,7 @@ This document contains operating modes and absolute constraints for the local ve
 ### Mode 1: Local Micro-Checkpoint (During Execution)
 Used continuously during phase execution to protect work against failures or code corruption.
 
-* **Frequency**: Execute at every functional milestone reached (e.g., test passing, class implemented, refactoring completed).
+* **Frequency**: Execute at every functional milestone reached (e.g., batch of context completed, individual test passed/resolved, class implemented, refactoring completed).
 * **Command**:
 ```bash
 git add .

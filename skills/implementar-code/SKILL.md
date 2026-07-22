@@ -38,3 +38,6 @@ This skill provides rigid technical guidelines for joint generation of tests and
 
 5. **Automatic Pivot Registration**:
    * If implementation requires deviation from the SDD, create the register in `02-auditorias/pivots-[feature-slug].md` using the resource template from the `@implementar-code` skill.
+
+6. **Mandatory Micro-Checkpoint**:
+   * Immediately upon completing a batch or test fix where all tests pass (100% green for that scope), invoke `@git` skill in Mode 1 (`checkpoint(implementar): ...`) to preserve tested code against Triple-Strike resets.

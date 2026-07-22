@@ -28,7 +28,8 @@ When the workflow requests or there is doubt about techniques, access the resour
    * Deep nesting (`if` inside `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
    * Loose literals in code $\rightarrow$ *Named Constants*.
    * Multiple responsibilities in the same component $\rightarrow$ *Extract Class / Module (SRP)*.
-5. **Living DoD Log Update**: Upon completion of refactoring, update `01-concepcao/dod-[feature-slug].md` checking off `- [x] Fase 3: Refatoração Final (/refatorar)`.
+5. **Feature Scope Boundary**: Restrict refactoring strictly to files modified in the current branch relative to origin branch (`develop` or `main`), retrieved via `git --no-pager diff <origin-branch>...HEAD --name-only`. Never refactor untouched project files.
+6. **Living DoD Log Update**: Upon completion of refactoring, update `01-concepcao/dod-[feature-slug].md` checking off `- [x] Fase 3: Refatoração Final (/refatorar)`.
 
 ---
 

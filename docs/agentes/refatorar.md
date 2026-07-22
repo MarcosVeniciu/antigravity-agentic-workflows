@@ -8,7 +8,8 @@ O agente de **Refatoração** atua na **Fase 3 (Refatoração de Consolidação)
 
 O objetivo deste agente é elevar a qualidade interna da funcionalidade inteira antes das auditorias:
 
-- **Eliminação de Code Smells:** Extração de métodos longos, eliminação de magics numbers e simplificação de condicionais aninhadas.
+- **Escopo Delimitado por Branch:** A análise e a refatoração são restritas estritamente aos arquivos alterados no ramo atual em relação ao ramo de origem (`develop` ou `main`), obtidos via `git --no-pager diff <ramo-origem>...HEAD --name-only`.
+- **Eliminação de Code Smells:** Extração de métodos longos, eliminação de magic numbers e simplificação de condicionais aninhadas.
 - **Eliminação de God Classes:** Quebra de classes infladas em estruturas menores com responsabilidade única (SRP).
 - **Aplicação de Princípios SOLID:** Reorganização de injeções de dependência (DIP) e interfaces (ISP).
 
