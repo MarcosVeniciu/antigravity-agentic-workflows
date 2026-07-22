@@ -1,11 +1,11 @@
 ---
 name: "review"
-description: "Executes methodical code audits and applies surgical fixes in two phases: Phase 1 (Audit) and Phase 2 (Fix)."
+description: "Executes methodical code audits and applies surgical fixes in Phase 4 (Chat 4), updating audit items in the Living DoD log (dod-[slug].md)."
 ---
 
 # Skill: Review & Audit Resolution
 
-This skill guides technical rules and limitations for quality audits.
+This skill guides technical rules and limitations for Phase 4 quality audits.
 
 ## 🎯 Domains and Progressive Disclosure
 Access resources below on demand (via `view_file`) depending on activated scope:
@@ -21,7 +21,9 @@ Access resources below on demand (via `view_file`) depending on activated scope:
   * 🚫 **Untouchable Tests**: Test suite cannot be modified to force passing.
   * 🚫 **Business Rules**: Strictly forbidden to alter domain logic. Focus only on fix infrastructure (e.g., dependency injection, OWASP sanitization).
   * 🚫 **No Autonomous Execution**: Provide test commands in isolated `bash` blocks.
+  * 📝 **Living DoD Log**: Update `01-concepcao/dod-[feature-slug].md` checking off completed audit domains under section `## 3. Refatoração & Auditorias`.
 
 ## ✅ Verification Method (How to Validate)
 * Vault report (`02-auditorias/audit-[feature-slug].md`) must be updated using `vault_patch` with `targetType: "heading"` or `"frontmatter"` to mark items as `[x]`.
-* A semantic squash commit must be generated via `@git` skill before redirecting user with `[NEXT STEP]` block.
+* Living DoD file (`01-concepcao/dod-[feature-slug].md`) must have audit domain items checked (`[x]`).
+* A semantic squash commit must be generated via `@git` skill before redirecting user with `[NEXT STEP]` block to Chat 5 (`/docs`).

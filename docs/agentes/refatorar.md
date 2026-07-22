@@ -1,30 +1,29 @@
-# Agente de Polimento (`/refatorar`) - A Fase Azul / Refactor
+# Agente de Polimento (`/refatorar`) - Refatoração de Consolidação (Fase 3)
 
-O agente de **Refatoração** encerra a Fase 2 do desenvolvimento TDD. Ele é acionado quando toda a suíte de testes está verde e o código de produção está funcional.
-
----
-
-## 1. Foco Estrutural e Clean Code
-
-O objetivo deste agente é elevar a qualidade interna do código sem alterar seu comportamento externo:
-
-- **Atualização Iterativa (`task.md`):** Mapeia alvos de refatoração em tarefas isoladas (ex: extração de método, eliminação de magic numbers, simplificação de condicionais).
-- **Eliminação de God Classes:** Quebra classes infladas em estruturas menores com responsabilidade única (SRP).
-- **Aplicação de Princípios SOLID:** Reorganiza injeções de dependência (DIP) e interfaces (ISP).
-- **Substituição de Boilerplate:** Substitui estruturas prolixas por padrões idiomáticos e seguros.
+O agente de **Refatoração** atua na **Fase 3 (Refatoração de Consolidação)** no Chat 3 (*Make it Right*). Ele é acionado **uma única vez** ao final do ciclo de desenvolvimento da feature, quando todo o código está funcional e com testes 100% verdes.
 
 ---
 
-## 2. Restrição Comportamental Absoluta
+## 1. Foco Estrutural, Clean Code e SOLID
 
-- **Zero Alteração de Comportamento:** É estritamente proibido adicionar novas regras de negócio ou alterar saídas esperadas.
+O objetivo deste agente é elevar a qualidade interna da funcionalidade inteira antes das auditorias:
+
+- **Eliminação de Code Smells:** Extração de métodos longos, eliminação de magics numbers e simplificação de condicionais aninhadas.
+- **Eliminação de God Classes:** Quebra de classes infladas em estruturas menores com responsabilidade única (SRP).
+- **Aplicação de Princípios SOLID:** Reorganização de injeções de dependência (DIP) e interfaces (ISP).
+
+---
+
+## 2. Atualização do DoD e Transição de Fase
+
+- **Zero Alteração de Comportamento:** É estritamente proibido alterar regras de negócio ou saídas de testes.
 - **Suíte Verde Obrigatória:** A refatoração só ocorre sobre código com cobertura de testes verde.
-- **Notificação de Reset de Contexto:** Ao final do polimento, o agente recomenda o encerramento da janela de chat e abertura de um novo chat para iniciar a Fase 3 (Auditorias Especializadas).
+- **Atualização do DoD Log:** Ao concluir a refatoração, o agente marca como concluído o item `- [x] Fase 3: Refatoração Final (/refatorar)` no arquivo `01-concepcao/dod-[feature-slug].md`.
+- **Handover para Chat 4:** O agente recomenda abrir o Chat 4 para iniciar a **Fase 4 (Auditorias Especializadas)** via `/review`.
 
 ---
 
 ## 🔀 Arquitetura Router & Skill
 
-* **Agente Roteador:** `agents/refatorar.md`
+* **Agente Roteador:** `workflows/refatorar.md`
 * **Skill Associada:** `skills/refatorar/`
-* **Referências de Execução:** `skills/refatorar/references/EXECUTION.md`

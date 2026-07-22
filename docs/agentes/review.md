@@ -1,6 +1,6 @@
-# Agente de Auditoria Especializada (`/review`) - Garantia & Qualidade
+# Agente de Auditoria Especializada (`/review`) - Auditorias Especializadas (Fase 4)
 
-O agente de **Auditoria** unificado atua na **Fase 3 (Garantia & Qualidade)**. Sua função é avaliar o código produzido sob 5 óticas especializadas antes que a funcionalidade avance para a fase de publicação.
+O agente de **Auditoria** unificado atua na **Fase 4 (Auditorias Especializadas)** no Chat 4. Sua função é avaliar a versão final e refatorada da feature sob 5 óticas especializadas antes da publicação.
 
 ---
 
@@ -15,16 +15,16 @@ A auditoria pode ser executada por categoria ou de forma geral:
 
 ---
 
-## 2. Descoberta Automática e Rastreabilidade
+## 2. Descoberta Automática, Registro DoD e Vault
 
-- **Descoberta do Escopo:** Executa `git status -s` e `git branch --show-current` para limitar a auditoria estritamente aos arquivos alterados no escopo da funcionalidade.
+- **Descoberta do Escopo:** Executa `git status -s` e `git branch --show-current` para limitar a auditoria estritamente aos arquivos alterados na funcionalidade.
 - **Relatório Interativo (`audit_report_[tipo].md`):** Exibido na IDE com `RequestFeedback: true` contendo checkboxes dos pontos auditados.
-- **Persistência no Obsidian Vault:** Salva uma cópia em `02-auditorias/audit-[feature-slug].md` via MCP para validação do **Portão de Fase 3 ➔ 4**.
+- **Marcação no DoD Log:** Atualiza `01-concepcao/dod-[feature-slug].md` marcando as caixas de auditorias concluídas sob `## 3. Refatoração & Auditorias`.
+- **Persistência no Obsidian Vault:** Salva uma cópia em `02-auditorias/audit-[feature-slug].md` via MCP para validação do **Portão de Fase 4 ➔ 5**.
 
 ---
 
 ## 🔀 Arquitetura Router & Skill
 
-* **Agente Roteador:** `agents/review.md`
+* **Agente Roteador:** `workflows/review.md`
 * **Skill Associada:** `skills/review/`
-* **Checklists de Referência:** `skills/review/references/` (`checklist_geral.md`, `checklist_arquitetura.md`, `checklist_seguranca.md`, `checklist_performance.md`, `checklist_resiliencia.md`)

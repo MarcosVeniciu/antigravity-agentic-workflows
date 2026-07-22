@@ -1,11 +1,11 @@
 ---
 name: "implementar-code"
-description: "Atomic TDD execution by context batches (Red + Green). Generates AAA tests, boundary mocks, minimal SOLID code, synchronous checklist update, and Pivot management."
+description: "Atomic TDD execution by context batches (Red + Green). Generates AAA tests, boundary mocks, minimal SOLID code, synchronous task list update, dynamic DoD log appending, and Pivot management."
 ---
 
 # Skill: Batch TDD Execution & Code Engineering (`implementar-code`)
 
-This skill provides rigid technical guidelines for joint generation of tests and production code in a single API call.
+This skill provides rigid technical guidelines for joint generation of tests and production code in Phase 2 (Chat 2).
 
 ---
 
@@ -19,11 +19,12 @@ This skill provides rigid technical guidelines for joint generation of tests and
 
 ## ⛔ Inviolable Execution Rules
 
-1. **Call Atomicity (Red + Green + Checklist)**:
+1. **Call Atomicity (Red + Green + Task List + Living DoD Log)**:
    * In the same API response for a batch, you must:
      1. Deliver full test suite code (Red).
      2. Deliver minimal production code satisfying those tests (Green).
      3. Update the `task_list.md` file marking batch items as completed (`[x]`).
+     4. Append a 1-2 sentence log entry under `## 2. Linha do Tempo de Desenvolvimento` in `01-concepcao/dod-[feature-slug].md` detailing the implemented sub-change and date.
 
 2. **Strict AAA Pattern (Arrange-Act-Assert)**:
    * All tests must explicitly have sections demarcated with `# Arrange`, `# Act`, and `# Assert`.

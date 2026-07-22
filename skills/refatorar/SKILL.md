@@ -1,11 +1,11 @@
 ---
 name: "refatorar"
-description: "Structural refactoring, Clean Code, and SOLID technical skill. Focused on eliminating Code Smells (SRP, nesting, magic numbers) and optimizing legibility, requiring 100% green tests."
+description: "Structural refactoring, Clean Code, and SOLID technical skill in Phase 3. Focused on eliminating Code Smells (SRP, nesting, magic numbers) and optimizing legibility, requiring 100% green tests and DoD update."
 ---
 
 # Skill: Clean Code & Structural Refactoring (`skills/refatorar`)
 
-This skill governs business rules for restructuring and improving the internal design of functional code. No modification should break tests or alter behavioral contracts. Always communicate with the user in English.
+This skill governs business rules for restructuring and improving the internal design of functional code in Phase 3 (Chat 3). No modification should break tests or alter behavioral contracts. Always communicate with the user in English.
 
 ---
 
@@ -28,6 +28,7 @@ When the workflow requests or there is doubt about techniques, access the resour
    * Deep nesting (`if` inside `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
    * Loose literals in code $\rightarrow$ *Named Constants*.
    * Multiple responsibilities in the same component $\rightarrow$ *Extract Class / Module (SRP)*.
+5. **Living DoD Log Update**: Upon completion of refactoring, update `01-concepcao/dod-[feature-slug].md` checking off `- [x] Fase 3: Refatoração Final (/refatorar)`.
 
 ---
 

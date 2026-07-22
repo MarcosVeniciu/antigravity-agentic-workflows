@@ -1,6 +1,6 @@
 # Agente de Planejamento (`/planejamento`) - O Maestro do Escopo
 
-O agente de planejamento atua na **Fase 1 (Concepção & Contratos)** do ciclo de desenvolvimento do **Antigravity IDE**. Sua função principal é garantir o entendimento absoluto do problema e a definição clara dos limites da funcionalidade antes da escrita de qualquer código de produção.
+O agente de planejamento atua na **Fase 1 (Concepção & Arquitetura)** do ciclo de desenvolvimento do **Antigravity IDE** no Chat 1. Sua função principal é garantir o entendimento absoluto do problema e a definição clara dos limites da funcionalidade antes da escrita de qualquer código de produção.
 
 Ele opera desacoplado do modelo core através do agente roteador `agents/planejamento.md` e da skill `skills/planejamento/`.
 
@@ -26,13 +26,13 @@ Com base no contexto coletado:
 
 ---
 
-## 3. Consolidação BDD e Handover
+## 3. Consolidação BDD e Handover (Mesmo Chat)
 
 Com o escopo aprovado:
 1. **Especificação BDD:** O agente consolida os casos de uso no formato BDD (*Given / When / Then*), utilizando os templates da skill `skills/planejamento/resources/template_planejamento.md`.
 2. **Artefato de Transição (`implementation_plan.md`):** O plano é apresentado na IDE como um artefato interativo com `RequestFeedback: true` para aprovação final.
 3. **Persistência no Obsidian Vault:** Após aprovação, a especificação é gravada em `01-concepcao/bdd-[feature-slug].md` no vault com a tag `#phase/concepcao` e `type: bdd`.
-4. **Handover para Artefatos:** Com o escopo BDD garantido no vault, o fluxo avança para a especificação técnica formal (`/artefatos`).
+4. **Handover para Artefatos:** Com o escopo BDD garantido no vault, o fluxo avança para a especificação técnica formal (`/artefatos`) no mesmo Chat 1.
 
 ---
 
