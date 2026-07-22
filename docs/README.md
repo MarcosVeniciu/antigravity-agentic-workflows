@@ -27,7 +27,6 @@ graph TD
 
     subgraph Chat2 [Fase 2: Desenvolvimento TDD Iterativo]
         Imp[Implementar / TDD <br> /implementar]
-        F[Testar - Fix <br> /testar]
     end
 
     subgraph Chat3 [Fase 3: Refatoração de Consolidação]
@@ -50,6 +49,7 @@ graph TD
     subgraph Suporte [Agentes de Suporte]
         Ask[Oráculo <br> /ask]
         Debug[Forense <br> /debug]
+        Fix[Depurador Reativo <br> /testar]
         Infra[Infra & Pacotes <br> /infra]
     end
 
@@ -64,11 +64,13 @@ graph TD
 
     %% Fluxo de Fase 2 (Desenvolvimento TDD Loop - Iterativo)
     Imp -->|Red ➔ Green & Apenda Histórico no DoD| Imp
-    Imp -.->|Quebra de Teste| F
-    F -.->|Corrigido & Verde| Imp
 
     %% Phase Gate 2 -> 3
     Imp ==>|Feature Funcional Completa - Recomenda Chat 3| Ref
+
+    %% Fluxo de Fase 3 (Refatoração com Suporte Reativo)
+    Ref -.->|Falha nos Testes| Fix
+    Fix -.->|Corrigido & Verde| Ref
 
     %% Phase Gate 3 -> 4
     Ref ==>|Clean Code & SOLID - Recomenda Chat 4| RevArq
@@ -104,31 +106,31 @@ graph TD
 
 ### 1. Fase 1: Concepção & Arquitetura (Chat 1)
 Especializada em Requisitos BDD, Arquitetura Técnica (SDD) e Definition of Done (DoD). Nenhuma linha de código de produção é gerada nesta etapa. Executada integralmente no mesmo Chat.
-* **[planejamento.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/planejamento.md) (`/planejamento`)**: Conduz o alinhamento de escopo via `/grill-me` em formato Gherkin (BDD) e salva em `01-concepcao/bdd-[slug].md`.
-* **[artefatos.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/artefatos.md) (`/artefatos`)**: Traduz o BDD em arquitetura (SDD), gerando `01-concepcao/sdd-[slug].md` e o documento vivo de histórico e aceite `01-concepcao/dod-[slug].md`.
+* **[planejamento.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/planejamento.md) (`/planejamento`)**: Conduz o alinhamento de escopo via `/grill-me` em formato Gherkin (BDD) e salva em `01-concepcao/bdd-[slug].md`.
+* **[artefatos.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/artefatos.md) (`/artefatos`)**: Traduz o BDD em arquitetura (SDD), gerando `01-concepcao/sdd-[slug].md` e o documento vivo de histórico e aceite `01-concepcao/dod-[slug].md`.
 
 ### 2. Fase 2: Desenvolvimento TDD Iterativo (Chat 2)
 Ciclo de desenvolvimento orientado por testes e contratos técnicos (*Make it Work*). Pode ser reutilizado *N* vezes durante a evolução da feature.
-* **[codigo.md / implementar.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/codigo.md) (`/implementar`)**: Escreve a suíte de testes (Red) e a implementação mínima de produção (Green) agrupadas por lotes de contexto. Adiciona entradas no diário de bordo de `01-concepcao/dod-[slug].md`.
-* **[testar.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/testar.md) (`/testar`)**: Depurador reativo que resolve quebras de testes cirurgicamente a partir do traceback do terminal.
+* **[implementar.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/implementar.md) (`/implementar`)**: Escreve a suíte de testes (Red) e a implementação mínima de produção (Green) com correções internas de forma autônoma. Agrupa por lotes de contexto e adiciona entradas no diário de bordo de `01-concepcao/dod-[slug].md`.
 
 ### 3. Fase 3: Refatoração de Consolidação (Chat 3)
 Executada **uma única vez** ao final do ciclo de desenvolvimento da feature (*Make it Right*).
-* **[refatorar.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/refatorar.md) (`/refatorar`)**: Aplica princípios SOLID e Clean Code na feature inteira com suíte 100% verde, sem alterar testes ou comportamento externo. Marca a caixa de refatoração no `dod-[slug].md`.
+* **[refatorar.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/refatorar.md) (`/refatorar`)**: Aplica princípios SOLID e Clean Code nos arquivos alterados (`git diff --name-only`) mantendo a suíte 100% verde. Marca a caixa de refatoração no `dod-[slug].md`.
 
 ### 4. Fase 4: Auditorias Especializadas (Chat 4)
 Auditoria rigorosa e correção cirúrgica sobre a versão final e refatorada da aplicação.
-* **[review.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/review.md) (`/review`)**: Unifica as auditorias de **Qualidade Geral**, **Arquitetura**, **Segurança**, **Performance** e **Resiliência**. Marca os checklists de auditoria no `dod-[slug].md`.
+* **[review.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/review.md) (`/review`)**: Unifica as auditorias de **Qualidade Geral**, **Arquitetura**, **Segurança (OWASP Code Review Guide v2.0)**, **Performance** e **Resiliência**. Marca os checklists de auditoria no `dod-[slug].md`.
 
 ### 5. Fase 5: Documentação & Release (Chat 5)
 Finalização da entrega, validação do DoD e versionamento semântico.
-* **[docs.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/docs.md) (`/docs`, `/readme-projeto`)**: Atualiza as documentações locais e a vitrine principal (`README.md` raiz).
-* **[release.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/release.md) (`/release`)**: Valida o atendimento de 100% dos itens do `dod-[slug].md`, calcula o SemVer, gera o changelog em `03-releases/` e orienta o merge em `develop`.
+* **[docs.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/docs.md) (`/docs`)**: Atualiza as documentações locais e a vitrine principal (`README.md` raiz).
+* **[release.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/release.md) (`/release`)**: Valida o atendimento de 100% dos itens do `dod-[slug].md`, calcula o SemVer, gera o changelog em `03-releases/` e orienta o merge em `develop`.
 
 ---
 
 ## 🚑 Agentes de Suporte
 
-* **[ask.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/ask.md) (`/ask`)**: Oráculo read-only para dúvidas sobre a codebase e a base de conhecimento.
-* **[debug.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/debug.md) (`/debug`)**: Investigador forense para runtime crashes e erros de ambiente utilizando a técnica dos *5 Whys*.
-* **[infra.md](file:///e:/Codigos/antigravity-agentic-workflows/docs/agentes/infra.md) (`/infra`)**: Gerenciador de dependências, manifestos (`package.json`, `pyproject.toml`, etc.) e configurações de contêineres/ambiente.
+* **[testar.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/testar.md) (`/testar`)**: Depurador reativo que analisa tracebacks do terminal e aplica correções cirúrgicas quando ocorrem quebras de testes (suporte para `/refatorar` ou testes isolados).
+* **[ask.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/ask.md) (`/ask`)**: Oráculo read-only para dúvidas sobre a codebase e a base de conhecimento.
+* **[debug.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/debug.md) (`/debug`)**: Investigador forense para runtime crashes e erros de ambiente utilizando a técnica dos *5 Whys*.
+* **[infra.md](file:///e:/Codigos/antigravity-agentic-workflows/workflows/infra.md) (`/infra`)**: Gerenciador de dependências, manifestos (`package.json`, `pyproject.toml`, etc.) e configurações de contêineres/ambiente.
