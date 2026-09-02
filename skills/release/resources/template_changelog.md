@@ -16,6 +16,12 @@
 ### 📌 Publishing Commands
 ```bash
 git checkout main
+```
+
+```bash
 git merge feature/[branch-name]
+```
+
+```bash
 git tag -a v[VERSION] -m "Release v[VERSION]"
 ```

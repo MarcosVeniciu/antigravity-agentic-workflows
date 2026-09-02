@@ -23,13 +23,11 @@
 
 ## 3. MEMORY & TOOLS
 
-* **Obsidian Vault:** SSOT for specs and audits. Use `search_query` / `vault_read`. Use `vault_patch` for updates.
-* **Vault Folders:** `00-core-rules/`, `01-concepcao/`, `02-auditorias/`, `03-releases/`, `04-templates/`.
-* **Promote-on-Impact:** If a bug fix, pivot, or audit alters a global repository pattern, explicitly propose promoting it to `00-core-rules/adrs/` as an ADR.
-* **NotebookLM:** strictly **user-governed**. Only query when explicitly commanded.
-* **Terminal:** Never execute code commands automatically unless allowed by IDE. Display manual commands in single-line ````bash` blocks.
-* **Clean Context Handover:** Respect phase boundaries. At the end of a phase, enforce Git squash/commit via `@git` skill, prompt the user for the next phase command, and finish the chat session to preserve token limits.
+* **Obsidian Vault:** SSOT do repositório para especificações (BDD/SDD), auditorias e ADRs. Todas as operações de busca, leitura e patching cirúrgico são governadas pela skill `@obsidian`.
+* **NotebookLM:** Base de conhecimento externa estritamente **governada pelo usuário** (apenas consultar sob comando explícito). Operada via skill `@notebooklm`.
+* **Terminal:** Nunca execute comandos de código automaticamente a menos que autorizado. Exiba comandos manuais em blocos ````bash` isolados.
+* **Clean Context Handover:** Respeite as fronteiras de fase. Ao concluir, execute commit/squash via skill `@git` e encerre a sessão para preservar a janela de contexto.
 
 ## PROTOCOLO DE SKILLS OBRIGATÓRIAS
-* **Zero Latência de Leitura:** O uso de Skills **NÃO é opcional**. Se a tarefa envolver Git (commit/squash/branch), Release (SemVer/changelog), Planejamento (BDD/grill-me), Implementação (TDD), Review (auditoria) ou Debug (RCA), você DEVE obrigatoriamente abrir o arquivo `SKILL.md` correspondente usando a ferramenta `view_file` no seu primeiro turno, antes de propor ou executar qualquer ação.
-* **Proibido Atalhos:** Mesmo para tarefas que pareçam simples (ex: "só um commit rápido"), você deve ler a skill de `git` para garantir que a mensagem de commit siga o padrão exato exigido.
+* **Zero Latência de Leitura:** O uso de Skills **NÃO é opcional**. Se a tarefa envolver Git (branch/checkpoint/squash/release), Conhecimento (Obsidian/NotebookLM), Épicos (`/decompor`), Planejamento (BDD/grill-me), Implementação (TDD), Refatoração, Review (auditorias) ou Release, você DEVE obrigatoriamente abrir o arquivo `SKILL.md` correspondente usando a ferramenta `view_file` no seu primeiro turno, antes de propor ou executar qualquer ação.
+* **Proibido Atalhos:** Mesmo para tarefas simples (ex: "só um commit rápido" ou "uma consulta no Obsidian"), você deve consultar a skill correspondente para garantir conformidade estrita com os padrões do repositório.
