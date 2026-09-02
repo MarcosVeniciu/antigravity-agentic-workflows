@@ -1,27 +1,16 @@
-# 🚀 Release Notes - `v[VERSION]` ([YYYY-MM-DD])
+# 🚀 Release Notes - `v{{VERSION}}` ({{DATE}})
 
-## 🚀 New Features
-- `[feat]`: `[Feature description]`
+## 🚀 Novas Funcionalidades
+- `[feat]`: {{FEAT_DESCRIPTION}}
 
-## 🐛 Bug Fixes
-- `[fix]`: `[Fix description]`
+## 🐛 Correções de Bugs
+- `[fix]`: {{FIX_DESCRIPTION}}
 
-## ⚡ Performance Improvements & Clean Code
-- `[refactor/perf]`: `[Improvement description]`
+## ⚡ Performance & Refatoração
+- `[refactor/perf]`: {{PERF_DESCRIPTION}}
 
 ## ⚠️ Breaking Changes
-- `[BREAKING]`: `[Impact description and required migration]`
+- `[BREAKING]`: {{BREAKING_DESCRIPTION}}
 
 ---
-### 📌 Publishing Commands
-```bash
-git checkout main
-```
-
-```bash
-git merge feature/[branch-name]
-```
-
-```bash
-git tag -a v[VERSION] -m "Release v[VERSION]"
-```
+*Release consolidada via Antigravity Agentic Workflows.*

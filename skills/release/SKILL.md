@@ -1,16 +1,26 @@
 ---
 name: "release"
-description: "Orchestrates publication of new versions, SemVer calculation, Changelog generation, and 100% DoD verification in Phase 5."
+description: "SemVer calculation and cumulative Changelog generation skill. Analyzes merged feature commits, bumps version numbers (Major/Minor/Patch), and formats CHANGELOG.md."
 ---
 
-# Skill: Release Manager (`skills/release`)
+# Skill: Release Manager & SemVer (`skills/release`)
 
-This skill provides rules for orchestrating publication of new versions, SemVer calculation, release notes generation, and 100% DoD verification in Phase 5 (Chat 5). Always communicate in English.
+Calcula a nova versão do sistema segundo as regras estritas do SemVer 2.0.0 e consolida o histórico de alterações no `CHANGELOG.md` e em `03-releases/changelog-v[VERSION].md` no Obsidian.
 
-## Execution Guidelines
+---
 
-1. **Pre-flight Check & DoD 100% Audit**: Identify active branch, recent commit history, and current project version. Read `01-concepcao/dod-[feature-slug].md` and verify that 100% of the Definition of Done items (BDD, NFR, refactoring, review, docs) are checked (`[x]`).
-2. **Skill Activation**: Activate the `@release` skill (by reading its `SKILL.md` file using `view_file`) to inherit strict versioning constraints, SemVer calculation, and access to changelog templates (`references/semver_rules.md` and `resources/template_changelog.md`).
-3. **Orchestration and Living DoD Completion**: Structure release notes and update `01-concepcao/dod-[feature-slug].md` checking off final release items.
-4. **Delivery**: Present changes accompanied by an isolated `bash` block containing proposed Git commands (commit, tag, merge feature into `develop`). Upon completion, explicitly display the message:
-   > **[NEXT STEP]** ➡️ *"🚀 Release notes generated, version tag created locally, and 100% Definition of Done (DoD) verified! Feature lifecycle successfully completed! Execute `git push --follow-tags` in your terminal to publish changes to remote repository."*
+## 🎯 Responsabilidades Únicas
+
+1. **Cálculo de SemVer (SemVer 2.0.0):**
+   * Avalia os commits das features mescladas na release branch:
+     * Contém `BREAKING CHANGE` ou quebra de contrato? $\rightarrow$ **MAJOR**
+     * Contém `feat:` (novas funcionalidades compatíveis)? $\rightarrow$ **MINOR**
+     * Contém apenas `fix:`, `perf:` ou `refactor:`? $\rightarrow$ **PATCH**
+2. **Geração do Changelog:**
+   * Agrupa as entregas em seções: Novas Funcionalidades, Correções de Bugs, Performance/Refatoração e Breaking Changes.
+   * Atualiza cumulativamente o `CHANGELOG.md` na raiz do repositório.
+   * Persiste uma cópia em `03-releases/changelog-v[VERSION].md` no Obsidian Vault.
+
+## 📋 Available Resources
+* **Regras SemVer:** `references/semver_rules.md` from the `@release` skill.
+* **Template do Changelog:** `resources/template_changelog.md` from the `@release` skill.

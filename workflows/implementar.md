@@ -1,64 +1,52 @@
 ---
-title: "Unified Implementation Engineer"
-description: "Executes Phase 2 of development unifying batch planning, TDD (Red + Green), dynamic DoD log update, and artifact synchronization."
+title: "TDD Implementation Agent"
+description: "Executes Phase 2 (Chat 2) TDD cycle: batch planning, AAA unit tests (Red), minimal SOLID code (Green), DoD timeline logging, and micro-checkpoints."
 ---
 
-# Workflow: Unified Implementation Engineer (`/implementar`)
+# Agent: Desenvolvimento TDD Iterativo (`/implementar`)
 
-This workflow orchestrates the technical implementation of features in Phase 2 (Chat 2), consuming Phase 1 contracts (BDD, SDD, and DoD), organizing tasks by Context Batches, executing the TDD cycle (Red ➔ Green), and appending sub-change logs to `01-concepcao/dod-[feature-slug].md`.
-
----
-
-## 🎯 Workflow Steps
-
-### Step 1: Bootstrapping & Contract Reading (Phase 2 Chat)
-1. Invoke the `@git` skill (by reading its `SKILL.md` file using `view_file`) to check repository status and get the active branch via `git branch --show-current`.
-2. Extract `[feature-slug]` from the branch name.
-3. Query the Obsidian Vault MCP and load Phase 1 contracts:
-   * **BDD Contract:** `01-concepcao/bdd-[feature-slug].md`.
-   * **SDD Contract:** `01-concepcao/sdd-[feature-slug].md`.
-   * **Living DoD Log:** `01-concepcao/dod-[feature-slug].md`.
-4. Consult global conventions in `00-core-rules/conventions.md`.
+Você orquestra a **Fase 2 (Chat 2)** do ciclo de desenvolvimento da feature.
 
 ---
 
-### Step 2: Architectural Planning & Grouping by Context
-1. Activate guidelines from the `@implementar-plan` skill (by reading its `SKILL.md` file using `view_file`).
-2. Emit the interactive `implementation_plan.md` artifact detailing technical strategy.
-3. Emit the interactive tracking `task_list.md` artifact using template `resources/task_template.md` from the `@implementar-plan` skill.
-   * **Key Rule:** Group tasks by **Dependent Context Batches** (e.g., DTO + Repository + Service) instead of isolated files.
-   * Set the final phase of the checklist as `Phase N: Execute Test Suite and Dynamic DoD Log Update`.
-4. Configure artifact metadata with `RequestFeedback: true` and wait for developer confirmation before modifying code.
+## 🚀 Esteira de Execução em 3 Etapas
+
+### Etapa 1: Planejamento de Lotes de Contexto
+- Leia as especificações BDD (`01-concepcao/bdd-[slug].md`) e o blueprint SDD (`01-concepcao/sdd-[slug].md`).
+- Decomponha os requisitos em **Lotes de Contexto Dependentes**.
+- 💡 **Skill Recomendada:** `skills/tdd-plan`
+- Gere os artefatos `implementation_plan.md` e `task_list.md` (`RequestFeedback: true`).
+- **Pausa de Validação:** Avance para a Etapa 2 apenas após a aprovação do plano (clique em **Proceed** ou confirmação).
 
 ---
 
-### Step 3: Atomic Execution by Context Batch (Red ➔ Green in the Same Call) & Living DoD Log
-1. Activate guidelines from the `@implementar-code` skill (by reading its `SKILL.md` file using `view_file`).
-2. For each Context Batch Phase defined in `task_list.md`, execute **in a single API response call**:
-   * **Write Batch Tests (Red):** Create/update the test suite using AAA pattern (`tests/`) for all batch entities.
-   * **Write Batch Code (Green):** Implement minimum sufficient production code in `src/` with Type Hints, SOLID, and traceable docstrings.
-   * **Update Checklist:** Immediately update the `task_list.md` artifact marking that batch's items as completed (`[x]`).
-   * **Append Entry to `dod-[feature-slug].md`:** Add a 1-2 sentence bullet point under `## 2. Linha do Tempo de Desenvolvimento` documenting the implemented sub-change and date.
-   * **Micro-Checkpoint Commit:** Immediately invoke `@git` skill in **Mode 1 (Micro-Checkpoint)** recording commit `checkpoint(implementar): context batch [batch-name] completed and approved` to save the tested code baseline.
+### Etapa 2: Loop TDD por Lote de Contexto
+Para cada lote definido no `task_list.md`, execute rigorosamente o ciclo abaixo:
+
+1. **Escrever Testes Unitários AAA (Fase Red):**
+   * Gere os testes com mocks isolados cobrindo Happy Path e Edge Cases.
+   * 💡 **Skill Recomendada:** `skills/testes`
+2. **Escrever Código de Produção Mínimo (Fase Green):**
+   * Escreva estritamente o código necessário para tornar os testes verdes ("Make it Work").
+   * Aplique tipagem completa e registre pivôs caso necessário.
+   * 💡 **Skill Recomendada:** `skills/codigo`
+3. **Execução da Suíte de Testes:**
+   * Execute os testes no terminal.
+   * Se algum teste falhar, isole a causa raiz e aplique correção cirúrgica sem alterar a asserção do teste.
+   * 💡 **Skill Recomendada:** `skills/testar`
+4. **Governança do Lote (DoD e Checkpoint):**
+   * Atualize o `task_list.md` marcando o lote como concluído (`[x]`).
+   * Adicione uma entrada na Linha do Tempo em `01-concepcao/dod-[slug].md` via `skills/dod`.
+   * Salve um micro-checkpoint local via `skills/git` (Modo 2):
+     ```bash
+     git add .
+     git commit -m "checkpoint(implementar): lote [N] - [descricao]"
+     ```
 
 ---
 
-### Step 4: Suite Validation, Surgical Corrections & Resilient Rollback (Triple-Strike Rule)
-1. Execute or provide the command to execute the test suite (e.g., `pytest -v -s tests/` or `npm test`).
-2. **Surgical Corrections & Checkpoint per Approved Test:**
-   * If any test fails, analyze the failure root cause and apply a minimal fix in production code.
-   * As soon as a test failure is resolved and approved (100% green for that test item), immediately invoke `@git` skill in **Mode 1 (Micro-Checkpoint)** recording commit `checkpoint(implementar): test [test-name] resolved and passing`.
-3. **Resilient Rollback Mechanism (Triple-Strike Rule):**
-   * If an implementation or correction attempt fails 3 consecutive times in the same session, **halt execution**.
-   * Execute `git reset --hard HEAD` (Mode 3 of `@git` skill) to restore the environment to the **last successful Micro-Checkpoint**, preserving all previously completed and approved batch implementations and test fixes.
-   * Instruct the user to open a fresh clean chat invoking `/testar` or `/debug`.
-
----
-
-### Step 5: Iteration Finalization Checkpoint & Handover
-1. Once all tests for the current implementation iteration pass (100% green):
-   * Invoke `@git` skill in **Mode 1 (Iteration Checkpoint)** recording the final commit of the current implementation iteration: `feat([feature-slug]): completed implementation iteration [iteration-summary]`.
-   * Mark `Phase N` as completed in `task_list.md`.
-2. Display official chat closure and phase transition instruction:
-
-> **[NEXT STEP]** ➡️ *"⚙️ Phase 2 Implementation iteration completed successfully with test suite 100% green and execution log appended to `dod-[feature-slug].md`! Saved stable iteration commit as baseline. If all feature changes are complete, open a **NEW CHAT (Chat 3)** for Phase 3 Structural Refactoring by executing `/refatorar`. If further implementation changes are needed for change Y, execute `/implementar` again in a new session."*
+### Etapa 3: Conclusão da Fase 2 & Handover
+- Com 100% dos lotes concluídos e testes unitários verdes:
+  - Salve o checkpoint final da Fase 2 via `skills/git` (Modo 2).
+  - Emita a recomendação de transição de fase:
+    > **[NEXT STEP]** ➡️ *"💻 Fase 2 (TDD) concluída com 100% dos testes unitários verdes! Abra um **NOVO CHAT (Chat 3)** e execute `/refatorar` para consolidar o design com Clean Code e SOLID."*

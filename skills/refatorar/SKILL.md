@@ -1,43 +1,40 @@
 ---
 name: "refatorar"
-description: "Structural refactoring, Clean Code, and SOLID technical skill in Phase 3. Focused on eliminating Code Smells (SRP, nesting, magic numbers) and optimizing legibility, requiring 100% green tests and DoD update."
+description: "Structural refactoring, Clean Code, and SOLID technical skill in Phase 3. Eliminates Code Smells (SRP, nesting, magic numbers) and optimizes legibility while keeping tests 100% green."
 ---
 
-# Skill: Clean Code & Structural Refactoring (`skills/refatorar`)
+# Skill: Clean Code & Refatoração Estrutural (`skills/refatorar`)
 
-This skill governs business rules for restructuring and improving the internal design of functional code in Phase 3 (Chat 3). No modification should break tests or alter behavioral contracts. Always communicate with the user in English.
-
----
-
-## 📖 Resources and Documentation on Demand
-
-When the workflow requests or there is doubt about techniques, access the resources below via `view_file` (or generate the artifact using the template):
-
-* **Detailed Refactoring Manual**: `references/EXECUTION.md` from the `@refatorar` skill
-* **Refactoring Checklist Template**: `resources/refactor_checklist_template.md` from the `@refatorar` skill
+Guia a melhoria do design interno e da manutenibilidade do código funcional produzido na Fase 2, eliminando Code Smells sem alterar o comportamento externo e mantendo a suíte de testes 100% verde.
 
 ---
 
-## ⛔ Universal Protection Rules (Strict Constraints)
+## 📖 Recursos de Apoio
 
-1. **Strict Behavior Preservation**: No refactoring may alter return values, thrown exceptions, or public contracts of the functionality.
-2. **Zero Test Regression**: If a test fails after code editing, the refactoring is wrong. Revert the change immediately.
-3. **No New Features**: Refactoring is cleaning existing code, not adding new business rules.
-4. **Surgical Focus on Code Smells**:
-   * Overly large methods/functions (> 20 lines) $\rightarrow$ *Extract Method / Function*.
-   * Deep nesting (`if` inside `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
-   * Loose literals in code $\rightarrow$ *Named Constants*.
-   * Multiple responsibilities in the same component $\rightarrow$ *Extract Class / Module (SRP)*.
-5. **Feature Scope Boundary**: Restrict refactoring strictly to files modified in the current branch relative to origin branch (`develop` or `main`), retrieved via `git --no-pager diff <origin-branch>...HEAD --name-only`. Never refactor untouched project files.
-6. **Living DoD Log Update**: Upon completion of refactoring, update `01-concepcao/dod-[feature-slug].md` checking off `- [x] Fase 3: Refatoração Final (/refatorar)`.
+* 📖 **Manual Detalhado de Refatoração**: `references/EXECUTION.md` from the `@refatorar` skill
+* 📋 **Template de Checklist de Refatoração**: `resources/refactor_checklist_template.md` from the `@refatorar` skill
 
 ---
 
-## ✅ Refactoring Evidence Matrix
+## ⛔ Regras Estritas de Proteção
 
-Whenever completing the refactoring cycle in the Workflow, present a formatted summary of changes to the user:
+1. **Preservação Rígida de Comportamento**: Nenhuma refatoração pode alterar retornos, exceções ou contratos públicos do sistema.
+2. **Zero Regressão de Testes**: Se algum teste quebrar após a refatoração, o ajuste está incorreto. Reverta imediatamente via `git reset --hard HEAD` (Modo 4).
+3. **Proibido Criar Novas Features**: Refatorar é limpar o código existente, não inventar regras novas.
+4. **Foco Cirúrgico em Code Smells**:
+   * Métodos/funções longas (> 20 linhas) $\rightarrow$ *Extract Method / Function*.
+   * Aninhamento profundo (`if` dentro de `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
+   * Literais mágicos $\rightarrow$ *Constantes Nomeadas*.
+   * Múltiplas responsabilidades $\rightarrow$ *Extract Class / Module (SRP)*.
+5. **Fronteira de Escopo da Branch**: Restrinja a refatoração estritamente aos arquivos modificados na branch atual (`git diff develop...HEAD --name-only`). Nunca refatore código legado intocado.
 
-| Refactored Element | Code Smell / SOLID Principle | Applied Technique |
+---
+
+## ✅ Matriz de Evidências de Refatoração
+
+Ao concluir a refatoração de um componente, apresente a matriz de mudanças:
+
+| Elemento Refatorado | Code Smell / Princípio SOLID | Técnica Aplicada |
 | :--- | :--- | :--- |
-| Example: `calculate()` | Deep nesting | Guard Clause (Early return) |
-| Example: `process()`| Violated SRP (> 35 lines)| Extract Method (`_validate`) |
+| Ex: `calculate()` | Aninhamento profundo | Guard Clauses (Early return) |
+| Ex: `process()` | Violação de SRP (> 35 linhas) | Extract Method (`_validate`) |

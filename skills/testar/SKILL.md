@@ -5,31 +5,29 @@ description: "Reactive debugging and test error fix skill. Isolates root causes 
 
 # Skill: Reactive Debugging & Test Fixing (`skills/testar`)
 
-This skill guides reactive debugging during Phase 2 (TDD Loop), applying surgical interventions to production code based on terminal failure logs analysis. Always communicate in English.
+Guia o diagnóstico e correção cirúrgica de falhas de testes durante o loop TDD da Fase 2, analisando tracebacks no terminal e aplicando intervenções mínimas no código de produção.
 
 ---
 
-## 📁 Support Resources
+## 📁 Recursos de Apoio
 
-* 📖 **Detailed Debugging Manual**: `references/EXECUTION.md` from the `@testar` skill
-* 📋 **Diagnostic Template (`task.md`)**: `resources/error_checklist_template.md` from the `@testar` skill
-
----
-
-## ⛔ Universal Rules and Constraints
-
-1. **Minimal Surgical Adjustment**: Edit strictly the production lines responsible for the error. Zero opportunistic refactoring, new features, or modification of clean code.
-2. **Preservation of Test Specification**: Never alter test assertions or expectations to force green status, except in cases of obvious syntax or typing errors in the test file itself.
-3. **Root Cause Summary**: The root cause of the failure must be explained and classified in **exactly one concise sentence** at the beginning of the report.
-4. **Micro-Checkpoint**: Trigger the `@git` skill (Mode 1) immediately after fix to persist the change.
+* 📖 **Manual de Debugging**: `references/EXECUTION.md` from the `@testar` skill
+* 📋 **Template de Diagnóstico (`task.md`)**: `resources/error_checklist_template.md` from the `@testar` skill
 
 ---
 
-## ✅ Delivery Checklist
+## ⛔ Regras Estritas e Restrições
 
-- [ ] Root cause identified and synthesized in 1 sentence.
-- [ ] Adjustment strictly applied to production code.
-- [ ] Tests preserved intact.
-- [ ] Micro-checkpoint saved via `@git` skill (Mode 1).
-- [ ] Test re-execution command provided in an isolated `bash` block.
-- [ ] [NEXT STEP] message guiding the use of `/refatorar` (or `/review`) displayed.
+1. **Ajuste Mínimo e Cirúrgico**: Edite estritamente as linhas de código de produção responsáveis pelo erro. Proibido refatorar código que não falhou.
+2. **Preservação da Especificação do Teste**: Nunca altere asserções ou expectativas dos testes para "forçar" um teste a passar, salvo erro sintático evidente no próprio teste.
+3. **Causa Raiz em 1 Frase**: Isole a causa raiz do erro em exatamente uma frase objetiva antes de aplicar qualquer correção.
+4. **Micro-Checkpoint Imediato**: Após tornar o teste verde, acione a skill `@git` (Modo 2) para salvar o progresso.
+
+---
+
+## ✅ Checklist de Validação
+
+- [ ] Causa raiz identificada e sintetizada em 1 frase.
+- [ ] Ajuste cirúrgico aplicado exclusivamente ao código de produção.
+- [ ] Testes preservados intactos.
+- [ ] Micro-checkpoint salvo via skill `@git` (Modo 2).
