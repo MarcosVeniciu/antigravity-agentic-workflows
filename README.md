@@ -72,31 +72,42 @@ O ecossistema adota uma arquitetura **modular desacoplada em duas camadas**:
 ```text
 antigravity-agentic-workflows/
 ├── workflows/                    # Roteadores de Estado (Slash Commands)
-│   ├── planejamento.md           # /planejamento - Fase 1: Concepção & BDD
-│   ├── artefatos.md              # /artefatos    - Fase 1: SDD & Artefatos de Arquitetura (Gera DoD Log)
-│   ├── implementar.md            # /implementar  - Fase 2: Desenvolvimento TDD Iterativo (Red ➔ Green com Auto-Fix)
+│   ├── decompor.md               # /decompor     - Fase 0: Macro-Arquitetura & Fatiamento de Épicos
+│   ├── planejamento.md           # /planejamento - Fase 1: Concepção, BDD, SDD e Living DoD
+│   ├── implementar.md            # /implementar  - Fase 2: Desenvolvimento TDD Iterativo (Red ➔ Green por Lotes)
 │   ├── refatorar.md              # /refatorar    - Fase 3: Refatoração de Consolidação (Clean Code no Diff)
-│   ├── review.md                 # /review       - Fase 4: Auditorias Especializadas (Qualidade & OWASP v2.0)
-│   ├── docs.md                   # /docs         - Fase 5: Documentação Técnica & Showcase
-│   ├── release.md                # /release      - Fase 5: Versionamento, Changelog & DoD Check
-│   ├── testar.md                 # /testar       - Suporte: Depurador Reativo / Fix (Suporte em Refatoração)
-│   ├── ask.md                    # /ask          - Suporte: Oráculo (Read-Only)
-│   ├── debug.md                  # /debug        - Suporte: Investigação Forense (5 Whys)
-│   └── infra.md                  # /infra        - Suporte: Pacotes & Ambiente
+│   ├── review.md                 # /review       - Fase 4: Auditorias Especializadas (Arquitetura, Segurança, Qualidade, Perf, Resiliência)
+│   ├── docs.md                   # /docs         - Fase 5: Documentação Técnica da Feature & Docstrings
+│   ├── release.md                # /release      - Ciclo de Publicação: Testes de Integração E2E, SemVer & Git Flow
+│   ├── testar.md                 # /testar       - Suporte: Depurador Reativo & Correções Cirúrgicas
+│   ├── ask.md                    # /ask          - Suporte: Oráculo Read-Only (Código & Obsidian)
+│   ├── debug.md                  # /debug        - Suporte: Investigador Forense de Crashes (5 Whys)
+│   └── infra.md                  # /infra        - Suporte: Manifestos, Docker & Dependências
 ├── skills/                       # Skills modulares (Recursos, Scripts e Referências)
-│   ├── planejamento/             # SKILL.md, resources/ (BDD template), references/
-│   ├── artefatos/                # SKILL.md, resources/ (SDD/Diagram templates), references/
-│   ├── implementar-code/         # SKILL.md (Execução TDD Red+Green, micro-checkpoints)
-│   ├── implementar-plan/         # SKILL.md (Decomposição arquitetural e plano em lotes)
-│   ├── testar/                   # SKILL.md, references/ (Fix protocols)
-│   ├── refatorar/                # SKILL.md, references/ (SOLID refactoring escopado ao diff)
-│   ├── review/                   # SKILL.md, references/ (Checklists de auditoria unificados & OWASP v2.0)
-│   ├── docs/                     # SKILL.md, resources/ (Doc templates)
-│   ├── release/                  # SKILL.md, resources/ (Changelog templates)
-│   ├── ask/                      # SKILL.md, references/ (Query guidelines)
-│   ├── debug/                    # SKILL.md, references/ (Root cause analysis)
-│   ├── git/                      # SKILL.md, scripts/ (Git Flow & Micro-checkpoints)
-│   └── grafo/                    # SKILL.md, references/ (Obsidian Knowledge Vault ops)
+│   ├── decompor/                 # Fatiamento vertical evolutivo e monotonicidade
+│   ├── debate/                   # Outcome-Based Prompting e inquirição socrática (2 a 4 perguntas)
+│   ├── bdd/                      # Cenários comportamentais em Gherkin puro
+│   ├── sdd/                      # Blueprint arquitetural, diagramas Mermaid e contratos tipados
+│   ├── dod/                      # Governança da Definition of Done e Living Log (dod-[slug].md)
+│   ├── tdd-plan/                 # Decomposição em lotes de contexto dependentes
+│   ├── testes/                   # Testes unitários padrão AAA e matriz de mocks
+│   ├── codigo/                   # Implementação mínima SOLID ("Make it Work") e registro de pivôs
+│   ├── testar/                   # Diagnóstico de falhas de testes e intervenção cirúrgica
+│   ├── refatorar/                # Eliminação de Code Smells e Clean Code escopado ao diff
+│   ├── review-arquitetura/       # Auditoria de acoplamento, limites de camada e DTOs
+│   ├── review-seguranca/         # Auditoria OWASP Top 10, sanitização e gestão de segredos
+│   ├── review-qualidade/         # Complexidade ciclomática AST (V(G) <= 10) e estilo
+│   ├── review-performance/       # Auditoria de queries N+1, leaks de memória e I/O
+│   ├── review-resiliencia/       # Timeouts, retry com backoff, circuit breakers e fallbacks
+│   ├── docs/                     # READMEs vivos de módulo/raiz e docstrings rastreáveis
+│   ├── integracao/               # Suíte E2E em release branch com banners de etapas
+│   ├── release/                  # Cálculo de SemVer cumulativo e geração de Changelog
+│   ├── git/                      # Central Git Flow (5 Modos: Branch, Checkpoint, Squash, Rollback, Release)
+│   ├── obsidian/                 # SSOT do Vault, busca por metadados e patch cirúrgico
+│   ├── notebooklm/               # Consulta semântica externa estritamente governada pelo usuário
+│   ├── ask/                      # Diretrizes read-only e regras de citação
+│   ├── debug/                    # Metodologia 5 Whys e análise de causa raiz
+│   └── infra/                    # Gestão segura de pacotes e variáveis de ambiente
 ├── docs/                         # Visão geral da arquitetura do ecossistema
 │   └── README.md                 # Mapeamento detalhado dos agentes e fluxo em 5 Fases
 ├── docs-antigravity/             # Manuais técnicos e guias de governança
@@ -105,96 +116,82 @@ antigravity-agentic-workflows/
 │   ├── guia-base-conhecimento.md # Integração MCP e estrutura do Obsidian Vault
 │   ├── guia-artefatos.md         # Padrões de planos e artefatos de saída
 │   └── boas-praticas-agentes.md  # Diretrizes de design e construção de Agentes
-└── prompts/                      # System prompts e governança global
+└── prompts/                      # System prompts e governança global (gemini.md)
 ```
 
 ---
 
-## 🗺️ O Ecossistema em 5 Fases (Pipeline Multi-Chat SDLC)
+## 🗺️ O Ecossistema em Fases (Pipeline Multi-Chat SDLC)
 
-Para evitar degradação do modelo por acúmulo de contexto (*token exhaustion*), a execução de uma *feature* é dividida em **5 Janelas de Chat Efêmeras**:
+Para evitar degradação do modelo por acúmulo de contexto (*token exhaustion*), a execução é dividida em **Janelas de Chat Efêmeras**:
 
 ```mermaid
 graph TD
     User((Usuário))
 
+    subgraph Macro [Fase 0: Macro-Arquitetura & Épicos]
+        Dec[Decomposição de Épicos <br> /decompor]
+    end
+
     subgraph Chat1 [Fase 1: Concepção & Arquitetura]
-        P[Planejamento <br> /planejamento]
-        A[Artefatos / SDD / DoD <br> /artefatos]
+        Plan[Planejamento BDD + SDD + DoD <br> /planejamento]
     end
 
     subgraph Chat2 [Fase 2: Desenvolvimento TDD Iterativo]
-        Imp[Implementar / TDD <br> /implementar]
+        Imp[TDD Loop Lote a Lote <br> /implementar]
     end
 
     subgraph Chat3 [Fase 3: Refatoração de Consolidação]
-        Ref[Refatorar Clean/SOLID <br> /refatorar]
+        Ref[Clean Code & SOLID <br> /refatorar]
     end
 
     subgraph Chat4 [Fase 4: Auditorias Especializadas]
-        RevGeral[Review Geral <br> /review geral]
-        RevArq[Arquitetura <br> /review arquitetura]
-        RevSeg[Segurança <br> /review seguranca]
-        RevPerf[Performance <br> /review performance]
-        RevRes[Resiliência <br> /review resiliencia]
+        Rev[Loop de Auditorias Diff-Based <br> /review]
     end
 
-    subgraph Chat5 [Fase 5: Documentação & Release]
-        Docs[Docs & Vitrine <br> /docs]
-        Rel[Release Manager <br> /release]
+    subgraph Chat5 [Fase 5: Documentação Técnica da Feature]
+        Docs[Docs & Docstrings <br> /docs]
+    end
+
+    subgraph Pub [Ciclo de Publicação & Integração]
+        Rel[Release & Integração E2E <br> /release]
     end
 
     subgraph Suporte [Agentes de Suporte]
         Ask[Oráculo <br> /ask]
         Debug[Forense <br> /debug]
         Fix[Depurador Reativo <br> /testar]
-        Infra[Infra & Pacotes <br> /infra]
+        Infra[Infra & Manifestos <br> /infra]
     end
 
-    %% Fluxo de Fase 1
-    User -->|Inicia Feature| P
-    P -->|Escopo BDD| A
-    A -.->|Novos Pacotes| Infra
-    Infra -.->|Ambiente Pronto| Imp
+    %% Relações Macro
+    User -->|Grande Demanda| Dec
+    Dec -->|Gera Grafo de Sub-Features| Plan
 
-    %% Phase Gate 1 -> 2
-    A ==>|BDD + SDD + DoD Salvos - Recomenda Chat 2| Imp
-
-    %% Fluxo de Fase 2 (Desenvolvimento TDD Loop - Iterativo)
-    Imp -->|Red ➔ Green & Apenda Histórico no DoD| Imp
-
-    %% Phase Gate 2 -> 3
-    Imp ==>|Feature Funcional Completa - Recomenda Chat 3| Ref
-
-    %% Fluxo de Fase 3 (Refatoração com Suporte Reativo)
-    Ref -.->|Falha nos Testes| Fix
+    %% Relações do Ciclo da Feature
+    User -->|Feature Isolada| Plan
+    Plan ==>|BDD + SDD + DoD Salvos| Imp
+    Imp -->|Red ➔ Green por Lote de Contexto| Imp
+    Imp ==>|100% dos Lotes Prontos| Ref
+    Ref -.->|Falha de Teste| Fix
     Fix -.->|Corrigido & Verde| Ref
+    Ref ==>|Clean Code sem Smells| Rev
+    Rev ==>|5 Domínios Auditados & Aprovados| Docs
+    Docs ==>|Feature Congelada & DoD 100%| Rel
 
-    %% Phase Gate 3 -> 4
-    Ref ==>|Clean Code no Diff - Recomenda Chat 4| RevArq
+    %% Publicação
+    Rel -->|Tag SemVer, Changelog & Git Flow Merge| User
 
-    %% Fluxo de Fase 4 (Review Chain / OWASP)
-    RevGeral -.->|Review Opcional| Docs
-    RevArq -->|Chained / Individual| RevSeg
-    RevSeg -->|Chained / Individual| RevPerf
-    RevPerf -->|Chained / Individual| RevRes
-
-    %% Phase Gate 4 -> 5
-    RevRes ==>|Audit 100% & DoD Validado - Recomenda Chat 5| Docs
-    RevGeral ==>|Audit Geral - Recomenda Chat 5| Docs
-
-    %% Fluxo de Fase 5
-    Docs -->|Manual/API Atualizada| Rel
-    Rel -->|Tag, Changelog & Merge develop| User
-
-    %% Links de Suporte
+    %% Suporte
     Suporte -.- User
 
+    style Macro fill:#2d1b38,stroke:#b800ff,stroke-width:2px,color:#fff
     style Chat1 fill:#1b2838,stroke:#00d2ff,stroke-width:2px,color:#fff
     style Chat2 fill:#1b382b,stroke:#00ff88,stroke-width:2px,color:#fff
     style Chat3 fill:#351b38,stroke:#d200ff,stroke-width:2px,color:#fff
     style Chat4 fill:#381b28,stroke:#ff0088,stroke-width:2px,color:#fff
     style Chat5 fill:#382d1b,stroke:#ffaa00,stroke-width:2px,color:#fff
+    style Pub fill:#1b3838,stroke:#00ffd5,stroke-width:2px,color:#fff
     style Suporte fill:#222,stroke:#888,stroke-width:1px,stroke-dasharray: 5 5,color:#fff
 ```
 
@@ -204,22 +201,21 @@ graph TD
 
 1. **Refatoração Eficiente Escopada ao Diff (Fase 3)**:
    - A refatoração ocorre em uma fase consolidadora própria (Fase 3), realizada sobre uma suíte de testes 100% verde (*Make it Right*).
-   - O escopo de análise e refatoração é **restrito exclusivamente aos arquivos alterados na branch atual** (`git diff --name-only`), eliminando desperdício de tokens e o risco de regressões em código legado não alterado.
+   - O escopo de análise e refatoração é **restrito exclusivamente aos arquivos alterados na branch atual** (`git diff develop...HEAD --name-only`), eliminando desperdício de tokens e o risco de regressões em código legado não alterado.
 
 2. **Autonomia da Fase 2 (`/implementar`) e Micro-Checkpoints**:
-   - A Fase 2 (`/implementar`) conduz todo o ciclo TDD (Red ➔ Green) e realiza internamente o auto-ajuste/correção do código que implementou antes de consolidar os testes.
-   - A cada teste verde concluído, um micro-checkpoint (`git commit`) é gerado e o diário de bordo no `dod-[slug].md` é atualizado.
+   - A Fase 2 (`/implementar`) conduz todo o ciclo TDD (Red ➔ Green) dividida em lotes de contexto dependentes (`skills/tdd-plan`, `skills/testes`, `skills/codigo`).
+   - A cada lote concluído e verde, um micro-checkpoint local (`git commit`) é gerado e a linha do tempo no `dod-[slug].md` é atualizada.
 
 3. **Artefato Vivo de Acompanhamento (`01-concepcao/dod-[slug].md`)**:
-   - Centraliza a linha do tempo do desenvolvimento (diário de bordo) e a Definition of Done (DoD) com checklists funcionais, não-funcionais, de auditoria e de release.
+   - Centraliza a linha do tempo do desenvolvimento e a Definition of Done (DoD) com checklists funcionais, não-funcionais, de auditoria e de release.
    - Atua como a única fonte da verdade (SSOT) para validação objetiva antes de autorizar o versionamento e merge.
 
-4. **Auditoria de Segurança Alinhada ao OWASP (Fase 4)**:
-   - O ecossistema `/review` foi expandido e alinhado com os pilares do **OWASP Code Review Guide v2.0**.
-   - Cobre verificações estritas de controle de acesso, criptografia, sanitização de dados, gestão de segredos e resiliência de infraestrutura.
+4. **Auditorias Especializadas por Domínio (Fase 4)**:
+   - O `/review` decompõe a análise em 5 auditorias atômicas executadas diretamente sobre o diff: Arquitetura, Segurança (OWASP Top 10/ASVS), Qualidade (AST V(G) <= 10), Performance e Resiliência.
 
 5. **Depurador Reativo de Suporte (`/testar`)**:
-   - O agente `/testar` atua como suporte especializado, sendo acionado cirurgicamente caso testes venham a falhar durante a fase de refatoração (`/refatorar`) ou para correções pontuais fora do fluxo principal.
+   - O agente `/testar` atua como suporte cirúrgico caso testes venham a falhar durante a fase de implementação (`/implementar`) ou refatoração (`/refatorar`), isolando a causa raiz em 1 frase e aplicando ajustes mínimos em produção.
 
 ---
 
@@ -227,17 +223,17 @@ graph TD
 
 | Comando | Workflow / Agente | Fase / Papel | Descrição / Responsabilidade Principal |
 | :--- | :--- | :--- | :--- |
-| `/planejamento` | [planejamento.md](workflows/planejamento.md) | **Fase 1** | Conduz a especificação de requisitos orientada a BDD (Gherkin). |
-| `/artefatos` | [artefatos.md](workflows/artefatos.md) | **Fase 1** | Elabora a arquitetura técnica (SDD) e gera o documento vivo de aceite e histórico (`dod-[slug].md`). |
-| `/implementar` | [implementar.md](workflows/implementar.md) | **Fase 2** | Desenvolvedor TDD: Ciclo iterativo Red ➔ Green com correções internas e micro-checkpoints no Git. |
-| `/refatorar` | [refatorar.md](workflows/refatorar.md) | **Fase 3** | Clean Code & SOLID: Refatora o código verde limitando a análise exclusivamente aos arquivos alterados no diff (`git diff --name-only`). |
-| `/review` | [review.md](workflows/review.md) | **Fase 4** | Auditorias Especializadas: Avalia Qualidade, Arquitetura, Segurança (OWASP Code Review Guide v2.0), Performance e Resiliência. |
-| `/docs` | [docs.md](workflows/docs.md) | **Fase 5** | Atualiza documentação técnica interna e a vitrine (`README.md`). |
-| `/release` | [release.md](workflows/release.md) | **Fase 5** | Valida 100% dos critérios do `dod-[slug].md`, calcula SemVer e gera nota de versão (Changelog). |
-| `/testar` | [testar.md](workflows/testar.md) | **Suporte** | Depurador Reativo: Suporte à refatoração para analisar tracebacks e aplicar correções cirúrgicas se houver quebra de testes. |
-| `/ask` | [ask.md](workflows/ask.md) | **Suporte** | Oráculo Read-Only: Responde dúvidas sem alterar nenhum arquivo do sistema. |
-| `/debug` | [debug.md](workflows/debug.md) | **Suporte** | Investigador Forense: Investiga runtime crashes e erros complexos de ambiente (5 Whys). |
-| `/infra` | [infra.md](workflows/infra.md) | **Suporte** | DevOps/SysAdmin: Gerencia manifestos de dependências e configurações de contêiner. |
+| `/decompor` | [decompor.md](workflows/decompor.md) | **Fase 0** | Decompõe épicos e grandes demandas em fatias verticais evolutivas e monotônicas. |
+| `/planejamento` | [planejamento.md](workflows/planejamento.md) | **Fase 1** | Debate Outcome-Based, Git Flow, especificação BDD, blueprint SDD e criação do Living DoD. |
+| `/implementar` | [implementar.md](workflows/implementar.md) | **Fase 2** | Desenvolvedor TDD: Decomposição em lotes, testes AAA (Red), código mínimo SOLID (Green) e micro-checkpoints. |
+| `/refatorar` | [refatorar.md](workflows/refatorar.md) | **Fase 3** | Clean Code & SOLID: Refatora o código verde limitando a análise exclusivamente aos arquivos alterados no diff. |
+| `/review` | [review.md](workflows/review.md) | **Fase 4** | Loop iterativo de auditorias: Arquitetura, Segurança (OWASP), Qualidade AST, Performance e Resiliência. |
+| `/docs` | [docs.md](workflows/docs.md) | **Fase 5** | Atualiza documentação técnica viva (READMEs de módulo/raiz) e docstrings com rastreabilidade ao Obsidian. |
+| `/release` | [release.md](workflows/release.md) | **Publicação** | Valida 100% de DoD, executa suíte de testes de integração E2E, calcula SemVer, gera Changelog e fecha o Git Flow. |
+| `/testar` | [testar.md](workflows/testar.md) | **Suporte** | Depurador Reativo: Analisa tracebacks e aplica correções cirúrgicas mínimas no código de produção. |
+| `/ask` | [ask.md](workflows/ask.md) | **Suporte** | Oráculo Read-Only: Responde dúvidas técnicas e conceituais sem alterar arquivos. |
+| `/debug` | [debug.md](workflows/debug.md) | **Suporte** | Investigador Forense: Investiga runtime crashes e falhas complexas via 5 Whys. |
+| `/infra` | [infra.md](workflows/infra.md) | **Suporte** | DevOps/SysAdmin: Gerencia manifestos de dependências, contêineres e variáveis de ambiente. |
 
 ---
 
