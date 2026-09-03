@@ -14,5 +14,5 @@ Surgically audits branch code changes from the perspective of data volumetrics, 
 * **Connection & Resource Leaks:** Unclosed database cursors, file descriptors, or client sessions.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_performance.md` from the `@review-performance` skill.
-* **Artifact Template:** `resources/template_performance.md` from the `@review-performance` skill.
+* **Checklist:** [`references/checklist_performance.md`](./references/checklist_performance.md)
+* **Artifact Template:** [`resources/template_performance.md`](./resources/template_performance.md)

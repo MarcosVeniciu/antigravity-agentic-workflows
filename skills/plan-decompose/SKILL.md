@@ -18,6 +18,6 @@ Decomposes complex initiatives and large product shifts into an ordered sequence
    * Each sub-feature must be self-contained and fit into a single development chat cycle (planning $\rightarrow$ TDD $\rightarrow$ refactoring $\rightarrow$ review $\rightarrow$ docs).
 
 ## 📋 Available Resources
-* **Epic Template:** `resources/template_epic.md` from the `@plan-decompose` skill.
-* **Slicing Directives:** `references/slicing_rules.md` from the `@plan-decompose` skill.
-* **Practical Example:** `examples/epic_decomposition_example.md` from the `@plan-decompose` skill.
+* **Epic Template:** [`resources/template_epic.md`](./resources/template_epic.md)
+* **Slicing Directives:** [`references/slicing_rules.md`](./references/slicing_rules.md)
+* **Practical Example:** [`examples/epic_decomposition_example.md`](./examples/epic_decomposition_example.md)

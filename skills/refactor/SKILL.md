@@ -11,8 +11,8 @@ Guides the enhancement of internal software design and maintainability for funct
 
 ## 📖 Supporting Resources
 
-* 📖 **Detailed Refactoring Manual**: `references/EXECUTION.md` from the `@refactor` skill
-* 📋 **Refactoring Checklist Template**: `resources/refactor_checklist_template.md` from the `@refactor` skill
+* 📖 **Detailed Refactoring Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
+* 📋 **Refactoring Checklist Template**: [`resources/refactor_checklist_template.md`](./resources/refactor_checklist_template.md)
 
 ---
 

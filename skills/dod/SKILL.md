@@ -16,4 +16,4 @@ Governs the single source of truth for delivery criteria, traceability, and exec
 * **Release (`/release`):** Act as the 100% mathematical gatekeeper, verifying that all checkboxes are checked before release integration is authorized.
 
 ## 📋 Available Resources
-* **DoD Template:** `resources/template_dod.md` from the `@dod` skill.
+* **DoD Template:** [`resources/template_dod.md`](./resources/template_dod.md)

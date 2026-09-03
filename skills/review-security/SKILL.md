@@ -15,5 +15,5 @@ Surgically audits branch code changes from an offensive and defensive security p
 * **Exception Handling:** Returning generic client error payloads without leaking stack traces or internal schema details.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_security.md` from the `@review-security` skill.
-* **Artifact Template:** `resources/template_security.md` from the `@review-security` skill.
+* **Checklist:** [`references/checklist_security.md`](./references/checklist_security.md)
+* **Artifact Template:** [`resources/template_security.md`](./resources/template_security.md)

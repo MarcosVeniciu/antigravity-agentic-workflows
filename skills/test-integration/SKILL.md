@@ -21,5 +21,5 @@ Integration tests must output structured console banners for each validation sta
 ```
 
 ## 📋 Available Resources
-* **E2E Runner Patterns:** `references/e2e_runner_pattern.md` from the `@test-integration` skill.
-* **Integration Report Template:** `resources/template_integration_log.md` from the `@test-integration` skill.
+* **E2E Runner Patterns:** [`references/e2e_runner_pattern.md`](./references/e2e_runner_pattern.md)
+* **Integration Report Template:** [`resources/template_integration_log.md`](./resources/template_integration_log.md)

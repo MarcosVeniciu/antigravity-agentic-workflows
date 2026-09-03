@@ -19,5 +19,5 @@ Models feature requirements and business rules strictly in Gherkin syntax (`Give
    * Scenarios must reflect the exact Desired End-State approved during the debate step.
 
 ## 📋 Available Resources
-* **BDD Template:** `resources/template_bdd.md` from the `@plan-bdd` skill.
-* **Reference Example:** `examples/bdd_checkout_example.md` from the `@plan-bdd` skill.
+* **BDD Template:** [`resources/template_bdd.md`](./resources/template_bdd.md)
+* **Reference Example:** [`examples/bdd_checkout_example.md`](./examples/bdd_checkout_example.md)

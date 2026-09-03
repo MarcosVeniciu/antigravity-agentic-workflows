@@ -11,8 +11,8 @@ Guides the generation and updating of living technical documentation (root/modul
 
 ## 📁 Resources and Templates
 
-* **Root Project Showcase**: `resources/template_readme_root.md` from the `@docs` skill
-* **Local Module Documentation**: `resources/template_readme_local.md` from the `@docs` skill
+* **Root Project Showcase**: [`resources/template_readme_root.md`](./resources/template_readme_root.md)
+* **Local Module Documentation**: [`resources/template_readme_local.md`](./resources/template_readme_local.md)
 
 ---
 

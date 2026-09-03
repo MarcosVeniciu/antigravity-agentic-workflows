@@ -18,7 +18,7 @@ Writes the minimal and strictly necessary production code required to make the c
 3. **Strict Typing (Type Hints):**
    * All function and method signatures must include complete argument type annotations and return types.
 4. **Technical Pivot Protocol:**
-   * If a technical roadblock forces deviation from the SDD blueprint during implementation, immediately document a pivot in `02-auditorias/pivots-[slug].md` using `resources/pivot_template.md`.
+   * If a technical roadblock forces deviation from the SDD blueprint during implementation, immediately document a pivot in `02-auditorias/pivots-[slug].md` using [`resources/pivot_template.md`](./resources/pivot_template.md).
 
 ## 📋 Available Resources
-* **Pivot Template:** `resources/pivot_template.md` from the `@tdd-code` skill.
+* **Pivot Template:** [`resources/pivot_template.md`](./resources/pivot_template.md)

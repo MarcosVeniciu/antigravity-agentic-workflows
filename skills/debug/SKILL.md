@@ -14,5 +14,5 @@ This skill provides rigid rules and engineering methodology to diagnose failures
 
 ## 📁 Skill Resources and Dependencies
 
-* **Diagnostic Methodology:** Consult manual in `references/5_whys_framework.md` if you need to apply the iterative interrogation method to find systemic root cause.
-* **Artifact Template:** Use model `resources/template_root_cause.md` to structure and instantiate the `root_cause_analysis.md` file in the IDE interface.
+* **Diagnostic Methodology:** Consult manual in [`references/5_whys_framework.md`](./references/5_whys_framework.md) if you need to apply the iterative interrogation method to find systemic root cause.
+* **Artifact Template:** Use model [`resources/template_root_cause.md`](./resources/template_root_cause.md) to structure and instantiate the `root_cause_analysis.md` file in the IDE interface.

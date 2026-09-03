@@ -22,5 +22,5 @@ Calculates new system versions in accordance with strict SemVer 2.0.0 guidelines
    * Persists a copy at `03-releases/changelog-v[VERSION].md` in the Obsidian Vault.
 
 ## 📋 Available Resources
-* **SemVer Rules:** `references/semver_rules.md` from the `@release` skill.
-* **Changelog Template:** `resources/template_changelog.md` from the `@release` skill.
+* **SemVer Rules:** [`references/semver_rules.md`](./references/semver_rules.md)
+* **Changelog Template:** [`resources/template_changelog.md`](./resources/template_changelog.md)

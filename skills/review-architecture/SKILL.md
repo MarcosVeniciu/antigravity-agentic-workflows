@@ -14,5 +14,5 @@ Surgically audits the branch code changes from a software architecture, layer is
 * **Unwanted Input Mutation:** Enforcing immutability by creating defensive copies of received collections.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_architecture.md` from the `@review-architecture` skill.
-* **Artifact Template:** `resources/template_architecture.md` from the `@review-architecture` skill.
+* **Checklist:** [`references/checklist_architecture.md`](./references/checklist_architecture.md)
+* **Artifact Template:** [`resources/template_architecture.md`](./resources/template_architecture.md)

@@ -11,8 +11,8 @@ Guides the diagnosis and surgical resolution of test failures during the TDD loo
 
 ## 📁 Supporting Resources
 
-* 📖 **Debugging Manual**: `references/EXECUTION.md` from the `@test-fix` skill
-* 📋 **Diagnostic Template (`task.md`)**: `resources/error_checklist_template.md` from the `@test-fix` skill
+* 📖 **Debugging Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
+* 📋 **Diagnostic Template (`task.md`)**: [`resources/error_checklist_template.md`](./resources/error_checklist_template.md)
 
 ---
 

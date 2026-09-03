@@ -14,5 +14,5 @@ Surgically audits branch code changes from the perspective of operational robust
 * **Concurrency Handling:** Deadlocks, race conditions, and optimistic vs pessimistic locking.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_resilience.md` from the `@review-resilience` skill.
-* **Artifact Template:** `resources/template_resilience.md` from the `@review-resilience` skill.
+* **Checklist:** [`references/checklist_resilience.md`](./references/checklist_resilience.md)
+* **Artifact Template:** [`resources/template_resilience.md`](./resources/template_resilience.md)

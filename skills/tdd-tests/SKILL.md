@@ -20,4 +20,4 @@ For each batch, tests must cover:
 * **Mocks on Boundaries:** Inject mock repositories and adapters directly into use case and service constructors.
 
 ## 📋 Available Resources
-* **AAA & Mock Patterns Guide:** `references/aaa_mock_patterns.md` from the `@tdd-tests` skill.
+* **AAA & Mock Patterns Guide:** [`references/aaa_mock_patterns.md`](./references/aaa_mock_patterns.md)

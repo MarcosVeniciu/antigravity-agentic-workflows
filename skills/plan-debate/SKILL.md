@@ -20,7 +20,7 @@ Guides technical discovery during Phase 0 (`/decompose`) and Phase 1 (`/plan`), 
    * The total volume of questions is flexible and scales dynamically with domain complexity.
    * **Small Batches per Turn:** Never overwhelm the user with long questionnaires or walls of text. Ask 1 to 3 surgical, objective questions at a time.
    * **Primary Channel (`ask_question` Tool):** Always prefer the interactive `ask_question` tool whenever choices, scope limits, trade-offs, or error paths can be structured. Place the recommended option first with `(Recommended)`.
-   * **Secondary Channel (Chat Fallback):** For exploratory questions, use the structured 3-part template from `resources/question_protocol.md`.
+   * **Secondary Channel (Chat Fallback):** For exploratory questions, use the structured 3-part template from [`resources/question_protocol.md`](./resources/question_protocol.md).
    * **Adaptive Follow-ups:** Allow new clarifying questions to emerge naturally based on the user's previous answers (uncovering hidden edge cases or business rules).
    * **Active Convergence:** Stop interviewing as soon as the functional outcome, boundaries, and measurable success criteria are clear enough to populate the proposals matrix.
 4. **Architectural Proposal Matrix (2 to 3 Proposals Max):**
@@ -36,7 +36,7 @@ Guides technical discovery during Phase 0 (`/decompose`) and Phase 1 (`/plan`), 
 
 
 ## 📋 Available Resources
-* **Debate Rules & XY Problem Prevention:** `resources/debate_rules.md` from the `@plan-debate` skill.
-* **Questioning Protocol & ask_question Tool:** `resources/question_protocol.md` from the `@plan-debate` skill.
-* **Proposal Template:** `resources/template_proposals.md` from the `@plan-debate` skill.
+* **Debate Rules & XY Problem Prevention:** [`resources/debate_rules.md`](./resources/debate_rules.md)
+* **Questioning Protocol & ask_question Tool:** [`resources/question_protocol.md`](./resources/question_protocol.md)
+* **Proposal Template:** [`resources/template_proposals.md`](./resources/template_proposals.md)
 

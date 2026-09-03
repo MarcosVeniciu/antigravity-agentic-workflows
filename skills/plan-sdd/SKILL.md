@@ -19,7 +19,7 @@ Translates BDD rules and scenarios into a detailed technical blueprint, defining
    * Pre-map which files will be created (Additive) or modified (Mutative) along with their risk level.
 
 ## 📋 Available Resources
-* **SDD Template:** `resources/template_sdd.md` from the `@plan-sdd` skill.
-* **Modeling Manual:** `references/sdd_execution.md` from the `@plan-sdd` skill.
-* **Reference Example:** `examples/sdd_checkout_example.md` from the `@plan-sdd` skill.
-* **Validation Script:** `scripts/validate_sdd_contracts.py` from the `@plan-sdd` skill.
+* **SDD Template:** [`resources/template_sdd.md`](./resources/template_sdd.md)
+* **Modeling Manual:** [`references/sdd_execution.md`](./references/sdd_execution.md)
+* **Reference Example:** [`examples/sdd_checkout_example.md`](./examples/sdd_checkout_example.md)
+* **Validation Script:** [`scripts/validate_sdd_contracts.py`](./scripts/validate_sdd_contracts.py)

@@ -12,10 +12,10 @@ Provides procedures, operational patterns, and strict constraints for interactin
 * **EXPLICIT TRIGGER ONLY**: NotebookLM tools may ONLY be invoked when the user explicitly instructs (e.g. *"consulte o NotebookLM"*, *"pesquise no caderno X do notebooklm"*, *"pergunte ao NotebookLM sobre Y"*).
 
 ## 🎯 Operating Procedures (Progressive Disclosure)
-Load technical procedures on demand via `view_file` at `references/EXECUTION.md`:
+Load technical procedures on demand via `view_file` at [`references/EXECUTION.md`](./references/EXECUTION.md):
 * **Exploration:** Discovering notebooks (`notebook_list`), collections (`collection_list`), and sources (`source_describe`).
 * **Querying:** Executing targeted semantic queries (`notebook_query`) and cross-notebook searches (`cross_notebook_query`).
 * **Authentication:** Handling token renewal and authentication persistence (`refresh_auth`, `save_auth_tokens`).
 
 ## 📋 Available Resources
-* **Query & Citation Patterns:** `resources/query_patterns.md` from the `@notebooklm` skill.
+* **Query & Citation Patterns:** [`resources/query_patterns.md`](./resources/query_patterns.md)

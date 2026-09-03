@@ -18,5 +18,5 @@ Analyzes BDD specifications and SDD contracts to decompose delivery into **Depen
    * `task_list.md`: Dynamic task checklist with interactive progress states (`[ ]` ➔ `[/]` ➔ `[x]`).
 
 ## 📋 Available Resources
-* **Plan Template:** `resources/plan_template.md` from the `@tdd-plan` skill.
-* **Task Template:** `resources/task_template.md` from the `@tdd-plan` skill.
+* **Plan Template:** [`resources/plan_template.md`](./resources/plan_template.md)
+* **Task Template:** [`resources/task_template.md`](./resources/task_template.md)
