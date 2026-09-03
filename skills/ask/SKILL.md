@@ -1,6 +1,6 @@
 ---
 name: "ask"
-description: "Provides Read-Only constraints, citation rules, and the Obsidian folder map for Project Oracle inquiries."
+description: "Read-only architectural inquiries: enforces citation rules, read-only constraints, and Obsidian vault navigation."
 ---
 
 # Skill: Project Oracle (Knowledge Bridge)

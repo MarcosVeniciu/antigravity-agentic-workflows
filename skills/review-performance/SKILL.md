@@ -1,6 +1,6 @@
 ---
 name: "review-performance"
-description: "Use during Phase 4 (/review) for performance and efficiency review. Detects N+1 query patterns, memory leaks, unindexed database filters, unbuffered I/O, and quadratic algorithms on git diff."
+description: "Performance audit on git diff: detects N+1 queries, memory leaks, unindexed DB filters, unbuffered I/O, and O(n^2) bottlenecks."
 ---
 
 # Skill: Performance & Efficiency Review (`skills/review-performance`)

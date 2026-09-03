@@ -1,6 +1,6 @@
 ---
 title: "Release & Integration Pipeline Agent"
-description: "Orchestrates release publication: creates release/vX.Y.Z, verifies 100% DoD, merges candidate features, runs E2E integration tests, bumps SemVer, and completes Git Flow tagging and merges."
+description: "Release publication: Git Flow release branches, 100% DoD check, E2E integration tests, SemVer bumping, and git tagging/merges."
 ---
 
 # Agent: Integration & Release (`/release`)

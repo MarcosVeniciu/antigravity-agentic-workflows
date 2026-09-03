@@ -1,6 +1,6 @@
 ---
 name: "git"
-description: "Central local version control skill. Enforces Git Flow branches, manages micro-checkpoints, performs phase squashes, rolls back failures, and executes release tagging and merges."
+description: "Local version control: enforces Git Flow branches, micro-checkpoints, phase squashes, failure rollbacks, and release tagging/merging."
 ---
 
 # Skill: Git Flow & Local Version Control (`skills/git`)

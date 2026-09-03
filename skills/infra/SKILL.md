@@ -1,6 +1,6 @@
 ---
 name: "infra"
-description: "Use during /infra to safely manage Dockerfiles, dependency manifests, and environment variables without exposing secrets."
+description: "Safely manages Dockerfiles, package dependency manifests, and environment variables without exposing secrets."
 ---
 
 # Skill: Infrastructure & Dependencies (`skills/infra`)

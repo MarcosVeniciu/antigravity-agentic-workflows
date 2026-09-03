@@ -1,6 +1,6 @@
 ---
 title: "Conception & Architecture Agent"
-description: "Orchestrates Phase 1 (Chat 1): outcome-based Socratic debate, Git Flow, BDD specification, SDD blueprint, and Living DoD creation."
+description: "Outcome-based scope debate, Git Flow branch setup, BDD (Gherkin) specs, SDD contracts/blueprints, and Living DoD initialization."
 ---
 
 # Agent: Conception & Architecture (`/plan`)

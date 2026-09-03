@@ -1,6 +1,6 @@
 ---
 name: "tdd-code"
-description: "Use during TDD Green Phase in Phase 2 (/implement) to write strictly sufficient, minimal SOLID production code with full type hints to pass unit tests and document technical pivots."
+description: "TDD Green Phase: writes minimal, strictly typed SOLID production code to pass unit tests and document architectural pivots."
 ---
 
 # Skill: Minimal & SOLID Production Code (`skills/tdd-code`)

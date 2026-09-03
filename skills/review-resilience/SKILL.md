@@ -1,6 +1,6 @@
 ---
 name: "review-resilience"
-description: "Use during Phase 4 (/review) for fault tolerance and resilience review. Audits git diff for timeouts on I/O, circuit breakers, retry policies with backoff, and graceful degradation fallbacks."
+description: "Resilience audit on git diff: verifies I/O timeouts, circuit breakers, exponential backoff retries, and graceful fallbacks."
 ---
 
 # Skill: Resilience & Fault Tolerance Review (`skills/review-resilience`)

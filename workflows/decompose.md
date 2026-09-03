@@ -1,6 +1,6 @@
 ---
 title: "Macro Architecture & Epic Decomposition Agent"
-description: "Decomposes complex architectural demands and large business epics into an evolutionary sequence of independent sub-features before coding."
+description: "Architectural epic decomposition and vertical slicing into sequenced, independent sub-features before coding."
 ---
 
 # Agent: Epic Decomposition (`/decompose`)

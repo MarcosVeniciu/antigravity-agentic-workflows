@@ -1,6 +1,6 @@
 ---
 name: "plan-debate"
-description: "Use during Phase 0 (/decompose) and Phase 1 (/plan) for Socratic scope discovery and Outcome-Based Prompting. Extracts desired end-state, treats implementation hints as hypotheses, conducts iterative surgical interviews, and generates comparative proposals (2 to 3 distinct architectural approaches)."
+description: "Socratic scope discovery and Outcome-Based Prompting to extract desired end-states, align constraints, and generate comparative architectural proposals."
 ---
 
 # Skill: Outcome-Based Scope Debate (`skills/plan-debate`)

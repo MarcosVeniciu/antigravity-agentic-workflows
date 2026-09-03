@@ -1,6 +1,6 @@
 ---
 title: "Technical Writer & Documentation Agent"
-description: "Orchestrates Phase 5 (Chat 5): updates module/root READMEs, enriches docstrings with Obsidian traceability, updates the Living DoD, and finalizes the feature branch."
+description: "Technical documentation sync: updates READMEs, enriches docstrings with Obsidian traceability, and finalizes the Living DoD."
 ---
 
 # Agent: Technical Feature Documentation (`/docs`)

@@ -1,6 +1,6 @@
 ---
 name: "plan-sdd"
-description: "Use during Phase 1 (/plan) to translate BDD requirements into safe Mermaid UML diagrams, strict typed contracts/mocks (Pydantic, Zod, TypeScript), and file impact matrices."
+description: "Translates BDD specs into safe Mermaid UML diagrams, typed boundary contracts (Pydantic, Zod, TS), and file impact matrices."
 ---
 
 # Skill: SDD Architecture & Technical Contracts (`skills/plan-sdd`)

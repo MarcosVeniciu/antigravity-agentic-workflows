@@ -1,6 +1,6 @@
 ---
 title: "Reactive Debugger & Test Fix Agent"
-description: "Reactive debugging workflow for surgically fixing failing tests from terminal logs during TDD or refactoring."
+description: "Surgical fixes for failing unit/integration tests from terminal tracebacks during TDD or refactoring."
 ---
 
 # Agent: Reactive Test Debugger (`/test-fix`)

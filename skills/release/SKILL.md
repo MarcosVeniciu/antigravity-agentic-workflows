@@ -1,6 +1,6 @@
 ---
 name: "release"
-description: "Use during Phase 6 (/release) for SemVer calculation and cumulative Changelog generation. Analyzes merged feature commits, bumps version numbers (Major/Minor/Patch), and formats CHANGELOG.md."
+description: "Calculates SemVer bumps (Major/Minor/Patch) from feature commits and generates cumulative CHANGELOG.md."
 ---
 
 # Skill: Release Manager & SemVer (`skills/release`)

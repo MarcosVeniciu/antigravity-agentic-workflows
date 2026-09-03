@@ -1,6 +1,6 @@
 ---
 name: "plan-decompose"
-description: "Use during Phase 0 (/decompose) for architectural epic decomposition and evolutionary vertical slicing. Breaks large complex demands into sequenced, independent sub-features with clear contracts and no cyclical rewrites."
+description: "Architectural epic decomposition and vertical slicing into sequenced, independent sub-features with strict contracts and zero cyclical rewrites."
 ---
 
 # Skill: Epic Decomposition & Evolutionary Slicing (`skills/plan-decompose`)

@@ -1,6 +1,6 @@
 ---
 name: "tdd-plan"
-description: "Use during Phase 2 (/implement) for TDD batch planning. Analyzes BDD scenarios and SDD blueprints to decompose work into sequential, dependent context batches, generating implementation_plan.md and task_list.md."
+description: "TDD batch planning: decomposes BDD scenarios and SDD blueprints into sequential context batches, implementation_plan.md, and task_list.md."
 ---
 
 # Skill: TDD Batch Planning (`skills/tdd-plan`)

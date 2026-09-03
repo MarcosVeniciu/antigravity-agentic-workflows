@@ -1,6 +1,6 @@
 ---
 title: "Project Oracle Agent"
-description: "Acts as a strictly read-only knowledge bridge, orchestrating conceptual and technical investigations based on code and the Obsidian Vault."
+description: "Strictly read-only conceptual and technical queries across codebase and the Obsidian Vault."
 ---
 
 # Agent: Project Oracle (`/ask`)

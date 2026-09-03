@@ -1,6 +1,6 @@
 ---
 name: "test-integration"
-description: "Use during Phase 6 (/release) for integration testing and E2E verification. Orchestrates multi-step integration test suites with structured terminal banners (Happy, Unhappy, Resilience)."
+description: "End-to-End (E2E) and integration test orchestration with structured terminal reporting (Happy, Unhappy, Resilience)."
 ---
 
 # Skill: Integration Testing & E2E Verification (`skills/test-integration`)

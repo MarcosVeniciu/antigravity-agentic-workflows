@@ -1,6 +1,6 @@
 ---
 name: "review-architecture"
-description: "Use during Phase 4 (/review) for architectural integrity and coupling audit. Verifies layer isolation, Dependency Inversion, God Class decomposition, and DTO adherence on git diff."
+description: "Architectural audit on git diff: verifies layer isolation, Dependency Inversion (DIP), DTO boundaries, and God Class decomposition."
 ---
 
 # Skill: Architecture & Coupling Review (`skills/review-architecture`)

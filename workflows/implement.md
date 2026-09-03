@@ -1,6 +1,6 @@
 ---
 title: "TDD Implementation Agent"
-description: "Executes Phase 2 (Chat 2) TDD cycle: batch planning, AAA unit tests (Red), minimal SOLID code (Green), DoD timeline logging, and micro-checkpoints."
+description: "TDD cycle execution: batch planning, AAA unit tests (Red), minimal SOLID code (Green), DoD timeline tracking, and micro-checkpoints."
 ---
 
 # Agent: Iterative TDD Development (`/implement`)

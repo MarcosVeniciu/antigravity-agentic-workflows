@@ -1,6 +1,6 @@
 ---
 title: "Forensic Bug Investigator Agent"
-description: "Forensic investigator focused on diagnosing and resolving crashes and complex system failures via Root Cause Analysis (5 Whys)."
+description: "Forensic Root Cause Analysis (5 Whys) to diagnose and resolve crashes, exceptions, and complex system failures."
 ---
 
 # Agent: Forensic Bug Investigator (`/debug`)

@@ -1,6 +1,6 @@
 ---
 title: "Structural Refactoring and Clean Code Agent"
-description: "Consolidates Phase 3: optimizes functional code applying Clean Code, SOLID principles, and eliminates Code Smells while preserving 100% green tests."
+description: "Structural refactoring applying Clean Code and SOLID to eliminate code smells while preserving 100% green tests."
 ---
 
 # Agent: Consolidation Refactoring (`/refactor`)

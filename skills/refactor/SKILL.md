@@ -1,6 +1,6 @@
 ---
 name: "refactor"
-description: "Use during Phase 3 (/refactor) for structural refactoring, Clean Code, and SOLID principles. Eliminates Code Smells (SRP, nesting, magic numbers) while preserving 100% green tests."
+description: "Structural refactoring applying Clean Code and SOLID principles to eliminate code smells while preserving 100% green tests."
 ---
 
 # Skill: Clean Code & Structural Refactoring (`skills/refactor`)

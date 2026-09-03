@@ -1,6 +1,6 @@
 ---
 title: "Infrastructure & Dependencies Agent"
-description: "Safely manages dependency updates, package manifests, Dockerfiles, and environment variables."
+description: "Safe management of dependencies, package manifests, Dockerfiles, and environment variables without exposing secrets."
 ---
 
 # Agent: Infrastructure & Dependencies (`/infra`)

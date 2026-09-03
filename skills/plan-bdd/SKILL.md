@@ -1,6 +1,6 @@
 ---
 name: "plan-bdd"
-description: "Use during Phase 1 (/plan) to format business requirements and user stories strictly into pure Gherkin syntax (Given/When/Then) with zero technical implementation bias."
+description: "Formats business requirements and user stories strictly into pure Gherkin syntax (Given/When/Then) without technical implementation bias."
 ---
 
 # Skill: Behavioral BDD Specification (`skills/plan-bdd`)

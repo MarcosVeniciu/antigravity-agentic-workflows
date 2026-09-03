@@ -1,6 +1,6 @@
 ---
 name: "review-security"
-description: "Use during Phase 4 (/review) for security and OWASP vulnerability review. Audits git diff for secret leaks, injection flaws, IDOR/BPOA, PII exposure (GDPR/LGPD), and unhandled exception disclosure."
+description: "OWASP security audit on git diff: detects secret leaks, injection flaws, IDOR/BPOA, PII exposure, and unhandled exception disclosure."
 ---
 
 # Skill: Security & OWASP Review (`skills/review-security`)

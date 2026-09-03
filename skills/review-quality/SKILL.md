@@ -1,6 +1,6 @@
 ---
 name: "review-quality"
-description: "Use during Phase 4 (/review) for code quality, complexity, and maintainability review. Runs ast_complexity.py to measure Cyclomatic Complexity V(G) <= 10, identifies nesting, naming clarity, and formatting on git diff."
+description: "Code quality audit on git diff: measures Cyclomatic Complexity V(G) <= 10 via AST, flags deep nesting, naming issues, and formatting."
 ---
 
 # Skill: Code Quality & Complexity Review (`skills/review-quality`)

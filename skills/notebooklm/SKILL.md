@@ -1,6 +1,6 @@
 ---
 name: "notebooklm"
-description: "Google NotebookLM MCP integration skill. Performs semantic queries and deep retrieval across external sources, papers, and complex documents under strict user governance."
+description: "NotebookLM MCP integration: semantic queries and deep retrieval across external documentation, papers, and user research notebooks."
 ---
 
 # Skill: Google NotebookLM MCP (`skills/notebooklm`)

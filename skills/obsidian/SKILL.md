@@ -1,6 +1,6 @@
 ---
 name: "obsidian"
-description: "Single Source of Truth (SSOT) Vault governance skill. Manages metadata search, document reading, surgical vault_patch updates, ADRs, architecture pivots, and wikilink graph integrity."
+description: "Obsidian SSOT Vault governance: searches notes, executes surgical vault_patch updates, manages ADRs, and preserves wikilink graph integrity."
 ---
 
 # Skill: Obsidian Vault Governance (`skills/obsidian`)

@@ -1,6 +1,6 @@
 ---
 name: "docs"
-description: "Use during Phase 5 (/docs) for technical documentation. Generates project showcases, module READMEs, and traceable in-code docstrings without modifying production logic."
+description: "Generates technical showcases, module READMEs, and traceable in-code docstrings without modifying production logic."
 ---
 
 # Skill: Technical Writer & Documentation (`skills/docs`)

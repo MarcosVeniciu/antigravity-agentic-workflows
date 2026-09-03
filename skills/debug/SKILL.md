@@ -1,6 +1,6 @@
 ---
 name: "debug"
-description: "Forensic bug investigation and root cause analysis (5 Whys) skill. Diagnoses runtime and infrastructure failures."
+description: "Forensic Root Cause Analysis (5 Whys) to diagnose runtime crashes, infrastructure failures, and unexpected exceptions."
 ---
 # Skill: Forensic Bug Investigator
 

@@ -1,6 +1,6 @@
 ---
 name: "test-fix"
-description: "Use during Phase 2 (/implement) or Phase 3 (/refactor) to debug test failures from terminal logs and tracebacks, isolate root causes, and apply minimal surgical fixes to production code."
+description: "Debugs test failures from terminal tracebacks, isolates root causes, and applies minimal surgical fixes to production code."
 ---
 
 # Skill: Reactive Debugging & Test Fixing (`skills/test-fix`)

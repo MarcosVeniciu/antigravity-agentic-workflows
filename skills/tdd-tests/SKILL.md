@@ -1,6 +1,6 @@
 ---
 name: "tdd-tests"
-description: "Use during TDD Red Phase in Phase 2 (/implement) to write atomic AAA unit tests with isolated boundary mocks covering Happy Path, Edge Cases, and Exceptions before writing production code."
+description: "TDD Red Phase: writes atomic AAA unit tests with isolated boundary mocks covering Happy Path, Edge Cases, and Exceptions before production code."
 ---
 
 # Skill: AAA Unit Tests & Mock Isolation (`skills/tdd-tests`)

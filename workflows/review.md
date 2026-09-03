@@ -1,6 +1,6 @@
 ---
 title: "Specialized Code Review & Audit Agent"
-description: "Orchestrates Phase 4 (Chat 4): domain-by-domain iterative review loop (Architecture, Security, Quality, Performance, Resilience) strictly on git diff."
+description: "Iterative multi-domain code review on git diff covering Architecture, OWASP Security, Quality, Performance, and Resilience."
 ---
 
 # Agent: Specialized Code Audits (`/review`)

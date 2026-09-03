@@ -1,6 +1,6 @@
 ---
 name: "dod"
-description: "Use across all phases to manage the Definition of Done (DoD) and living execution logs (dod-[slug].md). Initializes criteria in Phase 1, tracks TDD timelines, marks audits, and acts as 100% mathematical gatekeeper for releases."
+description: "Definition of Done (DoD) governance: tracks execution timelines, audit checklists (dod-[slug].md), and serves as mathematical release gatekeeper."
 ---
 
 # Skill: Definition of Done & Living Log (`skills/dod`)
