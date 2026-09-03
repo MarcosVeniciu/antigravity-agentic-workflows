@@ -1,85 +1,85 @@
-# Arquitetura de Agentes e Skills: Antigravity IDE
+# Agent & Skill Architecture: Antigravity IDE
 
-A inteligência operacional do **Antigravity IDE** é fundamentada no desacoplamento estrito de responsabilidades (*Single Responsibility Principle - SRP*) e no princípio de *Outcome-Based Prompting*. Em vez de prompts monolíticos vulneráveis a alucinações e exaustão de contexto, a arquitetura organiza o ciclo de vida de software em:
+The operational intelligence of the **Antigravity IDE** is grounded in strict separation of concerns (*Single Responsibility Principle - SRP*) and *Outcome-Based Prompting*. Instead of monolithic prompts vulnerable to hallucinations and context exhaustion, the architecture organizes the software engineering lifecycle into:
 
-1. **Fase 0 (Macro-Arquitetura):** Decomposição evolutiva de épicos em sub-features via `/decompor`.
-2. **Ciclo da Feature (5 Fases em Chats Efêmeros):** Concepção $\rightarrow$ TDD $\rightarrow$ Refatoração $\rightarrow$ Auditorias $\rightarrow$ Documentação.
-3. **Ciclo de Publicação (Esteira de Release):** Testes de integração E2E, cálculo de SemVer, Changelog e Git Flow via `/release`.
-4. **Skills Transversais:** Governança de Git Flow/checkpoints (`@git`), Living DoD (`@dod`), SSOT do Vault (`@obsidian`) e conhecimento externo governado (`@notebooklm`).
-
----
-
-## 🔀 Arquitetura Router vs. Skill Execution
-
-Para manter o contexto da IA limpo e focado, o ecossistema divide as responsabilidades em duas camadas estritas:
-
-1. **Roteadores de Estado em `workflows/`**: Arquivos leves que definem a esteira da fase, restrições rígidas, evidências de sucesso e a regra padronizada de transição **[NEXT STEP]**.
-2. **Execução Especializada em `skills/`**: Conjunto atômico de instruções operacionais, scripts de validação (`ast_complexity.py`, `validate_branch.sh`, `validate_sdd_contracts.py`) e templates carregados sob demanda via Progressive Disclosure.
-3. **Registro Vivo de Execução & DoD (`01-concepcao/dod-[slug].md`)**: Documento dinâmico que centraliza a linha do tempo do desenvolvimento e a Definition of Done (DoD) com critérios de aceite funcional, não-funcional, auditoria e release.
+1. **Phase 0 (Macro-Architecture):** Evolutionary decomposition of epics into monotonic sub-features via `/decompose`.
+2. **Feature Lifecycle (5 Phases in Ephemeral Chats):** Conception $\rightarrow$ TDD $\rightarrow$ Refactoring $\rightarrow$ Audits $\rightarrow$ Documentation.
+3. **Publication Cycle (Release Pipeline):** E2E integration tests, SemVer calculation, Changelog generation, and Git Flow via `/release`.
+4. **Cross-Cutting Skills:** Git Flow & checkpoint governance (`@git`), Living DoD tracking (`@dod`), SSOT Vault governance (`@obsidian`), and user-governed external research (`@notebooklm`).
 
 ---
 
-## 🗺️ Mapa Completo do Ecossistema Antigravity
+## 🔀 Router vs. Skill Execution Architecture
+
+To keep AI context clean and focused, the ecosystem divides responsibilities into two distinct layers:
+
+1. **State Routers in `workflows/`**: Lightweight playbooks defining phase pipelines, strict constraints, success evidence, and standardized phase transition gates (**[NEXT STEP]**).
+2. **Specialized Execution in `skills/`**: Atomic operational procedures, automated validation scripts (`ast_complexity.py`, `validate_branch.sh`, `validate_sdd_contracts.py`), and templates loaded on-demand via Progressive Disclosure.
+3. **Living Execution Log & DoD (`01-concepcao/dod-[slug].md`)**: Dynamic document centralizing development timeline history and Definition of Done (DoD) criteria for functional, non-functional, audit, and release validation.
+
+---
+
+## 🗺️ Complete Antigravity Ecosystem Map
 
 ```mermaid
 graph TD
-    User((Usuário))
+    User((User))
 
-    subgraph Macro [Fase 0: Macro-Arquitetura & Épicos]
-        Dec[Decomposição de Épicos <br> /decompor]
+    subgraph Macro [Phase 0: Macro-Architecture & Epics]
+        Dec[Epic Decomposition <br> /decompose]
     end
 
-    subgraph Chat1 [Fase 1: Concepção & Arquitetura]
-        Plan[Planejamento BDD + SDD + DoD <br> /planejamento]
+    subgraph Chat1 [Phase 1: Conception & Architecture]
+        Plan[BDD + SDD + DoD Planning <br> /plan]
     end
 
-    subgraph Chat2 [Fase 2: Desenvolvimento TDD Iterativo]
-        Imp[TDD Loop Lote a Lote <br> /implementar]
+    subgraph Chat2 [Phase 2: Iterative TDD Development]
+        Imp[TDD Loop Batch by Batch <br> /implement]
     end
 
-    subgraph Chat3 [Fase 3: Refatoração de Consolidação]
-        Ref[Clean Code & SOLID <br> /refatorar]
+    subgraph Chat3 [Phase 3: Consolidation Refactoring]
+        Ref[Clean Code & SOLID <br> /refactor]
     end
 
-    subgraph Chat4 [Fase 4: Auditorias Especializadas]
-        Rev[Loop de Auditorias Diff-Based <br> /review]
+    subgraph Chat4 [Phase 4: Specialized Audits]
+        Rev[Diff-Based Audit Loop <br> /review]
     end
 
-    subgraph Chat5 [Fase 5: Documentação Técnica da Feature]
+    subgraph Chat5 [Phase 5: Technical Feature Documentation]
         Docs[Docs & Docstrings <br> /docs]
     end
 
-    subgraph Pub [Ciclo de Publicação & Integração]
-        Rel[Release & Integração E2E <br> /release]
+    subgraph Pub [Publication & Integration Cycle]
+        Rel[Release & E2E Integration <br> /release]
     end
 
-    subgraph Suporte [Agentes de Suporte]
-        Ask[Oráculo <br> /ask]
-        Debug[Forense <br> /debug]
-        Fix[Depurador Reativo <br> /testar]
-        Infra[Infra & Manifestos <br> /infra]
+    subgraph Support [Support Agents]
+        Ask[Oracle <br> /ask]
+        Debug[Forensic <br> /debug]
+        Fix[Reactive Debugger <br> /test-fix]
+        Infra[Infra & Manifests <br> /infra]
     end
 
-    %% Relações Macro
-    User -->|Grande Demanda| Dec
-    Dec -->|Gera Grafo de Sub-Features| Plan
+    %% Macro Relations
+    User -->|Large Epic| Dec
+    Dec -->|Generates Sub-Feature Graph| Plan
 
-    %% Relações do Ciclo da Feature
-    User -->|Feature Isolada| Plan
-    Plan ==>|BDD + SDD + DoD Salvos| Imp
-    Imp -->|Red ➔ Green por Lote de Contexto| Imp
-    Imp ==>|100% dos Lotes Prontos| Ref
-    Ref -.->|Falha de Teste| Fix
-    Fix -.->|Corrigido & Verde| Ref
-    Ref ==>|Clean Code sem Smells| Rev
-    Rev ==>|5 Domínios Auditados & Aprovados| Docs
-    Docs ==>|Feature Congelada & DoD 100%| Rel
+    %% Feature Cycle Relations
+    User -->|Isolated Feature| Plan
+    Plan ==>|BDD + SDD + DoD Saved| Imp
+    Imp -->|Red ➔ Green per Context Batch| Imp
+    Imp ==>|100% Batches Complete| Ref
+    Ref -.->|Test Failure| Fix
+    Fix -.->|Fixed & Green| Ref
+    Ref ==>|Clean Code without Smells| Rev
+    Rev ==>|5 Domains Audited & Approved| Docs
+    Docs ==>|Feature Frozen & DoD 100%| Rel
 
-    %% Publicação
-    Rel -->|Tag SemVer, Changelog & Git Flow Merge| User
+    %% Publication
+    Rel -->|SemVer Tag, Changelog & Git Flow Merge| User
 
-    %% Suporte
-    Suporte -.- User
+    %% Support
+    Support -.- User
 
     style Macro fill:#2d1b38,stroke:#b800ff,stroke-width:2px,color:#fff
     style Chat1 fill:#1b2838,stroke:#00d2ff,stroke-width:2px,color:#fff
@@ -88,56 +88,56 @@ graph TD
     style Chat4 fill:#381b28,stroke:#ff0088,stroke-width:2px,color:#fff
     style Chat5 fill:#382d1b,stroke:#ffaa00,stroke-width:2px,color:#fff
     style Pub fill:#1b3838,stroke:#00ffd5,stroke-width:2px,color:#fff
-    style Suporte fill:#222,stroke:#888,stroke-width:1px,stroke-dasharray: 5 5,color:#fff
+    style Support fill:#222,stroke:#888,stroke-width:1px,stroke-dasharray: 5 5,color:#fff
 ```
 
 ---
 
-## 🎯 Detalhamento das Fases e Workflows
+## 🎯 Phase & Workflow Deep Dive
 
-### 1. Fase 0: Macro-Arquitetura e Épicos (`/decompor`)
-Quando uma demanda é complexa demais para caber em uma única branch, o `/decompor` alinha o macro-problema (*Outcome-Based*) e quebra o escopo em uma sequência ordenada de sub-features monotônicas (contratos primeiro, sem retrabalho cíclico). Salva `01-concepcao/epic-[slug].md`.
-* **Skills Utilizadas:** `skills/debate`, `skills/decompor`, `skills/obsidian`.
+### 1. Phase 0: Macro-Architecture & Epics (`/decompose`)
+When an architectural epic is too complex to fit safely into a single feature branch, `/decompose` aligns the core problem (*Outcome-Based*) and breaks scope down into an ordered roadmap of monotonic vertical sub-features (contracts first, zero destructive rework). Persists `01-concepcao/epic-[slug].md`.
+* **Skills Used:** `skills/plan-debate`, `skills/plan-decompose`, `skills/obsidian`.
 
-### 2. Fase 1: Concepção & Arquitetura (`/planejamento` - Chat 1)
-Alinhamento cirúrgico de escopo via inquirição socrática (2 a 4 perguntas), validação de branch Git Flow, especificação comportamental BDD em Gherkin puro, blueprint arquitetural SDD com contratos/mocks tipados e criação do Living DoD.
-* **Skills Utilizadas:** `skills/debate`, `skills/git`, `skills/bdd`, `skills/sdd`, `skills/dod`.
+### 2. Phase 1: Conception & Architecture (`/plan` - Chat 1)
+Surgical scope discovery via Socratic interviewing (2-4 questions), Git Flow branch validation, pure Gherkin BDD behavioral specification, SDD architectural blueprint with typed contracts/mocks, and Living DoD initialization.
+* **Skills Used:** `skills/plan-debate`, `skills/git`, `skills/plan-bdd`, `skills/plan-sdd`, `skills/dod`.
 
-### 3. Fase 2: Desenvolvimento TDD Iterativo (`/implementar` - Chat 2)
-Executa a esteira TDD lote a lote. Cada lote decompõe testes unitários AAA (Red) e código mínimo SOLID (Green), executando testes no terminal com suporte de depuração cirúrgica, registro de checkpoints locais e atualização contínua do histórico no DoD.
-* **Skills Utilizadas:** `skills/tdd-plan`, `skills/testes`, `skills/codigo`, `skills/testar`, `skills/dod`, `skills/git`.
+### 3. Phase 2: Iterative TDD Development (`/implement` - Chat 2)
+Executes the TDD pipeline batch by batch. Each batch decomposes AAA unit tests (Red) and minimal SOLID production code (Green), running tests in the terminal with reactive debugging support, recording local checkpoints, and continuously appending history to the DoD timeline.
+* **Skills Used:** `skills/tdd-plan`, `skills/tdd-tests`, `skills/tdd-code`, `skills/test-fix`, `skills/dod`, `skills/git`.
 
-### 4. Fase 3: Refatoração de Consolidação (`/refatorar` - Chat 3)
-Otimiza o design interno da feature (*Make it Right*). Foca estritamente em arquivos alterados (`git diff develop...HEAD`), eliminando complexidade ciclomática, métodos longos e aninhamentos através de Guard Clauses e princípios SOLID, mantendo os testes 100% verdes.
-* **Skills Utilizadas:** `skills/refatorar`, `skills/git`, `skills/dod`, `skills/testar`.
+### 4. Phase 3: Consolidation Refactoring (`/refactor` - Chat 3)
+Optimizes internal software design (*Make it Right*). Strictly restricted to files modified on the active branch (`git diff develop...HEAD`), eliminating cyclomatic complexity, long methods, and deep nesting through Guard Clauses and SOLID principles, keeping tests 100% green.
+* **Skills Used:** `skills/refactor`, `skills/git`, `skills/dod`, `skills/test-fix`.
 
-### 5. Fase 4: Auditorias Especializadas (`/review` - Chat 4)
-Loop iterativo especializado por domínio executado diretamente sobre o `git diff` da feature:
-1. **Arquitetura & Acoplamento** (`skills/review-arquitetura`)
-2. **Segurança & OWASP** (`skills/review-seguranca`)
-3. **Qualidade & Complexidade AST** (`skills/review-qualidade`)
-4. **Performance & Volumetria** (`skills/review-performance`)
-5. **Resiliência & Tolerância a Falhas** (`skills/review-resiliencia`)
-Cada domínio corrigido gera micro-checkpoint local e atualiza o Living DoD via `skills/dod`.
+### 5. Phase 4: Specialized Audits (`/review` - Chat 4)
+Iterative domain-specialized loop executed directly over the feature's `git diff`:
+1. **Architecture & Coupling** (`skills/review-architecture`)
+2. **Security & OWASP** (`skills/review-security`)
+3. **Quality & AST Complexity** (`skills/review-quality`)
+4. **Performance & Volumetrics** (`skills/review-performance`)
+5. **Resilience & Fault Tolerance** (`skills/review-resilience`)
+Each reviewed domain generates a local micro-checkpoint and updates the Living DoD via `skills/dod`.
 
-### 6. Fase 5: Documentação Técnica da Feature (`/docs` - Chat 5)
-Focada na documentação técnica pura: atualização de READMEs, inserção de docstrings com links bidirecionais para o Obsidian Vault, marcação do DoD e commit semântico. A branch da feature permanece intacta e congelada, sem merges prematuros.
-* **Skills Utilizadas:** `skills/docs`, `skills/dod`, `skills/git`.
+### 6. Phase 5: Technical Feature Documentation (`/docs` - Chat 5)
+Focuses strictly on technical documentation: updating module/root READMEs, adding docstrings with bidirectional links to the Obsidian Vault, marking the DoD, and committing semantically. The feature branch remains frozen and intact without premature merges.
+* **Skills Used:** `skills/docs`, `skills/dod`, `skills/git`.
 
-### 7. Ciclo de Publicação: Integração & Release (`/release`)
-Orquestra a publicação da versão na branch `release/vX.Y.Z` a partir da `develop`. Valida 100% de atendimento do DoD de todas as features candidatas, executa suíte de testes de integração e E2E por etapas com banners de log (`skills/integracao`), calcula o SemVer, gera o `CHANGELOG.md` e fecha o Git Flow com tags anotadas e merges em `main` e `develop`.
-* **Skills Utilizadas:** `skills/integracao`, `skills/release`, `skills/dod`, `skills/git`.
+### 7. Publication Cycle: Integration & Release (`/release`)
+Orchestrates publication of a release on `release/vX.Y.Z` branched from `develop`. Audits 100% DoD completion across all candidate features, runs staged E2E integration test suites with formatted console banners (`skills/test-integration`), computes SemVer, generates `CHANGELOG.md`, and completes Git Flow with annotated tags and merges into `main` and `develop`.
+* **Skills Used:** `skills/test-integration`, `skills/release`, `skills/dod`, `skills/git`.
 
 ---
 
-## 🧰 Catálogo de Skills Modulares
+## 🧰 Modular Skills Catalog
 
-| Categoria | Skills |
+| Category | Skills |
 | :--- | :--- |
-| **Fundação & Transversais** | `skills/git`, `skills/dod`, `skills/obsidian`, `skills/notebooklm` |
-| **Macro & Concepção** | `skills/decompor`, `skills/debate`, `skills/bdd`, `skills/sdd` |
-| **Construção TDD** | `skills/tdd-plan`, `skills/testes`, `skills/codigo`, `skills/testar` |
-| **Refatoração & Design** | `skills/refatorar` |
-| **Auditorias Especializadas** | `skills/review-arquitetura`, `skills/review-seguranca`, `skills/review-qualidade`, `skills/review-performance`, `skills/review-resiliencia` |
-| **Documentação & Publicação** | `skills/docs`, `skills/integracao`, `skills/release` |
-| **Suporte & Diagnóstico** | `skills/ask`, `skills/debug`, `skills/infra` |
+| **Foundation & Cross-Cutting** | `skills/git`, `skills/dod`, `skills/obsidian`, `skills/notebooklm` |
+| **Macro & Conception** | `skills/plan-decompose`, `skills/plan-debate`, `skills/plan-bdd`, `skills/plan-sdd` |
+| **TDD Construction** | `skills/tdd-plan`, `skills/tdd-tests`, `skills/tdd-code`, `skills/test-fix` |
+| **Refactoring & Design** | `skills/refactor` |
+| **Specialized Audits** | `skills/review-architecture`, `skills/review-security`, `skills/review-quality`, `skills/review-performance`, `skills/review-resilience` |
+| **Documentation & Delivery** | `skills/docs`, `skills/test-integration`, `skills/release` |
+| **Support & Diagnostics** | `skills/ask`, `skills/debug`, `skills/infra` |
