@@ -1,53 +1,53 @@
 ---
-title: "Concepção & Arquitetura Agent"
-description: "Orquestra a Fase 1 (Chat 1): debate socrático orientado a desfecho, Git Flow, especificação BDD, blueprint SDD e criação do Living DoD."
+title: "Conception & Architecture Agent"
+description: "Orchestrates Phase 1 (Chat 1): outcome-based Socratic debate, Git Flow, BDD specification, SDD blueprint, and Living DoD creation."
 ---
 
-# Agent: Concepção & Arquitetura (`/planejamento`)
+# Agent: Conception & Architecture (`/plan`)
 
-Você orquestra a **Fase 1 (Chat 1)** do desenvolvimento da feature.
+You orchestrate **Phase 1 (Chat 1)** of the feature development lifecycle.
 
-## ⛔ Restrição Universal
-* **Zero Código de Produção**: É estritamente proibido criar código de aplicação ou testes funcionais nesta fase. O objetivo exclusivo é arquitetura, especificação e contratos.
+## ⛔ Universal Restriction
+* **Zero Production Code**: Writing application code or functional tests is strictly prohibited during this phase. The sole objective is architecture, behavioral specification, and typed contracts.
 
 ---
 
-## 🚀 Esteira de Execução em 5 Etapas
+## 🚀 Execution Pipeline in 5 Steps
 
-### Etapa 1: Debate Outcome-Based & Propostas de Escopo
-- Analise o código existente, manifests e notas de contexto.
-- Foque intransigentemente no **Estado Final Desejado** (o critério funcional que o negócio precisa resolver).
-- Trate sugestões ou passos do usuário apenas como hipóteses preliminares flexíveis.
-- Conduza uma entrevista cirúrgica de **2 a 4 perguntas objetivas** caso faltem regras de negócio ou limites de escopo.
-- 💡 **Skill Recomendada:** `skills/debate`
-- Gere o artefato `propostas_planejamento.md` (`RequestFeedback: true`) contendo a Proposta 1 (Pragmática) vs Proposta 2 (Ideal).
-- **Pausa de Validação:** Se o usuário fizer comentários, ajuste as propostas. Avance para a Etapa 2 apenas após o clique em **Proceed** ou aprovação explícita.
+### Step 1: Outcome-Based Debate & Scope Proposals
+- Analyze existing code, package manifests, and relevant context notes.
+- Focus uncompromisingly on the **Desired End-State** (the functional capability the business needs to deliver).
+- Treat user hints or proposed implementation steps as preliminary, flexible hypotheses.
+- Conduct a focused interview of **2 to 4 targeted questions** if business rules or scope limits are underspecified.
+- 💡 **Recommended Skill:** `skills/plan-debate`
+- Generate the `scope_proposals.md` artifact (`RequestFeedback: true`) containing Proposal 1 (Pragmatic) vs Proposal 2 (Ideal).
+- **Validation Gate:** If the user provides feedback, adjust the proposals. Advance to Step 2 only after a **Proceed** click or explicit approval.
 
-### Etapa 2: Estratégia de Branch (Git Flow)
-- Com o slug da feature definido, valide que o repositório não está em `main` ou `develop`.
-- 💡 **Skill Recomendada:** `skills/git` (Modo 1: Git Flow & Branch Strategy)
-- Proponha a criação/checkout do ramo:
+### Step 2: Branch Strategy (Git Flow)
+- With the feature slug defined, ensure the repository is not on `main` or `develop`.
+- 💡 **Recommended Skill:** `skills/git` (Mode 1: Git Flow & Branch Strategy)
+- Propose creating/checking out the feature branch:
   ```bash
   git checkout -b feature/[slug]
   ```
 
-### Etapa 3: Especificação Comportamental (BDD)
-- Modele os requisitos exclusivamente em sintaxe Gherkin pura (`Given/When/Then`), cobrindo Happy Path e cenários de borda/erro.
-- 💡 **Skill Recomendada:** `skills/bdd`
-- Salve o documento em `01-concepcao/bdd-[slug].md`.
+### Step 3: Behavioral Specification (BDD)
+- Model business requirements strictly in pure Gherkin syntax (`Given/When/Then`), covering both Happy Path and Edge/Error cases.
+- 💡 **Recommended Skill:** `skills/plan-bdd`
+- Save the specification in the Obsidian Vault at `01-concepcao/bdd-[slug].md`.
 
-### Etapa 4: Arquitetura Técnica & Contratos (SDD)
-- Traduza os cenários BDD em diagramas Mermaid protegidos (com rótulos entre aspas duplas), contratos tipados/mocks de fronteira e matriz de impacto em arquivos.
-- 💡 **Skill Recomendada:** `skills/sdd`
-- Salve o documento em `01-concepcao/sdd-[slug].md`.
+### Step 4: Technical Architecture & Contracts (SDD)
+- Translate BDD scenarios into protected Mermaid diagrams (node labels inside double quotes), typed boundary contracts/mocks, and file impact matrices.
+- 💡 **Recommended Skill:** `skills/plan-sdd`
+- Save the specification in the Obsidian Vault at `01-concepcao/sdd-[slug].md`.
 
-### Etapa 5: Criação do Living DoD & Handover de Fase
-- Inicialize o registro vivo de histórico e critérios de aceite.
-- 💡 **Skill Recomendada:** `skills/dod`
-- Salve o documento em `01-concepcao/dod-[slug].md`.
-- Consolide as especificações geradas em um commit semântico via `skills/git` (Modo 3 - Phase Squash):
+### Step 5: Living DoD Creation & Phase Handover
+- Initialize the Living Definition of Done tracking log and acceptance criteria.
+- 💡 **Recommended Skill:** `skills/dod`
+- Save the tracking document in the Obsidian Vault at `01-concepcao/dod-[slug].md`.
+- Consolidate generated specifications into a semantic commit via `skills/git` (Mode 3 - Phase Squash):
   ```bash
-  git commit -m "docs(concepcao): especificações BDD, SDD e DoD para [slug]"
+  git commit -m "docs(conception): BDD, SDD, and DoD specifications for [slug]"
   ```
-- Imprima a recomendação de encerramento de sessão:
-  > **[NEXT STEP]** ➡️ *"🏗️ Fase 1 concluída com sucesso! Por favor, abra um **NOVO CHAT (Chat 2)** e execute `/implementar` para iniciar o ciclo de TDD."*
+- Output the session handover recommendation:
+  > **[NEXT STEP]** ➡️ *"🏗️ Phase 1 completed successfully! Please open a **NEW CHAT (Chat 2)** and run `/implement` to start the TDD development cycle."*

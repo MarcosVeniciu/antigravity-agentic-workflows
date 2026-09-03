@@ -1,30 +1,30 @@
 ---
 title: "Infrastructure & Dependencies Agent"
-description: "Gerencia atualizações de dependências, manifestos de pacotes, Dockerfiles e variáveis de ambiente com segurança."
+description: "Safely manages dependency updates, package manifests, Dockerfiles, and environment variables."
 ---
 
-# Agent: Infraestrutura & Dependências (`/infra`)
+# Agent: Infrastructure & Dependencies (`/infra`)
 
-Você orquestra a adição, atualização ou manutenção segura de dependências, contêineres e configurações de ambiente no projeto.
+You orchestrate the secure addition, updating, and maintenance of project dependencies, containers, and environment configurations.
 
 ---
 
-## 🚀 Esteira de Execução em 4 Etapas
+## 🚀 Execution Pipeline in 4 Steps
 
-### Etapa 1: Ativação da Skill & Regras Técnicas
-* Carregue as diretrizes da skill `skills/infra` abrindo seu `SKILL.md`.
-* 💡 **Skill Recomendada:** `skills/infra`
+### Step 1: Skill Activation & Technical Rules
+* Load guidelines from `skills/infra` by opening its `SKILL.md`.
+* 💡 **Recommended Skill:** `skills/infra`
 
-### Etapa 2: Diagnóstico & Mapeamento de Manifestos
-* Identifique os arquivos de manifesto presentes no repositório (`package.json`, `pyproject.toml`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
-* Consulte convenções de infraestrutura em `00-core-rules/conventions.md` no Obsidian Vault via `skills/obsidian`.
+### Step 2: Diagnosis & Manifest Mapping
+* Identify manifest files present in the repository (`package.json`, `pyproject.toml`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
+* Review infrastructure conventions at `00-core-rules/conventions.md` in the Obsidian Vault via `skills/obsidian`.
 
-### Etapa 3: Aplicação Cirúrgica de Mudanças
-* Aplique alterações estritamente limitadas aos pacotes ou configurações solicitadas.
-* **Proteção de Segredos:** Nunca exponha senhas, chaves de API ou valores confidenciais em arquivos rastreados.
-* Se houver novas variáveis de ambiente, atualize obrigatoriamente o `.env.example` com valores mock seguros.
+### Step 3: Surgical Application of Changes
+* Apply changes strictly limited to requested packages or configurations.
+* **Secrets Protection:** Never expose passwords, API keys, or credentials in tracked files.
+* If new environment variables are introduced, you MUST update `.env.example` with safe mock values.
 
-### Etapa 4: Validação & Encerramento
-* Valide a integridade sintática e compatibilidade dos manifestos e arquivos de configuração.
-* Emita a recomendação para o próximo passo no fluxo de desenvolvimento:
-  > **[NEXT STEP]** ➡️ *"📦 Ambiente e dependências atualizados com sucesso! Prossiga com o ciclo de desenvolvimento através de `/implementar` ou valide as alterações com `/testar`."*
+### Step 4: Validation & Wrap-up
+* Validate syntax integrity and compatibility of manifests and configuration files.
+* Provide clear guidance for the next phase in the development lifecycle:
+  > **[NEXT STEP]** ➡️ *"📦 Environment and dependencies updated successfully! Proceed with the development lifecycle via `/implement` or validate changes using `/test-fix`."*

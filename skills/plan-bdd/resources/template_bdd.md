@@ -6,17 +6,17 @@ date: "{{DATE}}"
 description: "{{DESCRIPTION}}"
 tags:
   - bdd
-  - escopo
-  - phase/concepcao
+  - scope
+  - phase/conception
 ---
-# 📝 Especificação de Comportamento (BDD): {{FEATURE_NAME}}
+# 📝 Behavioral Specification (BDD): {{FEATURE_NAME}}
 
-## 1. Decisão de Escopo & Estado Final Aprovado
+## 1. Scope Decision & Approved End-State
 {{DECISION_SUMMARY}}
 
 ---
 
-## 2. Cenários de Comportamento (Gherkin)
+## 2. Behavioral Scenarios (Gherkin)
 
 Feature: {{FEATURE_NAME}}
   In order to {{BUSINESS_VALUE}}
@@ -38,6 +38,6 @@ Feature: {{FEATURE_NAME}}
 
 ---
 
-## 3. Contexto Relacionado & ADRs
+## 3. Related Context & Notes
 - [[sdd-{{FEATURE_SLUG}}]]
 - [[dod-{{FEATURE_SLUG}}]]

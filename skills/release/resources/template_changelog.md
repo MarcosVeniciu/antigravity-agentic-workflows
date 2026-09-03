@@ -1,16 +1,16 @@
 # 🚀 Release Notes - `v{{VERSION}}` ({{DATE}})
 
-## 🚀 Novas Funcionalidades
+## 🚀 New Features
 - `[feat]`: {{FEAT_DESCRIPTION}}
 
-## 🐛 Correções de Bugs
+## 🐛 Bug Fixes
 - `[fix]`: {{FIX_DESCRIPTION}}
 
-## ⚡ Performance & Refatoração
+## ⚡ Performance & Refactoring
 - `[refactor/perf]`: {{PERF_DESCRIPTION}}
 
 ## ⚠️ Breaking Changes
 - `[BREAKING]`: {{BREAKING_DESCRIPTION}}
 
 ---
-*Release consolidada via Antigravity Agentic Workflows.*
+*Release consolidated via Antigravity Agentic Workflows.*

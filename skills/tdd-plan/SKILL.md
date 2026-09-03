@@ -1,21 +1,21 @@
 ---
 name: "tdd-plan"
-description: "TDD batch planning skill. Analyzes BDD scenarios and SDD blueprints to decompose work into sequential, dependent context batches, generating implementation_plan.md and task_list.md."
+description: "Use during Phase 2 (/implement) for TDD batch planning. Analyzes BDD scenarios and SDD blueprints to decompose work into sequential, dependent context batches, generating implementation_plan.md and task_list.md."
 ---
 
-# Skill: Planejamento de Lotes TDD (`skills/tdd-plan`)
+# Skill: TDD Batch Planning (`skills/tdd-plan`)
 
-Analisa as especificações do BDD e os contratos do SDD para decompor a entrega em **Lotes de Contexto Dependentes** antes de qualquer escrita de código.
+Analyzes BDD specifications and SDD contracts to decompose delivery into **Dependent Context Batches** before any code is written.
 
-## 🎯 Diretrizes de Decomposição de Lotes
+## 🎯 Batch Decomposition Directives
 
-1. **Dependência Linear de Contexto:**
-   * Lote 1: Entidades de domínio, interfaces e contratos base (sem dependência externa).
-   * Lotes Intermediários: Casos de uso, serviços de domínio e regras de negócio.
-   * Lote Final: Controladores/rotas da API e integrações ponta a ponta.
-2. **Geração de Artefatos:**
-   * `implementation_plan.md`: Descrição arquitetural detalhada dos lotes e arquivos afetados (`RequestFeedback: true`).
-   * `task_list.md`: Checklist dinâmico de tarefas com caixas de seleção interativas (`[ ]` ➔ `[/]` ➔ `[x]`).
+1. **Linear Context Dependency:**
+   * Batch 1: Domain entities, base interfaces, and contracts (zero external dependencies).
+   * Intermediate Batches: Use cases, domain services, and business rules.
+   * Final Batch: API routes/controllers and end-to-end orchestration.
+2. **Artifact Generation:**
+   * `implementation_plan.md`: Detailed architectural breakdown of batches and affected files (`RequestFeedback: true`).
+   * `task_list.md`: Dynamic task checklist with interactive progress states (`[ ]` ➔ `[/]` ➔ `[x]`).
 
 ## 📋 Available Resources
 * **Plan Template:** `resources/plan_template.md` from the `@tdd-plan` skill.

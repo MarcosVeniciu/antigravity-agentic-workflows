@@ -7,36 +7,36 @@ description: "{{DESCRIPTION}}"
 tags:
   - plan_implement
   - sdd
-  - phase/concepcao
+  - phase/conception
 ---
 
-# 📐 Especificação Técnica (SDD): {{FEATURE_NAME}}
+# 📐 Technical Specification (SDD): {{FEATURE_NAME}}
 
 ---
 
-## 🎯 1. Objetivo Técnico
+## 🎯 1. Technical Goal
 {{TECHNICAL_GOAL}}
 
 ---
 
-## ⚠️ 2. Pontos Críticos e Decisões de Design
+## ⚠️ 2. Critical Decisions & Design Choices
 > [!IMPORTANT]
 > {{CRITICAL_DECISIONS_AND_DEPENDENCIES}}
 
 ---
 
-## 📋 3. Plano Sequencial de Implementação
+## 📋 3. Sequential Implementation Plan
 
-| # | O Que Fazer | Justificativa | Critério de Aceite Técnico | Dependência |
+| # | Action | Rationale | Technical Acceptance Criteria | Dependency |
 |---|---|---|---|---|
 | 1 | {{STEP_1_DESC}} | {{STEP_1_WHY}} | {{STEP_1_CRITERIA}} | — |
-| 2 | {{STEP_2_DESC}} | {{STEP_2_WHY}} | {{STEP_2_CRITERIA}} | Passo 1 |
+| 2 | {{STEP_2_DESC}} | {{STEP_2_WHY}} | {{STEP_2_CRITERIA}} | Step 1 |
 
 ---
 
-## 🏗️ 4. Arquitetura e Contratos
+## 🏗️ 4. Architecture & Contracts
 
-### Diagrama de Sequência (Mermaid)
+### Sequence Diagram (Mermaid)
 
 ```mermaid
 sequenceDiagram
@@ -53,31 +53,31 @@ sequenceDiagram
     API-->>Client: "HTTP 200 / 201 Response"
 ```
 
-### Contratos Tipados e Mocks de Fronteira
+### Typed Contracts & Boundary Mocks
 
 ```python
-# Contratos Tipados em Pydantic
+# Typed Contracts using Pydantic
 from pydantic import BaseModel, Field, EmailStr
 
 class ExampleRequestDTO(BaseModel):
-    email: EmailStr = Field(..., description="E-mail único do usuário")
+    email: EmailStr = Field(..., description="Unique user email")
 
 class ExampleResponseDTO(BaseModel):
-    id: str = Field(..., description="Identificador único")
+    id: str = Field(..., description="Unique entity identifier")
     status: str = Field(default="active")
 ```
 
 ---
 
-## 💥 5. Análise de Impacto em Arquivos
+## 💥 5. File Impact Analysis
 
-| Arquivo / Módulo | Tipo de Mudança | Risco | Observações |
+| File / Module | Change Type | Risk | Notes |
 | --- | --- | --- | --- |
-| `path/to/new_file.py` | Aditiva (Novo) | Baixo | Componente isolado |
-| `path/to/existing_file.py` | Mutativa (Alteração) | Médio | Adaptação de comportamento |
+| `path/to/new_file.py` | Additive (New) | Low | Isolated component |
+| `path/to/existing_file.py` | Mutative (Edit) | Medium | Adapting behavior |
 
 ---
 
-## 🔗 Contexto Relacionado
+## 🔗 Related Context & Notes
 * [[bdd-{{FEATURE_SLUG}}]]
 * [[dod-{{FEATURE_SLUG}}]]

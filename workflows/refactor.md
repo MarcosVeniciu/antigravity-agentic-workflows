@@ -3,44 +3,44 @@ title: "Structural Refactoring and Clean Code Agent"
 description: "Consolidates Phase 3: optimizes functional code applying Clean Code, SOLID principles, and eliminates Code Smells while preserving 100% green tests."
 ---
 
-# Agent: Refatoração de Consolidação (`/refatorar`)
+# Agent: Consolidation Refactoring (`/refactor`)
 
-Você orquestra a **Fase 3 (Chat 3)** do desenvolvimento da feature.
+You orchestrate **Phase 3 (Chat 3)** of the feature development lifecycle.
 
 ---
 
-## 🚀 Esteira de Execução em 4 Etapas
+## 🚀 Execution Pipeline in 4 Steps
 
-### Etapa 1: Gate de Entrada & Escopo de Refatoração
-- **Gate de Entrada Obrigatório**: Execute a suíte de testes no terminal. Se algum teste estiver quebrando, aborte a refatoração imediatamente e direcione o usuário para `/implementar` ou `/testar`.
-- **Descoberta de Escopo**: Mapeie os arquivos alterados na branch usando:
+### Step 1: Entry Gate & Refactoring Scope Discovery
+- **Mandatory Entry Gate**: Run the test suite in the terminal. If any test is failing, abort refactoring immediately and direct the user to `/implement` or `/test-fix`.
+- **Scope Discovery**: Map files modified on this branch using:
   ```bash
   git --no-pager diff develop...HEAD --name-only
   ```
-  *(Fallback para `main...HEAD` se `develop` não existir)*.
+  *(Fallback to `main...HEAD` if `develop` does not exist)*.
 
-### Etapa 2: Mapeamento de Oportunidades no `task_list.md`
-- Analise os arquivos modificados e liste no `task_list.md` as oportunidades de melhoria:
-  - Redução de complexidade e aninhamentos (Guard Clauses).
-  - Extração de métodos longos e separação de responsabilidades (SRP).
-  - Eliminação de números mágicos e strings soltas (Constantes).
+### Step 2: Opportunity Mapping in `task_list.md`
+- Analyze modified files and list refactoring opportunities in `task_list.md`:
+  - Complexity reduction and nested branch flattening (Guard Clauses).
+  - Long method extraction and single responsibility separation (SRP).
+  - Elimination of magic numbers and dangling literals (Named Constants).
 
-### Etapa 3: Loop de Refatoração Cirúrgica
-Para cada componente planejado no `task_list.md`:
-1. **Aplicar Refatoração**:
-   * Aplique as melhorias de Clean Code e SOLID sem alterar o comportamento externo.
-   * 💡 **Skill Recomendada:** `skills/refatorar`
-2. **Executar Testes de Regressão**:
-   * Execute a suíte no terminal após cada alteração.
-   * **Se quebrar**: Reverta imediatamente via `skills/git` (Modo 4: `git reset --hard HEAD`).
-   * **Se passar (100% Verde)**: Salve um micro-checkpoint local via `skills/git` (Modo 2).
+### Step 3: Surgical Refactoring Loop
+For each component planned in `task_list.md`:
+1. **Apply Refactoring**:
+   * Apply Clean Code and SOLID improvements without modifying observable external behavior.
+   * 💡 **Recommended Skill:** `skills/refactor`
+2. **Run Regression Tests**:
+   * Run the test suite in the terminal after every change.
+   * **If tests fail**: Revert immediately via `skills/git` (Mode 4: `git reset --hard HEAD`).
+   * **If tests pass (100% Green)**: Save a local micro-checkpoint via `skills/git` (Mode 2).
 
-### Etapa 4: Conclusão, Atualização do DoD & Handover
-- Apresente a **Matriz de Evidências de Refatoração** ao usuário.
-- Atualize o Living DoD em `01-concepcao/dod-[slug].md` marcando `- [x] Fase 3: Refatoração Final (/refatorar)` via `skills/dod`.
-- Execute o commit semântico de consolidação via `skills/git` (Modo 3 - Phase Squash):
+### Step 4: Conclusion, DoD Update & Handover
+- Present the **Refactoring Evidence Matrix** to the user.
+- Update the Living DoD in `01-concepcao/dod-[slug].md` marking `- [x] Phase 3: Final Refactoring (/refactor)` via `skills/dod`.
+- Execute a semantic consolidation commit via `skills/git` (Mode 3 - Phase Squash):
   ```bash
-  git commit -m "refactor(consolidacao): aplicacao de Clean Code e SOLID para [slug]"
+  git commit -m "refactor(consolidation): apply Clean Code and SOLID for [slug]"
   ```
-- Imprima a recomendação de transição de fase:
-  > **[NEXT STEP]** ➡️ *"🧹 Fase 3 (Refatoração) concluída com 100% dos testes verdes! Abra um **NOVO CHAT (Chat 4)** e execute `/review` para iniciar as auditorias especializadas."*
+- Output the phase transition handover recommendation:
+  > **[NEXT STEP]** ➡️ *"🧹 Phase 3 (Refactoring) completed with 100% green tests! Open a **NEW CHAT (Chat 4)** and run `/review` to begin specialized domain audits."*

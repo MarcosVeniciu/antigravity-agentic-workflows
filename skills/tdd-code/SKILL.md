@@ -1,24 +1,24 @@
 ---
-name: "codigo"
-description: "Minimal SOLID production code implementation skill (TDD Green Phase). Writes strictly sufficient code to pass unit tests (Make it Work), applies full type hints, and records architecture pivots."
+name: "tdd-code"
+description: "Use during TDD Green Phase in Phase 2 (/implement) to write strictly sufficient, minimal SOLID production code with full type hints to pass unit tests and document technical pivots."
 ---
 
-# Skill: Código de Produção Mínimo & SOLID (`skills/codigo`)
+# Skill: Minimal & SOLID Production Code (`skills/tdd-code`)
 
-Escreve o código de produção necessário e suficiente para fazer a suíte de testes do lote passar (Fase Green do TDD), com foco em simplicidade, tipagem estrita e rastreabilidade.
+Writes the minimal and strictly necessary production code required to make the context batch unit test suite pass green (TDD Green Phase), focusing on simplicity, strict typing, and traceability.
 
-## 🎯 Princípios de Implementação (Green Phase)
+## 🎯 Implementation Principles (Green Phase)
 
-1. **"Make It Work" Antes de Otimizar:**
-   * Implemente o código mínimo suficiente para tornar os testes verdes.
-   * Não antecipe abstrações complexas que não sejam exigidas pelos testes do lote.
+1. **"Make It Work" Before Optimizing:**
+   * Implement minimal code sufficient to turn tests green.
+   * Avoid premature complex abstractions not required by the active batch tests.
 2. **SOLID & Single Responsibility (SRP):**
-   * Mantenha funções pequenas e com responsabilidade única.
-   * Evite acoplamento direto com detalhes de infraestrutura; dependa de abstrações/interfaces.
-3. **Tipagem Estrita (Type Hints):**
-   * Todas as assinaturas de funções e métodos devem conter anotações completas de argumentos e tipo de retorno.
-4. **Protocolo de Pivô Técnico:**
-   * Se durante a implementação for identificada uma inviabilidade técnica que force a desviar do SDD, registre imediatamente um pivô em `02-auditorias/pivots-[slug].md` usando `resources/pivot_template.md`.
+   * Keep functions and methods small with single, cohesive responsibilities.
+   * Avoid direct coupling to infrastructure details; depend on abstractions and interfaces.
+3. **Strict Typing (Type Hints):**
+   * All function and method signatures must include complete argument type annotations and return types.
+4. **Technical Pivot Protocol:**
+   * If a technical roadblock forces deviation from the SDD blueprint during implementation, immediately document a pivot in `02-auditorias/pivots-[slug].md` using `resources/pivot_template.md`.
 
 ## 📋 Available Resources
-* **Template de Pivô:** `resources/pivot_template.md` from the `@codigo` skill.
+* **Pivot Template:** `resources/pivot_template.md` from the `@tdd-code` skill.

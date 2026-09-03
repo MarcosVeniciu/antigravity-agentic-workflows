@@ -1,23 +1,23 @@
 ---
-name: "bdd"
-description: "Behavior-Driven Development (BDD) specification skill. Formats business requirements and user stories strictly into pure Gherkin syntax (Given/When/Then) with zero technical implementation bias."
+name: "plan-bdd"
+description: "Use during Phase 1 (/plan) to format business requirements and user stories strictly into pure Gherkin syntax (Given/When/Then) with zero technical implementation bias."
 ---
 
-# Skill: Especificação Comportamental BDD (`skills/bdd`)
+# Skill: Behavioral BDD Specification (`skills/plan-bdd`)
 
-Modela os requisitos funcionais e regras de negócio da feature estritamente na sintaxe Gherkin (`Given/When/Then`), garantindo foco no comportamento do usuário e do sistema sem antecipar código técnico.
+Models feature requirements and business rules strictly in Gherkin syntax (`Given/When/Then`), ensuring focus on user and system behavior without leaking technical implementation details.
 
-## 🎯 Regras de Ouro do BDD
+## 🎯 Golden Rules of BDD
 
-1. **Linguagem Ubíqua e Acessível:**
-   * Escreva cenários legíveis por desenvolvedores, POs e usuários de negócio.
-   * Evite termos técnicos como `SELECT`, `JSON`, `status HTTP 200` ou `API Endpoint`. Descreva o comportamento visível e a intenção do usuário.
-2. **Cobertura Essencial:**
-   * Mapeie obrigatoriamente o **Caminho Feliz (Happy Path)**.
-   * Mapeie cenários de exceção e borda (**Unhappy Paths**: validação, entradas incorretas, bloqueios e estados inválidos).
-3. **Fidelidade à Proposta:**
-   * Os cenários devem refletir exatamente o Estado Final aprovado na etapa de debate.
+1. **Ubiquitous, Accessible Language:**
+   * Write scenarios easily understood by developers, product managers, and business stakeholders.
+   * Avoid technical jargon like `SELECT`, `JSON`, `HTTP 200`, or `API Endpoint`. Describe observable behavior and user intent.
+2. **Essential Coverage:**
+   * Always cover the **Happy Path**.
+   * Cover boundary and exception scenarios (**Unhappy Paths**: validation errors, invalid inputs, access restrictions, and invalid system states).
+3. **Fidelity to Approved Proposal:**
+   * Scenarios must reflect the exact Desired End-State approved during the debate step.
 
 ## 📋 Available Resources
-* **Template BDD:** `resources/template_bdd.md` from the `@bdd` skill.
-* **Exemplo de Referência:** `examples/bdd_checkout_example.md` from the `@bdd` skill.
+* **BDD Template:** `resources/template_bdd.md` from the `@plan-bdd` skill.
+* **Reference Example:** `examples/bdd_checkout_example.md` from the `@plan-bdd` skill.

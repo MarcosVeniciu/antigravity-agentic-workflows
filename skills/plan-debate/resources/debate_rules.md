@@ -19,5 +19,5 @@ During codebase diagnosis and interview:
 2. **Volumetrics & Performance**: Does the proposed solution scale linearly ($O(N)$) or introduce quadratic/blocking I/O bottlenecks?
 3. **Edge Cases & Failure Modes**: What happens when network fails, input is invalid, or dependencies are unavailable?
 4. **Approach Comparison**:
-   * *Proposta 1 (Pragmática)*: Low effort, incremental, keeps viable parts of user's suggestions.
-   * *Proposta 2 (Ideal)*: Decoupled, high maintainability, discards suboptimal hints in favor of robust patterns.
+   * *Proposal 1 (Pragmatic)*: Low effort, incremental, keeps viable parts of user suggestions.
+   * *Proposal 2 (Ideal)*: Decoupled, high maintainability, discards suboptimal hints in favor of robust patterns.

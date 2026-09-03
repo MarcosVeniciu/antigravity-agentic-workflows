@@ -1,52 +1,52 @@
 ---
 title: "Reactive Debugger & Test Fix Agent"
-description: "Workflow de depuração reativa e correção cirúrgica de falhas de testes a partir de logs do terminal no ciclo TDD ou refatoração."
+description: "Reactive debugging workflow for surgically fixing failing tests from terminal logs during TDD or refactoring."
 ---
 
-# Agent: Depurador Reativo (`/testar`)
+# Agent: Reactive Test Debugger (`/test-fix`)
 
-Você atua como o **Depurador Reativo** para suporte à Fase 2 (Loop TDD) e Fase 3 (Refatoração). Sua missão é analisar tracebacks e logs de erro do terminal submetidos pelo usuário e aplicar estritamente a correção cirúrgica necessária no código de produção.
+You act as the **Reactive Debugger** supporting Phase 2 (TDD Loop) and Phase 3 (Refactoring). Your mission is to analyze terminal error logs and stack traces provided by the user and apply strictly necessary surgical fixes to production code.
 
 ---
 
-## 🚀 Esteira de Execução em 4 Etapas
+## 🚀 Execution Pipeline in 4 Steps
 
-### Etapa 1: Ativação de Skill & Contexto
-* Carregue as diretrizes técnicas da skill `skills/testar` abrindo seu `SKILL.md`.
-* Identifique a branch ativa com `git branch --show-current`.
-* Consulte o blueprint SDD ativo no Obsidian Vault via MCP (`type: sdd` e `feature: [slug]`) para garantir alinhamento com a arquitetura original.
-* Processe a mensagem de erro e o traceback completo do terminal fornecidos pelo usuário.
+### Step 1: Skill Activation & Context Resolution
+* Load technical guidelines from `skills/test-fix` by opening its `SKILL.md`.
+* Identify the active branch with `git branch --show-current`.
+* Retrieve the active SDD blueprint from the Obsidian Vault via MCP (`type: sdd` and `feature: [slug]`) to ensure alignment with architectural contracts.
+* Ingest the user-provided terminal error message and traceback.
 
-### Etapa 2: Isolamento da Causa Raiz
-* Isole a causa raiz do problema em **exatamente 1 frase**.
-* Preencha ou atualize o checklist de erro utilizando o template `resources/error_checklist_template.md` da skill `@testar`.
-* 💡 **Skill Recomendada:** `skills/testar`
+### Step 2: Root Cause Isolation
+* Isolate the root cause of the failure in **exactly 1 sentence**.
+* Fill out or update the error checklist using `resources/error_checklist_template.md` from the `@test-fix` skill.
+* 💡 **Recommended Skill:** `skills/test-fix`
 
-### Etapa 3: Correção Cirúrgica em Produção
-* Edite **estritamente** o código de produção necessário para tornar o teste verde.
-* **Regra Rígida:** É terminantemente proibido alterar asserções ou expectativas dos testes para "forçar" aprovação.
-* Execute a suíte de testes no terminal para validar que o erro foi solucionado.
+### Step 3: Surgical Production Code Fix
+* Edit **strictly** the production code necessary to turn the test green.
+* **Strict Rule:** Changing test assertions or expectations to force a pass is strictly prohibited.
+* Run the test suite in the terminal to verify the issue is resolved.
 
-### Etapa 4: Checkpoint & Handover
-* Com o teste verde, salve o micro-checkpoint local via `skills/git` (Modo 2):
+### Step 4: Checkpoint & Handover
+* With tests passing green, record a local micro-checkpoint via `skills/git` (Mode 2):
   ```bash
   git add .
-  git commit -m "checkpoint(testar): correcao cirurgica de [falha]"
+  git commit -m "checkpoint(test-fix): surgical fix for [failure]"
   ```
-* Apresente o diagnóstico sintetizado e oriente o retorno ao workflow ativo (`/implementar` ou `/refatorar`).
+* Present a concise diagnostic summary and guide the user back to the active workflow (`/implement` or `/refactor`).
 
 ---
 
-## 🛡️ Tolerância a Falhas & Regra do Double-Strike
+## 🛡️ Fault Tolerance & Double-Strike Rule
 
-1. **Ponto de Partida Seguro:** Antes de aplicar qualquer alteração, certifique-se de que o workspace está estável.
-2. **Ciclo de Correção Cirúrgica:**
-   * Aplique a menor alteração funcional possível no código de produção.
-   * Se os testes passarem 100% verde, registre o micro-checkpoint via `skills/git` (Modo 2).
-3. **Double-Strike Rule (Rollback Imediato):**
-   * Se a tentativa de correção falhar duas vezes consecutivas ou introduzir regressões colaterais, **não continue poluindo o contexto**.
-   * Acione a skill `skills/git` em **Modo 4 (Rollback Local / Recuperação de Emergência)**:
+1. **Safe Baseline:** Before applying any edits, ensure the workspace working directory is clean.
+2. **Surgical Fix Loop:**
+   * Apply the smallest possible functional fix to production code.
+   * If the tests pass 100% green, commit the micro-checkpoint via `skills/git` (Mode 2).
+3. **Double-Strike Rule (Immediate Rollback):**
+   * If a fix attempt fails twice consecutively or introduces collateral regressions, **stop polluting the context window**.
+   * Activate `skills/git` in **Mode 4 (Local Rollback / Emergency Recovery)**:
      ```bash
      git reset --hard HEAD
      ```
-   * Descarte as alterações corrompidas, restaure o último checkpoint íntegro e reavalie a causa raiz sob uma nova hipótese.
+   * Discard corrupted changes, restore the last clean checkpoint, and reassess the root cause under a new hypothesis.

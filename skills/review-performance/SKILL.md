@@ -1,18 +1,18 @@
 ---
 name: "review-performance"
-description: "Performance and efficiency review skill. Detects N+1 query patterns, memory leaks, unindexed database filters, unbuffered I/O, and quadratic algorithms on git diff."
+description: "Use during Phase 4 (/review) for performance and efficiency review. Detects N+1 query patterns, memory leaks, unindexed database filters, unbuffered I/O, and quadratic algorithms on git diff."
 ---
 
-# Skill: Review de Performance & Eficiência (`skills/review-performance`)
+# Skill: Performance & Efficiency Review (`skills/review-performance`)
 
-Audita cirurgicamente as alterações de código da branch sob a ótica de volumetria, uso eficiente de CPU/memória e prevenção de gargalos assintóticos.
+Surgically audits branch code changes from the perspective of data volumetrics, efficient CPU/memory utilization, and algorithmic bottleneck prevention.
 
-## 🎯 Eixos de Análise (Diff-Based)
-* **Padrão N+1 Queries:** Execução de consultas SQL ou chamadas de API em repetição dentro de loops `for`.
-* **Gargalos Assintóticos:** Algoritmos de complexidade quadrática ($O(N^2)$) ou buscas lineares (`in list`) dentro de iterações.
-* **Uso de Memória & Buffering:** Carregamento de datasets inteiros na memória ao invés de iteradores/geradores (`yield`).
-* **Conexões & Recursos:** Falta de fechamento de conexões, cursores ou descritores de arquivos (Memory Leaks).
+## 🎯 Review Pillars (Diff-Based)
+* **N+1 Query Pattern:** Executing repetitive SQL queries or API calls inside `for` loops.
+* **Asymptotic Bottlenecks:** Quadratic complexity algorithms ($O(N^2)$) or linear lookups (`item in list`) inside iterative blocks.
+* **Memory & Buffering:** Loading entire datasets into memory instead of streaming with iterators/generators (`yield`).
+* **Connection & Resource Leaks:** Unclosed database cursors, file descriptors, or client sessions.
 
 ## 📋 Available Resources
 * **Checklist:** `references/checklist_performance.md` from the `@review-performance` skill.
-* **Template do Artefato:** `resources/template_performance.md` from the `@review-performance` skill.
+* **Artifact Template:** `resources/template_performance.md` from the `@review-performance` skill.

@@ -1,29 +1,29 @@
 ---
 name: "docs"
-description: "Technical documentation skill for Phase 5. Generates project showcase, module READMEs, and traceable in-code docstrings without modifying production logic."
+description: "Use during Phase 5 (/docs) for technical documentation. Generates project showcases, module READMEs, and traceable in-code docstrings without modifying production logic."
 ---
 
-# Skill: Technical Writer & Documentação Técnica (`skills/docs`)
+# Skill: Technical Writer & Documentation (`skills/docs`)
 
-Guia a geração e atualização de documentação técnica viva (READMEs de módulo/raiz e docstrings de código) na Fase 5, garantindo rastreabilidade com o Obsidian Vault e comandos reais extraídos de manifestos.
-
----
-
-## 📁 Recursos e Templates
-
-* **Showcase Principal (Raiz)**: `resources/template_readme_raiz.md` from the `@docs` skill
-* **Módulo Interno (Local)**: `resources/template_readme_local.md` from the `@docs` skill
+Guides the generation and updating of living technical documentation (root/module READMEs and in-code docstrings) in Phase 5, ensuring Obsidian Vault traceability and real commands validated against project manifests.
 
 ---
 
-## ⛔ Regras Estritas e Restrições
+## 📁 Resources and Templates
 
-1. **🚫 Proibido Comandos Obsoletos/Falsos**: Todos os comandos documentados (instalação, execução, testes) DEVEM ser validados contra arquivos de manifesto reais (`package.json`, `pyproject.toml`, `Makefile`, etc.).
-2. **🚫 Proibido Alterar Lógica de Produção**: Seu escopo em arquivos de código é estritamente limitado à inserção ou correção de docstrings e comentários.
-3. **⚠️ Diagramas Mermaid Seguros**: Todo rótulo ou nó em diagramas Mermaid deve estar entre aspas duplas (ex: `A["Input"]`).
-4. **⚠️ Fidelidade ao Template**: A documentação local de módulos deve conter rigorosamente as seções previstas no template.
+* **Root Project Showcase**: `resources/template_readme_root.md` from the `@docs` skill
+* **Local Module Documentation**: `resources/template_readme_local.md` from the `@docs` skill
 
 ---
 
-## ✅ Rastreabilidade com Obsidian
-Toda docstring de classe/função e documentação de módulo deve conter links bidirecionais para o Obsidian Vault usando a sintaxe `Ref: Obsidian note [[note-name]]`.
+## ⛔ Strict Rules & Constraints
+
+1. **🚫 No Obsolete/Fictitious Commands**: All documented commands (installation, execution, testing) MUST be validated against active manifest files (`package.json`, `pyproject.toml`, `Makefile`, etc.).
+2. **🚫 Never Alter Production Logic**: Scope in code files is strictly limited to inserting or correcting docstrings, comments, and type annotations.
+3. **⚠️ Safe Mermaid Diagrams**: Every node label in Mermaid diagrams must be enclosed in double quotes (e.g., `A["Input"]`).
+4. **⚠️ Template Fidelity**: Local module documentation must adhere to the standardized sections in the template.
+
+---
+
+## ✅ Obsidian Traceability
+Every class/function docstring and module documentation must contain bidirectional links to the Obsidian Vault using `Ref: Obsidian note [[note-name]]`.

@@ -1,12 +1,12 @@
-# Padrões para Testes de Integração e Runners E2E
+# Patterns for Integration Testing and E2E Runners
 
-Este guia descreve as práticas recomendadas para estruturação de suítes de testes de integração ponta a ponta.
+This guide describes recommended practices for structuring end-to-end integration test suites.
 
 ---
 
-## 🏗️ Estrutura de Banners em Pytest / Runners
+## 🏗️ Stage Banner Structure in Pytest / Runners
 
-Ao escrever testes de integração em Python (ou equivalente em Node.js/Go), utilize impressões formatadas para delimitar os estágios no terminal (`-s` flag):
+When writing integration tests in Python (or equivalent in Node.js/Go), use formatted stdout logs to delimit stages in the console (`-s` flag):
 
 ```python
 import pytest
@@ -14,28 +14,28 @@ import time
 
 def log_stage(stage_num: int, title: str):
     print(f"\n{'='*70}")
-    print(f"[ETAPA {stage_num}] {title}")
+    print(f"[STAGE {stage_num}] {title}")
     print(f"{'='*70}\n")
 
 def test_complete_integration_suite(client, test_db):
-    # Etapa 1: Happy Path
-    log_stage(1, "E2E HAPPY PATH: Login -> Cadastro de Produtor -> Simulação")
-    # ... execuções e asserções ...
-    print("  ✓ Produtor cadastrado e persistido com sucesso.")
+    # Stage 1: Happy Path
+    log_stage(1, "E2E HAPPY PATH: Login -> Producer Registration -> Simulation")
+    # ... execution and assertions ...
+    print("  ✓ Producer registered and persisted successfully.")
 
-    # Etapa 2: Unhappy Path - Falha de Auth
-    log_stage(2, "UNHAPPY PATH: Acesso Sem Autenticação (403 Forbidden)")
-    # ... execuções e asserções ...
-    print("  ✓ Bloqueio de endpoint protegido confirmado.")
+    # Stage 2: Unhappy Path - Auth Failure
+    log_stage(2, "UNHAPPY PATH: Unauthenticated Access Attempt (403 Forbidden)")
+    # ... execution and assertions ...
+    print("  ✓ Protected endpoint blocking confirmed.")
 
-    # Etapa 3: Resiliência
-    log_stage(3, "UNHAPPY PATH: Resiliência e Degradação Graciosa na API de ML")
-    # ... mock de falha externa e fallback ...
-    print("  ✓ Fallback acionado e resposta nominal retornada.")
+    # Stage 3: Resilience
+    log_stage(3, "UNHAPPY PATH: Resilience & Graceful Degradation on ML API")
+    # ... mock downstream failure and fallback ...
+    print("  ✓ Fallback triggered and nominal response returned.")
 ```
 
 ---
 
-## 🛡️ Critérios de Aceite de Integração
-1. **Isolamento de Base de Teste**: Os testes de integração devem usar um banco de dados transacional limpo ou contêiner de teste (`testcontainers`), nunca banco de desenvolvimento ou produção.
-2. **Tempo Total Limite**: A suíte de integração deve ser otimizada para rodar em menos de 60 segundos.
+## 🛡️ Integration Acceptance Criteria
+1. **Test Database Isolation**: Integration tests must run against a clean transactional database or test container (`testcontainers`), never staging or production data.
+2. **Total Execution Threshold**: The integration suite must be optimized to finish within 60 seconds.

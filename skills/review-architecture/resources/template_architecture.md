@@ -1,24 +1,24 @@
-# 🏛️ Auditoria de Arquitetura & Acoplamento
+# 🏛️ Architecture & Coupling Audit
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
-**Escopo Analisado:** Diff relativo a `develop` (`{{FILES_COUNT}}` arquivos)
+**Scope Analyzed:** Git diff against `develop` (`{{FILES_COUNT}}` files)
 
 ---
 
-## 🔍 Evidências Identificadas no Diff
+## 🔍 Evidence Identified in Diff
 
-| Arquivo / Linha | Padrão / Princípio Violado | Causa / Risco |
+| File / Line | Violated Pattern / Principle | Cause / Risk |
 | :--- | :--- | :--- |
-| `{{FILE}}:{{LINE}}` | Inversão de Dependência / Acoplamento | Instanciação direta de dependência externa |
+| `{{FILE}}:{{LINE}}` | Dependency Inversion / Coupling | Direct instantiation of external dependency |
 
 ---
 
-## 🛠️ Correções Cirúrgicas Aplicadas
-- [x] Injeção de dependência aplicada via construtor.
-- [x] Remoção de acoplamento direto com infraestrutura.
+## 🛠️ Surgical Fixes Applied
+- [x] Dependency injection applied via constructor.
+- [x] Direct infrastructure coupling removed from domain.
 
 ---
 
-## 🚦 Validação & Testes
-- [x] 100% dos testes unitários verdes após as correções.
-- [x] Micro-checkpoint registrado via `skills/git` (Modo 2).
+## 🚦 Validation & Tests
+- [x] 100% unit tests passing green following surgical fixes.
+- [x] Micro-checkpoint recorded via `skills/git` (Mode 2).

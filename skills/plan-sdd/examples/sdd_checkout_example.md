@@ -1,39 +1,39 @@
-# Exemplo de Especificação Técnica SDD
+# SDD Technical Specification Example
 
 ---
 
-## 📋 Plano Sequencial de Implementação
+## 📋 Sequential Implementation Plan
 
-| # | O Que Fazer | Justificativa | Critério de Aceite Técnico | Dependência |
+| # | Action | Rationale | Technical Acceptance Criteria | Dependency |
 |---|---|---|---|---|
-| 1 | Criar DTO `ProducerCreateRequest` em `schemas/producer.py` | Definir contrato de entrada com validação de e-mail e senha | Pydantic rejeitando e-mails inválidos ou senha curta | — |
-| 2 | Criar interface `IProducerRepository` em `ports/repositories.py` | Isolar dependência de persistência para permitir mock | Métodos `save` e `find_by_email` definidos com tipagem estrita | Passo 1 |
-| 3 | Implementar `InMemoryProducerRepository` em `adapters/in_memory.py` | Prover persistência em memória para ciclo de testes | Repositório mock persistindo e recuperando entidades | Passo 2 |
+| 1 | Create `ProducerCreateRequest` DTO in `schemas/producer.py` | Define input contract with email and password validations | Pydantic rejects invalid emails or short passwords | — |
+| 2 | Create `IProducerRepository` interface in `ports/repositories.py` | Isolate persistence dependency to enable in-memory mock | `save` and `find_by_email` methods strictly typed | Step 1 |
+| 3 | Implement `InMemoryProducerRepository` in `adapters/in_memory.py` | Provide in-memory persistence for testing cycle | Mock repository stores and retrieves entities | Step 2 |
 
 ---
 
-## 🏗️ Arquitetura e Contratos
+## 🏗️ Architecture & Contracts
 
 ```mermaid
 sequenceDiagram
-    participant Client as "Consultor / Web"
+    participant Client as "Consultant / Web"
     participant API as "Producer Controller"
     participant Repo as "Producer Repository (Mock)"
     
-    Client->>API: "POST /api/produtores (Payload)"
+    Client->>API: "POST /api/producers (Payload)"
     API->>Repo: "find_by_email(email)"
-    Repo-->>API: "None (Não existe)"
+    Repo-->>API: "None (Does not exist)"
     API->>Repo: "save(new_producer)"
-    Repo-->>API: "saved_producer (com ID)"
-    API-->>Client: "201 Created (ID + dados públicos)"
+    Repo-->>API: "saved_producer (with ID)"
+    API-->>Client: "201 Created (ID + public fields)"
 ```
 
 ```python
 from pydantic import BaseModel, Field, EmailStr
 
 class ProducerCreateRequest(BaseModel):
-    name: str = Field(..., min_length=2, description="Nome completo")
-    email: EmailStr = Field(..., description="E-mail único")
-    farm_name: str = Field(..., description="Nome da propriedade rural")
-    password: str = Field(..., min_length=6, description="Senha de acesso")
+    name: str = Field(..., min_length=2, description="Full name")
+    email: EmailStr = Field(..., description="Unique email")
+    farm_name: str = Field(..., description="Rural property name")
+    password: str = Field(..., min_length=6, description="Access password")
 ```

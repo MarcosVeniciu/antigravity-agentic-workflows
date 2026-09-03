@@ -1,40 +1,40 @@
-# Exemplo de Decomposição de Épico: Gestão de Produtores e Diagnóstico Delta
+# Epic Decomposition Example: Producer Management & Delta Diagnosis
 
-Este exemplo documenta a divisão prática do épico da API Ishikawa Educampo em 4 sub-features independentes e evolutivas.
-
----
-
-## 🎯 Visão do Épico
-Eliminar a lentidão e o alto custo de LLM gerados por diagnósticos repetidos, substituindo o arquivo estático `farms.json` por repositórios tipados (com mock inicial), cadastro de produtor e motor de diagnóstico delta.
+This example documents the practical breakdown of an API epic into 4 independent, evolutionary sub-features.
 
 ---
 
-## 🏗️ Grafo de Dependências
+## 🎯 Epic Vision
+Eliminate latency and high LLM costs caused by repetitive diagnoses, replacing the static `farms.json` file with typed repositories (initial mock), producer registration, and an incremental delta diagnosis engine.
+
+---
+
+## 🏗️ Dependency Graph
 
 ```mermaid
 flowchart TD
-    F1["Sub-Feature 1: Contratos e Repositório Mock de Produtores<br/><code>feature/producer-repository-mock</code>"] --> F2["Sub-Feature 2: Rota de Cadastro de Produtor<br/><code>feature/producer-registration-endpoint</code>"]
-    F1 --> F3["Sub-Feature 3: Repositório de Histórico de Execuções<br/><code>feature/execution-history-repository</code>"]
-    F2 & F3 --> F4["Sub-Feature 4: Motor de Diagnóstico Delta / Incremental<br/><code>feature/incremental-delta-diagnosis</code>"]
+    F1["Sub-Feature 1: Producer Contracts & Mock Repository<br/><code>feature/producer-repository-mock</code>"] --> F2["Sub-Feature 2: Producer Registration Endpoint<br/><code>feature/producer-registration-endpoint</code>"]
+    F1 --> F3["Sub-Feature 3: Execution History Repository<br/><code>feature/execution-history-repository</code>"]
+    F2 & F3 --> F4["Sub-Feature 4: Incremental Delta Diagnosis Engine<br/><code>feature/incremental-delta-diagnosis</code>"]
 ```
 
 ---
 
-## 📋 Fichas das Sub-Features
+## 📋 Sub-Feature Briefs
 
 ### 1. `feature/producer-repository-mock`
-* **Objetivo:** Estabelecer a interface `IProducerRepository` e implementar `InMemoryProducerRepository` com seed carregado do `farms.json`.
-* **Entregas:** Modelos `Producer` e `Farm`, contratos de busca por ID e email.
-* **Impacto:** Zero rotas existentes quebradas; fundação para todas as próximas features.
+* **Objective:** Establish the `IProducerRepository` interface and implement `InMemoryProducerRepository` seeded with `farms.json` data.
+* **Deliverables:** `Producer` and `Farm` models, lookup contracts by ID and email.
+* **Impact:** Zero existing routes broken; solid foundation for upcoming features.
 
 ### 2. `feature/producer-registration-endpoint`
-* **Objetivo:** Criar o endpoint `POST /api/produtores` para registro com senha e verificação de duplicidade de e-mail.
-* **Entregas:** Schema Pydantic, hashing de senha, handler da rota consumindo `IProducerRepository`.
+* **Objective:** Create `POST /api/producers` endpoint for registration with password hashing and duplicate email checks.
+* **Deliverables:** Pydantic schema, password hashing, route handler consuming `IProducerRepository`.
 
 ### 3. `feature/execution-history-repository`
-* **Objetivo:** Modelar contratos e persistência em mock para entradas e saídas de diagnósticos, benchmarks e simulações.
-* **Entregas:** Interface `IDiagnosticHistoryRepository` e armazenamento de diagnósticos por produtor.
+* **Objective:** Model contracts and mock persistence for inputs/outputs of diagnoses, benchmarks, and simulations.
+* **Deliverables:** `IDiagnosticHistoryRepository` interface and diagnosis storage per producer.
 
 ### 4. `feature/incremental-delta-diagnosis`
-* **Objetivo:** Implementar comparador de alterações no payload e chamar a LLM apenas para os pilares Ishikawa afetados.
-* **Entregas:** Algoritmo delta, orquestração cirúrgica da LLM e gravação automática no histórico.
+* **Objective:** Implement payload difference comparator to call LLM only for affected pillars.
+* **Deliverables:** Delta algorithm, surgical LLM orchestration, and automatic history logging.

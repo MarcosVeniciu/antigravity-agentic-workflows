@@ -3,50 +3,50 @@ title: "TDD Implementation Agent"
 description: "Executes Phase 2 (Chat 2) TDD cycle: batch planning, AAA unit tests (Red), minimal SOLID code (Green), DoD timeline logging, and micro-checkpoints."
 ---
 
-# Agent: Desenvolvimento TDD Iterativo (`/implementar`)
+# Agent: Iterative TDD Development (`/implement`)
 
-Você orquestra a **Fase 2 (Chat 2)** do ciclo de desenvolvimento da feature.
-
----
-
-## 🚀 Esteira de Execução em 3 Etapas
-
-### Etapa 1: Planejamento de Lotes de Contexto
-- Leia as especificações BDD (`01-concepcao/bdd-[slug].md`) e o blueprint SDD (`01-concepcao/sdd-[slug].md`).
-- Decomponha os requisitos em **Lotes de Contexto Dependentes**.
-- 💡 **Skill Recomendada:** `skills/tdd-plan`
-- Gere os artefatos `implementation_plan.md` e `task_list.md` (`RequestFeedback: true`).
-- **Pausa de Validação:** Avance para a Etapa 2 apenas após a aprovação do plano (clique em **Proceed** ou confirmação).
+You orchestrate **Phase 2 (Chat 2)** of the feature development lifecycle.
 
 ---
 
-### Etapa 2: Loop TDD por Lote de Contexto
-Para cada lote definido no `task_list.md`, execute rigorosamente o ciclo abaixo:
+## 🚀 Execution Pipeline in 3 Steps
 
-1. **Escrever Testes Unitários AAA (Fase Red):**
-   * Gere os testes com mocks isolados cobrindo Happy Path e Edge Cases.
-   * 💡 **Skill Recomendada:** `skills/testes`
-2. **Escrever Código de Produção Mínimo (Fase Green):**
-   * Escreva estritamente o código necessário para tornar os testes verdes ("Make it Work").
-   * Aplique tipagem completa e registre pivôs caso necessário.
-   * 💡 **Skill Recomendada:** `skills/codigo`
-3. **Execução da Suíte de Testes:**
-   * Execute os testes no terminal.
-   * Se algum teste falhar, isole a causa raiz e aplique correção cirúrgica sem alterar a asserção do teste.
-   * 💡 **Skill Recomendada:** `skills/testar`
-4. **Governança do Lote (DoD e Checkpoint):**
-   * Atualize o `task_list.md` marcando o lote como concluído (`[x]`).
-   * Adicione uma entrada na Linha do Tempo em `01-concepcao/dod-[slug].md` via `skills/dod`.
-   * Salve um micro-checkpoint local via `skills/git` (Modo 2):
+### Step 1: Context Batch Planning
+- Read the BDD behavioral specifications (`01-concepcao/bdd-[slug].md`) and SDD blueprint (`01-concepcao/sdd-[slug].md`).
+- Decompose requirements into **Dependent Context Batches**.
+- 💡 **Recommended Skill:** `skills/tdd-plan`
+- Generate `implementation_plan.md` and `task_list.md` artifacts (`RequestFeedback: true`).
+- **Validation Gate:** Advance to Step 2 only after the user approves the plan (by clicking **Proceed** or giving explicit confirmation).
+
+---
+
+### Step 2: TDD Loop per Context Batch
+For each batch defined in `task_list.md`, strictly execute the following TDD cycle:
+
+1. **Write AAA Unit Tests (Red Phase):**
+   * Generate tests with isolated mocks covering both Happy Path and Edge Cases.
+   * 💡 **Recommended Skill:** `skills/tdd-tests`
+2. **Write Minimal Production Code (Green Phase):**
+   * Write strictly sufficient code to make the tests pass ("Make it Work").
+   * Apply strict type hints and document architectural pivots if necessary.
+   * 💡 **Recommended Skill:** `skills/tdd-code`
+3. **Execute Test Suite:**
+   * Run the tests in the terminal.
+   * If any test fails, isolate the root cause and apply a surgical hotfix without altering test assertions.
+   * 💡 **Recommended Skill:** `skills/test-fix`
+4. **Batch Governance (DoD & Checkpoint):**
+   * Update `task_list.md` marking the current batch as completed (`[x]`).
+   * Append a timeline entry to `01-concepcao/dod-[slug].md` via `skills/dod`.
+   * Record a local micro-checkpoint via `skills/git` (Mode 2):
      ```bash
      git add .
-     git commit -m "checkpoint(implementar): lote [N] - [descricao]"
+     git commit -m "checkpoint(implement): batch [N] - [description]"
      ```
 
 ---
 
-### Etapa 3: Conclusão da Fase 2 & Handover
-- Com 100% dos lotes concluídos e testes unitários verdes:
-  - Salve o checkpoint final da Fase 2 via `skills/git` (Modo 2).
-  - Emita a recomendação de transição de fase:
-    > **[NEXT STEP]** ➡️ *"💻 Fase 2 (TDD) concluída com 100% dos testes unitários verdes! Abra um **NOVO CHAT (Chat 3)** e execute `/refatorar` para consolidar o design com Clean Code e SOLID."*
+### Step 3: Phase 2 Conclusion & Handover
+- Once 100% of batches are completed and all unit tests are passing green:
+  - Record the final Phase 2 checkpoint via `skills/git` (Mode 2).
+  - Issue the phase transition handover recommendation:
+    > **[NEXT STEP]** ➡️ *"💻 Phase 2 (TDD) completed with 100% unit tests passing green! Open a **NEW CHAT (Chat 3)** and run `/refactor` to consolidate code design with Clean Code and SOLID principles."*

@@ -1,40 +1,40 @@
-# 🎯 Alinhamento de Escopo & Propostas Arquiteturais
+# 🎯 Scope Alignment & Architectural Proposals
 
-## 🏁 Estado Final Desejado (Outcome)
-- **Resultado Funcional:** {{FUNCTIONAL_RESULT}}
-- **Regra de Negócio / Critério de Sucesso:** {{BUSINESS_RULE}}
-
----
-
-## 💡 Análise das Pistas e Hipóteses Iniciais
-- **Sugestões do Usuário Aproveitadas:** {{VIABLE_HINTS}}
-- **Premissas Questionadas / Ajustadas:** {{CHALLENGED_PREMISES}}
+## 🏁 Desired End-State (Outcome)
+- **Functional Result:** {{FUNCTIONAL_RESULT}}
+- **Business Rule / Success Criteria:** {{BUSINESS_RULE}}
 
 ---
 
-## ⚖️ Propostas Arquiteturais para Decisão
-
-### 🔹 Proposta 1: Pragmática / Incremental (Menor Esforço)
-* **Abordagem Conceitual:** {{P1_APPROACH}}
-* **Vantagens:** {{P1_PROS}}
-* **Trade-offs / Débitos Aceitos:** {{P1_CONS}}
-* **Arquivos Afetados:** {{P1_FILES}}
-
-### 🔹 Proposta 2: Arquiteturalmente Ideal / Escalável (Maior Desacoplamento)
-* **Abordagem Conceitual:** {{P2_APPROACH}}
-* **Vantagens:** {{P2_PROS}}
-* **Trade-offs / Custo de Refatoração:** {{P2_CONS}}
-* **Arquivos Afetados:** {{P2_FILES}}
+## 💡 Initial Clues & Hypotheses Analysis
+- **User Suggestions Leveraged:** {{VIABLE_HINTS}}
+- **Challenged / Adjusted Premises:** {{CHALLENGED_PREMISES}}
 
 ---
 
-## 📊 Matriz Comparativa
+## ⚖️ Architectural Proposals for Decision
 
-| Critério | Proposta 1 (Pragmática) | Proposta 2 (Ideal) |
+### 🔹 Proposal 1: Pragmatic / Incremental (Lowest Effort)
+* **Conceptual Approach:** {{P1_APPROACH}}
+* **Advantages:** {{P1_PROS}}
+* **Trade-offs / Accepted Debt:** {{P1_CONS}}
+* **Affected Files:** {{P1_FILES}}
+
+### 🔹 Proposal 2: Architecturally Ideal / Scalable (Max Decoupling)
+* **Conceptual Approach:** {{P2_APPROACH}}
+* **Advantages:** {{P2_PROS}}
+* **Trade-offs / Refactoring Cost:** {{P2_CONS}}
+* **Affected Files:** {{P2_FILES}}
+
+---
+
+## 📊 Comparative Matrix
+
+| Criteria | Proposal 1 (Pragmatic) | Proposal 2 (Ideal) |
 | :--- | :--- | :--- |
-| **Tempo / Esforço de Implementação** | Baixo | Médio / Alto |
-| **Atrito com Código Existente** | Mínimo | Moderado |
-| **Manutenibilidade a Longo Prazo** | Média | Alta |
-| **Aderência a Padrões Modernos** | Boa | Excelente |
+| **Implementation Effort** | Low | Medium / High |
+| **Friction with Existing Code** | Minimal | Moderate |
+| **Long-Term Maintainability** | Medium | High |
+| **Modern Patterns Adherence** | Good | Excellent |
 
-> 💡 *Para aprovar a proposta recomendada e avançar para o BDD, clique no botão **Proceed** no topo do documento.*
+> 💡 *To approve the recommended proposal and proceed to BDD, click **Proceed** at the top of the artifact.*

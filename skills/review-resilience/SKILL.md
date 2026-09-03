@@ -1,18 +1,18 @@
 ---
-name: "review-resiliencia"
-description: "Fault tolerance and resilience review skill. Audits git diff for timeouts on I/O, circuit breakers, retry policies with backoff, and graceful degradation fallbacks."
+name: "review-resilience"
+description: "Use during Phase 4 (/review) for fault tolerance and resilience review. Audits git diff for timeouts on I/O, circuit breakers, retry policies with backoff, and graceful degradation fallbacks."
 ---
 
-# Skill: Review de Resiliência & Tolerância a Falhas (`skills/review-resiliencia`)
+# Skill: Resilience & Fault Tolerance Review (`skills/review-resilience`)
 
-Audita cirurgicamente as alterações de código da branch sob a ótica de robustez operacional, falhas distribuídas e degradação graciosa.
+Surgically audits branch code changes from the perspective of operational robustness, distributed failures, and graceful degradation.
 
-## 🎯 Eixos de Análise (Diff-Based)
-* **Timeouts Obrigatórios:** Toda chamada de rede (HTTP, gRPC, banco, fila) deve ter timeout explícito definido.
-* **Políticas de Retry com Backoff:** Retentativas inteligentes com exponential backoff e jitter para evitar sobrecarga (Thundering Herd).
-* **Circuit Breakers & Fallbacks:** Degradação graciosa quando serviços externos (como APIs de IA/ML ou gateways de pagamento) estiverem fora do ar.
-* **Tratamento de Concorrência:** Deadlocks, concorrência otimista vs pessimista e race conditions.
+## 🎯 Review Pillars (Diff-Based)
+* **Mandatory Timeouts:** Every network call (HTTP, gRPC, database, queues) must have an explicitly defined timeout.
+* **Retry Policies with Exponential Backoff:** Smart retries with exponential backoff and jitter to prevent thundering herd problems.
+* **Circuit Breakers & Fallbacks:** Graceful degradation when external services (e.g., LLM APIs, payment gateways) become unavailable.
+* **Concurrency Handling:** Deadlocks, race conditions, and optimistic vs pessimistic locking.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_resiliencia.md` from the `@review-resiliencia` skill.
-* **Template do Artefato:** `resources/template_resiliencia.md` from the `@review-resiliencia` skill.
+* **Checklist:** `references/checklist_resilience.md` from the `@review-resilience` skill.
+* **Artifact Template:** `resources/template_resilience.md` from the `@review-resilience` skill.

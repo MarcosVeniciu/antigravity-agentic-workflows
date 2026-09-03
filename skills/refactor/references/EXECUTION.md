@@ -1,4 +1,4 @@
-# Execution Manual: Clean Code Specialist (`/refatorar`)
+# Execution Manual: Clean Code Specialist (`/refactor`)
 
 This guide details technical standards for eliminating Code Smells and applying SOLID principles during the Refactor Phase.
 
@@ -33,7 +33,7 @@ Before inspecting code smells, restrict analysis to the current branch's changes
 
 ---
 
-## 2. Post-Refactoring Validation
+## 3. Post-Refactoring Validation
 
 - [ ] Functions have only one level of abstraction?
 - [ ] Modules/Classes respect SRP (Single Responsibility Principle)?

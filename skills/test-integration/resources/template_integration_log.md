@@ -1,12 +1,12 @@
-# 🧪 Relatório de Testes de Integração & E2E
+# 🧪 Integration & E2E Testing Report
 
-**Versão da Release:** `v{{VERSION}}` | **Branch:** `release/v{{VERSION}}`  
-**Features Integradas:**
+**Release Version:** `v{{VERSION}}` | **Branch:** `release/v{{VERSION}}`  
+**Integrated Features:**
 {{FEATURE_LIST}}
 
 ---
 
-## 📊 Resultado da Execução por Etapas
+## 📊 Stage Execution Output
 
 ```text
 {{INTEGRATION_TEST_OUTPUT}}
@@ -14,8 +14,8 @@
 
 ---
 
-## ✅ Resumo de Cobertura
-- [x] **Happy Path:** Fluxo completo ponta a ponta validado.
-- [x] **Unhappy Paths:** Casos de autenticação, duplicidade e validação rejeitados com status codes corretos.
-- [x] **Resiliência:** Mecanismos de fallback operando sob indisponibilidade simulada de serviços externos.
-- [x] **Zero Regressão:** Todas as suítes unitárias e de integração passando 100%.
+## ✅ Coverage Summary
+- [x] **Happy Path:** Complete end-to-end flow validated.
+- [x] **Unhappy Paths:** Authentication, duplication, and validation rejections verified with expected status codes.
+- [x] **Resilience:** Fallback mechanisms operated properly under simulated downstream unavailability.
+- [x] **Zero Regressions:** 100% unit and integration test suites passing green.

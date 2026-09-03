@@ -1,25 +1,25 @@
-# 🛡️ Auditoria de Resiliência & Tolerância a Falhas
+# 🛡️ Resilience & Fault Tolerance Audit
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
-**Escopo Analisado:** Diff relativo a `develop` (`{{FILES_COUNT}}` arquivos)
+**Scope Analyzed:** Git diff against `develop` (`{{FILES_COUNT}}` files)
 
 ---
 
-## 🔍 Pontos Frágeis Identificados no Diff
+## 🔍 Vulnerabilities Identified in Diff
 
-| Arquivo / Linha | Mecanismo Faltante | Risco Operacional |
+| File / Line | Missing Mechanism | Operational Risk |
 | :--- | :--- | :--- |
-| `{{FILE}}:{{LINE}}` | Timeout / Fallback / Retry | Travamento de thread sob lentidão externa |
+| `{{FILE}}:{{LINE}}` | Timeout / Fallback / Retry | Thread hang under downstream latency |
 
 ---
 
-## 🛠️ Resiliência Aplicada
-- [x] Timeouts explícitos configurados em todas as chamadas de I/O.
-- [x] Estratégia de fallback / degradação graciosa implementada.
-- [x] Retentativas configuradas com backoff exponencial.
+## 🛠️ Resilience Implemented
+- [x] Explicit timeouts configured across all I/O calls.
+- [x] Fallback / graceful degradation strategy implemented.
+- [x] Retries configured with exponential backoff and jitter.
 
 ---
 
-## 🚦 Validação & Testes
-- [x] 100% dos testes unitários verdes após as correções.
-- [x] Micro-checkpoint registrado via `skills/git` (Modo 2).
+## 🚦 Validation & Tests
+- [x] 100% unit tests passing green following updates.
+- [x] Micro-checkpoint recorded via `skills/git` (Mode 2).

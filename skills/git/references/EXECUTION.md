@@ -1,95 +1,95 @@
-# Manual de Execução: Git Flow & Versionamento Local (`skills/git`)
+# Execution Manual: Git Flow & Local Version Control (`skills/git`)
 
-Este documento estabelece os procedimentos operacionais, comandos e restrições absolutas para todas as ações de versionamento no ciclo de vida do Antigravity.
+This document establishes operational procedures, command patterns, and strict constraints for all version control actions throughout the Antigravity lifecycle.
 
 ---
 
-## 🔄 Modos Operacionais
+## 🔄 Operational Modes
 
-### Modo 1: Validação de Branch & Estratégia Git Flow
-Utilizado na **Fase 1 (`/planejamento`)** ou na **Fase 0 (`/decompor`)** para garantir que nenhuma alteração ocorra diretamente nas branches protegidas.
+### Mode 1: Branch Validation & Git Flow Strategy
+Used in **Phase 1 (`/plan`)** or **Phase 0 (`/decompose`)** to ensure no development happens directly on protected branches.
 
-1. **Validação Automática:**
+1. **Automated Validation:**
    ```bash
    bash skills/git/scripts/validate_branch.sh
    ```
-2. **Regra de Bloqueio (Phase Gate):** Se a branch ativa for `main`, `master` ou `develop`, qualquer commit é **terminantemente proibido**.
-3. **Criação da Branch de Trabalho:**
+2. **Lock Rule (Phase Gate):** If the active branch is `main`, `master`, or `develop`, committing is **strictly prohibited**.
+3. **Working Branch Creation:**
    ```bash
    git checkout -b feature/{{FEATURE_SLUG}}
    ```
-   *(Para correções de bugs em produção, use `bugfix/{{SLUG}}` ou `hotfix/{{SLUG}}`)*.
+   *(For bug fixes, use `bugfix/{{SLUG}}` or `hotfix/{{SLUG}}`)*.
 
 ---
 
-### Modo 2: Micro-Checkpoints Locais (Durante a Execução)
-Utilizado de forma contínua durante a **Fase 2 (`/implementar`)**, **Fase 3 (`/refatorar`)** e **Fase 4 (`/review`)** para proteger o progresso contra quebras e corrupção de contexto.
+### Mode 2: Local Micro-Checkpoints (During Execution)
+Used continuously during **Phase 2 (`/implement`)**, **Phase 3 (`/refactor`)**, and **Phase 4 (`/review`)** to safeguard progress against breakage and context window corruption.
 
-* **Gatilho de Execução:** Disparar a cada marco funcional atingido (ex: lote de testes verde, domínio de auditoria corrigido, componente refatorado).
-* **Comando Padronizado:**
+* **Execution Trigger:** Fire upon reaching any functional milestone (e.g., green batch tests, audit domain fixed, component refactored).
+* **Standardized Command:**
   ```bash
   git add .
-  git commit -m "checkpoint({{FASE}}): {{DESCRICAO_CURTA}}"
+  git commit -m "checkpoint({{PHASE}}): {{SHORT_DESCRIPTION}}"
   ```
 
 ---
 
-### Modo 3: Phase Closure & Squash (Handover de Fase)
-Executado **estritamente ao final de cada fase**, quando todos os critérios e itens do DoD daquela fase forem concluídos.
+### Mode 3: Phase Closure & Squash (Phase Handover)
+Executed **strictly at the end of each phase**, when all criteria and DoD items for that phase are fulfilled.
 
-1. **Captura do Commit Base:** Identifique o hash do commit anterior ao início da fase (`git log --oneline`).
-2. **Execução do Soft Reset (Squash):**
+1. **Capture Base Commit:** Identify the commit hash prior to phase start (`git log --oneline`).
+2. **Execute Soft Reset (Squash):**
    ```bash
-   git reset --soft <HASH_INICIAL_DA_FASE>
+   git reset --soft <PHASE_START_HASH>
    ```
-   *(Isso desfaz a pilha de micro-checkpoints intermediários mantendo todas as alterações na staging area).*
-3. **Commit Semântico Estruturado:** Utilize o formato do `resources/template_phase_commit.md`:
+   *(This unstages intermediate micro-checkpoints while keeping all changes staged in the index).*
+3. **Structured Semantic Commit:** Use the format from `resources/template_phase_commit.md`:
    ```bash
-   git commit -m "feat(concepcao): especificacoes BDD e SDD para {{FEATURE_SLUG}} (Fase 1)
+   git commit -m "feat(conception): BDD and SDD specifications for {{FEATURE_SLUG}} (Phase 1)
 
-   - Artefatos & Notas Obsidian: 01-concepcao/bdd-{{FEATURE_SLUG}}.md, 01-concepcao/sdd-{{FEATURE_SLUG}}.md, 01-concepcao/dod-{{FEATURE_SLUG}}.md
-   - Status dos Testes: N/A (Fase de Arquitetura)
-   - Principais Mudancas:
-     * Modelagem de cenarios Gherkin Happy e Unhappy Path
-     * Contratos Pydantic tipados e mocks de fronteira
-     * Inicializacao do Living DoD com criterios de aceite
-   - Proxima Fase Recomendada: Iniciar ciclo TDD via /implementar (Chat 2)"
+   - Artifacts & Obsidian Notes: 01-concepcao/bdd-{{FEATURE_SLUG}}.md, 01-concepcao/sdd-{{FEATURE_SLUG}}.md, 01-concepcao/dod-{{FEATURE_SLUG}}.md
+   - Test Status: N/A (Architecture Phase)
+   - Main Changes:
+     * Gherkin Happy and Unhappy Path scenario modeling
+     * Typed Pydantic contracts and boundary mocks
+     * Living DoD initialization with acceptance criteria
+   - Recommended Next Phase: Start TDD cycle via /implement (Chat 2)"
    ```
 
 ---
 
-### Modo 4: Rollback Local / Recuperação de Emergência (Double-Strike Rule)
-Utilizado quando o agente comete um erro crítico, entra em loop de falhas ou falha duas vezes consecutivas em testes ou refatoração.
+### Mode 4: Local Rollback / Emergency Recovery (Double-Strike Rule)
+Used when the agent encounters a critical failure, gets stuck in a loop, or fails twice consecutively during tests or refactoring.
 
-* **Comando para descartar alterações não salvas e retornar ao último checkpoint íntegro:**
+* **Command to discard uncommitted changes and return to the last clean checkpoint:**
   ```bash
   git reset --hard HEAD
   ```
 
 ---
 
-### Modo 5: Release Branch, Tag Anotada & Fechamento Git Flow
-Utilizado estritamente no workflow de publicação **`/release`** para consolidar features candidatas em produção e desenvolvimento.
+### Mode 5: Release Branch, Annotated Tags & Git Flow Finalization
+Used strictly within the **`/release`** workflow to consolidate candidate features into production and development.
 
-1. **Atualizar e Criar Release Branch a partir da develop:**
+1. **Update and Create Release Branch from develop:**
    ```bash
    git checkout develop
    git pull origin develop
    git checkout -b release/v{{VERSION}}
    ```
-2. **Mesclar Features Candidatas (com 100% de DoD validado):**
+2. **Merge Candidate Features (with 100% validated DoD):**
    ```bash
    git merge --no-ff feature/{{FEATURE_SLUG_1}}
    git merge --no-ff feature/{{FEATURE_SLUG_2}}
    ```
-3. **Commit de Release & Tag Anotada em main:**
+3. **Release Commit & Annotated Tag on main:**
    ```bash
-   git commit -am "chore(release): preparacao da versao v{{VERSION}}"
+   git commit -am "chore(release): prepare release v{{VERSION}}"
    git checkout main
    git merge --no-ff release/v{{VERSION}}
    git tag -a v{{VERSION}} -m "Release v{{VERSION}}"
    ```
-4. **Propagação de Volta para develop & Limpeza de Branches:**
+4. **Propagate Back to develop & Clean Up Branches:**
    ```bash
    git checkout develop
    git merge --no-ff release/v{{VERSION}}
@@ -100,19 +100,19 @@ Utilizado estritamente no workflow de publicação **`/release`** para consolida
 
 ---
 
-## ⛔ Regras Universais e Restrições Rígidas
+## ⛔ Universal Rules and Strict Constraints
 
-1. **PROIBIDO PUSH NÃO AUTORIZADO:** Executar `git push` sem comando expresso do usuário é terminantemente proibido.
-2. **PROIBIDO HANDOVER SUJO:** Nunca encerre uma fase sem consolidar (squash) os micro-checkpoints intermediários via Modo 3.
-3. **CONVENTIONAL COMMITS MANDATÓRIO:** Todo commit consolidado deve seguir estritamente o padrão (`feat`, `fix`, `docs`, `refactor`, `test`, `audit`, `chore`).
-4. **BLOQUEIO DE BASE BRANCHES:** Nunca desenvolva features diretamente em `main` ou `develop`.
+1. **UNAUTHORIZED PUSH PROHIBITED:** Running `git push` without explicit user instruction is strictly forbidden.
+2. **DIRTY HANDOVERS PROHIBITED:** Never close a phase without squashing intermediate micro-checkpoints via Mode 3.
+3. **CONVENTIONAL COMMITS MANDATORY:** Every consolidated commit must strictly follow conventional commit prefixes (`feat`, `fix`, `docs`, `refactor`, `test`, `audit`, `chore`).
+4. **PROTECTED BRANCH LOCK:** Never develop features directly on `main` or `develop`.
 
 ---
 
-## ✅ Checklist de Auto-Auditoria
+## ✅ Self-Audit Checklist
 
-- [ ] A branch ativa segue o padrão do Git Flow (`feature/*`, `bugfix/*`, `release/*`)?
-- [ ] Os micro-checkpoints foram consolidados via `git reset --soft` no fechamento da fase?
-- [ ] A mensagem do commit de fechamento seguiu o `template_phase_commit.md`?
-- [ ] No Modo 5 (Release), a tag anotada seguiu o formato `vMAJOR.MINOR.PATCH`?
-- [ ] No Modo 5 (Release), as branches das features mescladas foram excluídas após o merge?
+- [ ] Active branch follows Git Flow naming (`feature/*`, `bugfix/*`, `release/*`)?
+- [ ] Micro-checkpoints squashed via `git reset --soft` at phase conclusion?
+- [ ] Closure commit message follows `template_phase_commit.md`?
+- [ ] In Mode 5 (Release), annotated tag follows `vMAJOR.MINOR.PATCH`?
+- [ ] In Mode 5 (Release), merged feature branches deleted following merge?

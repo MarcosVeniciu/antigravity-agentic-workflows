@@ -1,31 +1,31 @@
-# Regras de Fatiamento Vertical e Decomposição de Épicos
+# Vertical Slicing Rules & Epic Decomposition
 
-Este manual detalha como projetar a esteira de sub-features de um épico para evitar débitos técnicos e retrabalhos.
-
----
-
-## 🚫 Anti-Padrão: Fatiamento Horizontal (Camada por Camada)
-* **Como NÃO fazer:**
-  * Feature 1: Criar tabelas do banco.
-  * Feature 2: Criar rotas da API.
-  * Feature 3: Ligar a API ao banco.
-* **Por que falha?** Nenhuma das features entrega valor funcional isolado e os testes unitários da Feature 1 não representam um caso de uso real.
+This manual details how to design an epic's sub-feature pipeline to prevent technical debt and destructive rework.
 
 ---
 
-## ✅ Padrão Recomendado: Fatiamento Vertical Evolutivo
+## 🚫 Anti-Pattern: Horizontal Slicing (Layer by Layer)
+* **How NOT to do it:**
+  * Feature 1: Create database tables.
+  * Feature 2: Create API endpoints.
+  * Feature 3: Connect API to database.
+* **Why it fails:** None of the features deliver isolated functional value, and Feature 1 unit tests do not represent a real-world business use case.
 
-Cada sub-feature deve entregar uma **fatia vertical completa** (contrato $\rightarrow$ lógica $\rightarrow$ persistência/mock $\rightarrow$ teste), obedecendo às seguintes regras:
+---
 
-### 1. Regra "Boundary First" (Isolamento de Fronteiras)
-Se o épico introduz persistência ou comunicação externa:
-* A **Sub-feature 1** define a interface tipada (ex: `IProducerRepository`) e uma implementação em memória (`MockProducerRepository`).
-* O mock deve ter métodos de seed que aproveitem dados de teste existentes (ex: ler arquivos JSON legados).
-* Nenhuma rota de produção é alterada ainda; o foco é criar um alicerce 100% testado.
+## ✅ Recommended Pattern: Evolutionary Vertical Slicing
 
-### 2. Regra da Extensão Monotônica
-* A **Sub-feature 2** deve consumir os métodos do repositório da Feature 1.
-* Se a Sub-feature 2 necessitar de um novo método no repositório, ela deve **adicionar** o método, nunca alterar a assinatura dos métodos existentes.
+Each sub-feature must deliver a **complete vertical slice** (contract $\rightarrow$ logic $\rightarrow$ persistence/mock $\rightarrow$ test), adhering to the following rules:
 
-### 3. Regra de Limite de Risco
-* Mantenha sub-features críticas (como cálculo de score ou chamada de LLM) isoladas de features de cadastro/CRUD básico.
+### 1. "Boundary First" Rule (Boundary Isolation)
+When the epic introduces persistence or external communication:
+* **Sub-feature 1** defines the typed interface (e.g., `IProducerRepository`) and an in-memory implementation (`MockProducerRepository`).
+* The mock must provide seed methods that leverage existing test data (e.g., loading legacy JSON files).
+* No production routes are modified yet; the focus is creating a 100% tested architectural foundation.
+
+### 2. Monotonic Extension Rule
+* **Sub-feature 2** consumes repository methods established in Feature 1.
+* If Sub-feature 2 requires a new repository method, it must **add** the method without altering existing signatures.
+
+### 3. Risk Boundary Rule
+* Keep high-risk components (such as scoring engines or LLM calls) isolated from basic CRUD/registration features.

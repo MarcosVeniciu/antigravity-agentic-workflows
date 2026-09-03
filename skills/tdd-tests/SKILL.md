@@ -1,23 +1,23 @@
 ---
-name: "testes"
-description: "Atomic unit testing skill (TDD Red Phase). Generates strict Arrange-Act-Assert (AAA) tests, boundary mocks, and four-partite test matrices (Happy Path, Edge Cases, Exceptions, Scale)."
+name: "tdd-tests"
+description: "Use during TDD Red Phase in Phase 2 (/implement) to write atomic AAA unit tests with isolated boundary mocks covering Happy Path, Edge Cases, and Exceptions before writing production code."
 ---
 
-# Skill: Testes Unitários & Mocks AAA (`skills/testes`)
+# Skill: AAA Unit Tests & Mock Isolation (`skills/tdd-tests`)
 
-Gera a suíte de testes unitários para cada lote de contexto na Fase Red do TDD, garantindo cobertura comportamental, isolamento por mocks e zero chamadas reais a banco de dados ou rede.
+Generates unit test suites for each context batch during the TDD Red Phase, ensuring behavioral coverage, mock isolation, and zero live I/O to physical databases or network services.
 
-## 🎯 Padrão Estrito AAA & Matriz Quadripartite
+## 🎯 Strict AAA Pattern & Test Coverage Matrix
 
-Para cada lote, os testes devem cobrir:
-1. **Happy Path:** Fluxo nominal e estado de retorno esperado.
-2. **Edge Cases:** Limites (0, `MAX_INT`), strings vazias, nulos e coleções vazias.
-3. **Exceptions / Erros de Domínio:** Disparo de exceções tipadas de negócio sob dados inválidos.
-4. **Resiliência / Performance:** Verificação de tempo de execução e comportamento assíncrono.
+For each batch, tests must cover:
+1. **Happy Path:** Nominal execution flow and expected return states.
+2. **Edge Cases:** Boundaries (0, `MAX_INT`), empty strings, nulls, and empty collections.
+3. **Exceptions / Domain Errors:** Triggering typed domain exceptions upon invalid input.
+4. **Resilience / Performance:** Execution time thresholds and asynchronous behaviors.
 
-## ⛔ Regras Estritas de Mocks
-* **Zero IO Real:** Nunca acesse banco de dados físico, sistema de arquivos em produção ou rede externa. Utilize `unittest.mock`, `pytest-mock` ou fakes em memória.
-* **Mocks nas Fronteiras:** Injete repositórios mock diretamente nos construtores dos serviços.
+## ⛔ Strict Mocking Rules
+* **Zero Real I/O:** Never access physical databases, production filesystems, or live network endpoints. Use `unittest.mock`, `pytest-mock`, or in-memory fakes.
+* **Mocks on Boundaries:** Inject mock repositories and adapters directly into use case and service constructors.
 
 ## 📋 Available Resources
-* **Padrões de Mocks e AAA:** `references/aaa_mock_patterns.md` from the `@testes` skill.
+* **AAA & Mock Patterns Guide:** `references/aaa_mock_patterns.md` from the `@tdd-tests` skill.

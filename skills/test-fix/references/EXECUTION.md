@@ -1,4 +1,4 @@
-# Execution Manual: Reactive Debugger (`/testar`)
+# Execution Manual: Reactive Debugger (`/test-fix`)
 
 Reference manual for traceback analysis and root cause classification.
 
@@ -7,9 +7,9 @@ Reference manual for traceback analysis and root cause classification.
 ## 1. Error Analysis Protocol
 
 ### 1.1. Ingestion & Checklist (`task.md`)
-Upon receiving multiple errors in the log:
-1. Build the checklist in `task.md` based on support template in `resources/error_checklist_template.md`.
-2. Process one failure at a time marking `[/]` when starting and `[x]` when completed.
+Upon receiving errors in the test output:
+1. Build the checklist in `task.md` based on `resources/error_checklist_template.md`.
+2. Process one failure at a time, marking `[/]` when in progress and `[x]` when completed.
 
 ### 1.2. Root Cause Classification Matrix
 
@@ -33,4 +33,4 @@ Upon receiving multiple errors in the log:
 pytest path/to/test_file.py -k test_name
 ```
 
-> **[NEXT STEP]** ➡️ *"🛠️ Surgical fix applied and validated. If all tests are green, execute `/refatorar` (or `/review` if fixing an audit finding) to continue the flow."*
+> **[NEXT STEP]** ➡️ *"🛠️ Surgical fix applied and validated. If all tests are green, execute `/refactor` (or `/review` if fixing an audit finding) to continue the development cycle."*

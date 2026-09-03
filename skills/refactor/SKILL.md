@@ -1,40 +1,40 @@
 ---
-name: "refatorar"
-description: "Structural refactoring, Clean Code, and SOLID technical skill in Phase 3. Eliminates Code Smells (SRP, nesting, magic numbers) and optimizes legibility while keeping tests 100% green."
+name: "refactor"
+description: "Use during Phase 3 (/refactor) for structural refactoring, Clean Code, and SOLID principles. Eliminates Code Smells (SRP, nesting, magic numbers) while preserving 100% green tests."
 ---
 
-# Skill: Clean Code & Refatoração Estrutural (`skills/refatorar`)
+# Skill: Clean Code & Structural Refactoring (`skills/refactor`)
 
-Guia a melhoria do design interno e da manutenibilidade do código funcional produzido na Fase 2, eliminando Code Smells sem alterar o comportamento externo e mantendo a suíte de testes 100% verde.
-
----
-
-## 📖 Recursos de Apoio
-
-* 📖 **Manual Detalhado de Refatoração**: `references/EXECUTION.md` from the `@refatorar` skill
-* 📋 **Template de Checklist de Refatoração**: `resources/refactor_checklist_template.md` from the `@refatorar` skill
+Guides the enhancement of internal software design and maintainability for functional code produced in Phase 2, eliminating Code Smells without altering external observable behavior while keeping the test suite 100% green.
 
 ---
 
-## ⛔ Regras Estritas de Proteção
+## 📖 Supporting Resources
 
-1. **Preservação Rígida de Comportamento**: Nenhuma refatoração pode alterar retornos, exceções ou contratos públicos do sistema.
-2. **Zero Regressão de Testes**: Se algum teste quebrar após a refatoração, o ajuste está incorreto. Reverta imediatamente via `git reset --hard HEAD` (Modo 4).
-3. **Proibido Criar Novas Features**: Refatorar é limpar o código existente, não inventar regras novas.
-4. **Foco Cirúrgico em Code Smells**:
-   * Métodos/funções longas (> 20 linhas) $\rightarrow$ *Extract Method / Function*.
-   * Aninhamento profundo (`if` dentro de `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
-   * Literais mágicos $\rightarrow$ *Constantes Nomeadas*.
-   * Múltiplas responsabilidades $\rightarrow$ *Extract Class / Module (SRP)*.
-5. **Fronteira de Escopo da Branch**: Restrinja a refatoração estritamente aos arquivos modificados na branch atual (`git diff develop...HEAD --name-only`). Nunca refatore código legado intocado.
+* 📖 **Detailed Refactoring Manual**: `references/EXECUTION.md` from the `@refactor` skill
+* 📋 **Refactoring Checklist Template**: `resources/refactor_checklist_template.md` from the `@refactor` skill
 
 ---
 
-## ✅ Matriz de Evidências de Refatoração
+## ⛔ Strict Safeguard Rules
 
-Ao concluir a refatoração de um componente, apresente a matriz de mudanças:
+1. **Strict Behavioral Preservation**: No refactoring may alter return types, exceptions, or public system contracts.
+2. **Zero Test Regressions**: If any test fails after a refactoring change, the modification is invalid. Revert immediately via `git reset --hard HEAD` (Mode 4).
+3. **Never Introduce New Features**: Refactoring means cleaning existing code, never inventing new functional rules.
+4. **Surgical Focus on Code Smells**:
+   * Long methods/functions (> 20 lines) $\rightarrow$ *Extract Method / Function*.
+   * Deep nesting (`if` inside `if`) $\rightarrow$ *Guard Clauses / Early Returns*.
+   * Magic literals $\rightarrow$ *Named Constants*.
+   * Multiple responsibilities $\rightarrow$ *Extract Class / Module (SRP)*.
+5. **Branch Scope Boundary**: Restrict refactoring strictly to files modified on the current branch (`git diff develop...HEAD --name-only`). Never refactor untouched legacy code.
 
-| Elemento Refatorado | Code Smell / Princípio SOLID | Técnica Aplicada |
+---
+
+## ✅ Refactoring Evidence Matrix
+
+Upon completing component refactoring, present the change matrix:
+
+| Refactored Element | Code Smell / SOLID Principle | Technique Applied |
 | :--- | :--- | :--- |
-| Ex: `calculate()` | Aninhamento profundo | Guard Clauses (Early return) |
-| Ex: `process()` | Violação de SRP (> 35 linhas) | Extract Method (`_validate`) |
+| Ex: `calculate()` | Deep Nesting | Guard Clauses (Early return) |
+| Ex: `process()` | SRP Violation (> 35 lines) | Extract Method (`_validate`) |

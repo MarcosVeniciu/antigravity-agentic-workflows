@@ -1,24 +1,24 @@
-# Diretrizes de Execução e Modelagem SDD
+# SDD Modeling & Execution Guidelines
 
-Este documento estabelece as regras para construção da **Especificação Técnica de Arquitetura (SDD)** na Fase 1 (`/planejamento`).
-
----
-
-## 1. Seleção do Modelo UML (Mermaid.js)
-
-Escolha o diagrama Mermaid mais adequado para a complexidade da feature:
-* **Diagrama de Sequência (`sequenceDiagram`)**: Recomendado para fluxos distribuídos, APIs REST, mensageria e transações de repositório.
-* **Diagrama de Classes (`classDiagram`)**: Recomendado para modelagem de entidades de domínio, hierarquias ou padrões como Strategy/Factory.
-* **Fluxograma (`flowchart`)**: Para máquinas de estados ou árvores complexas de decisão.
-* **Diagrama ER (`erDiagram`)**: Para modelagem de esquemas relacionais de banco de dados.
-
-> **Regra Obrigatória de Sintaxe Mermaid**: Todo rótulo ou mensagem que contenha espaços, parênteses ou caracteres especiais deve estar estritamente entre aspas duplas (ex: `A["Serviço de Autenticação (JWT)"]`).
+This document establishes the standards for constructing the **Software Design Description (SDD)** during Phase 1 (`/plan`).
 
 ---
 
-## 2. Padrões de Contratos e Mocks
+## 1. UML Model Selection (Mermaid.js)
 
-Os contratos devem servir de guia estrito para o ciclo de TDD na Fase 2:
-* Utilize tipagem nativa da linguagem do projeto (ex: Pydantic no Python, Zod no TypeScript).
-* Mapeie campos obrigatórios, campos opcionais com defaults e regras de validação de borda.
-* Defina explicitamente códigos HTTP, exceções tipadas e respostas de erro.
+Select the most appropriate Mermaid diagram for the feature's complexity:
+* **Sequence Diagram (`sequenceDiagram`)**: Recommended for distributed flows, REST APIs, event messaging, and repository transactions.
+* **Class Diagram (`classDiagram`)**: Recommended for domain entity modeling, class hierarchies, or patterns like Strategy/Factory.
+* **Flowchart (`flowchart`)**: For state machines or complex decision trees.
+* **ER Diagram (`erDiagram`)**: For relational database schema modeling.
+
+> **Mandatory Mermaid Syntax Rule**: Every node label or message text containing spaces, parentheses, or special characters MUST be strictly enclosed in double quotes (e.g., `A["Authentication Service (JWT)"]`).
+
+---
+
+## 2. Contracts and Mock Patterns
+
+Contracts serve as the strict guideline for the Phase 2 TDD cycle:
+* Use native project language typing (e.g., Pydantic in Python, Zod in TypeScript).
+* Map required fields, optional fields with defaults, and boundary validation rules.
+* Explicitly specify HTTP status codes, typed exceptions, and error response schemas.

@@ -1,25 +1,25 @@
-# ⚡ Auditoria de Performance & Eficiência
+# ⚡ Performance & Efficiency Audit
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
-**Escopo Analisado:** Diff relativo a `develop` (`{{FILES_COUNT}}` arquivos)
+**Scope Analyzed:** Git diff against `develop` (`{{FILES_COUNT}}` files)
 
 ---
 
-## 🔍 Gargalos de Performance Identificados no Diff
+## 🔍 Performance Bottlenecks Identified in Diff
 
-| Arquivo / Linha | Padrão Detectado | Impacto Assintótico / I/O | Causa |
+| File / Line | Pattern Detected | Asymptotic Impact / I/O | Cause |
 | :--- | :--- | :--- | :--- |
-| `{{FILE}}:{{LINE}}` | N+1 Query / Busca Linear | $O(N^2)$ ou excesso de I/O | Chamada de banco em loop |
+| `{{FILE}}:{{LINE}}` | N+1 Query / Linear Search | $O(N^2)$ or excessive I/O | Database call in loop |
 
 ---
 
-## 🛠️ Otimizações Aplicadas
-- [x] Agrupamento de consultas em batch (`WHERE id IN (...)`).
-- [x] Conversão de listas em sets/dicionários para buscas $O(1)$.
-- [x] Uso de geradores para economia de memória.
+## 🛠️ Optimizations Applied
+- [x] Batch queries implemented (`WHERE id IN (...)`).
+- [x] Converted lists to sets/dictionaries for $O(1)$ lookups.
+- [x] Streamed responses via generators to conserve memory.
 
 ---
 
-## 🚦 Validação & Testes
-- [x] 100% dos testes unitários verdes após as correções.
-- [x] Micro-checkpoint registrado via `skills/git` (Modo 2).
+## 🚦 Validation & Tests
+- [x] 100% unit tests passing green following optimizations.
+- [x] Micro-checkpoint recorded via `skills/git` (Mode 2).

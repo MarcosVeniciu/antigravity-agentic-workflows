@@ -1,9 +1,11 @@
 ---
 name: "infra"
-description: "Technical skill for safely managing Docker, manifests, and environment variables without exposing secrets."
+description: "Use during /infra to safely manage Dockerfiles, dependency manifests, and environment variables without exposing secrets."
 ---
 
-# Skill: Infrastructure & Dependencies
+# Skill: Infrastructure & Dependencies (`skills/infra`)
+
+Safely manages dependencies, container configurations, and environment variables.
 
 ## ⛔ Strict Constraints
 * **No Blind Upgrades**: Change only packages/libraries directly related to the objective.
@@ -17,4 +19,4 @@ description: "Technical skill for safely managing Docker, manifests, and environ
    * Validate syntactic structure of JSON, YAML, or Dockerfiles before completing.
 3. **Proposed Next Step**:
    * Upon completion, explicitly display:
-   > **[NEXT STEP]** ➡️ *"⚙️ Infrastructure configurations and dependencies successfully updated. Run `/testes` to proceed with TDD Red Phase."*
+   > **[NEXT STEP]** ➡️ *"⚙️ Infrastructure configurations and dependencies successfully updated. Run `/implement` to proceed with the TDD development cycle."*

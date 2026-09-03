@@ -1,18 +1,18 @@
 ---
-name: "review-arquitetura"
-description: "Architectural integrity and coupling review skill. Verifies layer isolation, Dependency Inversion, God Class decomposition, and DTO adherence on git diff."
+name: "review-architecture"
+description: "Use during Phase 4 (/review) for architectural integrity and coupling audit. Verifies layer isolation, Dependency Inversion, God Class decomposition, and DTO adherence on git diff."
 ---
 
-# Skill: Review de Arquitetura & Acoplamento (`skills/review-arquitetura`)
+# Skill: Architecture & Coupling Review (`skills/review-architecture`)
 
-Audita cirurgicamente as alterações de código da branch sob a ótica de arquitetura de software, isolamento de camadas e inversão de dependência.
+Surgically audits the branch code changes from a software architecture, layer isolation, and dependency inversion perspective.
 
-## 🎯 Eixos de Análise (Diff-Based)
-* **Vazamento de Infraestrutura:** Importações de frameworks ou bibliotecas de banco/rede dentro de entidades ou casos de uso.
-* **Inversão de Dependências:** Instanciação direta de clientes ou repositórios em métodos; obriga injeção via construtor.
-* **Classes Gigantes / Múltiplas Responsabilidades:** Decomposição em serviços especializados.
-* **Mutação Indesejada de Entradas:** Criação de cópias defensivas em coleções recebidas.
+## 🎯 Review Pillars (Diff-Based)
+* **Infrastructure Leakage:** Direct imports of frameworks, database drivers, or network libraries within domain entities or use cases.
+* **Dependency Inversion:** Direct instantiation of clients or repositories in methods; enforces constructor injection.
+* **God Classes / Multiple Responsibilities:** Decomposing oversized classes into cohesive, specialized services.
+* **Unwanted Input Mutation:** Enforcing immutability by creating defensive copies of received collections.
 
 ## 📋 Available Resources
-* **Checklist:** `references/checklist_arquitetura.md` from the `@review-arquitetura` skill.
-* **Template do Artefato:** `resources/template_arquitetura.md` from the `@review-arquitetura` skill.
+* **Checklist:** `references/checklist_architecture.md` from the `@review-architecture` skill.
+* **Artifact Template:** `resources/template_architecture.md` from the `@review-architecture` skill.

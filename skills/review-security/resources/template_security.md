@@ -1,25 +1,25 @@
-# 🛡️ Auditoria de Segurança (OWASP & ASVS)
+# 🛡️ Security Audit (OWASP & ASVS)
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
-**Escopo Analisado:** Diff relativo a `develop` (`{{FILES_COUNT}}` arquivos)
+**Scope Analyzed:** Git diff against `develop` (`{{FILES_COUNT}}` files)
 
 ---
 
-## 🔍 Vulnerabilidades Identificadas no Diff
+## 🔍 Vulnerabilities Identified in Diff
 
-| Arquivo / Linha | Categoria OWASP | Gravidade | Descrição do Risco |
+| File / Line | OWASP Category | Severity | Risk Description |
 | :--- | :--- | :--- | :--- |
-| `{{FILE}}:{{LINE}}` | Injeção / Segredos / IDOR | Alta / Média | Descrição |
+| `{{FILE}}:{{LINE}}` | Injection / Secrets / IDOR | High / Medium | Description |
 
 ---
 
-## 🛠️ Mitigações Aplicadas
-- [x] Parametrização estrita de consultas / chamadas seguras.
-- [x] Segredos movidos para variáveis de ambiente.
-- [x] Mascaramento de dados sensíveis em logs.
+## 🛠️ Mitigations Applied
+- [x] Strict parameterization of database queries and shell calls.
+- [x] Secrets moved to environment variables.
+- [x] Sensitive PII masked in log statements.
 
 ---
 
-## 🚦 Validação & Testes
-- [x] 100% dos testes unitários verdes após as correções.
-- [x] Micro-checkpoint registrado via `skills/git` (Modo 2).
+## 🚦 Validation & Tests
+- [x] 100% unit tests passing green following mitigations.
+- [x] Micro-checkpoint recorded via `skills/git` (Mode 2).

@@ -1,21 +1,21 @@
-# Exemplo de Modelagem BDD de Alto Padrão
+# High-Standard BDD Modeling Example
 
-Feature: Cadastro de Produtor Rural
-  In order to gerenciar dados de propriedades e permitir diagnósticos personalizados
-  As a Consultor técnico do sistema
-  I want cadastrar novos produtores rurais com autenticação segura
+Feature: Rural Producer Registration
+  In order to manage farm data and enable personalized diagnoses
+  As a Technical Consultant
+  I want to register new rural producers with secure authentication
 
   @happy-path
-  Scenario: Cadastro bem-sucedido com dados válidos
-    Given que não existe nenhum produtor cadastrado com o e-mail "produtor@fazenda.com.br"
-    When o consultor submete o formulário de cadastro com e-mail, nome da fazenda e senha segura
-    Then o produtor deve ser registrado com sucesso no sistema
-    And um identificador único de produtor deve ser gerado
-    And os dados da fazenda devem ficar disponíveis para novos diagnósticos
+  Scenario: Successful registration with valid data
+    Given no producer is registered with the email "producer@farm.com"
+    When the consultant submits the registration form with email, farm name, and secure password
+    Then the producer should be successfully registered in the system
+    And a unique producer identifier should be generated
+    And farm details should become available for new diagnoses
 
   @unhappy-path @validation
-  Scenario: Tentativa de cadastro com e-mail duplicado
-    Given que já existe um produtor cadastrado com o e-mail "produtor@fazenda.com.br"
-    When o consultor tenta cadastrar outro produtor utilizando o mesmo e-mail
-    Then o sistema deve rejeitar o cadastro com aviso de duplicidade
-    And nenhuma nova fazenda deve ser criada no repositório
+  Scenario: Attempted registration with duplicate email
+    Given a producer is already registered with the email "producer@farm.com"
+    When the consultant attempts to register another producer with the same email
+    Then the system should reject the registration with a duplicate email error
+    And no new farm record should be created in the repository

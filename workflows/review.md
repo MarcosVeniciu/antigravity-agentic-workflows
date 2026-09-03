@@ -3,63 +3,63 @@ title: "Specialized Code Review & Audit Agent"
 description: "Orchestrates Phase 4 (Chat 4): domain-by-domain iterative review loop (Architecture, Security, Quality, Performance, Resilience) strictly on git diff."
 ---
 
-# Agent: Auditorias Especializadas (`/review`)
+# Agent: Specialized Code Audits (`/review`)
 
-Você orquestra a **Fase 4 (Chat 4)** do ciclo de desenvolvimento da feature.
+You orchestrate **Phase 4 (Chat 4)** of the feature development lifecycle.
 
 ---
 
-## 🚀 Esteira de Execução em 4 Etapas
+## 🚀 Execution Pipeline in 4 Steps
 
-### Etapa 1: Gate de Entrada & Delimitação por Diff
-- **Gate de Entrada:** Execute a suíte de testes unitários no terminal. Todos os testes devem estar passando antes de iniciar qualquer auditoria.
-- **Escopo Baseado em Diff:** Obtenha estritamente os trechos modificados na branch:
+### Step 1: Entry Gate & Diff-Based Scope Boundary
+- **Entry Gate:** Run the unit test suite in the terminal. All tests must be passing green before beginning any audit.
+- **Diff-Based Scope:** Retrieve strictly the modified lines on this branch:
   ```bash
   git --no-pager diff develop...HEAD --unified=3
   ```
-  *(Audite apenas o diff da feature; nunca inspecione código legado intocado).*
+  *(Audit strictly the feature diff; never inspect untouched legacy codebase).*
 
 ---
 
-### Etapa 2: Loop Iterativo por Domínio de Auditoria
-Execute uma iteração completa para cada um dos 5 domínios abaixo, de forma sequencial:
+### Step 2: Iterative Loop per Audit Domain
+Execute a complete iteration for each of the 5 domains below sequentially:
 
 ```mermaid
 flowchart LR
-    A["1. Arquitetura"] --> B["2. Segurança"]
-    B --> C["3. Qualidade"]
+    A["1. Architecture"] --> B["2. Security"]
+    B --> C["3. Quality"]
     C --> D["4. Performance"]
-    D --> E["5. Resiliência"]
+    D --> E["5. Resilience"]
 ```
 
-**Para cada domínio:**
-1. **Auditar o Diff:** Avalie as linhas modificadas com a skill correspondente:
-   * 🏛️ `skills/review-arquitetura`
-   * 🛡️ `skills/review-seguranca`
-   * 🧹 `skills/review-qualidade`
+**For each domain:**
+1. **Audit the Diff:** Evaluate modified lines with the corresponding specialized skill:
+   * 🏛️ `skills/review-architecture`
+   * 🛡️ `skills/review-security`
+   * 🧹 `skills/review-quality`
    * ⚡ `skills/review-performance`
-   * 🛡️ `skills/review-resiliencia`
-2. **Aplicar Correção Cirúrgica (se houver achados):** Corrija estritamente as linhas apontadas sem tocar em trechos não relacionados.
-3. **Executar Testes:** Garanta que a suíte continua 100% verde.
-4. **Micro-Checkpoint Local:** Salve o restore point via `skills/git` (Modo 2):
+   * 🛡️ `skills/review-resilience`
+2. **Apply Surgical Fix (if issues found):** Fix strictly the identified lines without touching unrelated areas.
+3. **Run Tests:** Ensure the test suite remains 100% green.
+4. **Local Micro-Checkpoint:** Record the restore point via `skills/git` (Mode 2):
    ```bash
    git add .
-   git commit -m "checkpoint(review): correcoes de [dominio]"
+   git commit -m "checkpoint(review): fixes for [domain]"
    ```
-5. **Atualizar o Living DoD:** Marque o checkbox do domínio em `01-concepcao/dod-[slug].md` via `skills/dod`.
+5. **Update Living DoD:** Check off the domain in `01-concepcao/dod-[slug].md` via `skills/dod`.
 
 ---
 
-### Etapa 3: Validação Completa de Integridade
-- Execute a suíte completa de testes no terminal.
-- Confirme que todos os 5 domínios no `01-concepcao/dod-[slug].md` estão marcados como concluídos (`[x]`).
+### Step 3: Full Integrity Validation
+- Run the full test suite in the terminal.
+- Confirm all 5 domains in `01-concepcao/dod-[slug].md` are marked as completed (`[x]`).
 
 ---
 
-### Etapa 4: Conclusão da Fase 4 & Handover
-- Execute o commit semântico de consolidação via `skills/git` (Modo 3 - Phase Squash):
+### Step 4: Phase 4 Conclusion & Handover
+- Execute a semantic consolidation commit via `skills/git` (Mode 3 - Phase Squash):
   ```bash
-  git commit -m "audit(review): auditorias especializadas concluidas para [slug]"
+  git commit -m "audit(review): specialized domain audits completed for [slug]"
   ```
-- Imprima a recomendação de transição de fase:
-  > **[NEXT STEP]** ➡️ *"🛡️ Fase 4 (Auditorias) concluída com 100% dos critérios aprovados! Abra um **NOVO CHAT (Chat 5)** e execute `/docs` para finalizar a documentação técnica da feature."*
+- Output the phase transition handover recommendation:
+  > **[NEXT STEP]** ➡️ *"🛡️ Phase 4 (Audits) completed with 100% criteria approved! Open a **NEW CHAT (Chat 5)** and run `/docs` to finalize technical feature documentation."*

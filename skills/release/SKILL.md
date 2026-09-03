@@ -1,26 +1,26 @@
 ---
 name: "release"
-description: "SemVer calculation and cumulative Changelog generation skill. Analyzes merged feature commits, bumps version numbers (Major/Minor/Patch), and formats CHANGELOG.md."
+description: "Use during Phase 6 (/release) for SemVer calculation and cumulative Changelog generation. Analyzes merged feature commits, bumps version numbers (Major/Minor/Patch), and formats CHANGELOG.md."
 ---
 
 # Skill: Release Manager & SemVer (`skills/release`)
 
-Calcula a nova versão do sistema segundo as regras estritas do SemVer 2.0.0 e consolida o histórico de alterações no `CHANGELOG.md` e em `03-releases/changelog-v[VERSION].md` no Obsidian.
+Calculates new system versions in accordance with strict SemVer 2.0.0 guidelines and consolidates release history in `CHANGELOG.md` and `03-releases/changelog-v[VERSION].md` in the Obsidian Vault.
 
 ---
 
-## 🎯 Responsabilidades Únicas
+## 🎯 Core Responsibilities
 
-1. **Cálculo de SemVer (SemVer 2.0.0):**
-   * Avalia os commits das features mescladas na release branch:
-     * Contém `BREAKING CHANGE` ou quebra de contrato? $\rightarrow$ **MAJOR**
-     * Contém `feat:` (novas funcionalidades compatíveis)? $\rightarrow$ **MINOR**
-     * Contém apenas `fix:`, `perf:` ou `refactor:`? $\rightarrow$ **PATCH**
-2. **Geração do Changelog:**
-   * Agrupa as entregas em seções: Novas Funcionalidades, Correções de Bugs, Performance/Refatoração e Breaking Changes.
-   * Atualiza cumulativamente o `CHANGELOG.md` na raiz do repositório.
-   * Persiste uma cópia em `03-releases/changelog-v[VERSION].md` no Obsidian Vault.
+1. **SemVer Calculation (SemVer 2.0.0):**
+   * Evaluates feature commits merged into the release branch:
+     * Contains `BREAKING CHANGE` or altered public signatures? $\rightarrow$ **MAJOR**
+     * Contains `feat:` (backward-compatible new features)? $\rightarrow$ **MINOR**
+     * Contains only `fix:`, `perf:`, or `refactor:`? $\rightarrow$ **PATCH**
+2. **Changelog Generation:**
+   * Groups deliverables into sections: New Features, Bug Fixes, Performance/Refactoring, and Breaking Changes.
+   * Cumulatively updates `CHANGELOG.md` at the repository root.
+   * Persists a copy at `03-releases/changelog-v[VERSION].md` in the Obsidian Vault.
 
 ## 📋 Available Resources
-* **Regras SemVer:** `references/semver_rules.md` from the `@release` skill.
-* **Template do Changelog:** `resources/template_changelog.md` from the `@release` skill.
+* **SemVer Rules:** `references/semver_rules.md` from the `@release` skill.
+* **Changelog Template:** `resources/template_changelog.md` from the `@release` skill.
