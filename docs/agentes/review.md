@@ -42,9 +42,9 @@ flowchart LR
 | :--- | :--- | :--- | :--- |
 | **1. Arquitetura** | `python skills/review-architecture/scripts/check_arch_boundaries.py <arquivos>` | [`review-architecture`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-architecture.md) | Isolamento de camadas de domínio, Inversão de Dependência (DIP) e God Classes. |
 | **2. Segurança** | `python skills/review-security/scripts/scan_sinks.py <arquivos>` | [`review-security`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-security.md) | Sinks perigosos (OWASP v2), Race Conditions (TOCTOU), CSRF, CORS, CSPRNG e IDOR. |
-| **3. Qualidade** | `python skills/review-quality/scripts/ast_complexity.py <arquivos>` | `skills/review-quality` | Complexidade ciclomática $V(G) \le 10$, aninhamento excessivo e legibilidade. |
-| **4. Performance** | Verificação de queries e loops $O(N^2)$ | `skills/review-performance` | Queries N+1, lookups lineares repetitivos em loops e vazamento de sessões/handles. |
-| **5. Resiliência** | Inspeção de timeouts e retries | `skills/review-resilience` | Timeouts explícitos em chamadas externas, backoff exponencial e fallbacks. |
+| **3. Qualidade** | `python skills/review-quality/scripts/ast_complexity.py <arquivos>` | [`review-quality`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-quality.md) | Complexidade ciclomática $V(G) \le 10$, aninhamento excessivo e legibilidade. |
+| **4. Performance** | Verificação de queries e loops $O(N^2)$ | [`review-performance`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-performance.md) | Queries N+1, lookups lineares repetitivos em loops e vazamento de sessões/handles. |
+| **5. Resiliência** | Inspeção de timeouts e retries | [`review-resilience`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-resilience.md) | Timeouts explícitos em chamadas externas, backoff exponencial e fallbacks. |
 
 **Para cada domínio:**
 1. Roda o script automatizado correspondente.
@@ -71,10 +71,11 @@ flowchart LR
 ## 🔀 Arquitetura Router & Skills
 
 * **Workflow Roteador:** [`workflows/review.md`](file:///e:/Codigos/antigravity-agentic-workflows/workflows/review.md)
-* **Skills Especializadas:**
-  * [`skills/review-architecture/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-architecture/)
-  * [`skills/review-security/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-security/)
-  * [`skills/review-quality/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-quality/)
-  * [`skills/review-performance/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-performance/)
-  * [`skills/review-resilience/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-resilience/)
+* **Skills Especializadas (Documentação & Instruções):**
+  * [`review-architecture`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-architecture.md) ([`skills/review-architecture/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-architecture/))
+  * [`review-security`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-security.md) ([`skills/review-security/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-security/))
+  * [`review-quality`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-quality.md) ([`skills/review-quality/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-quality/))
+  * [`review-performance`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-performance.md) ([`skills/review-performance/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-performance/))
+  * [`review-resilience`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/review-resilience.md) ([`skills/review-resilience/`](file:///e:/Codigos/antigravity-agentic-workflows/skills/review-resilience/))
 * **Referência de Conformidade:** [`docs/references/OWASP_Code_Review_Guide_v2.pdf`](file:///e:/Codigos/antigravity-agentic-workflows/docs/references/OWASP_Code_Review_Guide_v2.pdf)
+

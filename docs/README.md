@@ -95,49 +95,52 @@ graph TD
 
 ## 🎯 Phase & Workflow Deep Dive
 
-### 1. Phase 0: Macro-Architecture & Epics (`/decompose`)
+### 1. Phase 0: Macro-Architecture & Epics ([`/decompose`](agentes/decompose.md))
 When an architectural epic is too complex to fit safely into a single feature branch, `/decompose` aligns the core problem (*Outcome-Based*) and breaks scope down into an ordered roadmap of monotonic vertical sub-features (contracts first, zero destructive rework). Persists `01-concepcao/epic-[slug].md`.
-* **Skills Used:** `skills/plan-debate`, `skills/plan-decompose`, `skills/obsidian`.
+* **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/plan-decompose`](skills/plan-decompose.md), [`skills/obsidian`](skills/obsidian.md).
 
-### 2. Phase 1: Conception & Architecture (`/plan` - Chat 1)
+### 2. Phase 1: Conception & Architecture ([`/plan`](agentes/plan.md) - Chat 1)
 Surgical scope discovery via Socratic interviewing (2-4 questions), Git Flow branch validation, pure Gherkin BDD behavioral specification, SDD architectural blueprint with typed contracts/mocks, and Living DoD initialization.
-* **Skills Used:** `skills/plan-debate`, `skills/git`, `skills/plan-bdd`, `skills/plan-sdd`, `skills/dod`.
+* **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/git`](skills/git.md), [`skills/plan-bdd`](skills/plan-bdd.md), [`skills/plan-sdd`](skills/plan-sdd.md), [`skills/dod`](skills/dod.md).
 
-### 3. Phase 2: Iterative TDD Development (`/implement` - Chat 2)
+### 3. Phase 2: Iterative TDD Development ([`/implement`](agentes/implement.md) - Chat 2)
 Executes the TDD pipeline batch by batch. Each batch decomposes AAA unit tests (Red) and minimal SOLID production code (Green), running tests in the terminal with reactive debugging support, recording local checkpoints, and continuously appending history to the DoD timeline.
-* **Skills Used:** `skills/tdd-plan`, `skills/tdd-tests`, `skills/tdd-code`, `skills/test-fix`, `skills/dod`, `skills/git`.
+* **Skills Used:** [`skills/tdd-plan`](skills/tdd-plan.md), [`skills/tdd-tests`](skills/tdd-tests.md), [`skills/tdd-code`](skills/tdd-code.md), [`skills/test-fix`](skills/test-fix.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
 
-### 4. Phase 3: Consolidation Refactoring (`/refactor` - Chat 3)
+### 4. Phase 3: Consolidation Refactoring ([`/refactor`](agentes/refactor.md) - Chat 3)
 Optimizes internal software design (*Make it Right*). Strictly restricted to files modified on the active branch (`git diff develop...HEAD`), eliminating cyclomatic complexity, long methods, and deep nesting through Guard Clauses and SOLID principles, keeping tests 100% green.
-* **Skills Used:** `skills/refactor`, `skills/git`, `skills/dod`, `skills/test-fix`.
+* **Skills Used:** [`skills/refactor`](skills/refactor.md), [`skills/git`](skills/git.md), [`skills/dod`](skills/dod.md), [`skills/test-fix`](skills/test-fix.md).
 
-### 5. Phase 4: Specialized Audits (`/review` - Chat 4)
+### 5. Phase 4: Specialized Audits ([`/review`](agentes/review.md) - Chat 4)
 Iterative domain-specialized loop executed directly over the feature's `git diff` using a **Script-First** strategy and Call Hierarchy Taint Analysis, aligned with the [OWASP Code Review Guide v2](references/OWASP_Code_Review_Guide_v2.pdf):
 1. **Architecture & Coupling** ([`skills/review-architecture`](skills/review-architecture.md) + `check_arch_boundaries.py`)
 2. **Security & OWASP** ([`skills/review-security`](skills/review-security.md) + `scan_sinks.py`)
-3. **Quality & AST Complexity** (`skills/review-quality` + `ast_complexity.py`)
-4. **Performance & Volumetrics** (`skills/review-performance`)
-5. **Resilience & Fault Tolerance** (`skills/review-resilience`)
+3. **Quality & AST Complexity** ([`skills/review-quality`](skills/review-quality.md) + `ast_complexity.py`)
+4. **Performance & Volumetrics** ([`skills/review-performance`](skills/review-performance.md))
+5. **Resilience & Fault Tolerance** ([`skills/review-resilience`](skills/review-resilience.md))
 Each reviewed domain generates a local micro-checkpoint and updates the Living DoD via `skills/dod`. Detailed guide: [Review Agent Docs](agentes/review.md).
 
-### 6. Phase 5: Technical Feature Documentation (`/docs` - Chat 5)
+### 6. Phase 5: Technical Feature Documentation ([`/docs`](agentes/docs.md) - Chat 5)
 Focuses strictly on technical documentation: updating module/root READMEs, adding docstrings with bidirectional links to the Obsidian Vault, marking the DoD, and committing semantically. The feature branch remains frozen and intact without premature merges.
-* **Skills Used:** `skills/docs`, `skills/dod`, `skills/git`.
+* **Skills Used:** [`skills/docs`](skills/docs.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
 
-### 7. Publication Cycle: Integration & Release (`/release`)
-Orchestrates publication of a release on `release/vX.Y.Z` branched from `develop`. Audits 100% DoD completion across all candidate features, runs staged E2E integration test suites with formatted console banners (`skills/test-integration`), computes SemVer, generates `CHANGELOG.md`, and completes Git Flow with annotated tags and merges into `main` and `develop`.
-* **Skills Used:** `skills/test-integration`, `skills/release`, `skills/dod`, `skills/git`.
+### 7. Publication Cycle: Integration & Release ([`/release`](agentes/release.md))
+Orchestrates publication of a release on `release/vX.Y.Z` branched from `develop`. Audits 100% DoD completion across all candidate features, runs staged E2E integration test suites with formatted console banners ([`skills/test-integration`](skills/test-integration.md)), computes SemVer, generates `CHANGELOG.md`, and completes Git Flow with annotated tags and merges into `main` and `develop`.
+* **Skills Used:** [`skills/test-integration`](skills/test-integration.md), [`skills/release`](skills/release.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
 
 ---
 
-## 🧰 Modular Skills Catalog
+## 🧰 [Modular Skills Catalog](skills/README.md)
+
+Detailed guides, scripts, and procedures for all 24 skills:
 
 | Category | Skills |
 | :--- | :--- |
-| **Foundation & Cross-Cutting** | `skills/git`, `skills/dod`, `skills/obsidian`, `skills/notebooklm` |
-| **Macro & Conception** | `skills/plan-decompose`, `skills/plan-debate`, `skills/plan-bdd`, `skills/plan-sdd` |
-| **TDD Construction** | `skills/tdd-plan`, `skills/tdd-tests`, `skills/tdd-code`, `skills/test-fix` |
-| **Refactoring & Design** | `skills/refactor` |
-| **Specialized Audits** | `skills/review-architecture`, `skills/review-security`, `skills/review-quality`, `skills/review-performance`, `skills/review-resilience` |
-| **Documentation & Delivery** | `skills/docs`, `skills/test-integration`, `skills/release` |
-| **Support & Diagnostics** | `skills/ask`, `skills/debug`, `skills/infra` |
+| **Foundation & Cross-Cutting** | [`skills/git`](skills/git.md), [`skills/dod`](skills/dod.md), [`skills/obsidian`](skills/obsidian.md), [`skills/notebooklm`](skills/notebooklm.md) |
+| **Macro & Conception** | [`skills/plan-decompose`](skills/plan-decompose.md), [`skills/plan-debate`](skills/plan-debate.md), [`skills/plan-bdd`](skills/plan-bdd.md), [`skills/plan-sdd`](skills/plan-sdd.md) |
+| **TDD Construction** | [`skills/tdd-plan`](skills/tdd-plan.md), [`skills/tdd-tests`](skills/tdd-tests.md), [`skills/tdd-code`](skills/tdd-code.md), [`skills/test-fix`](skills/test-fix.md) |
+| **Refactoring & Design** | [`skills/refactor`](skills/refactor.md) |
+| **Specialized Audits** | [`skills/review-architecture`](skills/review-architecture.md), [`skills/review-security`](skills/review-security.md), [`skills/review-quality`](skills/review-quality.md), [`skills/review-performance`](skills/review-performance.md), [`skills/review-resilience`](skills/review-resilience.md) |
+| **Documentation & Delivery** | [`skills/docs`](skills/docs.md), [`skills/test-integration`](skills/test-integration.md), [`skills/release`](skills/release.md) |
+| **Support & Diagnostics** | [`skills/ask`](skills/ask.md), [`skills/debug`](skills/debug.md), [`skills/infra`](skills/infra.md) |
+
