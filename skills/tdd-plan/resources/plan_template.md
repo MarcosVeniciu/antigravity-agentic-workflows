@@ -1,32 +1,70 @@
-# TDD Implementation Plan (`implementation_plan.md`)
+# {{FEATURE_TITLE}}
 
-**Feature Slug:** `{{FEATURE_SLUG}}`
-**Git Branch:** `{{BRANCH_NAME}}`
-**Contracts Loaded:**
+{{FEATURE_SUMMARY}}
+
+**Feature Slug:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`
+**Contratos Carregados:**
 - BDD: `[[01-concepcao/bdd-{{FEATURE_SLUG}}.md]]`
 - SDD: `[[01-concepcao/sdd-{{FEATURE_SLUG}}.md]]`
 
 ---
 
-## 📐 1. Architecture & Batch Strategy
-Briefly describe how functionality was divided into Dependent Context Batches for token efficiency and surgical focus.
+## Contexto e Motivação
+
+{{CONTEXTO_E_MOTIVACAO}}
+- Diagnóstico do cenário atual e problema a ser resolvido.
+- Causa raiz e gargalos identificados.
 
 ---
 
-## 🔗 2. Technical Dependency Graph
+## Decisões de Design Consolidadas (Entrevista)
+
+| Decisão | Escolha / Estratégia |
+|---|---|
+| **Estratégia de Mock / Fronteira** | {{MOCK_STRATEGY}} |
+| **Primitivas / Bibliotecas** | {{PRIMITIVAS}} |
+| **Compatibilidade & Regras** | {{COMPATIBILIDADE}} |
+| **Suíte de Testes** | {{TEST_FRAMEWORK}} |
+
+---
+
+## Arquitetura Proposta
 
 ```mermaid
-graph TD
-    B1["Batch 1: Base Entities & Contracts"] --> B2["Batch 2: Domain Services & Rules"]
-    B2 --> B3["Batch 3: Endpoints & Final Orchestration"]
+graph LR
+    A["Componente A"] -->|"dados"| B["Componente B"]
 ```
+
+### Fluxo de Dados Detalhado
+
+1. **Passo 1:** {{DESCRICAO_PASSO_1}}
+2. **Passo 2:** {{DESCRICAO_PASSO_2}}
+3. **Passo 3:** {{DESCRICAO_PASSO_3}}
 
 ---
 
-## 🎯 3. Context Batches Summary
+## Proposta de Mudanças
 
-| Batch | Domain / Responsibility | Affected Components | Risk |
-| --- | --- | --- | --- |
-| **Batch 1** | Base data structures & contracts | `src/domain/`, `src/repositories/` | Low |
-| **Batch 2** | Business rules & use cases | `src/services/` | Medium |
-| **Batch 3** | Controllers & routes | `src/controllers/`, `src/routes/` | Low |
+### Componente: {{COMPONENTE_1_NOME}}
+
+#### [NEW] [test_{{COMPONENTE_A}}.py](file:///{{PATH_TESTS}}/test_{{COMPONENTE_A}}.py)
+- Testes unitários AAA cobrindo Happy Path, Edge Cases e Exceções.
+
+#### [NEW] [{{COMPONENTE_A}}.py](file:///{{PATH_SRC}}/{{COMPONENTE_A}}.py)
+- Métodos, assinaturas e regras de negócio essenciais.
+
+---
+
+### Componente: {{COMPONENTE_2_NOME}}
+
+#### [MODIFY] [{{COMPONENTE_B}}.py](file:///{{PATH_SRC}}/{{COMPONENTE_B}}.py)
+- Alterações previstas, assinaturas atualizadas e integrações.
+
+---
+
+## Verificação
+
+### Testes Automatizados
+```bash
+pytest tests/unit/ -v
+```
