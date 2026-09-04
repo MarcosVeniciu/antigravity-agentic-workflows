@@ -1,4 +1,18 @@
+---
+title: "Planejamento de Ajustes de Fluxos e Skills (Antigravity)"
+date_applied: 2026-09-03
+status: "Aplicado / Concluído"
+type: "Change History / Architectural Migration"
+---
+
 # Planejamento de Ajustes de Fluxos e Skills (Antigravity)
+
+| Metadado | Detalhe |
+| :--- | :--- |
+| 📅 **Data de Aplicação** | **03/09/2026** |
+| 🚀 **Status** | **Concluído / Aplicado** |
+| 🌿 **Branch de Origem / Execução** | `feature/minimal-agents-and-full-skill` |
+| 🎯 **Finalidade** | Registro das decisões de design, diretrizes arquiteturais e histórico da transição e criação dos workflows e skills modulares. |
 
 Este documento registra as decisões de design, diretrizes arquiteturais e o plano de evolução iterativo para os **Workflows** e as **Skills** do ecossistema Antigravity.
 

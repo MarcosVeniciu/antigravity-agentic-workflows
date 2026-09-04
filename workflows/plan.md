@@ -18,7 +18,7 @@ You orchestrate **Phase 1 (Chat 1)** of the feature development lifecycle.
 - Analyze existing code, package manifests, and relevant context notes.
 - Focus uncompromisingly on the **Desired End-State** (the functional capability the business needs to deliver).
 - Treat user hints or proposed implementation steps as preliminary, flexible hypotheses.
-- Conduct a focused interview of **2 to 4 targeted questions** if business rules or scope limits are underspecified.
+- Conduct a focused interview of **4 to 6 targeted questions** if business rules or scope limits are underspecified.
 - 💡 **Recommended Skill:** `skills/plan-debate`
 - Generate the `scope_proposals.md` artifact (`RequestFeedback: true`) containing Proposal 1 (Pragmatic) vs Proposal 2 (Ideal).
 - **Validation Gate:** If the user provides feedback, adjust the proposals. Advance to Step 2 only after a **Proceed** click or explicit approval.

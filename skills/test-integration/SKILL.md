@@ -18,6 +18,9 @@ Integration tests must output structured console banners for each validation sta
 [STAGE 4] UNHAPPY PATH: Duplicate Entity Rejection (409 Conflict)
 [STAGE 5] UNHAPPY PATH: Data Schema Validation Failure (422 Unprocessable Entity)
 [STAGE 6] UNHAPPY PATH: Resilience & Graceful Degradation under Downstream Failure (HTTP 200 via Fallback)
+[STAGE 7] SECURITY: CSRF Protection Verification (403 on missing/invalid token)
+[STAGE 8] SECURITY: Open Redirect & SSRF Neutralization (Invalid target fallback / 400 Bad Request)
+[STAGE 9] CONCURRENCY: Race Condition & Atomic State Under Parallel Load (Zero TOCTOU Corruption)
 ```
 
 ## 📋 Available Resources

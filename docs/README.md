@@ -112,13 +112,13 @@ Optimizes internal software design (*Make it Right*). Strictly restricted to fil
 * **Skills Used:** `skills/refactor`, `skills/git`, `skills/dod`, `skills/test-fix`.
 
 ### 5. Phase 4: Specialized Audits (`/review` - Chat 4)
-Iterative domain-specialized loop executed directly over the feature's `git diff`:
-1. **Architecture & Coupling** (`skills/review-architecture`)
-2. **Security & OWASP** (`skills/review-security`)
-3. **Quality & AST Complexity** (`skills/review-quality`)
+Iterative domain-specialized loop executed directly over the feature's `git diff` using a **Script-First** strategy and Call Hierarchy Taint Analysis, aligned with the [OWASP Code Review Guide v2](references/OWASP_Code_Review_Guide_v2.pdf):
+1. **Architecture & Coupling** ([`skills/review-architecture`](skills/review-architecture.md) + `check_arch_boundaries.py`)
+2. **Security & OWASP** ([`skills/review-security`](skills/review-security.md) + `scan_sinks.py`)
+3. **Quality & AST Complexity** (`skills/review-quality` + `ast_complexity.py`)
 4. **Performance & Volumetrics** (`skills/review-performance`)
 5. **Resilience & Fault Tolerance** (`skills/review-resilience`)
-Each reviewed domain generates a local micro-checkpoint and updates the Living DoD via `skills/dod`.
+Each reviewed domain generates a local micro-checkpoint and updates the Living DoD via `skills/dod`. Detailed guide: [Review Agent Docs](agentes/review.md).
 
 ### 6. Phase 5: Technical Feature Documentation (`/docs` - Chat 5)
 Focuses strictly on technical documentation: updating module/root READMEs, adding docstrings with bidirectional links to the Obsidian Vault, marking the DoD, and committing semantically. The feature branch remains frozen and intact without premature merges.

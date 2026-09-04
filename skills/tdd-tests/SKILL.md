@@ -14,6 +14,8 @@ For each batch, tests must cover:
 2. **Edge Cases:** Boundaries (0, `MAX_INT`), empty strings, nulls, and empty collections.
 3. **Exceptions / Domain Errors:** Triggering typed domain exceptions upon invalid input.
 4. **Resilience / Performance:** Execution time thresholds and asynchronous behaviors.
+5. **Concurrency & Race Conditions:** Parallel execution stress (`ThreadPoolExecutor`, `Promise.all`, `Future.wait`) asserting atomic state integrity and zero TOCTOU corruption.
+6. **Security Boundaries:** Rejection assertions for IDOR (403), missing CSRF tokens (403), PII masking verification via log capture fixtures, and safe error payloads without tracebacks.
 
 ## ⛔ Strict Mocking Rules
 * **Zero Real I/O:** Never access physical databases, production filesystems, or live network endpoints. Use `unittest.mock`, `pytest-mock`, or in-memory fakes.

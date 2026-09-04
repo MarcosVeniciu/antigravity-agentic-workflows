@@ -30,13 +30,45 @@ Each AI agent has restricted permissions and an isolated scope — from requirem
 * An IDE compatible with the Antigravity ecosystem (e.g., local Gemini/Claude setup).
 * The **Obsidian** app installed locally (for project Knowledge Graph).
 
-### 2. Installation
+### 2. Installation (Automated Setup)
+
+Clone the repository (or download and extract the ZIP file):
 
 ```bash
-# Clone the repository
 git clone https://github.com/MarcosVeniciu/antigravity-agentic-workflows.git
 cd antigravity-agentic-workflows
 ```
+
+Run the automated installer for your operating system:
+
+#### 🪟 Windows
+* **1-Click**: Double-click `install.bat` in File Explorer.
+* **PowerShell (Interactive Menu)**:
+  ```powershell
+  .\install.ps1
+  ```
+* **PowerShell (Direct CLI)**:
+  ```powershell
+  # Global install (~/.gemini)
+  .\install.ps1 -Global
+
+  # Specific project install (.agents/)
+  .\install.ps1 -Project "C:\Path\To\YourProject"
+  ```
+
+#### 🐧 Linux & 🍎 macOS
+```bash
+# Make executable and run interactive menu:
+chmod +x install.sh
+./install.sh
+
+# Or direct CLI flags:
+./install.sh --global
+./install.sh --project "/path/to/your/project"
+```
+
+> [!TIP]
+> **Safety & Backups**: The installer detects existing files and automatically creates timestamped backups in `~/.gemini/backups/backup_YYYYMMDD_HHMM/` (global) or `<project>/.agents/backups/backup_YYYYMMDD_HHMM/` (local) before overwriting anything. You can also run with `--dry-run` (or `-DryRun`) to preview all file operations.
 
 ### 3. Engaging the "Second Brain"
 1. Open Obsidian.
@@ -65,12 +97,15 @@ The ecosystem adopts a **modular two-layer decoupled architecture**:
 3. **Living Execution Log & DoD (`01-concepcao/dod-[slug].md`)**: Dynamic document centralizing development timeline history and gating functional acceptance criteria, non-functional rules, audits, and releases.
 
 > [!NOTE]
-> **Source / Matrix Repository**: The `workflows/` and `skills/` directories in this repository represent the **development matrix** of the ecosystem. When deployed globally to the developer's environment, they are installed in `~/.gemini/config/skills/` and `~/.gemini/config/workflows/` (or `.agents/` inside workspaces).
+> **Source / Matrix Repository**: The `workflows/`, `skills/`, and `prompts/` directories in this repository represent the **development matrix** of the ecosystem. When deployed globally to the developer's environment, they are installed in `~/.gemini/GEMINI.md`, `~/.gemini/config/global_workflows/`, and `~/.gemini/config/skills/` (or `<project>/.agents/` and `<project>/GEMINI.md` inside workspaces).
 
 ### 📂 Repository Directory Structure
 
 ```text
 antigravity-agentic-workflows/
+├── install.bat                   # 1-Click Windows installer launcher (File Explorer)
+├── install.ps1                   # Native PowerShell installer (Windows 10/11 & Core)
+├── install.sh                    # Native POSIX Bash installer (Linux / macOS / WSL)
 ├── workflows/                    # State Routers (Slash Commands)
 │   ├── decompose.md              # /decompose    - Phase 0: Macro-Architecture & Epic Slicing
 │   ├── plan.md                   # /plan         - Phase 1: Conception, BDD, SDD & Living DoD
