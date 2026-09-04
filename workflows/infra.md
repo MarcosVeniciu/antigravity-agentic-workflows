@@ -1,15 +1,30 @@
 ---
-description: Updates dependency managers, Dockerfiles, and environment configurations when a new feature requires new packages or infrastructure changes.
+title: "Infrastructure & Dependencies Agent"
+description: "Safe management of dependencies, package manifests, Dockerfiles, and environment variables without exposing secrets."
 ---
 
-### STATE MACHINE ROUTER (DYNAMIC CONTEXT)
+# Agent: Infrastructure & Dependencies (`/infra`)
 
-You must strictly identify the current state based on the user's trigger. Before taking any action, you MUST fetch and read the specific instruction template from the `08-templates-and-workflows/` directory in the `obsidian_knowledge_graph` MCP vault. 
+You orchestrate the secure addition, updating, and maintenance of project dependencies, containers, and environment configurations.
 
-**DO NOT proceed, assume, or guess instructions without reading the specific file first.**
+---
 
-| Trigger / User Input | Current State | Template to Fetch & Read via MCP |
-|---|---|---|
-| `/infra` (Default) | EXECUTION | `workflow-infra-EXECUTION.md` |
+## 🚀 Execution Pipeline in 4 Steps
 
-> **Example:** Ao receber o comando `/infra`, você deve usar sua ferramenta de leitura para ler o documento `08-templates-and-workflows/workflow-infra-EXECUTION.md` no vault para obter as instruções precisas de execução!
+### Step 1: Skill Activation & Technical Rules
+* Load guidelines from `skills/infra` by opening its `SKILL.md`.
+* 💡 **Recommended Skill:** `skills/infra`
+
+### Step 2: Diagnosis & Manifest Mapping
+* Identify manifest files present in the repository (`package.json`, `pyproject.toml`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
+* Review infrastructure conventions at `00-core-rules/conventions.md` in the Obsidian Vault via `skills/obsidian`.
+
+### Step 3: Surgical Application of Changes
+* Apply changes strictly limited to requested packages or configurations.
+* **Secrets Protection:** Never expose passwords, API keys, or credentials in tracked files.
+* If new environment variables are introduced, you MUST update `.env.example` with safe mock values.
+
+### Step 4: Validation & Wrap-up
+* Validate syntax integrity and compatibility of manifests and configuration files.
+* Provide clear guidance for the next phase in the development lifecycle:
+  > **[NEXT STEP]** ➡️ *"📦 Environment and dependencies updated successfully! Proceed with the development lifecycle via `/implement` or validate changes using `/test-fix`."*

@@ -1,138 +1,146 @@
-# Agent Architecture: Antigravity IDE
+# Agent & Skill Architecture: Antigravity IDE
 
-The foundation of artificial intelligence within the **Antigravity IDE** lies in fragmentation. Instead of using a single massive prompt prone to cognitive hallucinations (context exhaustion), the architecture separates responsibilities into "Specialist Agents". Each agent acts in a specific stage of the Software Development Life Cycle (SDLC) with well-defined architectural constraints and boundaries, operating as a State Machine.
+The operational intelligence of the **Antigravity IDE** is grounded in strict separation of concerns (*Single Responsibility Principle - SRP*) and *Outcome-Based Prompting*. Instead of monolithic prompts vulnerable to hallucinations and context exhaustion, the architecture organizes the software engineering lifecycle into:
 
----
-
-## 🔀 The Router and Execution Architecture (Dynamic Context)
-
-To completely eliminate prompt hallucination and cognitive overload, **Antigravity IDE** employs a strict "Router" vs "Execution" dichotomy for all agents:
-
-1. **Lightweight Routers (`workflows/`):** The agent files in the `workflows/` directory act merely as State Machine Routers. They contain almost zero heavy logic. Their sole purpose is to identify the current trigger (e.g., `/planejamento`, `/codigo`) and determine the state.
-2. **Dynamic Execution via MCP (`templates-and-workflows/`):** Once the state is identified, the router commands the AI to use the `obsidian_knowledge_graph` MCP tool to fetch the exact, heavy instructions from the `templates-and-workflows/` directory.
-
-By dynamically loading only the exact execution template needed for the current phase/state, the AI's context window remains completely clean and hyper-focused on the immediate task.
+1. **Phase 0 (Macro-Architecture):** Evolutionary decomposition of epics into monotonic sub-features via `/decompose`.
+2. **Feature Lifecycle (5 Phases in Ephemeral Chats):** Conception $\rightarrow$ TDD $\rightarrow$ Refactoring $\rightarrow$ Audits $\rightarrow$ Documentation.
+3. **Publication Cycle (Release Pipeline):** E2E integration tests, SemVer calculation, Changelog generation, and Git Flow via `/release`.
+4. **Cross-Cutting Skills:** Git Flow & checkpoint governance (`@git`), Living DoD tracking (`@dod`), SSOT Vault governance (`@obsidian`), and user-governed external research (`@notebooklm`).
 
 ---
 
-## 🗺️ The Ecosystem (Workflows)
+## 🔀 Router vs. Skill Execution Architecture
+
+To keep AI context clean and focused, the ecosystem divides responsibilities into two distinct layers:
+
+1. **State Routers in `workflows/`**: Lightweight playbooks defining phase pipelines, strict constraints, success evidence, and standardized phase transition gates (**[NEXT STEP]**).
+2. **Specialized Execution in `skills/`**: Atomic operational procedures, automated validation scripts (`ast_complexity.py`, `validate_branch.sh`, `validate_sdd_contracts.py`), and templates loaded on-demand via Progressive Disclosure.
+3. **Living Execution Log & DoD (`01-concepcao/dod-[slug].md`)**: Dynamic document centralizing development timeline history and Definition of Done (DoD) criteria for functional, non-functional, audit, and release validation.
+
+---
+
+## 🗺️ Complete Antigravity Ecosystem Map
 
 ```mermaid
 graph TD
-    %% Main nodes
     User((User))
 
-    subgraph Phase1 [1. Engineering & Contracts]
-        P[Planning <br> /planejamento]
-        A[Artifacts <br> /artefatos]
+    subgraph Macro [Phase 0: Macro-Architecture & Epics]
+        Dec[Epic Decomposition <br> /decompose]
     end
 
-    subgraph Phase2 [2. Core TDD Loop]
-        T[Tests - Red <br> /testes]
-        C[Code - Green <br> /codigo]
-        F[Test - Fix <br> /testar]
-        R[Refactor - Polish <br> /refatorar]
+    subgraph Chat1 [Phase 1: Conception & Architecture]
+        Plan[BDD + SDD + DoD Planning <br> /plan]
     end
 
-    subgraph Phase3 [3. Audit & Closure]
-        Rev[Review QA <br> /review]
-        App[Apply Review <br> /aplicar-review]
-        Docs[Documentation <br> /docs]
-        Grafo[Vault Graph <br> /grafo]
-        Git[Release & Git <br> /git]
+    subgraph Chat2 [Phase 2: Iterative TDD Development]
+        Imp[TDD Loop Batch by Batch <br> /implement]
     end
 
-    subgraph Support [Shock Troop - Secondary]
+    subgraph Chat3 [Phase 3: Consolidation Refactoring]
+        Ref[Clean Code & SOLID <br> /refactor]
+    end
+
+    subgraph Chat4 [Phase 4: Specialized Audits]
+        Rev[Diff-Based Audit Loop <br> /review]
+    end
+
+    subgraph Chat5 [Phase 5: Technical Feature Documentation]
+        Docs[Docs & Docstrings <br> /docs]
+    end
+
+    subgraph Pub [Publication & Integration Cycle]
+        Rel[Release & E2E Integration <br> /release]
+    end
+
+    subgraph Support [Support Agents]
         Ask[Oracle <br> /ask]
-        Release[Release <br> /release]
-        Debug[Forensics <br> /debug]
-        Infra[DevOps <br> /infra]
-        ReadmeProjeto[Showcase <br> /readme-projeto]
-        Sync[Synchronizer <br> /sync]
+        Debug[Forensic <br> /debug]
+        Fix[Reactive Debugger <br> /test-fix]
+        Infra[Infra & Manifests <br> /infra]
     end
 
-    %% Main Flow
-    User -->|Initiates Feature| P
-    P -->|Scope Approved| A
-    A -->|Contracts & SDD Generated| T
-    A -.->|Needs New Packages| Infra
-    Infra -.->|Dependencies Updated| T
-    
-    T -->|Tests Failing| C
-    C -->|If Passed| R
-    C -->|If Failed| F
-    
-    R -->|Clean Code| Rev
-    R -.->|If Failed| F
+    %% Macro Relations
+    User -->|Large Epic| Dec
+    Dec -->|Generates Sub-Feature Graph| Plan
 
-    Rev -->|Points Flaws| App
-    App -.->|If Failed| F
-    App -->|Next Review Type| Rev
-    App -->|Final Review Done| Docs
-    
-    F -->|If Failed| F
-    F -.->|Passed - from Code| R
-    F -.->|Passed - from Refactor| Rev
-    F -.->|Passed - from Apply| Rev
-    
-    Docs -->|Tech Doc Written| Grafo
-    Grafo -->|Context Saved in Obsidian| Git
-    Grafo -.->|If Structure Changed| Docs
-    Git -->|Merge & Commit| User
-    
-    %% Support Links (isolated)
+    %% Feature Cycle Relations
+    User -->|Isolated Feature| Plan
+    Plan ==>|BDD + SDD + DoD Saved| Imp
+    Imp -->|Red ➔ Green per Context Batch| Imp
+    Imp ==>|100% Batches Complete| Ref
+    Ref -.->|Test Failure| Fix
+    Fix -.->|Fixed & Green| Ref
+    Ref ==>|Clean Code without Smells| Rev
+    Rev ==>|5 Domains Audited & Approved| Docs
+    Docs ==>|Feature Frozen & DoD 100%| Rel
+
+    %% Publication
+    Rel -->|SemVer Tag, Changelog & Git Flow Merge| User
+
+    %% Support
     Support -.- User
 
-    style Phase1 fill:#1e1e1e,stroke:#00ffcc,stroke-width:2px,color:#fff
-    style Phase2 fill:#1e1e1e,stroke:#33ff33,stroke-width:2px,color:#fff
-    style Phase3 fill:#1e1e1e,stroke:#ff33cc,stroke-width:2px,color:#fff
-    style Support fill:#2d2d2d,stroke:#ffaa00,stroke-width:2px,stroke-dasharray: 5 5,color:#fff
+    style Macro fill:#2d1b38,stroke:#b800ff,stroke-width:2px,color:#fff
+    style Chat1 fill:#1b2838,stroke:#00d2ff,stroke-width:2px,color:#fff
+    style Chat2 fill:#1b382b,stroke:#00ff88,stroke-width:2px,color:#fff
+    style Chat3 fill:#351b38,stroke:#d200ff,stroke-width:2px,color:#fff
+    style Chat4 fill:#381b28,stroke:#ff0088,stroke-width:2px,color:#fff
+    style Chat5 fill:#382d1b,stroke:#ffaa00,stroke-width:2px,color:#fff
+    style Pub fill:#1b3838,stroke:#00ffd5,stroke-width:2px,color:#fff
+    style Support fill:#222,stroke:#888,stroke-width:1px,stroke-dasharray: 5 5,color:#fff
 ```
 
 ---
 
-## 🏗️ 1. Planning Focused on BDD and SDD
-This is the initial Requirements Engineering phase. No line of production code is generated here. The focus is to extract business rules and lock them into architectural contracts.
+## 🎯 Phase & Workflow Deep Dive
 
-* **[Planning Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-planejamento.md) (`/planejamento`):** 
-  Operates by structuring features in Gherkin (BDD: *Given, When, Then*). Uses the Interview technique (*Grill Me*) to reject vague requirements. It focuses strictly on aligning the business expectation with the human.
-* **[Artifacts Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-artefatos.md) (`/artefatos`):**
-  Takes the behavioral requirements (BDD) and transcribes them into Contracts (SDD - *Software Design Description*). It generates the physical Implementation Plan and draws all Sequence, Flow, and Database diagrams. If new dependencies or infrastructure changes are needed, it routes to `/infra` before starting tests.
+### 1. Phase 0: Macro-Architecture & Epics ([`/decompose`](agentes/decompose.md))
+When an architectural epic is too complex to fit safely into a single feature branch, `/decompose` aligns the core problem (*Outcome-Based*) and breaks scope down into an ordered roadmap of monotonic vertical sub-features (contracts first, zero destructive rework). Persists `01-concepcao/epic-[slug].md`.
+* **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/plan-decompose`](skills/plan-decompose.md), [`skills/obsidian`](skills/obsidian.md).
 
-## 🔁 2. Continuous Implementation Loop (Core TDD)
-In this phase, logical implementation enters an isolated pipeline. Agents are strictly instructed to consult the SDD (Artifacts) and use the **Iterative Update of `task.md`** rule to avoid exploding the cognitive limit (hallucination).
+### 2. Phase 1: Conception & Architecture ([`/plan`](agentes/plan.md) - Chat 1)
+Surgical scope discovery via Socratic interviewing (2-4 questions), Git Flow branch validation, pure Gherkin BDD behavioral specification, SDD architectural blueprint with typed contracts/mocks, and Living DoD initialization.
+* **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/git`](skills/git.md), [`skills/plan-bdd`](skills/plan-bdd.md), [`skills/plan-sdd`](skills/plan-sdd.md), [`skills/dod`](skills/dod.md).
 
-* **[Tests Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-testes.md) (`/testes`):** 
-  (The Red Phase). Writes purely automated tests (Happy paths, Exceptions, Scalability) guided by the diagrams and contracts generated in phase 1.
-* **[Code Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-codigo.md) (`/codigo`):** 
-  (The Green Phase). Works reactively. Reads the test suite from the previous agent and implements *only* the necessary code to turn the bar green. Inserts precise docstrings. Requires a test run: if tests pass, proceeds to `/refatorar`; if they fail, triggers `/testar`.
-* **[Test Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-testar.md) (`/testar`):** 
-  (Universal Debugger). If tests fail at any point (`/codigo`, `/refatorar`, or `/aplicar-review`), this agent fixes the implementation by reading terminal errors. Once tests pass, it resumes the flow from the interrupted phase.
-* **[Refactor Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-refatorar.md) (`/refatorar`):** 
-  (The Polish Phase). Takes the green code that was forged hot and applies SOLID Principles, eliminating duplications and abstracting functions. Requires a test run to ensure behavior wasn't broken. If successful, recommends starting a **new chat** to reset token limits before proceeding to `/review`.
+### 3. Phase 2: Iterative TDD Development ([`/implement`](agentes/implement.md) - Chat 2)
+Executes the TDD pipeline batch by batch. Each batch decomposes AAA unit tests (Red) and minimal SOLID production code (Green), running tests in the terminal with reactive debugging support, recording local checkpoints, and continuously appending history to the DoD timeline.
+* **Skills Used:** [`skills/tdd-plan`](skills/tdd-plan.md), [`skills/tdd-tests`](skills/tdd-tests.md), [`skills/tdd-code`](skills/tdd-code.md), [`skills/test-fix`](skills/test-fix.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
 
-## 🛡️ 3. The Review and Closure Phase (QA & Git)
-Once the feature is stable, the code must be validated and documented before going to production. 
+### 4. Phase 3: Consolidation Refactoring ([`/refactor`](agentes/refactor.md) - Chat 3)
+Optimizes internal software design (*Make it Right*). Strictly restricted to files modified on the active branch (`git diff develop...HEAD`), eliminating cyclomatic complexity, long methods, and deep nesting through Guard Clauses and SOLID principles, keeping tests 100% green.
+* **Skills Used:** [`skills/refactor`](skills/refactor.md), [`skills/git`](skills/git.md), [`skills/dod`](skills/dod.md), [`skills/test-fix`](skills/test-fix.md).
 
-* **[Review Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-review.md) (`/review`):** 
-  Static audit agent (Read-Only). Operates in a sequential "Review Chain" (General, Architecture, Resilience, Security, Performance). Points out vulnerabilities in a formal checklist (`audit_report.md`).
-* **[Apply Review Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-aplicar-review.md) (`/aplicar-review`):** 
-  Fixes executor. Consumes the report generated by QA and applies surgical *patches*. Requires a test run after fixes: if tests fail, triggers `/testar`; if they pass, moves to the next review in the chain or to `/docs` if audits are finished.
-* **[Documentation Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-docs.md) (`/docs`):** 
-  The Technical Writer. Updates the manuals, references, and technical READMEs of modified folders, requiring you to approve the "preview" before saving.
-* **[Graph Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-grafo.md) (`/grafo`):** 
-  The Archivist. Indexes new discoveries, architecture resolutions, and domain models into the **Obsidian Vault** (*Second Brain*). Triggers `/git` for packaging, or `/docs` again if folder structures were altered.
-* **[Versioning Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-git.md) (`/git`):** 
-  The Release Engineer. Uses Conventional Commits with "Narrative Messages" and prepares semantic packages, returning clean Git Flow bash blocks to finalize the feature loop.
+### 5. Phase 4: Specialized Audits ([`/review`](agentes/review.md) - Chat 4)
+Iterative domain-specialized loop executed directly over the feature's `git diff` using a **Script-First** strategy and Call Hierarchy Taint Analysis, aligned with the [OWASP Code Review Guide v2](references/OWASP_Code_Review_Guide_v2.pdf):
+1. **Architecture & Coupling** ([`skills/review-architecture`](skills/review-architecture.md) + `check_arch_boundaries.py`)
+2. **Security & OWASP** ([`skills/review-security`](skills/review-security.md) + `scan_sinks.py`)
+3. **Quality & AST Complexity** ([`skills/review-quality`](skills/review-quality.md) + `ast_complexity.py`)
+4. **Performance & Volumetrics** ([`skills/review-performance`](skills/review-performance.md))
+5. **Resilience & Fault Tolerance** ([`skills/review-resilience`](skills/review-resilience.md))
+Each reviewed domain generates a local micro-checkpoint and updates the Living DoD via `skills/dod`. Detailed guide: [Review Agent Docs](agentes/review.md).
+
+### 6. Phase 5: Technical Feature Documentation ([`/docs`](agentes/docs.md) - Chat 5)
+Focuses strictly on technical documentation: updating module/root READMEs, adding docstrings with bidirectional links to the Obsidian Vault, marking the DoD, and committing semantically. The feature branch remains frozen and intact without premature merges.
+* **Skills Used:** [`skills/docs`](skills/docs.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
+
+### 7. Publication Cycle: Integration & Release ([`/release`](agentes/release.md))
+Orchestrates publication of a release on `release/vX.Y.Z` branched from `develop`. Audits 100% DoD completion across all candidate features, runs staged E2E integration test suites with formatted console banners ([`skills/test-integration`](skills/test-integration.md)), computes SemVer, generates `CHANGELOG.md`, and completes Git Flow with annotated tags and merges into `main` and `develop`.
+* **Skills Used:** [`skills/test-integration`](skills/test-integration.md), [`skills/release`](skills/release.md), [`skills/dod`](skills/dod.md), [`skills/git`](skills/git.md).
 
 ---
 
-## 🚑 The Shock Troop (Operational Agents)
-Agents isolated from the main flow. They act punctually correcting, cleaning, or assisting the dev.
+## 🧰 [Modular Skills Catalog](skills/README.md)
 
-* **[Oracle Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-ask.md) (`/ask`):** Read-Only tool to ask how the codebase works. Always anchors answers in Obsidian or Files.
-* **[Release Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-release.md) (`/release`):** Acts orchestrating and generating the Release Candidate version and calculates Semantic Versioning (`SemVer`).
-* **[Forensics Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-debug.md) (`/debug`):** Specialist in the *5 Whys* technique. When a Production Crash occurs, generates structured hypotheses to not propose "guessed" solutions.
-* **[DevOps Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-infra.md) (`/infra`):** Handles Docker, requirements, Node modules, and `.env`. Blocked from committing real passwords.
-* **[Showcase Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-readme-projeto.md) (`/readme-projeto`):** Developer Advocate. Creates the primary project README focusing on setup ("How to run") and DX.
-* **[Synchronizer Agent](file:///d:/Codigos/antigravity-agentic-workflows/docs/agente-sync.md) (`/sync`):** Cleaning routine. Forces the AI to reread the project's global laws (`GEMINI.md`, Vault Notes) to recalibrate the "token limit" and cease hallucinations.
+Detailed guides, scripts, and procedures for all 24 skills:
+
+| Category | Skills |
+| :--- | :--- |
+| **Foundation & Cross-Cutting** | [`skills/git`](skills/git.md), [`skills/dod`](skills/dod.md), [`skills/obsidian`](skills/obsidian.md), [`skills/notebooklm`](skills/notebooklm.md) |
+| **Macro & Conception** | [`skills/plan-decompose`](skills/plan-decompose.md), [`skills/plan-debate`](skills/plan-debate.md), [`skills/plan-bdd`](skills/plan-bdd.md), [`skills/plan-sdd`](skills/plan-sdd.md) |
+| **TDD Construction** | [`skills/tdd-plan`](skills/tdd-plan.md), [`skills/tdd-tests`](skills/tdd-tests.md), [`skills/tdd-code`](skills/tdd-code.md), [`skills/test-fix`](skills/test-fix.md) |
+| **Refactoring & Design** | [`skills/refactor`](skills/refactor.md) |
+| **Specialized Audits** | [`skills/review-architecture`](skills/review-architecture.md), [`skills/review-security`](skills/review-security.md), [`skills/review-quality`](skills/review-quality.md), [`skills/review-performance`](skills/review-performance.md), [`skills/review-resilience`](skills/review-resilience.md) |
+| **Documentation & Delivery** | [`skills/docs`](skills/docs.md), [`skills/test-integration`](skills/test-integration.md), [`skills/release`](skills/release.md) |
+| **Support & Diagnostics** | [`skills/ask`](skills/ask.md), [`skills/debug`](skills/debug.md), [`skills/infra`](skills/infra.md) |
+
