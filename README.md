@@ -47,6 +47,7 @@ Run the automated installer for your operating system:
   ```powershell
   .\install.ps1
   ```
+  *(Options: `[1] Global`, `[2] Project`, `[3] Restore Backup`, `[4] Uninstall`, `[5] Exit`)*
 * **PowerShell (Direct CLI)**:
   ```powershell
   # Global install (~/.gemini)
@@ -54,6 +55,12 @@ Run the automated installer for your operating system:
 
   # Specific project install (.agents/)
   .\install.ps1 -Project "C:\Path\To\YourProject"
+
+  # Restore / Rollback to a previous snapshot
+  .\install.ps1 -Restore
+
+  # Uninstall workflows, skills and rules cleanly
+  .\install.ps1 -Uninstall
   ```
 
 #### 🐧 Linux & 🍎 macOS
@@ -65,10 +72,16 @@ chmod +x install.sh
 # Or direct CLI flags:
 ./install.sh --global
 ./install.sh --project "/path/to/your/project"
+./install.sh --restore
+./install.sh --uninstall
 ```
 
 > [!TIP]
-> **Safety & Backups**: The installer detects existing files and automatically creates timestamped backups in `~/.gemini/backups/backup_YYYYMMDD_HHMM/` (global) or `<project>/.agents/backups/backup_YYYYMMDD_HHMM/` (local) before overwriting anything. You can also run with `--dry-run` (or `-DryRun`) to preview all file operations.
+> **Safety, Backups, Rollback & Uninstall**:
+> * **Transaction Manifest (`manifest.json`)**: Every installation records both modified and newly added files. When rolling back a fresh install, all newly added files are deleted cleanly, restoring the environment to a 100% clean state.
+> * **Rollback**: Access previous snapshots via menu option `[3] Restore Backup` or `.\install.ps1 -Restore` / `./install.sh --restore`.
+> * **Uninstall**: Cleanly remove installed resources via option `[4] Uninstall` or `.\install.ps1 -Uninstall` / `./install.sh --uninstall`. A safety backup is always created automatically prior to removal.
+> * **Dry-Run**: Append `--dry-run` (or `-DryRun`) to any command to preview operations without modifying files on disk.
 
 ### 3. Engaging the "Second Brain"
 1. Open Obsidian.
@@ -143,14 +156,19 @@ antigravity-agentic-workflows/
 │   ├── ask/                      # Strictly read-only investigation guidelines & citations
 │   ├── debug/                    # 5 Whys framework & root cause analysis
 │   └── infra/                    # Manifest management, Docker & safe environment variables
-├── docs/                         # Ecosystem architectural overview
-│   └── README.md                 # Detailed agent mapping and 5-Phase pipeline
-├── docs-antigravity/             # Technical manuals & governance guides
-│   ├── guia-fluxo-desenvolvimento.md # Multi-Chat Lifecycle Manual & Phase Gates
-│   ├── guia-skills.md            # Technical specification & creation of Skills
-│   ├── guia-base-conhecimento.md # MCP integration & Obsidian Vault structure
-│   ├── guia-artefatos.md         # Implementation plans & output artifacts standards
-│   └── boas-praticas-agentes.md  # Design guidelines for LLM agent building
+├── docs/                         # Comprehensive technical documentation & guides
+│   ├── README.md                 # Architectural overview & 5-Phase lifecycle
+│   ├── agentes/                  # Deep-dive manuals for each workflow & orchestrator
+│   │   ├── README.md             # Agents catalog & quality gates map
+│   │   ├── core-gemini.md        # Core engine protocol & pair programming rules
+│   │   └── [workflow].md         # Step-by-step orchestrator guides (/plan, /implement, etc.)
+│   ├── skills/                   # Technical manuals for all 24 atomic skills
+│   │   ├── README.md             # Modular skills catalog & category map
+│   │   └── [skill-name].md       # Specific SRP manuals (git, dod, obsidian, etc.)
+│   ├── references/               # Authoritative security & architecture standards
+│   │   └── OWASP_Code_Review_Guide_v2.pdf
+│   └── change_history/           # Architecture evolution & adjustments history
+│       └── planejamento_de_ajustes_fluxo.md
 └── prompts/                      # System prompts & global governance (gemini.md)
 ```
 
@@ -256,32 +274,53 @@ graph TD
 
 ## 🤖 Agents & Slash Commands Catalog
 
-| Command | Workflow File | Phase / Role | Description / Main Responsibility |
-| :--- | :--- | :--- | :--- |
-| `/decompose` | [decompose.md](workflows/decompose.md) | **Phase 0** | Decomposes complex epics and large demands into evolutionary, monotonic vertical slices. |
-| `/plan` | [plan.md](workflows/plan.md) | **Phase 1** | Outcome-Based debate, Git Flow branch setup, BDD scenarios, SDD blueprints, and Living DoD. |
-| `/implement` | [implement.md](workflows/implement.md) | **Phase 2** | TDD Developer: Batch planning, AAA unit tests (Red), minimal SOLID code (Green), and checkpoints. |
-| `/refactor` | [refactor.md](workflows/refactor.md) | **Phase 3** | Clean Code & SOLID: Refactors green code strictly scoped to files modified in the diff. |
-| `/review` | [review.md](workflows/review.md) | **Phase 4** | Iterative audit loop: Architecture, Security (OWASP), AST Quality, Performance, and Resilience. |
-| `/docs` | [docs.md](workflows/docs.md) | **Phase 5** | Updates living technical documentation (module/root READMEs) and docstrings traceable to Obsidian. |
-| `/release` | [release.md](workflows/release.md) | **Publication** | Verifies 100% DoD, runs staged E2E integration test suite, computes SemVer, generates Changelog, and finishes Git Flow. |
-| `/test-fix` | [test-fix.md](workflows/test-fix.md) | **Support** | Reactive Debugger: Analyzes terminal tracebacks and applies minimal surgical fixes to production code. |
-| `/ask` | [ask.md](workflows/ask.md) | **Support** | Read-Only Oracle: Answers conceptual and technical questions without modifying any files. |
-| `/debug` | [debug.md](workflows/debug.md) | **Support** | Forensic Investigator: Diagnoses runtime crashes and complex systemic failures using 5 Whys. |
-| `/infra` | [infra.md](workflows/infra.md) | **Support** | DevOps/SysAdmin: Safely manages dependency manifests, container configurations, and environment variables. |
+| Command | Workflow File | Detailed Manual | Phase / Role | Description / Main Responsibility |
+| :--- | :--- | :--- | :--- | :--- |
+| `/decompose` | [`decompose.md`](workflows/decompose.md) | [`agentes/decompose.md`](docs/agentes/decompose.md) | **Phase 0** | Decomposes complex epics and large demands into evolutionary, monotonic vertical slices. |
+| `/plan` | [`plan.md`](workflows/plan.md) | [`agentes/plan.md`](docs/agentes/plan.md) | **Phase 1** | Outcome-Based debate, Git Flow branch setup, BDD scenarios, SDD blueprints, and Living DoD. |
+| `/implement` | [`implement.md`](workflows/implement.md) | [`agentes/implement.md`](docs/agentes/implement.md) | **Phase 2** | TDD Developer: Batch planning, AAA unit tests (Red), minimal SOLID code (Green), and checkpoints. |
+| `/refactor` | [`refactor.md`](workflows/refactor.md) | [`agentes/refactor.md`](docs/agentes/refactor.md) | **Phase 3** | Clean Code & SOLID: Refactors green code strictly scoped to files modified in the diff. |
+| `/review` | [`review.md`](workflows/review.md) | [`agentes/review.md`](docs/agentes/review.md) | **Phase 4** | Iterative audit loop: Architecture, Security (OWASP), AST Quality, Performance, and Resilience. |
+| `/docs` | [`docs.md`](workflows/docs.md) | [`agentes/docs.md`](docs/agentes/docs.md) | **Phase 5** | Updates living technical documentation (module/root READMEs) and docstrings traceable to Obsidian. |
+| `/release` | [`release.md`](workflows/release.md) | [`agentes/release.md`](docs/agentes/release.md) | **Publication** | Verifies 100% DoD, runs staged E2E integration test suite, computes SemVer, generates Changelog, and finishes Git Flow. |
+| `/test-fix` | [`test-fix.md`](workflows/test-fix.md) | [`agentes/test-fix.md`](docs/agentes/test-fix.md) | **Support** | Reactive Debugger: Analyzes terminal tracebacks and applies minimal surgical fixes to production code. |
+| `/ask` | [`ask.md`](workflows/ask.md) | [`agentes/ask.md`](docs/agentes/ask.md) | **Support** | Read-Only Oracle: Answers conceptual and technical questions without modifying any files. |
+| `/debug` | [`debug.md`](workflows/debug.md) | [`agentes/debug.md`](docs/agentes/debug.md) | **Support** | Forensic Investigator: Diagnoses runtime crashes and complex systemic failures using 5 Whys. |
+| `/infra` | [`infra.md`](workflows/infra.md) | [`agentes/infra.md`](docs/agentes/infra.md) | **Support** | DevOps/SysAdmin: Safely manages dependency manifests, container configurations, and environment variables. |
+
+> [!NOTE]
+> **Foundational Core Protocol**: The global engine directives (*Think First, Code Later*, Double-Strike Rule, initial status banner, and SSOT memory governance) are specified in [`prompts/gemini.md`](prompts/gemini.md) and documented in [`docs/agentes/core-gemini.md`](docs/agentes/core-gemini.md).
+
+---
+
+## 🧰 Modular Skills Catalog (24 Atomic Skills)
+
+All 24 skills strictly adhere to the Single Responsibility Principle (SRP) and are loaded on-demand via Progressive Disclosure. For full technical instructions and usage guides, see the [Skills Catalog](docs/skills/README.md):
+
+| Category | Skills & Documentation | Primary SRP Responsibility |
+| :--- | :--- | :--- |
+| **1. Foundation & Cross-Cutting** | [`git`](docs/skills/git.md), [`dod`](docs/skills/dod.md), [`obsidian`](docs/skills/obsidian.md), [`notebooklm`](docs/skills/notebooklm.md) | Git Flow branch/checkpoint/rollback governance, Living DoD tracking, SSOT Vault integrity, and user-governed research. |
+| **2. Macro & Conception** | [`plan-decompose`](docs/skills/plan-decompose.md), [`plan-debate`](docs/skills/plan-debate.md), [`plan-bdd`](docs/skills/plan-bdd.md), [`plan-sdd`](docs/skills/plan-sdd.md) | Monotonic vertical slicing, Outcome-Based debate, Gherkin BDD specifications, and SDD typed boundary contracts. |
+| **3. TDD Construction** | [`tdd-plan`](docs/skills/tdd-plan.md), [`tdd-tests`](docs/skills/tdd-tests.md), [`tdd-code`](docs/skills/tdd-code.md), [`test-fix`](docs/skills/test-fix.md) | Context batching, AAA unit test suites with mocks, minimal SOLID code, and surgical traceback root cause fixes. |
+| **4. Refactoring & Design** | [`refactor`](docs/skills/refactor.md) | Clean Code & SOLID refactoring strictly scoped to branch diff (`git diff develop...HEAD`) preserving 100% green tests. |
+| **5. Specialized Audits** | [`review-architecture`](docs/skills/review-architecture.md), [`review-security`](docs/skills/review-security.md), [`review-quality`](docs/skills/review-quality.md), [`review-performance`](docs/skills/review-performance.md), [`review-resilience`](docs/skills/review-resilience.md) | Script-First audits: layer isolation, OWASP v2 code crawling & Taint Analysis, AST $V(G) \le 10$, N+1 queries, and timeouts/retries. |
+| **6. Documentation & Delivery** | [`docs`](docs/skills/docs.md), [`test-integration`](docs/skills/test-integration.md), [`release`](docs/skills/release.md) | Manifest-validated READMEs/docstrings, staged 9-step E2E integration runner, and SemVer 2.0.0 cumulative releases. |
+| **7. Support & Diagnostics** | [`ask`](docs/skills/ask.md), [`debug`](docs/skills/debug.md), [`infra`](docs/skills/infra.md) | Strictly read-only vault navigation, 5 Whys forensic RCA, and leak-safe manifest/container management. |
 
 ---
 
 ## 📚 Deep Delegation (Technical Manuals)
 
-To explore architecture details and project standards, consult the detailed documentation:
+To explore architecture details, execution runbooks, and project standards, consult the detailed documentation in [`docs/`](docs/):
 
-* 📖 **[Ecosystem Architecture](docs/README.md)**: Comprehensive view of the Router vs. Skill model and agent lifecycle.
-* 🔄 **[Development Workflow Guide](docs-antigravity/guia-fluxo-desenvolvimento.md)**: Technical specification of the 5-Phase Multi-Chat lifecycle and Phase Gates.
-* 🛠 **[Skills Guide](docs-antigravity/guia-skills.md)**: Manual for modular skill anatomy, authoring, and usage.
-* 🧠 **[Knowledge Base Guide](docs-antigravity/guia-base-conhecimento.md)**: MCP integration protocol and Obsidian Vault "Second Brain" structure.
-* 📑 **[Artifacts Guide](docs-antigravity/guia-artefatos.md)**: Standards for reports, implementation plans, and diagrams.
-* 📐 **[Best Practices for Agents](docs-antigravity/boas-praticas-agentes.md)**: Guidelines for conciseness, extensibility, and routing for LLM agents.
+* 📖 **[Ecosystem Architecture](docs/README.md)**: Comprehensive architectural view of the Router vs. Skill execution model and agent lifecycle.
+* 🤖 **[Agents & Workflows Catalog](docs/agentes/README.md)**: Complete guide to orchestrator workflows, quality gates, and multi-chat phase transitions.
+* 🛡️ **[Core Engine Protocol](docs/agentes/core-gemini.md)**: Foundational pair-programming rules (*Think First, Code Later*, Double-Strike Rule, status banners, SSOT memory).
+* 🧰 **[Modular Skills Catalog](docs/skills/README.md)**: Detailed specification for all 24 atomic skills categorized across 7 domains.
+* 🧠 **[Second Brain & Obsidian SSOT](docs/skills/obsidian.md)**: Obsidian Vault governance, metadata search, surgical patching, and ADR management.
+* 📋 **[Living DoD & Execution Log](docs/skills/dod.md)**: Definition of Done governance, timeline tracking (`dod-[slug].md`), and mathematical release gates.
+* 🔒 **[OWASP Security Code Review Reference](docs/references/OWASP_Code_Review_Guide_v2.pdf)**: Authoritative OWASP Code Review Guide v2 used by the Phase 4 review agent.
+* 📜 **[Architecture Evolution History](docs/change_history/planejamento_de_ajustes_fluxo.md)**: Historical planning and structural evolution log of workflows and skills.
 
 ---
 
