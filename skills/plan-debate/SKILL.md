@@ -18,7 +18,7 @@ Guides technical discovery during Phase 0 (`/decompose`) and Phase 1 (`/plan`), 
    * Challenge fragile premises or technical debt. Propose superior patterns without hesitation.
 3. **Iterative Surgical Interview (Dynamic & Adaptive):**
    * The total volume of questions is flexible and scales dynamically with domain complexity.
-   * **Small Batches per Turn:** Never overwhelm the user with long questionnaires or walls of text. Ask 1 to 3 surgical, objective questions at a time.
+   * **Small Batches per Turn:** Never overwhelm the user with long questionnaires or walls of text. Ask 3 to 5 surgical, objective questions at a time.
    * **Primary Channel (`ask_question` Tool):** Always prefer the interactive `ask_question` tool whenever choices, scope limits, trade-offs, or error paths can be structured. Place the recommended option first with `(Recommended)`.
    * **Secondary Channel (Chat Fallback):** For exploratory questions, use the structured 3-part template from [`resources/question_protocol.md`](./resources/question_protocol.md).
    * **Adaptive Follow-ups:** Allow new clarifying questions to emerge naturally based on the user's previous answers (uncovering hidden edge cases or business rules).

@@ -133,7 +133,7 @@ antigravity-agentic-workflows/
 │   └── infra.md                  # /infra        - Support: Manifests, Docker & Dependencies
 ├── skills/                       # Modular Skills (Resources, Scripts & References)
 │   ├── plan-decompose/           # Evolutionary vertical slicing & monotonic breakdown
-│   ├── plan-debate/              # Outcome-Based Prompting & Socratic inquiry (2-4 questions)
+│   ├── plan-debate/              # Outcome-Based Prompting & Socratic inquiry (3-5 questions)
 │   ├── plan-bdd/                 # Behavioral scenarios in pure Gherkin syntax
 │   ├── plan-sdd/                 # Architectural blueprint, Mermaid diagrams & typed contracts
 │   ├── dod/                      # Living DoD governance & execution log (dod-[slug].md)
