@@ -1,14 +1,29 @@
 #!/usr/bin/env python3
 """
 AST Complexity & Performance Anti-Pattern Scanner (Zero External Dependencies)
-Used by the @review-qualidade skill to calculate Cyclomatic Complexity V(G) and detect Big-O heuristics.
+Used by the @review-quality skill to calculate Cyclomatic Complexity V(G) and detect Big-O heuristics in Python.
 """
 
 import ast
 import argparse
 import sys
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple, Optional, Iterator
+
+
+def iter_function_scope_nodes(node: ast.AST) -> Iterator[ast.AST]:
+    """
+    Yield all child AST nodes within the current function body,
+    without descending into nested functions, lambdas, or class definitions.
+    Prevents nested closure/helper complexity from polluting the parent function.
+    """
+    stack = list(ast.iter_child_nodes(node))
+    while stack:
+        curr = stack.pop()
+        yield curr
+        # Do not descend into nested scopes; they will be visited separately
+        if not isinstance(curr, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef, ast.Lambda)):
+            stack.extend(ast.iter_child_nodes(curr))
 
 
 class ComplexityVisitor(ast.NodeVisitor):
@@ -28,20 +43,23 @@ class ComplexityVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def _analyze_function(self, node):
-        complexity = 1  # Base complexity
+        complexity = 1  # Base complexity (McCabe metric)
         
-        for child in ast.walk(node):
-            if isinstance(child, (ast.If, ast.For, ast.While, ast.AsyncFor, ast.With, ast.AsyncWith)):
+        for child in iter_function_scope_nodes(node):
+            if isinstance(child, (ast.If, ast.For, ast.While, ast.AsyncFor)):
                 complexity += 1
             elif isinstance(child, ast.ExceptHandler):
                 complexity += 1
-            elif isinstance(child, ast.IfExp):  # Ternary operator
+            elif isinstance(child, ast.IfExp):  # Ternary operator: x if cond else y
                 complexity += 1
             elif isinstance(child, ast.BoolOp):  # 'and' / 'or'
                 complexity += len(child.values) - 1
             elif isinstance(child, (ast.ListComp, ast.SetComp, ast.DictComp, ast.GeneratorExp)):
+                # Each comprehension generator is an iterative loop (+1), plus any filter conditions
                 for comp in child.generators:
-                    complexity += len(comp.ifs)
+                    complexity += 1 + len(comp.ifs)
+            elif hasattr(ast, "match_case") and isinstance(child, ast.match_case):
+                complexity += 1
 
         if complexity > self.threshold:
             self.high_complexity_functions.append({
@@ -72,8 +90,8 @@ class ComplexityVisitor(ast.NodeVisitor):
                 "message": f"Nested loop detected at depth {self._loop_depth}. Check asymptotic complexity bounds."
             })
             
-        # Check for linear search inside loop -> O(n*m)
-        for child in ast.walk(node):
+        # Check for linear search inside loop -> O(n*m) without traversing nested functions
+        for child in iter_function_scope_nodes(node):
             if isinstance(child, ast.Compare):
                 for op in child.ops:
                     if isinstance(op, (ast.In, ast.NotIn)):
@@ -90,7 +108,7 @@ class ComplexityVisitor(ast.NodeVisitor):
 
 def scan_file(filepath: Path, threshold: int) -> Dict[str, Any]:
     try:
-        content = filepath.read_text(encoding="utf-8")
+        content = filepath.read_text(encoding="utf-8", errors="replace")
         tree = ast.parse(content, filename=str(filepath))
         visitor = ComplexityVisitor(str(filepath), threshold=threshold)
         visitor.visit(tree)
@@ -107,53 +125,97 @@ def scan_file(filepath: Path, threshold: int) -> Dict[str, Any]:
 
 
 def main():
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    if hasattr(sys.stderr, "reconfigure"):
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(description="AST Cyclomatic Complexity and Asymptotic Heuristic Scanner")
-    parser.add_argument("target", help="File or directory path to scan")
+    parser.add_argument("targets", nargs="+", help="Files or directories to scan (.py)")
     parser.add_argument("--threshold", type=int, default=10, help="Cyclomatic complexity threshold (default: 10)")
+    parser.add_argument("--exit-zero", action="store_true", help="Always exit with 0 (non-blocking mode)")
     args = parser.parse_args()
 
-    target_path = Path(args.target)
-    if not target_path.exists():
-        print(f"Error: Path '{args.target}' does not exist.", file=sys.stderr)
-        sys.exit(1)
+    files_to_scan: List[Path] = []
+    files_not_found: List[str] = []
+    unsupported_files: List[str] = []
 
-    files_to_scan = []
-    if target_path.is_file() and target_path.suffix == ".py":
-        files_to_scan.append(target_path)
-    elif target_path.is_dir():
-        files_to_scan.extend(target_path.glob("**/*.py"))
+    for target in args.targets:
+        target_path = Path(target)
+        if not target_path.exists():
+            files_not_found.append(target)
+            continue
 
-    all_high_complexity = []
-    all_warnings = []
+        if target_path.is_file():
+            if target_path.suffix == ".py":
+                files_to_scan.append(target_path)
+            else:
+                unsupported_files.append(str(target_path))
+        elif target_path.is_dir():
+            files_to_scan.extend(target_path.glob("**/*.py"))
+
+    all_high_complexity: List[Dict[str, Any]] = []
+    all_warnings: List[Dict[str, Any]] = []
+    files_with_errors: List[str] = []
 
     for filepath in files_to_scan:
         result = scan_file(filepath, args.threshold)
         if "error" in result:
-            print(f"[!] {result['error']}")
+            files_with_errors.append(result["error"])
         else:
             all_high_complexity.extend(result["high_complexity"])
             all_warnings.extend(result["warnings"])
 
-    sys.stdout.reconfigure(encoding="utf-8")
-    print("\n=== AUDIT REPORT: PERFORMANCE & COMPLEXITY ===")
-    print(f"Files scanned: {len(files_to_scan)}\n")
+    print("\n" + "=" * 80)
+    print("🧹 AUDIT REPORT: PYTHON AST COMPLEXITY & PERFORMANCE HEURISTICS")
+    print("=" * 80)
+    print(f"Python files analyzed: {len(files_to_scan)}")
+    if unsupported_files:
+        print(f"Non-Python files skipped (evaluated manually / native linters): {len(unsupported_files)}")
+    if files_not_found:
+        print(f"Targets not found: {len(files_not_found)}")
+    if files_with_errors:
+        print(f"Files with parse errors: {len(files_with_errors)}")
+    print()
+
+    if files_not_found:
+        print("⚠️  MISSING TARGETS:")
+        for nf in files_not_found:
+            print(f"   [!] Target does not exist: {nf}")
+        print()
+
+    if files_with_errors:
+        print("⚠️  PARSING ERRORS:")
+        for err in files_with_errors:
+            print(f"   [!] {err}")
+        print()
 
     if all_high_complexity:
-        print(f"[WARN] HIGH CYCLOMATIC COMPLEXITY V(G) > {args.threshold}")
+        print(f"🔴 HIGH CYCLOMATIC COMPLEXITY V(G) > {args.threshold}:")
         for fn in all_high_complexity:
-            print(f"  * {fn['file']}:{fn['line']} - Function '{fn['name']}' has V(G) = {fn['complexity']}")
+            print(f"   * {fn['file']}:{fn['line']} - Function '{fn['name']}' has V(G) = {fn['complexity']}")
+        print()
     else:
-        print("[OK] Cyclomatic complexity V(G) within limits (<= 10) for all functions.")
+        print(f"✅ [OK] Cyclomatic complexity V(G) within limits (<= {args.threshold}) for all analyzed functions.")
 
-    print()
     if all_warnings:
-        print("[WARN] ASYMPTOTIC HEURISTIC WARNINGS (Potential Big-O Bottlenecks)")
+        print("\n🟡 ASYMPTOTIC HEURISTIC WARNINGS (Potential Algorithmic Bottlenecks):")
         for w in all_warnings:
-            print(f"  * {w['file']}:{w['line']} [{w['type']}] {w['message']}")
+            print(f"   * {w['file']}:{w['line']} [{w['type']}] {w['message']}")
     else:
-        print("[OK] No nested loops or linear searches in loops detected.")
+        print("✅ [OK] No nested loops or linear searches in loops detected.")
 
-    print("\n================================================\n")
+    print("=" * 80 + "\n")
+
+    has_blocking_issues = (
+        len(all_high_complexity) > 0
+        or len(files_with_errors) > 0
+        or len(files_not_found) > 0
+    )
+
+    if args.exit_zero:
+        sys.exit(0)
+    sys.exit(1 if has_blocking_issues else 0)
 
 
 if __name__ == "__main__":

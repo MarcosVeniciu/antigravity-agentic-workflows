@@ -100,7 +100,7 @@ When an architectural epic is too complex to fit safely into a single feature br
 * **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/plan-decompose`](skills/plan-decompose.md), [`skills/obsidian`](skills/obsidian.md).
 
 ### 2. Phase 1: Conception & Architecture ([`/plan`](agentes/plan.md) - Chat 1)
-Surgical scope discovery via Socratic interviewing (2-4 questions), Git Flow branch validation, pure Gherkin BDD behavioral specification, SDD architectural blueprint with typed contracts/mocks, and Living DoD initialization.
+Surgical scope discovery via Socratic interviewing (3-5 questions), Git Flow branch validation, pure Gherkin BDD behavioral specification, SDD architectural blueprint with typed contracts/mocks, and Living DoD initialization.
 * **Skills Used:** [`skills/plan-debate`](skills/plan-debate.md), [`skills/git`](skills/git.md), [`skills/plan-bdd`](skills/plan-bdd.md), [`skills/plan-sdd`](skills/plan-sdd.md), [`skills/dod`](skills/dod.md).
 
 ### 3. Phase 2: Iterative TDD Development ([`/implement`](agentes/implement.md) - Chat 2)

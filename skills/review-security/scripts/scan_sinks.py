@@ -44,11 +44,11 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Executing shell commands with shell=True or string concatenation enables OS command injection.",
         pattern=re.compile(
-            r'(\bsubprocess\.(Popen|run|call|check_call|check_output)\s*\(.*shell\s*=\s*True|'
+            r'(\bsubprocess\.(?:Popen|run|call|check_call|check_output)\s*\([^)]*shell\s*=\s*True|'
             r'\bos\.system\s*\(|'
             r'\bos\.popen\s*\(|'
-            r'\bchild_process\.(exec|execSync)\s*\(|'
-            r'\bProcess\.run\s*\(.*runInShell\s*:\s*true)',
+            r'\bchild_process\.(?:exec|execSync)\s*\(|'
+            r'\bProcess\.run\s*\([^)]*runInShell\s*:\s*true)',
             re.IGNORECASE | re.DOTALL
         ),
         extensions=(".py", ".js", ".ts", ".jsx", ".tsx", ".dart"),
@@ -62,7 +62,7 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Deserializing untrusted payloads via pickle or yaml.load leads to remote code execution.",
         pattern=re.compile(
-            r'(\bpickle\.(loads?|Unpickler)|'
+            r'(\bpickle\.(?:loads?|Unpickler)|'
             r'\byaml\.load\s*\([^,\)]+\)|'
             r'\bmarshal\.loads?\b)',
             re.IGNORECASE
@@ -78,8 +78,8 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Embedding variables directly into SQL statements via f-strings or concatenation.",
         pattern=re.compile(
-            r'(\bexecute\s*\(\s*f["\'].*(SELECT|INSERT|UPDATE|DELETE|DROP|ALTER)\b|'
-            r'\bexecute\s*\(\s*["\'].*(SELECT|INSERT|UPDATE|DELETE).*%s.*["\']\s*%)',
+            r'(\bexecute\s*\(\s*f["\'].*(?:SELECT|INSERT|UPDATE|DELETE|DROP|ALTER)\b|'
+            r'\bexecute\s*\(\s*["\'].*(?:SELECT|INSERT|UPDATE|DELETE).*%s.*["\']\s*%)',
             re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts"),
@@ -93,7 +93,7 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Standard PRNGs (random, Math.random) are predictable and must not generate tokens, keys, or IDs.",
         pattern=re.compile(
-            r'(\b(token|secret|key|password|nonce|otp|salt|auth)\w*\s*=\s*.*(random\.(choice|random|randint|randrange)|Math\.random\s*\(\)))',
+            r'(\b(?:token|secret|key|password|nonce|otp|salt|auth)\w*\s*=\s*.*(?:random\.(?:choice|random|randint|randrange)|Math\.random\s*\(\)))',
             re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts", ".jsx", ".tsx", ".dart"),
@@ -118,10 +118,11 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Allowing all origins (*) with credentials exposes sensitive authenticated sessions across origins.",
         pattern=re.compile(
-            r'(allow_origins\s*=\s*\[?["\']\*["\']\]?.*allow_credentials\s*=\s*True|'
-            r'Access-Control-Allow-Origin["\']?\s*:\s*["\']\*["\'].*credentials|'
-            r'cors\(\s*\{.*origin\s*:\s*["\']\*["\'].*credentials\s*:\s*true)',
-            re.IGNORECASE | re.DOTALL
+            r'(allow_origins\s*=\s*\[?["\']\*["\']\]?[\s\S]*?allow_credentials\s*=\s*True|'
+            r'Access-Control-Allow-Origin["\']?\s*:\s*["\']\*["\'][\s\S]*?credentials|'
+            r'origin\s*:\s*["\']\*["\'][\s\S]{0,120}?credentials\s*:\s*true|'
+            r'credentials\s*:\s*true[\s\S]{0,120}?origin\s*:\s*["\']\*["\'])',
+            re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts"),
         recommendation="Specify explicit trusted domain origins instead of '*' when credentials/cookies are permitted."
@@ -134,11 +135,11 @@ RULES: List[VulnerabilityRule] = [
         severity="HIGH",
         description="Hardcoded secrets in source code lead to credential compromise in repositories.",
         pattern=re.compile(
-            r'(\b(api_key|secret_key|private_key|auth_token|jwt_secret|aws_secret_access_key)\s*=\s*["\'][A-Za-z0-9_\-\.\/]{16,}["\'])',
+            r'(\b(?:api_key|secret_key|private_key|auth_token|jwt_secret|aws_secret_access_key)\s*=\s*["\'][A-Za-z0-9_\-\.\/]{16,}["\'])',
             re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts", ".jsx", ".tsx", ".dart"),
-        recommendation="Move secrets to environment variables (os.getenv / process.env) or secret managers."
+        recommendation="Move secrets to environment variables (os.getenv / process.env) or secret managers. If exposed, rotate and revoke immediately."
     ),
 
     # 9. Open Redirect / Unvalidated Destination
@@ -148,7 +149,7 @@ RULES: List[VulnerabilityRule] = [
         severity="MEDIUM",
         description="Redirecting users to URLs derived directly from request query parameters without allowlist validation.",
         pattern=re.compile(
-            r'(\b(redirect|HttpResponseRedirect)\s*\(\s*request\.(GET|query|params)\[?["\'](next|url|redirect|target)["\']\]?\s*\))',
+            r'(\b(?:redirect|HttpResponseRedirect)\s*\(\s*request\.(?:GET|query|params)\[?["\'](?:next|url|redirect|target)["\']\]?\s*\))',
             re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts"),
@@ -162,12 +163,12 @@ RULES: List[VulnerabilityRule] = [
         severity="MEDIUM",
         description="Direct concatenation of user-controlled variables into file access paths.",
         pattern=re.compile(
-            r'(\b(open|File)\s*\(\s*f["\'][^"\']*/\{|'
-            r'\b(open|File)\s*\(\s*.*(path|dir|filename)\s*\+\s*request)',
+            r'(\b(?:open|File)\s*\(\s*f["\'][^"\']*/\{|'
+            r'\b(?:open|File)\s*\(\s*.*(?:path|dir|filename)\s*\+\s*request)',
             re.IGNORECASE
         ),
         extensions=(".py", ".js", ".ts", ".dart"),
-        recommendation="Sanitize with os.path.basename() and verify with os.path.abspath() within the target root directory."
+        recommendation="Sanitize with os.path.basename() and verify canonical containment via Path.resolve().is_relative_to(base_dir)."
     )
 ]
 
@@ -178,44 +179,85 @@ class Finding:
     rule: VulnerabilityRule
     snippet: str
 
-def scan_file(file_path: Path) -> List[Finding]:
+def scan_file(file_path: Path) -> Tuple[List[Finding], Optional[str]]:
     findings: List[Finding] = []
     ext = file_path.suffix.lower()
     
     applicable_rules = [r for r in RULES if ext in r.extensions]
     if not applicable_rules:
-        return findings
+        return findings, None
 
     try:
-        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
-            lines = f.readlines()
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
+            content = f.read()
     except Exception as e:
-        print(f"[WARN] Failed to read {file_path}: {e}", file=sys.stderr)
-        return findings
+        return findings, f"Failed to read {file_path}: {e}"
 
     for rule in applicable_rules:
-        for idx, line in enumerate(lines, start=1):
-            match = rule.pattern.search(line)
-            if match:
-                findings.append(Finding(
-                    file_path=str(file_path),
-                    line_number=idx,
-                    rule=rule,
-                    snippet=line.strip()
-                ))
-    return findings
+        for match in rule.pattern.finditer(content):
+            # Calculate 1-indexed line number from match start
+            line_number = content[:match.start()].count('\n') + 1
 
-def print_report(findings: List[Finding], files_scanned: int) -> int:
+            # Extract snippet
+            start_line_idx = content.rfind('\n', 0, match.start())
+            start_line_idx = 0 if start_line_idx == -1 else start_line_idx + 1
+            end_line_idx = content.find('\n', match.end())
+            end_line_idx = len(content) if end_line_idx == -1 else end_line_idx
+
+            raw_snippet = " ".join(content[start_line_idx:end_line_idx].split())
+            
+            # Mask sensitive values for SEC-SECRET-01 to prevent token leakage in reports
+            if rule.rule_id == "SEC-SECRET-01":
+                snippet = re.sub(r'(=[\s*]*["\'])([^"\']+)(["\'])', r'\1***REDACTED***\3', raw_snippet)
+            else:
+                snippet = raw_snippet
+
+            findings.append(Finding(
+                file_path=str(file_path),
+                line_number=line_number,
+                rule=rule,
+                snippet=snippet
+            ))
+    return findings, None
+
+def print_report(
+    findings: List[Finding],
+    files_scanned: int,
+    files_with_errors: List[Tuple[str, str]],
+    files_not_found: List[str]
+) -> int:
     print(f"\n{'='*80}")
     print("🛡️  OWASP v2 CODE CRAWLING & DANGEROUS SINKS REPORT")
     print(f"{'='*80}")
-    print(f"Total files scanned: {files_scanned}")
-    print(f"Total findings: {len(findings)}\n")
+    print(f"Total files eligible & scanned: {files_scanned}")
+    print(f"Total findings: {len(findings)}")
+    if files_with_errors:
+        print(f"Files with read errors: {len(files_with_errors)}")
+    if files_not_found:
+        print(f"Targets not found: {len(files_not_found)}")
+    print()
 
-    if not findings:
+    if files_not_found:
+        print("⚠️  MISSING TARGETS:")
+        for nf in files_not_found:
+            print(f"   [!] Target does not exist: {nf}")
+        print()
+
+    if files_with_errors:
+        print("⚠️  FILE READ ERRORS:")
+        for fp, err in files_with_errors:
+            print(f"   [!] {fp}: {err}")
+        print()
+
+    if not findings and not files_with_errors and not files_not_found:
         print("✅ [PASS] No high or medium severity dangerous sinks detected in scanned files.")
         print(f"{'='*80}\n")
         return 0
+
+    if not findings and (files_with_errors or files_not_found):
+        print("⚠️ [INCOMPLETE] No dangerous sinks detected in readable files, but some targets could not be verified.")
+        print(f"{'='*80}\n")
+        return 1
 
     high_count = sum(1 for f in findings if f.rule.severity == "HIGH")
     med_count = sum(1 for f in findings if f.rule.severity == "MEDIUM")
@@ -233,7 +275,8 @@ def print_report(findings: List[Finding], files_scanned: int) -> int:
         print("-" * 80)
 
     print(f"{'='*80}\n")
-    return 1 if high_count > 0 else 0
+    has_blocking_issues = high_count > 0 or len(files_with_errors) > 0 or len(files_not_found) > 0
+    return 1 if has_blocking_issues else 0
 
 def main():
     if hasattr(sys.stdout, "reconfigure"):
@@ -252,12 +295,19 @@ def main():
     parser.add_argument(
         "--exit-zero",
         action="store_true",
-        help="Always exit with code 0 even if vulnerabilities are found (for warning-only modes)"
+        help="Always exit with code 0 even if vulnerabilities or errors are found (for non-blocking runs)"
+    )
+    parser.add_argument(
+        "--fail-on-medium",
+        action="store_true",
+        help="Exit with code 1 also when medium severity findings are present"
     )
 
     args = parser.parse_args()
 
     files_to_scan: List[Path] = []
+    files_not_found: List[str] = []
+
     for target in args.targets:
         p = Path(target)
         if p.is_file():
@@ -266,13 +316,22 @@ def main():
             for ext in (".py", ".js", ".ts", ".tsx", ".jsx", ".dart"):
                 files_to_scan.extend(p.glob(f"**/*{ext}"))
         else:
-            print(f"[WARN] Target not found: {target}", file=sys.stderr)
+            files_not_found.append(target)
 
     all_findings: List[Finding] = []
-    for f in files_to_scan:
-        all_findings.extend(scan_file(f))
+    files_with_errors: List[Tuple[str, str]] = []
 
-    exit_code = print_report(all_findings, len(files_to_scan))
+    for f in files_to_scan:
+        findings, error = scan_file(f)
+        if error:
+            files_with_errors.append((str(f), error))
+        all_findings.extend(findings)
+
+    exit_code = print_report(all_findings, len(files_to_scan), files_with_errors, files_not_found)
+    
+    if args.fail_on_medium and any(f.rule.severity == "MEDIUM" for f in all_findings):
+        exit_code = 1
+
     if args.exit_zero:
         sys.exit(0)
     sys.exit(exit_code)

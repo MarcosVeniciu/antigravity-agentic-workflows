@@ -1,32 +1,57 @@
-# 🧹 Code Quality & Complexity Audit
+# 🧹 Code Quality & Maintainability Audit Report
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
-**Scope Analyzed:** Git diff against `develop` (`{{FILES_COUNT}}` files)
+**Base Branch:** `{{BASE_BRANCH}}` | **Commit Ref:** `{{COMMIT_SHA}}`  
+**Execution Mode:** `{{MODE}}` *(Audit-Only | Authorized-Fix)* | **Date:** `{{DATE}}`
 
 ---
 
-## 📊 AST Complexity Report ($V(G) \le 10$)
+## 📋 Scope & Coverage
+
+- **Eligible Files:** `{{ELIGIBLE_FILES_COUNT}}`
+- **Analyzed Files:** `{{ANALYZED_FILES_COUNT}}`
+- **Excluded Files:** `{{EXCLUDED_FILES_OR_PATTERNS}}`
+- **AST Scanner Status (`ast_complexity.py`):** `{{SCANNER_STATUS}}` *(CONCLUDED_CLEAN | FINDINGS_DETECTED | PARTIAL_LIMITATION | N_A)*
+- **Analysis Limitations:** `{{LIMITATIONS_NOTES}}` *(e.g. AST tool evaluates Python only; JS/TS/Dart evaluated via linters/manual inspection)*
+
+---
+
+## 📊 AST Complexity Breakdown ($V(G) \le 10$)
 
 ```text
-{{AST_COMPLEXITY_OUTPUT}}
+{{AST_COMPLEXITY_OUTPUT_SUMMARY}}
 ```
 
 ---
 
-## 🔍 Opportunities Identified in Diff
+## 🔍 Identified Findings
 
-| File / Line | Element | Complexity $V(G)$ | Simplification Technique |
-| :--- | :--- | :--- | :--- |
-| `{{FILE}}:{{LINE}}` | `{{FUNCTION_NAME}}` | `{{VG}}` | Decomposition / Guard Clauses |
-
----
-
-## 🛠️ Mitigations Applied
-- [x] Functions reduced to $V(G) \le 10$.
-- [x] Ambiguous naming and dead code cleaned up.
+| ID | File / Line | Element / Function | Metric / Issue | Severity | Confidence | Disposition | Description & Recommendation |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| `QLT-01` | `{{FILE}}:{{LINE}}` | `{{FUNCTION_NAME}}` | $V(G) = {{VG}}$ / Deep Nesting | High / Med / Low | High / Med / Low | Pending / Confirmed / Dismissed / Fixed | Guard clauses / Helper extraction |
 
 ---
 
-## 🚦 Validation & Tests
-- [x] 100% unit tests passing green following refactoring.
-- [x] Micro-checkpoint recorded via `skills/git` (Mode 2).
+## 🛠️ Authorized Surgical Refactoring (Mode B Only)
+
+> [!NOTE]
+> In **Mode A (Audit-Only)**, no source code or git history modifications are performed.
+> In **Mode B (Authorized-Fix)**, document below only the surgical refactoring authorized and performed:
+
+- [ ] `{{QLT-ID}}`: Decomposed function `{{FUNCTION_NAME}}` to reduce $V(G)$ from `{{OLD_VG}}` to `{{NEW_VG}}`.
+- [ ] `{{QLT-ID}}`: Removed dead code, unused imports, or flattened pyramid nesting.
+
+---
+
+## 🚦 Validation & Test Metrics
+
+- **Test Suite Command:** `{{TEST_COMMAND}}`
+- **Test Metrics:** Executed: `{{TOTAL_TESTS}}` | Passed: `{{PASSED_TESTS}}` | Failed: `{{FAILED_TESTS}}` | Skipped: `{{SKIPPED_TESTS}}`
+- **Git Checkpoint (Mode B Only):** `{{GIT_CHECKPOINT_HASH_OR_N_A}}`
+
+---
+
+## 🏁 Conclusion & Gate Decision
+
+- **Decision:** `{{DECISION}}` *(APPROVED_CLEAN | BLOCKED_ON_FINDINGS | INCONCLUSIVE)*
+- **Justification / Residual Risk:** `{{JUSTIFICATION_OR_RESIDUAL_RISK}}`

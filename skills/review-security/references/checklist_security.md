@@ -1,71 +1,73 @@
 # Checklist: Security Review (OWASP Code Review Guide v2 & ASVS Aligned)
 
-This document guides the audit and surgical fix of security vulnerabilities, injection flaws, input sanitization, secret leaks, SCA, LGPD logging, race conditions, and modern web attack vectors.
+This document guides the audit and surgical remediation of security vulnerabilities, injection flaws, input sanitization, secret leaks, SCA, LGPD logging, race conditions, and modern web attack vectors.
 
 ---
 
-## ⚡ Phase 0 — Script-First Automated Crawling (MANDATORY)
-Before performing any manual code reading, run the automated sink scanner against the modified files:
+## ⚡ Phase 0 — Automated Crawling (Priority Guide)
+
+Run the automated sink scanner against modified files to rapidly identify high-risk patterns:
 ```bash
 python skills/review-security/scripts/scan_sinks.py <modified_files>
 ```
-* **Output Evaluation:** If any `🔴 [HIGH]` or `🟡 [MEDIUM]` alerts are reported, prioritize immediate investigation on those specific files and line numbers.
-* **Call Hierarchy:** If flagged lines receive untrusted parameters from upstream callers, trace the call hierarchy (1 level up/down) to verify sanitization.
+* **Output Evaluation:** Prioritize inspection on lines flagged by the scanner.
+* **Taint Analysis & Call Hierarchy:** Trace the data flow across caller and callee layers (1 to 2 levels up/down) to verify authentication, authorization, and whether sanitization was applied upstream.
+* **Note:** The scanner catches known lexical patterns; business logic flaws (BPOA, missing state checks, logical bypasses) require manual inspection of all relevant diff changes.
 
 ---
 
 ## 🔄 Phase 1 — Audit (Locating Evidence)
 
 ### 1. Gestão de Segredos & SCA
-* Verify if new dependencies introduced in PR/lockfile contain known CVEs.
-* Scan diff for hardcoded passwords, API keys, tokens, or private certificates.
-* Ensure sensitive configuration is loaded via environment variables or secret vaults.
+* **Credenciais Expostas:** Varrer o diff em busca de chaves privadas, senhas, tokens de API ou segredos de assinatura.
+* **Ação em Caso de Vazamento:** Uma credencial comitada no repositório é considerada **comprometida**. Apenas movê-la para variável de ambiente não elimina o risco: exigir revogação, rotação imediata e expurgo do histórico de commits se aplicável.
+* **SCA & Lockfiles:** Verificar se novas dependências introduzidas contêm CVEs conhecidas ou versões obsoletas.
 
 ### 2. Autenticação & Gestão de Sessão
-* Verify authentication mechanisms do not expose specific credential failures on login.
-* Ensure session tokens use secure flags (`HttpOnly`, `Secure`, `SameSite=Strict/Lax`).
-* Ensure session tokens are regenerated upon login (session fixation defense) and invalidated on logout.
+* **Respostas de Login:** Mensagens de erro de login genéricas sem permitir enumeração de usuários válidos.
+* **Proteção de Sessão:** Cookies de autenticação com flags obrigatórias: `HttpOnly`, `Secure`, `SameSite=Lax/Strict`.
+* **Fixação de Sessão:** Regeneração de Session ID imediatamente após autenticação bem-sucedida e invalidação no logout.
 
 ### 3. Autorização & Controle de Acesso (BPOA / IDOR)
-* Verify authorization is checked server-side on every endpoint and sensitive operation.
-* Ensure resource IDs (e.g. `/api/orders/{id}`) validate ownership against authenticated user (`user_id = current_user.id`).
+* **Validação de Posse (Ownership):** Garantir que requisições acessando entidades por ID (`/api/orders/{id}`) validem no servidor se o registro pertence ao usuário autenticado (`WHERE id = :id AND user_id = :current_user_id`).
+* **Falta de Autorização:** Endpoints sensíveis sem anotações de verificação de permissão/roles.
 
-### 4. Validação de Entradas & Sanitização (Injection & XSS)
-* Locate SQL/NoSQL injection risks from string concatenation or string interpolation.
-* Check OS execution (`subprocess`, `Process.run`, `child_process`) for missing argument lists or `shell=True`.
-* Verify user inputs rendered in responses pass through contextual HTML encoding or DOMPurify.
+### 4. Injeção (SQL, NoSQL, Comandos do SO, Path Traversal)
+* **SQL/NoSQL:** Interpolação de strings em consultas vs consultas parametrizadas.
+* **Comandos do SO:** Chamadas a `subprocess`, `os.system` ou `child_process` executadas com `shell=True` ou sem lista de argumentos.
+* **Path Traversal:** Concatenação de parâmetros do usuário em caminhos de arquivo. Validar canonicidade via `Path.resolve().is_relative_to(base_dir)`.
 
 ### 5. Race Conditions & Concorrência (TOCTOU - OWASP Cap. 23)
-* Identify Check-then-Act patterns without transactional row locks (e.g. checking balance before debiting).
-* Ensure critical balance, inventory, and voucher mutations use database-level locking (`SELECT FOR UPDATE`, atomic decrement, or optimistic version checks).
-* Avoid shared mutable state in singleton services without thread synchronization.
+* **Check-then-Act:** Verificação de saldo, estoque ou cupom seguida de mutação sem lock transacional.
+* **Isolamento Concorrente:** Uso de travas no nível de linha (`SELECT ... FOR UPDATE`), operações atômicas ou versionamento otimista.
 
 ### 6. Vetores Web Modernos: CSRF, CORS & Open Redirects
-* Ensure state-changing operations (POST/PUT/DELETE) enforce anti-CSRF token verification or strict SameSite cookie policies.
-* Verify CORS configuration does not combine wildcard origins (`*`) with `allow_credentials=True`.
-* Inspect redirect destinations: reject external domains unless strictly validated against an internal allowlist.
+* **CSRF:** Endpoints mutantes (POST/PUT/DELETE) exigem tokens anti-CSRF ou cookies com `SameSite=Strict/Lax`.
+* **CORS:** Configuração que reflete dinamicamente a origem da requisição (`Access-Control-Allow-Origin: req.headers.origin`) combinada com `Access-Control-Allow-Credentials: true`.
+* **Open Redirects:** Redirecionamento baseado em parâmetro de requisição (`next`, `redirect_to`). Deve ser validado via allowlist estrita de hostnames conhecidos ou restringido a caminhos relativos seguros (rejeitando `//evil.com` e esquemas como `javascript:`).
 
 ### 7. Criptografia & Entropia (CSPRNG - OWASP Cap. 12)
-* Ensure security tokens, OTPs, session identifiers, and password reset nonces use CSPRNG (`secrets` in Python, `crypto.randomUUID()` in JS/TS, `Random.secure()` in Dart).
-* Never allow `random.random()` or `Math.random()` to generate cryptographic or authentication artifacts.
+* **Geração de Tokens:** Tokens de autenticação, resets de senha e nãoces devem usar geradores criptográficos (`secrets` em Python, `crypto.randomUUID()` em JS/TS, `Random.secure()` em Dart).
+* Proibir `random.random()` e `Math.random()` em contextos de segurança.
 
-### 8. Proteção de Dados, Privacidade & Log Injection (LGPD / OWASP Cap. 19)
-* Ensure PII data (CPF, email, bank details) is encrypted in transit (TLS 1.2+) and at rest.
-* Verify NO sensitive data (passwords, tokens, PII) is written to application logs.
-* Sanitize carriage returns and line feeds (`\r`, `\n`) from user inputs logged to stdout to prevent Log Injection / Forgery.
-
-### 9. Registro, Auditoria & Tratamento de Erros (OWASP Cap. 20)
-* Verify sensitive security events (auth failure, privilege change, transactions) produce audit logs.
-* Verify exceptions return generic error messages to clients without leaking stack traces or internal DB details (Fail Securely).
+### 8. Proteção de Dados, Privacidade & Log Injection (LGPD)
+* **Mascaramento de PII:** Nenhum dado sensível (senhas, tokens, CPF, cartões) pode ser registrado em logs.
+* **Logs de Erro Internos:** Stack traces e detalhes de banco não devem ser expostos ao cliente externo; logs internos devem respeitar regras de mascaramento.
+* **Log Injection (CRLF):** Sanitizar quebras de linha (`\r`, `\n`) em valores de entrada gravados em logs.
 
 ---
 
-## 🛠️ Phase 2 — Surgical Application
-* Replace string concatenation with ORM parameterized queries.
-* Use argument lists without shell: `subprocess.run(["cmd", "arg"], shell=False)`.
-* Add row-level locks or atomic operations to eliminate TOCTOU race conditions: `query.with_for_update()`.
-* Add ownership validation to queries (`user_id = current_user.id`).
-* Enforce CSPRNG via `import secrets` or `crypto.randomUUID()`.
-* Validate redirect targets strictly against relative paths (`url.startswith('/') and not url.startswith('//')`).
-* Move secrets to `os.getenv()` or vault and apply masking to PII in logs.
-* Catch exceptions gracefully and return generic user error payloads while logging full details internally.
+## 🛠️ Phase 2 — Surgical Application & Mitigations (Mode B Only)
+
+* **Consultas Parametrizadas:** Substituir interpolação direta por parâmetros nomeados no ORM/driver.
+* **Execução Segura:** Usar vetores de argumentos sem shell: `subprocess.run(["cmd", arg], shell=False)`.
+* **Contenção de Diretório:** Usar `Path(user_path).resolve().is_relative_to(base_dir)` para anular Path Traversal.
+* **Validação de Redirecionamento:**
+  ```python
+  from urllib.parse import urlparse
+  target = urlparse(destination)
+  if target.netloc and target.netloc not in ALLOWED_HOSTS:
+      raise SecurityError("Untrusted redirect")
+  ```
+* **Controle de Acesso em Banco:** Injetar filtro de `user_id` diretamente na consulta de busca.
+* **Segredos Comprometidos:** Mover para variáveis de ambiente E registrar incidente para revogação e rotação de credenciais.

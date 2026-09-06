@@ -10,7 +10,7 @@ Esse agente previne a ocorrência de "Mega-PRs", conflitos massivos de mesclagem
 
 ```mermaid
 flowchart TD
-    User["Demanda Complexa / Macro-Problema<br/>(Épico de Negócio ou Arquitetura)"] --> E1["<b>Etapa 1: Alinhamento do Macro-Problema</b><br/><i>Skill: plan-debate (Outcome-Based)</i><br/>• Fixa o Estado Final Desejado<br/>• Trata sugestões do usuário como hipóteses flexíveis<br/>• Entrevista cirúrgica (2 a 4 perguntas)"]
+    User["Demanda Complexa / Macro-Problema<br/>(Épico de Negócio ou Arquitetura)"] --> E1["<b>Etapa 1: Alinhamento do Macro-Problema</b><br/><i>Skill: plan-debate (Outcome-Based)</i><br/>• Fixa o Estado Final Desejado<br/>• Trata sugestões do usuário como hipóteses flexíveis<br/>• Entrevista cirúrgica (3 a 5 perguntas)"]
     
     E1 --> E2["<b>Etapa 2: Fatiamento Evolutivo & Blueprint</b><br/><i>Skill: plan-decompose</i><br/>• Monotonicidade Arquitetural<br/>• Contratos e Mocks Primeiro<br/>• Calibração de Ciclo por Sub-feature<br/>• Gera artefato epic_breakdown.md"]
     
@@ -26,7 +26,7 @@ flowchart TD
 1. **Varredura de Contexto:** Analisa a base de código atual, manifestos de dependências e documentações de arquitetura no repositório.
 2. **Fixação do Estado Final Desejado:** Isola rigorosamente o desfecho funcional de negócio a ser alcançado pelo épico como um todo.
 3. **Pistas como Hipóteses:** Qualquer sugestão ou caminho técnico proposto pelo usuário é tratado como hipótese preliminar, desafiando premissas frágeis.
-4. **Entrevista Cirúrgica:** Conduz uma inquirição focada de **2 a 4 perguntas objetivas** para eliminar ambiguidades sobre limites de escopo e integrações críticas.
+4. **Entrevista Cirúrgica:** Conduz uma inquirição focada de **3 a 5 perguntas objetivas** para eliminar ambiguidades sobre limites de escopo e integrações críticas.
 * 💡 **Skill Utilizada:** [`skills/plan-debate`](file:///e:/Codigos/antigravity-agentic-workflows/docs/skills/plan-debate.md)
 
 ---

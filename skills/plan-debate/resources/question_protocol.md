@@ -7,7 +7,7 @@ This document establishes the interaction patterns for conducting the technical 
 ## 🎯 Core Interview Principles
 
 1. **Dynamic & Adaptive Volume:** The total number of questions is not fixed; it scales with domain complexity and naturally evolves based on answers from previous turns.
-2. **Small Batches per Turn (1 to 3 Questions):** Never send overwhelming questionnaires or walls of text. Keep batches small so the user can easily digest and respond.
+2. **Small Batches per Turn (3 to 5 Questions):** Never send overwhelming questionnaires or walls of text. Keep batches small so the user can easily digest and respond.
 3. **Active Convergence:** Stop interviewing as soon as the functional outcome, boundary rules, and measurable acceptance criteria are clear enough to formulate architectural proposals in `scope_proposals.md`.
 
 ---
