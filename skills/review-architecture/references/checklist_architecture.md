@@ -1,28 +1,40 @@
 # Checklist: Architecture & Coupling Review
 
-This document guides the audit and surgical fix of layer isolation, coupling, Dependency Inversion, and DTOs.
+This document guides the audit of architectural boundary isolation, layer coupling, Dependency Inversion (DIP), DTO boundaries, and cohesion.
 
 ---
 
-## ⚡ Phase 0 — Script-First Automated Boundary Check (MANDATORY)
-Before inspecting architecture manually, run the boundary linter against modified domain files:
+## ⚡ Phase 0 — Automated Boundary Check (Priority Guide)
+
+Run the boundary linter against modified files to rapidly identify known boundary violations:
 ```bash
 python skills/review-architecture/scripts/check_arch_boundaries.py <modified_files>
 ```
-* **Output Evaluation:** If any `🔴 [VIOLATION]` is reported, resolve the illegal import immediately by declaring an interface/port before conducting semantic design review.
+* **Evaluation:** Treat any `🔴 [VIOLATION]` as an architectural investigation lead. Document the finding in the audit report.
+* **Note:** Scanners prioritize reading but do not replace semantic architectural inspection. Always evaluate full class and module responsibilities across the diff.
 
 ---
 
 ## 🔄 Phase 1 — Audit (Locating Evidence)
-* Check infrastructure leakage in domain logic (`flask`, `SQLAlchemy`, `boto3`, `requests` in Python; `axios`, `express` in TS; `package:flutter`, `package:http` in Dart).
-* Check hidden dependencies (direct instantiation of DB/API clients inside method bodies without injection).
-* Identify input argument mutation (`list.append`, `dict['key'] = val` on received objects).
-* Map "God Classes" with multiple responsibilities.
+
+### 1. Isolamento de Camadas & Inversão de Dependência (DIP)
+* **Vazamento de Infraestrutura no Domínio:** Verificar se camadas puras de negócio (`domain`, `entities`, `use_cases`) importam drivers de banco (`sqlalchemy`, `typeorm`, `prisma`), frameworks web (`flask`, `express`, `fastapi`) ou bibliotecas HTTP (`requests`, `axios`).
+* **Dependências Ocultas:** Identificar instanciação direta de clientes de rede, serviços externos ou repositórios concretos dentro do construtor ou métodos (`new HttpClient()`, `DatabaseConnection()`).
+* **Injeção de Dependência:** Verificar se serviços dependem de abstrações (interfaces/portas) passadas via construtor, facilitando testes e desacoplamento.
+
+### 2. Fronteiras de DTOs & Contratos de Transporte
+* **Exposição de Modelos Internos:** Garantir que entidades de persistência (ORM) ou modelos ricos de domínio não sejam expostos diretamente em payloads de API pública sem um DTO intermediário.
+* **Contratos Estritos:** Verificar se DTOs de entrada e saída são imutáveis ou fortemente tipados (Pydantic, dataclasses, TypeScript interfaces/types).
+
+### 3. Coesão & Princípio da Responsabilidade Única (SRP)
+* **God Classes:** Mapear classes que acumulam parsing de dados, regras de negócio e chamadas de persistência no mesmo escopo.
+* **Efeitos Colaterais & Mutabilidade Inesperada:** Identificar mutação de parâmetros de entrada recebidos (`args.append(...)`, modificação direta de dicionários/listas do chamador).
 
 ---
 
-## 🛠️ Phase 2 — Surgical Application
-* Extract direct infrastructure access to interfaces/ports (Repository Pattern / Dependency Inversion).
-* Require external clients to be injected via constructor (`__init__`).
-* Enforce immutability by creating defensive copies of received collections.
-* Decompose God Classes into smaller specialized services (`ParserService`, `PersistenceService`).
+## 🛠️ Phase 2 — Surgical Recommendations & Mitigation (Mode B Only)
+
+* **Inversão de Dependências:** Declarar interfaces/protocolos na camada de domínio e injetar adaptadores concretos no ponto de composição (`__init__`).
+* **Fronteiras de DTO:** Introduzir mappers/DTOs específicos para desacoplar contratos de API de modelos de banco de dados.
+* **Imutabilidade Consciente:** Criar cópias defensivas quando houver risco de efeito colateral compartilhado, avaliando impacto de alocação de memória em grandes coleções.
+* **Decomposição Coesa:** Fatiar classes infladas em serviços especializados (`DataParser`, `ValidationService`, `PersistenceAdapter`).

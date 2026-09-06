@@ -13,7 +13,7 @@ import re
 import argparse
 from pathlib import Path
 from dataclasses import dataclass
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 
 @dataclass
 class BoundaryRule:
@@ -27,8 +27,12 @@ RULES: List[BoundaryRule] = [
         language="Python",
         extensions=(".py",),
         forbidden_patterns=[
-            (re.compile(r'^\s*(from|import)\s+(sqlalchemy|flask|fastapi|django|boto3|requests|httpx|aiohttp|pymongo|redis)\b'),
-             "Domain layer must not import external database, HTTP client, or web framework packages.")
+            (
+                re.compile(
+                    r'^\s*(?:from\s+(?:sqlalchemy|flask|fastapi|django|boto3|requests|httpx|aiohttp|pymongo|redis)(?:\.[a-zA-Z0-9_]+)*\s+import|import\s+(?:sqlalchemy|flask|fastapi|django|boto3|requests|httpx|aiohttp|pymongo|redis)(?:\.[a-zA-Z0-9_]+)*\b)'
+                ),
+                "Domain layer must not import external database, HTTP client, or web framework packages."
+            )
         ]
     ),
     # TypeScript / JavaScript Boundary Rules
@@ -36,8 +40,12 @@ RULES: List[BoundaryRule] = [
         language="TypeScript/JavaScript",
         extensions=(".ts", ".tsx", ".js", ".jsx"),
         forbidden_patterns=[
-            (re.compile(r'^\s*(import\s+.*from|const\s+.*=\s*require)\s*["\'](axios|express|react|next|typeorm|prisma|@prisma|pg|mysql2?|redis|ioredis)["\']'),
-             "Domain layer must not import ORM, HTTP client, React, or server framework modules.")
+            (
+                re.compile(
+                    r'^\s*(?:(?:import\s+.*?from\s+)|(?:const|let|var)\s+.*?=\s*require\s*\(\s*)["\'](axios|express|react|next|typeorm|prisma|@prisma(?:/[a-zA-Z0-9_\-]+)?|pg|mysql2?|redis|ioredis)(?:/[a-zA-Z0-9_\-\./]*)?["\']'
+                ),
+                "Domain layer must not import ORM, HTTP client, React, or server framework modules."
+            )
         ]
     ),
     # Dart / Flutter Boundary Rules
@@ -45,19 +53,35 @@ RULES: List[BoundaryRule] = [
         language="Dart/Flutter",
         extensions=(".dart",),
         forbidden_patterns=[
-            (re.compile(r'^\s*import\s+["\']package:flutter/'),
-             "Pure domain/entity/use-case must not depend on Flutter UI framework."),
-            (re.compile(r'^\s*import\s+["\'](dart:io|package:http/|package:dio/|package:shared_preferences/|package:sqflite/)'),
-             "Pure domain layer must not depend directly on concrete I/O, HTTP, or persistence drivers.")
+            (
+                re.compile(r'^\s*import\s+["\']package:flutter/'),
+                "Pure domain/entity/use-case must not depend on Flutter UI framework."
+            ),
+            (
+                re.compile(r'^\s*import\s+["\'](?:dart:io|package:http/|package:dio/|package:shared_preferences/|package:sqflite/)'),
+                "Pure domain layer must not depend directly on concrete I/O, HTTP, or persistence drivers."
+            )
         ]
     )
 ]
 
-DOMAIN_KEYWORDS = ("domain", "entities", "entity", "use_cases", "usecases", "usecase", "core/domain")
+DOMAIN_DIR_SEGMENTS = {
+    "domain", "entities", "entity", "use_cases", "usecases", "usecase"
+}
 
 def is_domain_file(path: Path) -> bool:
-    path_str = str(path).replace("\\", "/").lower()
-    return any(keyword in path_str for keyword in DOMAIN_KEYWORDS)
+    """
+    Checks if a file resides inside a domain directory boundary.
+    Uses directory path segments rather than raw substring matching to avoid false positives.
+    """
+    parts = [part.lower() for part in path.parts]
+    # Check if any parent directory matches domain segments
+    for part in parts[:-1]:
+        if part in DOMAIN_DIR_SEGMENTS:
+            return True
+        if part == "core" and "domain" in parts:
+            return True
+    return False
 
 @dataclass
 class BoundaryViolation:
@@ -66,23 +90,22 @@ class BoundaryViolation:
     matched_import: str
     reason: str
 
-def check_file(file_path: Path, force_check: bool = False) -> List[BoundaryViolation]:
+def check_file(file_path: Path, force_check: bool = False) -> Tuple[List[BoundaryViolation], Optional[str]]:
     violations: List[BoundaryViolation] = []
     
     if not force_check and not is_domain_file(file_path):
-        return violations
+        return violations, None
 
     ext = file_path.suffix.lower()
     applicable_rules = [r for r in RULES if ext in r.extensions]
     if not applicable_rules:
-        return violations
+        return violations, None
 
     try:
-        with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+        with open(file_path, "r", encoding="utf-8", errors="replace") as f:
             lines = f.readlines()
     except Exception as e:
-        print(f"[WARN] Could not read {file_path}: {e}", file=sys.stderr)
-        return violations
+        return violations, f"Could not read {file_path}: {e}"
 
     for rule in applicable_rules:
         for idx, line in enumerate(lines, start=1):
@@ -94,19 +117,52 @@ def check_file(file_path: Path, force_check: bool = False) -> List[BoundaryViola
                         matched_import=line.strip(),
                         reason=reason
                     ))
-    return violations
+    return violations, None
 
-def print_report(violations: List[BoundaryViolation], files_scanned: int) -> int:
+def print_report(
+    violations: List[BoundaryViolation],
+    domain_files_scanned: int,
+    total_files_examined: int,
+    files_with_errors: List[Tuple[str, str]],
+    files_not_found: List[str]
+) -> int:
     print(f"\n{'='*80}")
     print("🏛️  ARCHITECTURAL LAYER BOUNDARY AUDIT REPORT")
     print(f"{'='*80}")
-    print(f"Domain files inspected: {files_scanned}")
-    print(f"Boundary violations:    {len(violations)}\n")
+    print(f"Total files examined:   {total_files_examined}")
+    print(f"Domain files inspected: {domain_files_scanned}")
+    print(f"Boundary violations:    {len(violations)}")
+    if files_with_errors:
+        print(f"Files with read errors: {len(files_with_errors)}")
+    if files_not_found:
+        print(f"Targets not found:      {len(files_not_found)}")
+    print()
 
-    if not violations:
-        print("✅ [PASS] All domain layers respect architectural boundary isolation.")
+    if files_not_found:
+        print("⚠️  MISSING TARGETS:")
+        for nf in files_not_found:
+            print(f"   [!] Target does not exist: {nf}")
+        print()
+
+    if files_with_errors:
+        print("⚠️  FILE READ ERRORS:")
+        for fp, err in files_with_errors:
+            print(f"   [!] {fp}: {err}")
+        print()
+
+    if not violations and not files_with_errors and not files_not_found:
+        if domain_files_scanned == 0:
+            print("ℹ️  [INFO] No domain files identified among the provided targets.")
+            print("    (Use --force-all if you wish to verify boundary rules on all target files regardless of path).")
+        else:
+            print("✅ [PASS] All scanned domain layers respect architectural boundary isolation.")
         print(f"{'='*80}\n")
         return 0
+
+    if not violations and (files_with_errors or files_not_found):
+        print("⚠️ [INCOMPLETE] No violations in readable domain files, but some targets could not be verified.")
+        print(f"{'='*80}\n")
+        return 1
 
     print("-" * 80)
     for v in violations:
@@ -148,6 +204,8 @@ def main():
     args = parser.parse_args()
 
     files: List[Path] = []
+    files_not_found: List[str] = []
+
     for t in args.targets:
         p = Path(t)
         if p.is_file():
@@ -155,15 +213,30 @@ def main():
         elif p.is_dir():
             for ext in (".py", ".ts", ".js", ".tsx", ".jsx", ".dart"):
                 files.extend(p.glob(f"**/*{ext}"))
+        else:
+            files_not_found.append(t)
 
     violations: List[BoundaryViolation] = []
+    files_with_errors: List[Tuple[str, str]] = []
     scanned_domain_count = 0
-    for f in files:
-        if args.force_all or is_domain_file(f):
-            scanned_domain_count += 1
-            violations.extend(check_file(f, force_check=args.force_all))
 
-    exit_code = print_report(violations, scanned_domain_count)
+    for f in files:
+        is_target_domain = args.force_all or is_domain_file(f)
+        if is_target_domain:
+            scanned_domain_count += 1
+            f_violations, err = check_file(f, force_check=args.force_all)
+            if err:
+                files_with_errors.append((str(f), err))
+            violations.extend(f_violations)
+
+    exit_code = print_report(
+        violations,
+        scanned_domain_count,
+        len(files),
+        files_with_errors,
+        files_not_found
+    )
+    
     if args.exit_zero:
         sys.exit(0)
     sys.exit(exit_code)
