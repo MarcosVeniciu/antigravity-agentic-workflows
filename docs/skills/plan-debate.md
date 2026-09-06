@@ -10,7 +10,7 @@ A skill **`plan-debate`** conduz a inquirição socrática e a descoberta técni
 flowchart TD
     User["Entrada do Usuário com Pistas de 'Como Fazer'"] --> Iso["<b>1. Isolamento do Estado Final Desejado</b><br/>O desfecho de negócio e critérios de sucesso são FIXOS"]
     Iso --> Hyp["<b>2. Pistas de Implementação são HIPÓTESES</b><br/>Caminhos técnicos são flexíveis e desafiados"]
-    Hyp --> Q["<b>3. Entrevista Cirúrgica Interativa</b><br/>1 a 3 perguntas por turno via ferramenta <code>ask_question</code>"]
+    Hyp --> Q["<b>3. Entrevista Cirúrgica Interativa</b><br/>3 a 5 perguntas por turno via ferramenta <code>ask_question</code>"]
     Q --> Prop["<b>4. Matriz Comparativa (2 a 3 Propostas Máx)</b><br/>Pragmática vs Ideal em <code>scope_proposals.md</code>"]
     Prop --> Appr{"Usuário Aprovou Proposta?<br/>(Proceed)"}
     Appr --"Sim"--> Exit["Encerramento Imediato do Debate<br/>Avança para BDD/SDD"]
@@ -32,7 +32,7 @@ flowchart TD
 ---
 
 ### 3. Entrevista Cirúrgica Dinâmica e Adaptativa
-* **Lotes Curtos:** Nunca envia questionários longos. Faz de 1 a 3 perguntas objetivas por turno.
+* **Lotes Curtos:** Nunca envia questionários longos. Faz de 3 a 5 perguntas objetivas por turno.
 * **Canal Primário (`ask_question`):** Sempre que houver opções estruturadas, trade-offs ou limites de escopo, utiliza a ferramenta modal `ask_question`, prefixando a recomendação com `(Recommended)`.
 * **Convergência Ativa:** Interrompe a entrevista assim que o escopo e os critérios forem suficientes para popular as propostas.
 

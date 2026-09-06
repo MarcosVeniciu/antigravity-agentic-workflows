@@ -27,7 +27,7 @@ flowchart TD
 
 ### Etapa 1: Debate Outcome-Based & Matriz de Propostas
 1. **Foco no Estado Final Desejado:** Isola o resultado funcional e as regras de negócio reais, eliminando o "Problema XY". Sugestões do usuário são tratadas como hipóteses de trabalho.
-2. **Entrevista Cirúrgica:** Realiza de 1 a 3 perguntas por turno (via ferramenta interativa `ask_question`) para esclarecer limites e casos excepcionais.
+2. **Entrevista Cirúrgica:** Realiza de 3 a 5 perguntas por turno (via ferramenta interativa `ask_question`) para esclarecer limites e casos excepcionais.
 3. **Matriz Comparativa de Propostas:** Consolida o entendimento em até 3 alternativas no artefato `scope_proposals.md` (`RequestFeedback: true`):
    * **Proposta 1 (Pragmática / Incremental):** Menor atrito com código legado e menor custo.
    * **Proposta 2 (Arquiteturalmente Ideal / Escalável):** Alto desacoplamento, padrões modernos e prontidão para escala.

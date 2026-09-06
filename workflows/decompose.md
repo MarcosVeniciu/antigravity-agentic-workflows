@@ -13,7 +13,7 @@ You orchestrate **Phase 0 (Macro-Architecture)** of the development lifecycle, r
 * Analyze existing codebase, manifests, and architecture documents.
 * Pin the **Desired End-State of the Epic** (the core business problem to be solved).
 * Treat user suggestions or initial steps strictly as flexible working hypotheses, challenging fragile assumptions.
-* Conduct a surgical interview of **2 to 4 objective questions** to eliminate gaps in business rules or boundaries.
+* Conduct a surgical interview of **3 to 5 objective questions** to eliminate gaps in business rules or boundaries.
 * 💡 **Recommended Skill:** `skills/plan-debate`
 
 ### Step 2: Evolutionary Slicing & Epic Blueprint Generation
