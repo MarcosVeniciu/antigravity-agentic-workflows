@@ -14,8 +14,11 @@
 
 ## 🏗️ Architecture & Contracts
 
+### Technical Execution Flow (Sequence Diagram) [Mandatory]
+
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Client as "Consultant / Web"
     participant API as "Producer Controller"
     participant Repo as "Producer Repository (Mock)"
@@ -27,6 +30,51 @@ sequenceDiagram
     Repo-->>API: "saved_producer (with ID)"
     API-->>Client: "201 Created (ID + public fields)"
 ```
+
+### Component & Contract Structure (Class Diagram) [Mandatory]
+
+```mermaid
+classDiagram
+    direction TB
+
+    class ProducerController {
+        +create_producer(req: ProducerCreateRequest) ProducerResponseDTO
+    }
+
+    class IProducerRepository {
+        <<Interface>>
+        +save(producer: Producer) Producer
+        +find_by_email(email: str) Producer
+    }
+
+    class InMemoryProducerRepository {
+        <<Fake>>
+        -_storage: dict
+        +save(producer: Producer) Producer
+        +find_by_email(email: str) Producer
+    }
+
+    class ProducerCreateRequest {
+        +name: str
+        +email: EmailStr
+        +farm_name: str
+        +password: str
+    }
+
+    class Producer {
+        +id: str
+        +name: str
+        +email: str
+        +farm_name: str
+    }
+
+    ProducerController --> IProducerRepository : depends on
+    InMemoryProducerRepository ..|> IProducerRepository : implements
+    ProducerController ..> ProducerCreateRequest : consumes
+    IProducerRepository ..> Producer : operates on
+```
+
+### Typed Contracts & Boundary Mocks [Mandatory]
 
 ```python
 from pydantic import BaseModel, Field, EmailStr

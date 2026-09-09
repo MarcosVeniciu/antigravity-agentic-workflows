@@ -68,6 +68,7 @@ When decomposing an epic, classify each sub-feature explicitly:
 
 Before finalizing `epic_breakdown.md`, audit the proposed roadmap against these criteria:
 
+- [ ] **Macro Architectural Modeling:** Are the Delta Class Diagram (with `<<Existing>>`/`<<New>>`/`<<Modified>>`) and the Macro Journey Sequence Diagram documented?
 - [ ] **Observable Outcome:** Does every feature deliver a demonstrable functional or technical result?
 - [ ] **Dependency Rationale:** Does every edge in the graph state explicitly what capability it receives from the predecessor?
 - [ ] **Acyclic Graph (DAG):** Is the dependency graph strictly acyclic with zero circular dependencies?
@@ -83,7 +84,7 @@ Before finalizing `epic_breakdown.md`, audit the proposed roadmap against these 
 
 | Level | Canonical Location | What to Document | What NOT to Put Here |
 |---|---|---|---|
-| **Macro-Architecture (Epic)** | `01-concepcao/epic-[slug].md` | Scope boundaries, non-goals, shared contracts, systemic risks, epic success criteria, branch roadmap. | Do NOT list local files, private method signatures, or granular task checklists. |
-| **Micro-Planning (Feature)** | `implementation_plan.md` in `/plan` | File diffs, detailed Pydantic/Zod schemas, atomic Gherkin scenarios, TDD cycle (Red-Green-Refactor). | Do NOT renegotiate macro epic scope without updating the canonical epic blueprint. |
+| **Macro-Architecture (Epic)** | `01-concepcao/epic-[slug].md` | Scope boundaries, non-goals, Macro Architecture (Delta Class & Journey Sequence Diagrams), shared contracts, systemic risks, epic success criteria, branch roadmap. | Do NOT list local files, private method signatures, or granular task checklists. |
+| **Micro-Planning (Feature)** | `implementation_plan.md` in `/plan` | File diffs, detailed Pydantic/Zod schemas, atomic Gherkin scenarios, Micro Sequence (layers) & Class (types/mocks) diagrams, TDD cycle. | Do NOT renegotiate macro epic scope without updating the canonical epic blueprint. |
 
 

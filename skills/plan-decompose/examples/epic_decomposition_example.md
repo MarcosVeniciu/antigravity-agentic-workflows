@@ -63,6 +63,108 @@ Enable dynamic, relational persistence for producers and farms in PostgreSQL, an
 - The legacy `farms.json` file is loaded synchronously at service startup.
 - The legacy `POST /api/diagnose` endpoint accepts static payloads and executes LLM calls sequentially for all pillars.
 
+### Structural Domain Delta (Class Diagram) [Mandatory]
+
+```mermaid
+classDiagram
+    direction TB
+
+    class LegacyFarmLoader {
+        <<Existing>>
+        +load_from_json()
+        +farms_cache: dict
+    }
+
+    class LegacyDiagnosisEndpoint {
+        <<Modified>>
+        +diagnose(payload)
+        +invoke_all_pillars()
+    }
+
+    class Producer {
+        <<New>>
+        +id: UUID
+        +email: string
+        +hashed_password: str
+    }
+
+    class Farm {
+        <<New>>
+        +id: UUID
+        +name: string
+        +producer_id: UUID
+    }
+
+    class DiagnosticSnapshot {
+        <<New>>
+        +id: UUID
+        +producer_id: UUID
+        +pillar_results: dict
+        +created_at: datetime
+    }
+
+    class DeltaComparator {
+        <<New>>
+        +compare(new_input, previous_snapshot)
+        +tolerance_epsilon: float
+    }
+
+    Producer "1" --> "1..*" Farm : owns
+    Producer "1" --> "0..*" DiagnosticSnapshot : records
+    LegacyDiagnosisEndpoint --> Producer : validates
+    LegacyDiagnosisEndpoint --> DeltaComparator : evaluates changes
+    LegacyDiagnosisEndpoint --> DiagnosticSnapshot : reuses cached pillars
+    LegacyFarmLoader ..> Farm : migrated into
+
+    %% Delta Styling Rules
+    style LegacyFarmLoader fill:#f1f5f9,stroke:#64748b,stroke-dasharray: 5 5
+    style LegacyDiagnosisEndpoint fill:#fef3c7,stroke:#d97706,stroke-width:2px
+    style Producer fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style Farm fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style DiagnosticSnapshot fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    style DeltaComparator fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+```
+
+### Macro Business Journey (Sequence Diagram) [Mandatory]
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Consultant as "Field Consultant"
+    participant API as "[Modified] Diagnostic API"
+    participant ProducerDomain as "[New] Producer Domain (F1, F2)"
+    participant HistoryDomain as "[New] History Domain (F3)"
+    participant DeltaDomain as "[New] Delta Engine (F4)"
+    participant LLM as "[Existing] LLM Provider"
+
+    rect rgb(240, 253, 244)
+        Note over Consultant, ProducerDomain: [F1, F2] Producer Identification
+        Consultant->>API: "POST /api/diagnose (payload + producer_id)"
+        API->>ProducerDomain: "validate_producer(producer_id)"
+        ProducerDomain-->>API: "producer_verified"
+    end
+
+    rect rgb(239, 246, 255)
+        Note over API, HistoryDomain: [F3] Latest Execution Snapshot Retrieval
+        API->>HistoryDomain: "get_latest_snapshot(producer_id)"
+        HistoryDomain-->>API: "previous_execution_snapshot"
+    end
+
+    rect rgb(254, 243, 199)
+        Note over API, DeltaDomain: [F4] Deterministic Delta Calculation
+        API->>DeltaDomain: "calculate_delta(current_input, previous_snapshot)"
+        DeltaDomain-->>API: "modified_pillars: [Climate & Hydrology]"
+    end
+
+    rect rgb(250, 245, 255)
+        Note over API, LLM: [F5] Surgical Execution & Report Assembly
+        API->>LLM: "diagnose_pillar(Climate & Hydrology)"
+        LLM-->>API: "pillar_analysis_result"
+        API->>HistoryDomain: "save_execution_snapshot(merged_pillars)"
+        API-->>Consultant: "200 OK (Consolidated 5-pillar report)"
+    end
+```
+
 ### Proposed High-Level Approach
 Adopt Clean Architecture with Dependency Inversion (`IProducerRepository`, `IDiagnosticHistoryRepository`). Introduce a pure domain in-memory delta engine before LLM orchestration to enable deterministic semantic caching.
 

@@ -46,7 +46,7 @@ To prevent prompt bloat and context exhaustion during subsequent `/plan` chats, 
 
 | Section Level | Treatment in Epic Blueprint | Examples |
 |---|---|---|
-| **Mandatory** | Deep, precise specification | Problem, Scope & Non-Goals, Feature Roadmap, Shared Contracts, Acceptance Criteria, Handover. |
+| **Mandatory** | Deep, precise specification | Problem, Scope & Non-Goals, Macro Architecture (Delta Class & Journey Sequence Diagrams), Feature Roadmap, Shared Contracts, Acceptance Criteria, Handover. |
 | **Conditional** | 1 line or `N/A: [brief reason]` | Data migration, Feature flags, Complex rollback, Rollout telemetry. Fill only when applicable! |
 | **Delegated to `/plan`** | **Strictly prohibited in the Epic** | Specific file lists, TDD execution order, internal helper methods, granular commit lists. |
 
@@ -55,6 +55,8 @@ To prevent prompt bloat and context exhaustion during subsequent `/plan` chats, 
 ## 📋 Available Resources
 * **Epic Template:** [`resources/template_epic.md`](./resources/template_epic.md)
 * **Slicing Directives:** [`references/slicing_rules.md`](./references/slicing_rules.md)
+* **Class Diagram Conventions:** [`references/class_diagram_conventions.md`](./references/class_diagram_conventions.md)
+* **Sequence Diagram Conventions:** [`references/sequence_diagram_conventions.md`](./references/sequence_diagram_conventions.md)
 * **Practical Example:** [`examples/epic_decomposition_example.md`](./examples/epic_decomposition_example.md)
 
 

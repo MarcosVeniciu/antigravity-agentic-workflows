@@ -36,14 +36,21 @@ tags:
 
 ## 🏗️ 4. Architecture & Contracts
 
-### Sequence Diagram (Mermaid)
+### Technical Execution Flow (Sequence Diagram) [Mandatory]
+
+<!--
+Micro-architectural execution flow across layers for this specific vertical slice.
+Trace from entry point (API/CLI) through Domain Service to Ports and Adapters/Fakes.
+All message labels must be enclosed in double quotes.
+-->
 
 ```mermaid
 sequenceDiagram
+    autonumber
     participant Client as "Client / Caller"
     participant API as "API / Controller"
     participant Service as "Business Service"
-    participant Repository as "Repository / Mock"
+    participant Repository as "Repository / Port"
     
     Client->>API: "POST /endpoint (Payload)"
     API->>Service: "process_business_rule(dto)"
@@ -53,10 +60,60 @@ sequenceDiagram
     API-->>Client: "HTTP 200 / 201 Response"
 ```
 
-### Typed Contracts & Boundary Mocks
+### Component & Contract Structure (Class Diagram) [Mandatory]
+
+<!--
+Micro-architectural class diagram specifying typed interfaces, concrete services, DTOs, and test doubles.
+Mark interfaces as <<Interface>> and test doubles as <<Fake>> or <<Mock>>.
+-->
+
+```mermaid
+classDiagram
+    direction TB
+
+    class EndpointController {
+        +handle_request(req: ExampleRequestDTO) ExampleResponseDTO
+    }
+
+    class BusinessService {
+        -repository: IEntityRepository
+        +execute(dto: ExampleRequestDTO) ExampleResponseDTO
+    }
+
+    class IEntityRepository {
+        <<Interface>>
+        +save(entity: Entity) Entity
+        +find_by_id(id: str) Entity
+    }
+
+    class InMemoryEntityRepository {
+        <<Fake>>
+        -_storage: dict
+        +save(entity: Entity) Entity
+        +find_by_id(id: str) Entity
+        +seed(data: list) void
+    }
+
+    class ExampleRequestDTO {
+        +email: string
+    }
+
+    class ExampleResponseDTO {
+        +id: string
+        +status: string
+    }
+
+    EndpointController --> BusinessService : invokes
+    BusinessService --> IEntityRepository : depends on
+    InMemoryEntityRepository ..|> IEntityRepository : implements
+    BusinessService ..> ExampleRequestDTO : consumes
+    BusinessService ..> ExampleResponseDTO : returns
+```
+
+### Typed Contracts & Boundary Mocks [Mandatory]
 
 ```python
-# Typed Contracts using Pydantic
+# Typed Contracts using Pydantic (or language equivalent)
 from pydantic import BaseModel, Field, EmailStr
 
 class ExampleRequestDTO(BaseModel):

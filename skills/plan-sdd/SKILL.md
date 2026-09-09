@@ -9,9 +9,11 @@ Translates BDD rules and scenarios into a detailed technical blueprint, defining
 
 ## 🎯 Technical Directives
 
-1. **Safe Visual Modeling (Mermaid.js):**
+1. **Mandatory Dual Visual Modeling (Mermaid.js):**
+   * Every SDD specification **MUST** include **BOTH** diagrams:
+     - `sequenceDiagram`: Tracing technical flow across layers (`Client -> Controller -> Service -> Port -> Adapter/Fake`).
+     - `classDiagram`: Specifying typed contracts, interfaces (`<<Interface>>`), DTOs, and test doubles (`<<Fake>>`/`<<Mock>>`).
    * All nodes and messages must have labels enclosed in double quotes (e.g., `node["Auth Service (JWT)"]`) to prevent parser syntax errors.
-   * Priorize `sequenceDiagram` for distributed flows or `classDiagram` for data structures and contracts.
 2. **Strict Typed Contracts (Boundary Mocks):**
    * Define contracts with explicit validations using native language types (e.g., Pydantic in Python, Zod in TypeScript).
    * Map input types, output types, and expected typed exceptions.
