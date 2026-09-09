@@ -4,7 +4,7 @@ This resource guides how to formulate queries and structure synthesized answers 
 
 ---
 
-## 🔍 Formulating High-Precision Queries
+## Formulating High-Precision Queries
 
 When querying NotebookLM via `notebook_query` or `cross_notebook_query`:
 
@@ -15,12 +15,12 @@ When querying NotebookLM via `notebook_query` or `cross_notebook_query`:
 
 ---
 
-## 📝 Response Structure (Grounding & Citations)
+## Response Structure (Grounding & Citations)
 
 When presenting findings to the user:
 
 ```markdown
-### 📖 Síntese NotebookLM: [Título do Tópico]
+### Síntese NotebookLM: [Título do Tópico]
 
 > **Caderno Consultado:** `[Nome do Caderno]`  
 > **Fontes Relevantes:** `[Documento 1.pdf]`, `[Documento 2.md]`

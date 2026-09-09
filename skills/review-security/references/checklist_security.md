@@ -4,7 +4,7 @@ This document guides the audit and surgical remediation of security vulnerabilit
 
 ---
 
-## ⚡ Phase 0 — Automated Crawling (Priority Guide)
+## Phase 0 — Automated Crawling (Priority Guide)
 
 Run the automated sink scanner against modified files to rapidly identify high-risk patterns:
 ```bash
@@ -16,7 +16,7 @@ python skills/review-security/scripts/scan_sinks.py <modified_files>
 
 ---
 
-## 🔄 Phase 1 — Audit (Locating Evidence)
+## Phase 1 — Audit (Locating Evidence)
 
 ### 1. Gestão de Segredos & SCA
 * **Credenciais Expostas:** Varrer o diff em busca de chaves privadas, senhas, tokens de API ou segredos de assinatura.
@@ -57,7 +57,7 @@ python skills/review-security/scripts/scan_sinks.py <modified_files>
 
 ---
 
-## 🛠️ Phase 2 — Surgical Application & Mitigations (Mode B Only)
+## Phase 2 — Surgical Application & Mitigations (Mode B Only)
 
 * **Consultas Parametrizadas:** Substituir interpolação direta por parâmetros nomeados no ORM/driver.
 * **Execução Segura:** Usar vetores de argumentos sem shell: `subprocess.run(["cmd", arg], shell=False)`.

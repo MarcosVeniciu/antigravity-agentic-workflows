@@ -2,7 +2,7 @@
 
 ---
 
-## 📋 Sequential Implementation Plan
+## Sequential Implementation Plan
 
 | # | Action | Rationale | Technical Acceptance Criteria | Dependency |
 |---|---|---|---|---|
@@ -12,7 +12,7 @@
 
 ---
 
-## 🏗️ Architecture & Contracts
+## Architecture & Contracts
 
 ### Technical Execution Flow (Sequence Diagram) [Mandatory]
 

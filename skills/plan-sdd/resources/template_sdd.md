@@ -10,22 +10,22 @@ tags:
   - phase/conception
 ---
 
-# 📐 Technical Specification (SDD): {{FEATURE_NAME}}
+# Technical Specification (SDD): {{FEATURE_NAME}}
 
 ---
 
-## 🎯 1. Technical Goal
+## 1. Technical Goal
 {{TECHNICAL_GOAL}}
 
 ---
 
-## ⚠️ 2. Critical Decisions & Design Choices
+## 2. Critical Decisions & Design Choices
 > [!IMPORTANT]
 > {{CRITICAL_DECISIONS_AND_DEPENDENCIES}}
 
 ---
 
-## 📋 3. Sequential Implementation Plan
+## 3. Sequential Implementation Plan
 
 | # | Action | Rationale | Technical Acceptance Criteria | Dependency |
 |---|---|---|---|---|
@@ -34,7 +34,7 @@ tags:
 
 ---
 
-## 🏗️ 4. Architecture & Contracts
+## 4. Architecture & Contracts
 
 ### Technical Execution Flow (Sequence Diagram) [Mandatory]
 
@@ -126,7 +126,7 @@ class ExampleResponseDTO(BaseModel):
 
 ---
 
-## 💥 5. File Impact Analysis
+## 5. File Impact Analysis
 
 | File / Module | Change Type | Risk | Notes |
 | --- | --- | --- | --- |
@@ -135,6 +135,6 @@ class ExampleResponseDTO(BaseModel):
 
 ---
 
-## 🔗 Related Context & Notes
+## Related Context & Notes
 * [[bdd-{{FEATURE_SLUG}}]]
 * [[dod-{{FEATURE_SLUG}}]]

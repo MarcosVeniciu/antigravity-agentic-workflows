@@ -9,14 +9,14 @@ Guides the diagnosis and surgical resolution of test failures during the TDD loo
 
 ---
 
-## 📁 Supporting Resources
+## Supporting Resources
 
-* 📖 **Debugging Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
-* 📋 **Diagnostic Template (`task.md`)**: [`resources/error_checklist_template.md`](./resources/error_checklist_template.md)
+* **Debugging Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
+* **Diagnostic Template (`task.md`)**: [`resources/error_checklist_template.md`](./resources/error_checklist_template.md)
 
 ---
 
-## ⛔ Strict Rules & Constraints
+## Strict Rules & Constraints
 
 1. **Minimal & Surgical Fix:** Edit strictly the production code lines responsible for the failure. Refactoring code that did not fail is prohibited.
 2. **Preserve Test Specification:** Never alter test assertions or expectations to force a pass, unless there is an obvious syntactic typo in the test itself.
@@ -25,7 +25,7 @@ Guides the diagnosis and surgical resolution of test failures during the TDD loo
 
 ---
 
-## ✅ Validation Checklist
+## Validation Checklist
 
 - [ ] Root cause identified and synthesized in 1 sentence.
 - [ ] Surgical fix applied exclusively to production code.

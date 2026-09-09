@@ -4,7 +4,7 @@ This document establishes operational procedures, command patterns, and strict c
 
 ---
 
-## 🔄 Operational Modes
+## Operational Modes
 
 ### Mode 1: Branch Validation & Git Flow Strategy
 Used in **Phase 1 (`/plan`)** or **Phase 0 (`/decompose`)** to ensure no development happens directly on protected branches.
@@ -100,7 +100,7 @@ Used strictly within the **`/release`** workflow to consolidate candidate featur
 
 ---
 
-## ⛔ Universal Rules and Strict Constraints
+## Universal Rules and Strict Constraints
 
 1. **UNAUTHORIZED PUSH PROHIBITED:** Running `git push` without explicit user instruction is strictly forbidden.
 2. **DIRTY HANDOVERS PROHIBITED:** Never close a phase without squashing intermediate micro-checkpoints via Mode 3.
@@ -109,7 +109,7 @@ Used strictly within the **`/release`** workflow to consolidate candidate featur
 
 ---
 
-## ✅ Self-Audit Checklist
+## Self-Audit Checklist
 
 - [ ] Active branch follows Git Flow naming (`feature/*`, `bugfix/*`, `release/*`)?
 - [ ] Micro-checkpoints squashed via `git reset --soft` at phase conclusion?

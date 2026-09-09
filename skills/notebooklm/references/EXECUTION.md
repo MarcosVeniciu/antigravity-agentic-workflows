@@ -4,7 +4,7 @@ This manual defines operational protocols for querying and managing documents in
 
 ---
 
-## 🛠️ MCP Tool Catalog
+## MCP Tool Catalog
 
 ### 1. Exploration & Discovery
 * `notebook_list`: Lists all available notebooks associated with the authenticated account.
@@ -23,7 +23,7 @@ This manual defines operational protocols for querying and managing documents in
 
 ---
 
-## 🔄 Execution Protocol (When Commanded by User)
+## Execution Protocol (When Commanded by User)
 
 1. **Verify Authorization**: Confirm the user explicitly requested NotebookLM consultation.
 2. **Notebook Identification**: If the target notebook is not named, run `notebook_list` to identify relevant notebooks.
@@ -37,7 +37,7 @@ This manual defines operational protocols for querying and managing documents in
 
 ---
 
-## ⛔ Strict Constraints
+## Strict Constraints
 
 1. **NO AUTONOMOUS INVOCATION**: Never invoke NotebookLM tools during standard TDD, refactoring, or review phases unless the user explicitly commands it.
 2. **NO ASSUMED CONTEXT**: Do not invent citations or claim a document exists in NotebookLM without verifying with `source_describe` or `notebook_list`.

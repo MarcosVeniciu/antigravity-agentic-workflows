@@ -9,7 +9,7 @@ Decomposes complex initiatives and large architectural shifts into an ordered se
 
 ---
 
-## 🎯 The 5 Principles of Evolutionary Slicing
+## The 5 Principles of Evolutionary Slicing
 
 1. **Verifiable Delivery:**
    * Every sub-feature must deliver either a demonstrable user-facing behavior or an explicitly identified technical capability (**Technical Enabler**) with an identified immediate consumer.
@@ -32,7 +32,7 @@ Decomposes complex initiatives and large architectural shifts into an ordered se
 
 ---
 
-## 🚦 Operational Bounds: Inputs, Outputs & Stop Conditions
+## Operational Bounds: Inputs, Outputs & Stop Conditions
 
 * **Inputs:** Core problem statement, target personas/systems, existing repository context, constraints, and observed technical debt.
 * **Output:** A canonical Epic Blueprint markdown following [`resources/template_epic.md`](./resources/template_epic.md), registered in the Obsidian Vault.
@@ -40,7 +40,7 @@ Decomposes complex initiatives and large architectural shifts into an ordered se
 
 ---
 
-## ⚖️ Anti-Bureaucracy & Token Economy Directive
+## Anti-Bureaucracy & Token Economy Directive
 
 To prevent prompt bloat and context exhaustion during subsequent `/plan` chats, enforce this triage:
 
@@ -52,7 +52,7 @@ To prevent prompt bloat and context exhaustion during subsequent `/plan` chats, 
 
 ---
 
-## 📋 Available Resources
+## Available Resources
 * **Epic Template:** [`resources/template_epic.md`](./resources/template_epic.md)
 * **Slicing Directives:** [`references/slicing_rules.md`](./references/slicing_rules.md)
 * **Class Diagram Conventions:** [`references/class_diagram_conventions.md`](./references/class_diagram_conventions.md)

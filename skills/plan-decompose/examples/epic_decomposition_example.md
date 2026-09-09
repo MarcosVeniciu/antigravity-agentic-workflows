@@ -13,7 +13,7 @@ tags:
   - architecture
 ---
 
-# 🗺️ Epic Blueprint: Producer Management & Incremental Delta Diagnosis Engine
+# Epic Blueprint: Producer Management & Incremental Delta Diagnosis Engine
 
 ## 1. Problem & Desired Observable Outcome
 

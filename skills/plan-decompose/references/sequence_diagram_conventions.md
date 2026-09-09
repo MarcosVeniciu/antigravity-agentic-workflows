@@ -4,7 +4,7 @@ This document establishes the architectural standard for constructing the **Macr
 
 ---
 
-## 1. 🎯 Architectural Purpose at Epic Level
+## 1. Architectural Purpose at Epic Level
 
 The Macro Sequence Diagram models the **dynamic and temporal behavior** of the Epic:
 1. Demonstrates how business value flows end-to-end through actors and subsystems.
@@ -14,7 +14,7 @@ The Macro Sequence Diagram models the **dynamic and temporal behavior** of the E
 
 ---
 
-## 2. 👥 Participants and Subsystem Stereotypes
+## 2. Participants and Subsystem Stereotypes
 
 Participants in the macro sequence diagram do **NOT** represent technical classes or controllers. They represent:
 * **Human actors or external systems:** `actor Name as "Description"`
@@ -28,7 +28,7 @@ Participants in the macro sequence diagram do **NOT** represent technical classe
 
 ---
 
-## 3. 📐 Mermaid Syntax Standard & Feature Traceability
+## 3. Mermaid Syntax Standard & Feature Traceability
 
 The use of `autonumber`, double quotes on message labels, and grouping blocks (`rect` / notes) mapping which Roadmap sub-features (`F1`, `F2`...) realize each phase is **mandatory**:
 
@@ -69,16 +69,16 @@ sequenceDiagram
 
 ---
 
-## 4. ⚖️ Abstraction Boundaries: What to Include vs. What to Omit
+## 4. Abstraction Boundaries: What to Include vs. What to Omit
 
-### ✅ WHAT MUST BE INCLUDED IN THE EPIC
+### WHAT MUST BE INCLUDED IN THE EPIC
 * External actors and primary domain subsystems.
 * Continuous temporal progression of the user/business journey (from trigger to final business outcome).
 * Critical business alternative paths (`alt` approval vs. rejection, `opt` notifications or reconciliations).
 * Explicit traceability connecting journey phases to Roadmap sub-features (`[F1]`, `[F2]`).
 * High-level asynchronous transitions or domain messaging events.
 
-### 🚫 STRICTLY PROHIBITED IN THE EPIC (Delegated to `/plan` / SDD)
+### STRICTLY PROHIBITED IN THE EPIC (Delegated to `/plan` / SDD)
 * Internal technical layer calls (e.g., `Controller -> Service -> Repository`).
 * Direct database connections, ORM transactions, or raw SQL queries.
 * Micro-validations on primitive fields (e.g., email format regex).
@@ -86,7 +86,7 @@ sequenceDiagram
 
 ---
 
-## 5. 🔍 Macro Sequence Diagram Compliance Checklist
+## 5. Macro Sequence Diagram Compliance Checklist
 
 Before finalizing the Epic Blueprint, verify:
 - [ ] Is the `autonumber` directive present?

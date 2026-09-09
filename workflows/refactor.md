@@ -9,7 +9,7 @@ You orchestrate **Phase 3 (Chat 3)** of the feature development lifecycle.
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Entry Gate & Refactoring Scope Discovery
 - **Mandatory Entry Gate**: Run the test suite in the terminal. If any test is failing, abort refactoring immediately and direct the user to `/implement` or `/test-fix`.
@@ -29,7 +29,7 @@ You orchestrate **Phase 3 (Chat 3)** of the feature development lifecycle.
 For each component planned in `task_list.md`:
 1. **Apply Refactoring**:
    * Apply Clean Code and SOLID improvements without modifying observable external behavior.
-   * 💡 **Recommended Skill:** `skills/refactor`
+   * **Recommended Skill:** `skills/refactor`
 2. **Run Regression Tests**:
    * Run the test suite in the terminal after every change.
    * **If tests fail**: Revert immediately via `skills/git` (Mode 4: `git reset --hard HEAD`).
@@ -43,4 +43,4 @@ For each component planned in `task_list.md`:
   git commit -m "refactor(consolidation): apply Clean Code and SOLID for [slug]"
   ```
 - Output the phase transition handover recommendation:
-  > **[NEXT STEP]** ➡️ *"🧹 Phase 3 (Refactoring) completed with 100% green tests! Open a **NEW CHAT (Chat 4)** and run `/review` to begin specialized domain audits."*
+  > **[NEXT STEP]** *"Phase 3 (Refactoring) completed with 100% green tests! Open a **NEW CHAT (Chat 4)** and run `/review` to begin specialized domain audits."*

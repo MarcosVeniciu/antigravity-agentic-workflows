@@ -7,12 +7,12 @@ description: "Code quality audit on git diff: measures Cyclomatic Complexity V(G
 
 Audits the git diff from the perspective of strict cyclomatic complexity, maintainability, and syntactic readability.
 
-## 🎯 Review Pillars (Diff-Based)
+## Review Pillars (Diff-Based)
 * **Cyclomatic Complexity $V(G)$:** Strict threshold of $V(G) \le 10$ per function/method. Evaluated using [`scripts/ast_complexity.py`](./scripts/ast_complexity.py).
 * **Asymptotic Heuristics:** Detection of nested loops or linear lookups inside outer loops.
 * **Readability & Standards:** Naming clarity, absence of dead code, and compliance with language style guides.
 
-## 📋 Available Resources
+## Available Resources
 * **AST Scanner:** [`scripts/ast_complexity.py`](./scripts/ast_complexity.py)
 * **Checklist:** [`references/checklist_quality.md`](./references/checklist_quality.md)
 * **Artifact Template:** [`resources/template_quality.md`](./resources/template_quality.md)

@@ -9,7 +9,7 @@ You orchestrate the forensic investigation of critical bugs, runtime crashes, an
 
 ---
 
-## 🚀 Execution Pipeline in 5 Steps
+## Execution Pipeline in 5 Steps
 
 ### Step 1: Initial Diagnosis & Evidence Extraction
 * Extract the exception, HTTP code, stack trace, and affected component from logs or reports provided by the user.
@@ -21,7 +21,7 @@ You orchestrate the forensic investigation of critical bugs, runtime crashes, an
 ### Step 3: Skill Activation & 5 Whys Methodology
 * Load diagnostic guidelines by opening `SKILL.md` from `skills/debug`.
 * Apply the **5 Whys** framework to drill down beyond superficial symptoms.
-* 💡 **Recommended Skill:** `skills/debug`
+* **Recommended Skill:** `skills/debug`
 
 ### Step 4: Interactive Investigation & Proposed Solution
 * Generate a Root Cause Analysis (RCA) artifact detailing hypotheses, discovered evidence, and a surgical remediation plan with `RequestFeedback: true`.

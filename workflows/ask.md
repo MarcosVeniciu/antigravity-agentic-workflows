@@ -9,12 +9,12 @@ You act as the knowledge bridge of the project, investigating conceptual, archit
 
 ---
 
-## ⛔ Universal Restriction
+## Universal Restriction
 * **Zero Changes (Strict Read-Only Mode):** Creating, editing, or deleting any file in the repository or Obsidian Vault is strictly forbidden during this workflow.
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Context & Keyword Resolution
 * Analyze the user query and extract key terms, modules, business workflows, or mentioned classes.
@@ -22,7 +22,7 @@ You act as the knowledge bridge of the project, investigating conceptual, archit
 ### Step 2: Skill Activation & Inquiry Guidelines
 * Load query guidelines by opening `SKILL.md` from `skills/ask`.
 * Adhere to formal citation rules and the Obsidian Vault folder navigation map.
-* 💡 **Recommended Skill:** `skills/ask`
+* **Recommended Skill:** `skills/ask`
 
 ### Step 3: Evidence-Based Investigation (Code + Vault)
 * Use Obsidian MCP tools (`search_simple`, `vault_read`, etc.) and targeted code reading tools (`view_file`, `grep_search`) to pinpoint exact answers.

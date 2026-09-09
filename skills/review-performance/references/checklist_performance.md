@@ -4,7 +4,7 @@ This document guides the audit of algorithmic complexity, data volumetrics, I/O 
 
 ---
 
-## ⚡ Contexto de Carga & Dimensionamento
+## Contexto de Carga & Dimensionamento
 
 Toda análise de performance deve levar em consideração o **contexto operacional**:
 * **Volumetria de Dados:** Qual o tamanho esperado da coleção (dezenas, milhares, milhões de registros)?
@@ -13,7 +13,7 @@ Toda análise de performance deve levar em consideração o **contexto operacion
 
 ---
 
-## 🔄 Phase 1 — Audit (Locating Evidence)
+## Phase 1 — Audit (Locating Evidence)
 
 ### 1. Padrão N+1 & Custo de I/O Iterativo
 * **Consultas dentro de Laços:** Chamadas de banco de dados (`db.query()`, `repository.find()`) ou chamadas HTTP/API executadas dentro de iterações (`for item in items`).
@@ -33,7 +33,7 @@ Toda análise de performance deve levar em consideração o **contexto operacion
 
 ---
 
-## 🛠️ Phase 2 — Surgical Application & Caveats (Mode B Only)
+## Phase 2 — Surgical Application & Caveats (Mode B Only)
 
 * **Consultas em Lote:** Substituir N+1 por consultas agregadas com cláusula `IN` ou JOINs, respeitando os limites de parâmetros do SGBD.
 * **Lookup O(1) com Cuidado Semântico:**

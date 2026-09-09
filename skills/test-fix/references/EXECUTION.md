@@ -33,4 +33,4 @@ Upon receiving errors in the test output:
 pytest path/to/test_file.py -k test_name
 ```
 
-> **[NEXT STEP]** ➡️ *"🛠️ Surgical fix applied and validated. If all tests are green, execute `/refactor` (or `/review` if fixing an audit finding) to continue the development cycle."*
+> **[NEXT STEP]** *"Surgical fix applied and validated. If all tests are green, execute `/refactor` (or `/review` if fixing an audit finding) to continue the development cycle."*

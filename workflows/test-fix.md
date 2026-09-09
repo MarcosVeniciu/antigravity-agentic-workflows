@@ -9,7 +9,7 @@ You act as the **Reactive Debugger** supporting Phase 2 (TDD Loop) and Phase 3 (
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Skill Activation & Context Resolution
 * Load technical guidelines from `skills/test-fix` by opening its `SKILL.md`.
@@ -20,7 +20,7 @@ You act as the **Reactive Debugger** supporting Phase 2 (TDD Loop) and Phase 3 (
 ### Step 2: Root Cause Isolation
 * Isolate the root cause of the failure in **exactly 1 sentence**.
 * Fill out or update the error checklist using `resources/error_checklist_template.md` from the `@test-fix` skill.
-* 💡 **Recommended Skill:** `skills/test-fix`
+* **Recommended Skill:** `skills/test-fix`
 
 ### Step 3: Surgical Production Code Fix
 * Edit **strictly** the production code necessary to turn the test green.
@@ -37,7 +37,7 @@ You act as the **Reactive Debugger** supporting Phase 2 (TDD Loop) and Phase 3 (
 
 ---
 
-## 🛡️ Fault Tolerance & Double-Strike Rule
+## Fault Tolerance & Double-Strike Rule
 
 1. **Safe Baseline:** Before applying any edits, ensure the workspace working directory is clean.
 2. **Surgical Fix Loop:**

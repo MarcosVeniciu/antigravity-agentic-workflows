@@ -9,7 +9,7 @@ You orchestrate **Phase 0 (Macro-Architecture)** of the development lifecycle, r
 
 ---
 
-## 🚀 Execution Pipeline in 2 Steps
+## Execution Pipeline in 2 Steps
 
 ### Step 1: Macro-Problem Alignment (Outcome-Based)
 * Inspect existing codebase, architecture notes, and manifests.
@@ -17,7 +17,7 @@ You orchestrate **Phase 0 (Macro-Architecture)** of the development lifecycle, r
 * Treat user suggestions or initial steps strictly as working hypotheses, challenging fragile assumptions.
 * Conduct a surgical interview of **up to 5 objective questions** to eliminate ambiguities in domain boundaries or critical constraints (skip questions already answered by context).
 * **Spike Detection:** If an unknown technical constraint or library prevents confident slicing, propose a timeboxed **Spike** before proceeding.
-* 💡 **Recommended Skills:** `skills/plan-debate`, `skills/ask`
+* **Recommended Skills:** `skills/plan-debate`, `skills/ask`
 
 ### Step 2: Evolutionary Slicing & Epic Blueprint Generation
 * Apply the **5 Principles of Evolutionary Slicing** (`skills/plan-decompose`):
@@ -33,11 +33,11 @@ You orchestrate **Phase 0 (Macro-Architecture)** of the development lifecycle, r
   - [ ] Every contract has a clear introducer and at least one identified consumer.
   - [ ] No feature depends on parallel unmerged branches.
 * Generate the `epic_breakdown.md` artifact with `RequestFeedback: true` adhering to [`template_epic.md`](../skills/plan-decompose/resources/template_epic.md).
-* 💡 **Recommended Skill:** `skills/plan-decompose`
+* **Recommended Skill:** `skills/plan-decompose`
 
 ---
 
-## 🏁 Conclusion, Persistence & Handover to Phase 1
+## Conclusion, Persistence & Handover to Phase 1
 
 1. **Vault Persistence:**
    * Upon explicit user approval of the blueprint (via `Proceed` or confirmation message), persist the document into the Obsidian Vault at `01-concepcao/epic-[slug].md` via `skills/obsidian`.
@@ -54,5 +54,5 @@ You orchestrate **Phase 0 (Macro-Architecture)** of the development lifecycle, r
      * **Contracts Introduced:** `[Contracts]`
      * **Core Objective:** `[Objective]`
    * Instruct the user:
-     > **[NEXT STEP]** ➡️ *"🗺️ Epic decomposed and persisted! Run the git command above, open a **NEW CHAT (Chat 1)**, and execute `/plan` to begin the development lifecycle."*
+     > **[NEXT STEP]** *"Epic decomposed and persisted! Run the git command above, open a **NEW CHAT (Chat 1)**, and execute `/plan` to begin the development lifecycle."*
 

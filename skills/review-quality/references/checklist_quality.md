@@ -4,7 +4,7 @@ This document guides the audit of cyclomatic complexity, maintainability, naming
 
 ---
 
-## ⚡ Phase 0 — Automated AST Complexity Check (Python)
+## Phase 0 — Automated AST Complexity Check (Python)
 
 Run the AST complexity scanner against modified Python files:
 ```bash
@@ -15,7 +15,7 @@ python skills/review-quality/scripts/ast_complexity.py <modified_files>
 
 ---
 
-## 🔄 Phase 1 — Audit (Locating Evidence)
+## Phase 1 — Audit (Locating Evidence)
 
 ### 1. Complexidade Ciclomática & Carga Cognitiva
 * **Ramificações Excessivas:** Identificar funções com múltiplos `if/elif/else`, laços aninhados e blocos `try/except` acumulados.
@@ -29,7 +29,7 @@ python skills/review-quality/scripts/ast_complexity.py <modified_files>
 
 ---
 
-## 🛠️ Phase 2 — Surgical Application & Refactoring (Mode B Only)
+## Phase 2 — Surgical Application & Refactoring (Mode B Only)
 
 * **Decomposição em Helpers Coesos:** Extrair blocos lógicos independentes em funções auxiliares especializadas com $V(G) \le 10$.
 * **Guard Clauses:** Inverter condicionais no topo da função para retornar imediatamente em caso de falha, eliminando aninhamento.

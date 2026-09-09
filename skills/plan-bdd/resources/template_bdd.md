@@ -9,7 +9,7 @@ tags:
   - scope
   - phase/conception
 ---
-# 📝 Behavioral Specification (BDD): {{FEATURE_NAME}}
+# Behavioral Specification (BDD): {{FEATURE_NAME}}
 
 ## 1. Scope Decision & Approved End-State
 {{DECISION_SUMMARY}}

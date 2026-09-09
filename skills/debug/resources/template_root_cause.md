@@ -1,4 +1,4 @@
-# 🔍 Root Cause Analysis (RCA) - [Bug Description]
+# Root Cause Analysis (RCA) - [Bug Description]
 
 ## 1. Context & Symptoms
 * **Affected Component:** `[path/to/file.ext]`

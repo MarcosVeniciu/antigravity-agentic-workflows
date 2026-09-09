@@ -1,10 +1,10 @@
-# 📋 Guide and Template for `.env.example`
+# Guide and Template for `.env.example`
 
 This template defines guidelines and standard structure for creating and updating `.env.example` files.
 
 ---
 
-## ⚠️ Mandatory Rules
+## Mandatory Rules
 
 1. **NEVER Include Real Secrets**:
    * Use only generic values, descriptive placeholders, or local development URLs.
@@ -19,7 +19,7 @@ This template defines guidelines and standard structure for creating and updatin
 
 ---
 
-## 📑 Standard Template
+## Standard Template
 
 ```env
 # ==========================================

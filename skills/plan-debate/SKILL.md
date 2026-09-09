@@ -7,7 +7,7 @@ description: "Socratic scope discovery and Outcome-Based Prompting to extract de
 
 Guides technical discovery during Phase 0 (`/decompose`) and Phase 1 (`/plan`), preventing the XY Problem by strictly isolating the desired business outcome from flexible implementation hypotheses.
 
-## 🎯 Core Directives: Outcome-Based Prompting
+## Core Directives: Outcome-Based Prompting
 
 1. **Focus on the Desired End State & Success Criteria (Fixed):**
    * Identify: *"What is the real, functional outcome and business rule the user needs to achieve?"*
@@ -30,12 +30,12 @@ Guides technical discovery during Phase 0 (`/decompose`) and Phase 1 (`/plan`), 
      * **Proposal 3 (Architecturally Ideal / Scalable):** Decoupled, modern best practices, ready for high scale.
    * **Strict Cap:** Never exceed 3 proposals to prevent cognitive overload and analysis paralysis.
 
-## 🚪 Exit Criteria & Phase Transition
+## Exit Criteria & Phase Transition
 * The debate phase **terminates immediately** once the user approves or selects one of the proposals in `scope_proposals.md`.
 * **Handover:** Delegate execution directly to `/plan` (to generate BDD scenarios and SDD blueprints) or `/decompose` (if architectural vertical slicing is required). Do not keep debating after proposal validation.
 
 
-## 📋 Available Resources
+## Available Resources
 * **Debate Rules & XY Problem Prevention:** [`resources/debate_rules.md`](./resources/debate_rules.md)
 * **Questioning Protocol & ask_question Tool:** [`resources/question_protocol.md`](./resources/question_protocol.md)
 * **Proposal Template:** [`resources/template_proposals.md`](./resources/template_proposals.md)

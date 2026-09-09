@@ -7,7 +7,7 @@ description: "Translates BDD specs into safe Mermaid UML diagrams, typed boundar
 
 Translates BDD rules and scenarios into a detailed technical blueprint, defining sequence/class UML diagrams, typed interfaces/boundary mocks, and a sequential file change plan before the TDD cycle.
 
-## 🎯 Technical Directives
+## Technical Directives
 
 1. **Mandatory Dual Visual Modeling (Mermaid.js):**
    * Every SDD specification **MUST** include **BOTH** diagrams:
@@ -20,7 +20,7 @@ Translates BDD rules and scenarios into a detailed technical blueprint, defining
 3. **File Impact Matrix:**
    * Pre-map which files will be created (Additive) or modified (Mutative) along with their risk level.
 
-## 📋 Available Resources
+## Available Resources
 * **SDD Template:** [`resources/template_sdd.md`](./resources/template_sdd.md)
 * **Modeling Manual:** [`references/sdd_execution.md`](./references/sdd_execution.md)
 * **Reference Example:** [`examples/sdd_checkout_example.md`](./examples/sdd_checkout_example.md)

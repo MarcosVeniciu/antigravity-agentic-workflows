@@ -4,7 +4,7 @@ This guide establishes the technical and architectural standards for decomposing
 
 ---
 
-## 1. 🚫 Slicing Anti-Patterns
+## 1. Slicing Anti-Patterns
 
 ### A. Horizontal Slicing (Layer by Layer)
 * **How NOT to do it:**
@@ -20,7 +20,7 @@ This guide establishes the technical and architectural standards for decomposing
 
 ---
 
-## 2. 🎯 Recommended Vertical Slicing Patterns
+## 2. Recommended Vertical Slicing Patterns
 
 Every sub-feature must deliver a complete vertical slice (**typed contract $\rightarrow$ domain logic $\rightarrow$ persistence/test double $\rightarrow$ automated tests**). Apply the following patterns:
 
@@ -33,7 +33,7 @@ Every sub-feature must deliver a complete vertical slice (**typed contract $\rig
 
 ---
 
-## 3. 🧩 Delivery Typology
+## 3. Delivery Typology
 
 When decomposing an epic, classify each sub-feature explicitly:
 
@@ -50,21 +50,21 @@ When decomposing an epic, classify each sub-feature explicitly:
 
 ---
 
-## 4. 🛡️ Boundary Management & Test Doubles
+## 4. Boundary Management & Test Doubles
 
 ### Fakes vs. Mocks (Rigorous Definitions)
 * **Fake:** A working, lightweight in-memory implementation that holds state (e.g., `InMemoryProducerRepository` backed by a dictionary with seed helpers). Enables rapid use case testing without real I/O.
 * **Mock / Stub:** A test spy/stub configured to verify method interactions, inspect arguments, or simulate synthetic error responses.
 
 ### Validation with Real Adapters
-> ⚠️ **Critical Rule:** In-memory Fakes **DO NOT** prove real database constraints, foreign key cascades, ACID transactions, concurrency handling, or network latency.
+> **Critical Rule:** In-memory Fakes **DO NOT** prove real database constraints, foreign key cascades, ACID transactions, concurrency handling, or network latency.
 
 * When introducing a real adapter (e.g., `PostgresProducerRepository`), implement **real integration tests** validating infrastructure boundaries (e.g., using Testcontainers).
 * Adopt **Shared Contract Tests**: the identical contract test suite should pass cleanly against both the `InMemoryFake` and the `RealRepository`.
 
 ---
 
-## 5. 🔍 Slicing Quality Checklist
+## 5. Slicing Quality Checklist
 
 Before finalizing `epic_breakdown.md`, audit the proposed roadmap against these criteria:
 
@@ -80,7 +80,7 @@ Before finalizing `epic_breakdown.md`, audit the proposed roadmap against these 
 
 ---
 
-## ⚖️ Anti-Bureaucracy Matrix: Responsibility Allocation
+## Anti-Bureaucracy Matrix: Responsibility Allocation
 
 | Level | Canonical Location | What to Document | What NOT to Put Here |
 |---|---|---|---|

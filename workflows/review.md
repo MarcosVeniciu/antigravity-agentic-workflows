@@ -10,7 +10,7 @@ Your mission is to perform rigorous, multi-domain architectural and security cod
 
 ---
 
-## ⚙️ Operating Modes
+## Operating Modes
 
 1. **Mode A — Audit-Only (Default):**
    * Inspect code, execute automated scanners, map findings, assess severity/confidence, and generate specialized audit reports.
@@ -25,7 +25,7 @@ Your mission is to perform rigorous, multi-domain architectural and security cod
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Entry Gate & Diff-Based Scope Boundary
 
@@ -64,19 +64,19 @@ flowchart LR
 **For each domain:**
 
 1. **Run Automated Script (if applicable):**
-   * 🏛️ **Architecture:** `python skills/review-architecture/scripts/check_arch_boundaries.py <modified_files>`
-   * 🛡️ **Security:** `python skills/review-security/scripts/scan_sinks.py <modified_files>`
-   * 🧹 **Quality:** `python skills/review-quality/scripts/ast_complexity.py <modified_files>`
-   * ⚡ **Performance:** Semantic review guided by checklist (no standalone script).
-   * 🛡️ **Resilience:** Semantic review guided by checklist (no standalone script).
+   * **Architecture:** `python skills/review-architecture/scripts/check_arch_boundaries.py <modified_files>`
+   * **Security:** `python skills/review-security/scripts/scan_sinks.py <modified_files>`
+   * **Quality:** `python skills/review-quality/scripts/ast_complexity.py <modified_files>`
+   * **Performance:** Semantic review guided by checklist (no standalone script).
+   * **Resilience:** Semantic review guided by checklist (no standalone script).
 
 2. **Code Inspection & Verification:**
    * Evaluate the diff against the domain checklist and reference guides:
-     * 🏛️ `skills/review-architecture`
-     * 🛡️ `skills/review-security`
-     * 🧹 `skills/review-quality`
-     * ⚡ `skills/review-performance`
-     * 🛡️ `skills/review-resilience`
+     * `skills/review-architecture`
+     * `skills/review-security`
+     * `skills/review-quality`
+     * `skills/review-performance`
+     * `skills/review-resilience`
    * Distinguish between **confirmed vulnerabilities/flaws**, **potential risks (hypotheses)**, and **pre-existing tech debt**.
    * Sanitize any sensitive evidence (tokens/passwords) before documenting.
 
@@ -111,4 +111,4 @@ flowchart LR
   git commit -m "audit(review): specialized domain audits completed for [slug]"
   ```
 - Output the phase transition handover recommendation:
-  > **[NEXT STEP]** ➡️ *"🛡️ Phase 4 (Audits) completed! Review findings documented in audit reports. Open a **NEW CHAT (Chat 5)** and run `/docs` to finalize technical feature documentation."*
+  > **[NEXT STEP]** *"Phase 4 (Audits) completed! Review findings documented in audit reports. Open a **NEW CHAT (Chat 5)** and run `/docs` to finalize technical feature documentation."*

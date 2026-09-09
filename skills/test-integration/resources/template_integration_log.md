@@ -1,4 +1,4 @@
-# 🧪 Integration & E2E Testing Report
+# Integration & E2E Testing Report
 
 **Release Version:** `v{{VERSION}}` | **Branch:** `release/v{{VERSION}}`  
 **Integrated Features:**
@@ -6,7 +6,7 @@
 
 ---
 
-## 📊 Stage Execution Output
+## Stage Execution Output
 
 ```text
 {{INTEGRATION_TEST_OUTPUT}}
@@ -14,7 +14,7 @@
 
 ---
 
-## ✅ Coverage Summary
+## Coverage Summary
 - [x] **Happy Path:** Complete end-to-end flow validated.
 - [x] **Unhappy Paths:** Authentication, duplication, and validation rejections verified with expected status codes.
 - [x] **Resilience:** Fallback mechanisms operated properly under simulated downstream unavailability.

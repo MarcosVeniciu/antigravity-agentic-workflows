@@ -4,7 +4,7 @@ This document guides the audit and surgical hardening of timeouts, retries, idem
 
 ---
 
-## 🔄 Phase 1 — Audit (Locating Evidence)
+## Phase 1 — Audit (Locating Evidence)
 
 ### 1. Timeouts de Ponta a Ponta (End-to-End)
 * **Ausência de Timeout Explícito:** Chamadas de rede (HTTP, gRPC, banco de dados, filas) sem definição de tempo limite de conexão e leitura.
@@ -26,7 +26,7 @@ This document guides the audit and surgical hardening of timeouts, retries, idem
 
 ---
 
-## 🛠️ Phase 2 — Surgical Hardening (Mode B Only)
+## Phase 2 — Surgical Hardening (Mode B Only)
 
 * **Timeouts Seguros:** Configurar connect timeout curto (ex: 1-3s) e read timeout proporcional ao SLA esperado:
   ```python

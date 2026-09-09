@@ -9,7 +9,7 @@ You orchestrate **Phase 5 (Chat 5)** of the feature development lifecycle.
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Context & Scope Resolution
 - Identify the active feature via `git branch --show-current`.
@@ -19,7 +19,7 @@ You orchestrate **Phase 5 (Chat 5)** of the feature development lifecycle.
 ### Step 2: Living Documentation Updates
 - Create or update module (or root) `README.md` files using templates from `skills/docs`.
 - Add docstrings with Obsidian Vault traceability (`Ref: Obsidian note [[sdd-[slug] ]]`) to files modified by the feature.
-- 💡 **Recommended Skill:** `skills/docs`
+- **Recommended Skill:** `skills/docs`
 
 ### Step 3: Living DoD Update
 - Update `01-concepcao/dod-[slug].md` via `skills/dod`, marking:
@@ -34,4 +34,4 @@ You orchestrate **Phase 5 (Chat 5)** of the feature development lifecycle.
   ```
 - **Safety Boundary:** The feature branch **MUST NOT** be merged directly into `develop` here. It remains intact and frozen, ready for the integration and release pipeline.
 - Output the feature completion message:
-  > **[NEXT STEP]** ➡️ *"📚 Phase 5 (Documentation) completed successfully! The individual lifecycle for this feature is complete. The branch `feature/[slug]` is frozen and ready to be bundled into the next release via the `/release` workflow."*
+  > **[NEXT STEP]** *"Phase 5 (Documentation) completed successfully! The individual lifecycle for this feature is complete. The branch `feature/[slug]` is frozen and ready to be bundled into the next release via the `/release` workflow."*

@@ -4,7 +4,7 @@ This document establishes the architectural standard for constructing the **Macr
 
 ---
 
-## 1. 🎯 Architectural Purpose at Epic Level
+## 1. Architectural Purpose at Epic Level
 
 At the Epic level, the Class Diagram serves as a **domain and boundary map**. Its purpose is **NOT** to specify detailed implementation code (which is delegated to the SDD), but to immediately clarify:
 1. **What already exists in the system (*As-Is*)?**
@@ -14,7 +14,7 @@ At the Epic level, the Class Diagram serves as a **domain and boundary map**. It
 
 ---
 
-## 2. 🎨 Strict Stereotype and Styling Conventions (Mermaid)
+## 2. Strict Stereotype and Styling Conventions (Mermaid)
 
 Every entity in the Epic Class Diagram **MUST** have an explicit stereotype and standardized visual styling:
 
@@ -26,7 +26,7 @@ Every entity in the Epic Class Diagram **MUST** have an explicit stereotype and 
 
 ---
 
-## 3. 📐 Mermaid Syntax Standard & Structure
+## 3. Mermaid Syntax Standard & Structure
 
 ```mermaid
 classDiagram
@@ -90,18 +90,18 @@ classDiagram
 
 ---
 
-## 4. ⚖️ Abstraction Boundaries: What to Include vs. What to Omit
+## 4. Abstraction Boundaries: What to Include vs. What to Omit
 
 To preserve the **Anti-Bureaucracy & Token Economy Directive**:
 
-### ✅ WHAT MUST BE INCLUDED IN THE EPIC
+### WHAT MUST BE INCLUDED IN THE EPIC
 * Core domain entities and aggregates involved in the Epic.
 * Essential identity and business attributes (e.g., `Id`, `Status`, `Amount`).
 * High-level operations representing business intent (e.g., `CheckIn()`, `CalculateDelta()`).
 * Explicit cardinalities on relationships (`"1"`, `"0..1"`, `"1..*"`, `"0..*"`).
 * Descriptive labels on relationship arrows (e.g., `: occupies`, `: issues`).
 
-### 🚫 STRICTLY PROHIBITED IN THE EPIC (Delegated to `/plan` / SDD)
+### STRICTLY PROHIBITED IN THE EPIC (Delegated to `/plan` / SDD)
 * Private, helper, or infrastructure methods (e.g., `-_validate_format()`, `+__repr__()`).
 * Redundant getters, setters, or property accessors.
 * Third-party framework details (e.g., `pydantic.BaseModel`, `SQLAlchemy.Base`).
@@ -110,7 +110,7 @@ To preserve the **Anti-Bureaucracy & Token Economy Directive**:
 
 ---
 
-## 5. 🔍 Class Diagram Compliance Checklist
+## 5. Class Diagram Compliance Checklist
 
 Before finalizing the Epic Blueprint, verify:
 - [ ] Does every entity have a stereotype: `<<Existing>>`, `<<New>>`, or `<<Modified>>`?

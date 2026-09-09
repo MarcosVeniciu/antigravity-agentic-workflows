@@ -13,7 +13,7 @@ tags:
   - macro-architecture
 ---
 
-# 🗺️ Epic Blueprint: {{EPIC_TITLE}}
+# Epic Blueprint: {{EPIC_TITLE}}
 
 ## 1. Problem & Desired Observable Outcome
 
