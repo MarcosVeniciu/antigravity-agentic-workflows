@@ -5,9 +5,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 
 ---
 
-## 🚀 Release Notes - `v0.8.0` (2026-09-06)
+## Release Notes - `v0.9.0` (2026-09-09)
 
-### 🚀 New Features
+### New Features
+- `[feat: architecture]`: Introduced standardized, mandatory dual-level UML modeling across the lifecycle:
+  - **Macro Level (`plan-decompose`)**: Added mandatory Structural Domain Delta (`classDiagram`) with strict `<<Existing>>`, `<<New>>`, and `<<Modified>>` styling, and Macro Business Journey (`sequenceDiagram`) tracing end-to-end user journeys mapped to roadmap sub-features (`[F1]`, `[F2]`).
+  - **Micro Level (`plan-sdd`)**: Mandated Technical Execution Flow (`sequenceDiagram`) across layers (API -> Service -> Port -> Adapter/Fake) and Component & Contract Structure (`classDiagram`) specifying DTOs, interfaces, and test doubles.
+- `[feat: references]`: Added dedicated reference guides for modeling standards under `skills/plan-decompose/references/`:
+  - `class_diagram_conventions.md`: Guidelines for conceptual domain modeling, delta stereotypes, and anti-patterns.
+  - `sequence_diagram_conventions.md`: Guidelines for cross-boundary business flow, actor/subsystem tagging, and sub-feature mapping.
+
+### Performance & Refactoring
+- `[refactor: docs]`: Full markdown sanitization across all 74 skill and workflow files, eliminating decorative emojis and visual icons to optimize token consumption and AST parsing reliability for LLMs.
+- `[refactor: formatting]`: Standardized status transition arrows to ASCII (`->`) and aligned all newly created references strictly to English.
+
+### Breaking Changes
+- *None. All changes are backward-compatible additions and structural enhancements.*
+
+---
+
+## Release Notes - `v0.8.0` (2026-09-06)
+
+### New Features
 - `[feat: decompose]`: Implemented macro-architecture epic decomposition workflow (`/decompose`) and evolutionary vertical slicing skill (`plan-decompose`) with comprehensive contracts and slice dependency graphing.
 - `[feat: review]`: Implemented multi-domain architectural and security review workflows (`/review`) covering Architecture, Security (OWASP), Quality (AST complexity), Performance, and Resilience.
 - `[feat: scanners]`: Added automated scanning scripts for review gates:
@@ -17,20 +36,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 
 - `[feat: test suite]`: Added comprehensive unit test suite (`tests/skills/test_scanners.py`) ensuring 100% coverage and reliability for automated review scanners.
 - `[feat: plan-debate]`: Formalized Socratic inquiry protocols and Outcome-Based Prompting in `skills/plan-debate` for architectural scope discovery.
 
-### 🐛 Bug Fixes
+### Bug Fixes
 - `[fix: links]`: Fixed documentation paths and relative markdown links across workflow definitions and skill manuals.
 
-### ⚡ Performance & Refactoring
+### Performance & Refactoring
 - `[refactor: workflows]`: Refactored `/plan`, `/decompose`, and `/review` workflows to enforce zero-reading-latency skill loading and progressive disclosure.
 
-### ⚠️ Breaking Changes
+### Breaking Changes
 - *None. All additions are backward-compatible with v0.7.0.*
 
 ---
 
-## 🚀 Release Notes - `v0.7.0` (2026-09-04)
+## Release Notes - `v0.7.0` (2026-09-04)
 
-### 🚀 New Features
+### New Features
 - `[feat: installer]`: Cross-platform installation scripts (`install.ps1`, `install.sh`, `install.bat`) with automated transactional backups, rollback, and uninstallation.
 - `[feat: architecture]`: Minimalist agent workflows separated into specialized single-purpose operational skills with progressive disclosure.
 
