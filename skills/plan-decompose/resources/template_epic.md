@@ -13,7 +13,7 @@ tags:
   - macro-architecture
 ---
 
-# 🗺️ Epic Blueprint: {{EPIC_TITLE}}
+# Epic Blueprint: {{EPIC_TITLE}}
 
 ## 1. Problem & Desired Observable Outcome
 
@@ -56,6 +56,64 @@ If baseline is currently unknown, describe how it will be measured. Do not inven
 
 ### Relevant Existing State
 - {{EXISTING_COMPONENT_OR_FLOW}}
+
+### Structural Domain Delta (Class Diagram) [Mandatory]
+
+<!--
+Visual representation of domain entities, boundary models, and architectural delta.
+Mark entities as <<Existing>>, <<New>>, or <<Modified>>.
+Apply styling: Existing (grey dashed), New (green solid), Modified (amber solid).
+See references/class_diagram_conventions.md for full styling and abstraction rules.
+-->
+
+```mermaid
+classDiagram
+    direction TB
+
+    class ExistingEntity {
+        <<Existing>>
+        +ExistingField: string
+        +existing_operation()
+    }
+
+    class NewDomainEntity {
+        <<New>>
+        +Id: string
+        +Status: string
+        +core_operation()
+    }
+
+    ExistingEntity "1" --> "0..*" NewDomainEntity : manages / relates
+
+    %% Delta Styling Rules
+    style ExistingEntity fill:#f1f5f9,stroke:#64748b,stroke-dasharray: 5 5
+    style NewDomainEntity fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+```
+
+### Macro Business Journey (Sequence Diagram) [Mandatory]
+
+<!--
+End-to-end journey crossing sub-feature boundaries and integrating actors with domains.
+Participants must be marked with [Existing], [New], or [Modified].
+Use autonumber, double quotes on messages, and map steps to Roadmap features [F1], [F2]...
+See references/sequence_diagram_conventions.md for full rules.
+-->
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as "Primary Actor / Client"
+    participant ExistingSubsystem as "[Existing] Legacy Service"
+    participant NewSubsystem as "[New] Target Domain"
+
+    rect rgb(240, 253, 244)
+        Note over User, NewSubsystem: [F1] Initial Core Capability
+        User->>NewSubsystem: "Execute initial request"
+        NewSubsystem->>ExistingSubsystem: "Query existing state or validation"
+        ExistingSubsystem-->>NewSubsystem: "State confirmed"
+        NewSubsystem-->>User: "Observable success response"
+    end
+```
 
 ### Proposed High-Level Approach
 {{HIGH_LEVEL_APPROACH}}

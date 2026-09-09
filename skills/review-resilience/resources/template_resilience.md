@@ -1,4 +1,4 @@
-# 🛡️ Resilience & Fault Tolerance Audit Report
+# Resilience & Fault Tolerance Audit Report
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
 **Base Branch:** `{{BASE_BRANCH}}` | **Commit Ref:** `{{COMMIT_SHA}}`  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Scope & Dependency Matrix
+## Scope & Dependency Matrix
 
 - **Eligible Files:** `{{ELIGIBLE_FILES_COUNT}}`
 - **Analyzed Files:** `{{ANALYZED_FILES_COUNT}}`
@@ -15,7 +15,7 @@
 
 ---
 
-## 🔍 Identified Findings
+## Identified Findings
 
 | ID | File / Line | Failure Scenario | Idempotent? | Severity | Confidence | Disposition | Operational Risk / Root Cause |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -23,7 +23,7 @@
 
 ---
 
-## 🛠️ Authorized Surgical Hardening (Mode B Only)
+## Authorized Surgical Hardening (Mode B Only)
 
 > [!NOTE]
 > In **Mode A (Audit-Only)**, no source code or git history modifications are performed.
@@ -35,7 +35,7 @@
 
 ---
 
-## 🚦 Validation & Fault Injection / Test Metrics
+## Validation & Fault Injection / Test Metrics
 
 - **Fault Simulation / Test Command:** `{{FAULT_TEST_COMMAND}}`
 - **Observed Behavior:** `{{OBSERVED_DEGRADATION_BEHAVIOR}}`
@@ -44,7 +44,7 @@
 
 ---
 
-## 🏁 Conclusion & Gate Decision
+## Conclusion & Gate Decision
 
 - **Decision:** `{{DECISION}}` *(APPROVED_CLEAN | BLOCKED_ON_FINDINGS | INCONCLUSIVE)*
 - **Justification / Residual Risk:** `{{JUSTIFICATION_OR_RESIDUAL_RISK}}`

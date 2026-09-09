@@ -1,10 +1,10 @@
-# ❓ Questioning Protocol & Interaction Design
+# Questioning Protocol & Interaction Design
 
 This document establishes the interaction patterns for conducting the technical interview in Phase 0 (`/decompose`) and Phase 1 (`/plan`) during the `@plan-debate` workflow.
 
 ---
 
-## 🎯 Core Interview Principles
+## Core Interview Principles
 
 1. **Dynamic & Adaptive Volume:** The total number of questions is not fixed; it scales with domain complexity and naturally evolves based on answers from previous turns.
 2. **Small Batches per Turn (3 to 5 Questions):** Never send overwhelming questionnaires or walls of text. Keep batches small so the user can easily digest and respond.
@@ -12,7 +12,7 @@ This document establishes the interaction patterns for conducting the technical 
 
 ---
 
-## 🎛️ Primary Channel: The `ask_question` Tool
+## Primary Channel: The `ask_question` Tool
 
 Whenever questions can be structured into clear choices, architectural trade-offs, scope boundaries, or error handling paths, **always prefer using the interactive `ask_question` tool** instead of plain chat text.
 
@@ -26,12 +26,12 @@ Whenever questions can be structured into clear choices, architectural trade-off
 
 ---
 
-## 💬 Secondary Channel: Open Fallback Template (Chat Text)
+## Secondary Channel: Open Fallback Template (Chat Text)
 
 If a question is purely exploratory, subjective, or cannot be reasonably formulated as structured options, format it as a distinct markdown block in chat using the 3-part pattern:
 
 ```markdown
-* 🎯 **Scope Impact:** [Why this question is critical to business rules, boundaries, or failure modes]
-* ❓ **Question:** [Direct, surgical question]
-* 💡 **Recommended Hypothesis:** [Default technical assumption if the user doesn't express a preference]
+* **Scope Impact:** [Why this question is critical to business rules, boundaries, or failure modes]
+* **Question:** [Direct, surgical question]
+* **Recommended Hypothesis:** [Default technical assumption if the user doesn't express a preference]
 ```

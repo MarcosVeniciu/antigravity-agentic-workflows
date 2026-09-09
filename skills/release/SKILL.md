@@ -9,7 +9,7 @@ Calculates new system versions in accordance with strict SemVer 2.0.0 guidelines
 
 ---
 
-## 🎯 Core Responsibilities
+## Core Responsibilities
 
 1. **SemVer Calculation (SemVer 2.0.0):**
    * Evaluates feature commits merged into the release branch:
@@ -21,6 +21,6 @@ Calculates new system versions in accordance with strict SemVer 2.0.0 guidelines
    * Cumulatively updates `CHANGELOG.md` at the repository root.
    * Persists a copy at `03-releases/changelog-v[VERSION].md` in the Obsidian Vault.
 
-## 📋 Available Resources
+## Available Resources
 * **SemVer Rules:** [`references/semver_rules.md`](./references/semver_rules.md)
 * **Changelog Template:** [`resources/template_changelog.md`](./resources/template_changelog.md)

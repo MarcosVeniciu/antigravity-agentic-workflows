@@ -9,11 +9,11 @@ You orchestrate the secure addition, updating, and maintenance of project depend
 
 ---
 
-## 🚀 Execution Pipeline in 4 Steps
+## Execution Pipeline in 4 Steps
 
 ### Step 1: Skill Activation & Technical Rules
 * Load guidelines from `skills/infra` by opening its `SKILL.md`.
-* 💡 **Recommended Skill:** `skills/infra`
+* **Recommended Skill:** `skills/infra`
 
 ### Step 2: Diagnosis & Manifest Mapping
 * Identify manifest files present in the repository (`package.json`, `pyproject.toml`, `requirements.txt`, `Dockerfile`, `docker-compose.yml`, etc.).
@@ -27,4 +27,4 @@ You orchestrate the secure addition, updating, and maintenance of project depend
 ### Step 4: Validation & Wrap-up
 * Validate syntax integrity and compatibility of manifests and configuration files.
 * Provide clear guidance for the next phase in the development lifecycle:
-  > **[NEXT STEP]** ➡️ *"📦 Environment and dependencies updated successfully! Proceed with the development lifecycle via `/implement` or validate changes using `/test-fix`."*
+  > **[NEXT STEP]** *"Environment and dependencies updated successfully! Proceed with the development lifecycle via `/implement` or validate changes using `/test-fix`."*

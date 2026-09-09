@@ -9,14 +9,14 @@ Guides the enhancement of internal software design and maintainability for funct
 
 ---
 
-## 📖 Supporting Resources
+## Supporting Resources
 
-* 📖 **Detailed Refactoring Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
-* 📋 **Refactoring Checklist Template**: [`resources/refactor_checklist_template.md`](./resources/refactor_checklist_template.md)
+* **Detailed Refactoring Manual**: [`references/EXECUTION.md`](./references/EXECUTION.md)
+* **Refactoring Checklist Template**: [`resources/refactor_checklist_template.md`](./resources/refactor_checklist_template.md)
 
 ---
 
-## ⛔ Strict Safeguard Rules
+## Strict Safeguard Rules
 
 1. **Strict Behavioral Preservation**: No refactoring may alter return types, exceptions, or public system contracts.
 2. **Zero Test Regressions**: If any test fails after a refactoring change, the modification is invalid. Revert immediately via `git reset --hard HEAD` (Mode 4).
@@ -30,7 +30,7 @@ Guides the enhancement of internal software design and maintainability for funct
 
 ---
 
-## ✅ Refactoring Evidence Matrix
+## Refactoring Evidence Matrix
 
 Upon completing component refactoring, present the change matrix:
 

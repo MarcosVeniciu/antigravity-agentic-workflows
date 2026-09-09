@@ -9,7 +9,7 @@ You orchestrate the publication of a new system release from completed features.
 
 ---
 
-## 🚀 Execution Pipeline in 5 Steps
+## Execution Pipeline in 5 Steps
 
 ### Step 1: Entry Gate & 100% DoD Audit
 - The user provides the completed features to include in the release (e.g., `feature/auth-jwt`, `feature/producer-mock`).
@@ -33,13 +33,13 @@ You orchestrate the publication of a new system release from completed features.
   ```bash
   pytest -v -s tests/integration/
   ```
-- 💡 **Recommended Skill:** `skills/test-integration`
+- **Recommended Skill:** `skills/test-integration`
 - If failures or incompatibilities arise between features, investigate and apply surgical fixes directly on the release branch.
 
 ### Step 4: SemVer Calculation & Changelog Consolidation
 - Analyze merged commits to determine the version bump (Major, Minor, or Patch).
 - Cumulatively update `CHANGELOG.md` at the project root and save a copy in `03-releases/changelog-v[VERSION].md` in the Obsidian Vault.
-- 💡 **Recommended Skill:** `skills/release`
+- **Recommended Skill:** `skills/release`
 
 ### Step 5: Git Flow Finalization & Tagging
 - Finalize the release pipeline via `skills/git` (Mode 5):
@@ -55,4 +55,4 @@ You orchestrate the publication of a new system release from completed features.
   git branch -d feature/[slug-2]
   ```
 - Output the final success message:
-  > **[RELEASE COMPLETED]** 🚀 *"Version `v[VERSION]` published successfully with 100% DoD verified, integration tests passed, annotated tag created, and branches merged into `main` and `develop`!"*
+  > **[RELEASE COMPLETED]** *"Version `v[VERSION]` published successfully with 100% DoD verified, integration tests passed, annotated tag created, and branches merged into `main` and `develop`!"*

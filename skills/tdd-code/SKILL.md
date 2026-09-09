@@ -7,7 +7,7 @@ description: "TDD Green Phase: writes minimal, strictly typed SOLID production c
 
 Writes the minimal and strictly necessary production code required to make the context batch unit test suite pass green (TDD Green Phase), focusing on simplicity, strict typing, and traceability.
 
-## 🎯 Implementation Principles (Green Phase)
+## Implementation Principles (Green Phase)
 
 1. **"Make It Work" Before Optimizing:**
    * Implement minimal code sufficient to turn tests green.
@@ -20,5 +20,5 @@ Writes the minimal and strictly necessary production code required to make the c
 4. **Technical Pivot Protocol:**
    * If a technical roadblock forces deviation from the SDD blueprint during implementation, immediately document a pivot in `02-auditorias/pivots-[slug].md` using [`resources/pivot_template.md`](./resources/pivot_template.md).
 
-## 📋 Available Resources
+## Available Resources
 * **Pivot Template:** [`resources/pivot_template.md`](./resources/pivot_template.md)

@@ -4,7 +4,7 @@ This document establishes operating modes, directory structures, and integrity r
 
 ---
 
-## 🗂️ Official Directory Structure in Vault
+## Official Directory Structure in Vault
 
 All notes in the vault must respect the standard folder hierarchy:
 * `00-core-rules/`: Architecture Decision Records (`adrs/adr-[slug].md`), `domain-glossary.md`, and `conventions.md`.
@@ -15,7 +15,7 @@ All notes in the vault must respect the standard folder hierarchy:
 
 ---
 
-## 🔄 Operating Modes
+## Operating Modes
 
 ### Mode 1: Metadata Search & Retrieval
 1. **Pre-flight Search**: In the first turn or when loading feature context, use `search_query`:
@@ -38,7 +38,7 @@ All notes in the vault must respect the standard folder hierarchy:
 
 ---
 
-## ⛔ Strict Constraints
+## Strict Constraints
 
 1. **NO TEMPORARY DRAFTS**: Do not pollute Obsidian with scratch notes or incomplete drafts.
 2. **ZERO METADATA HALLUCINATION**: The `feature` YAML field must match the active Git branch slug or `"global"`.

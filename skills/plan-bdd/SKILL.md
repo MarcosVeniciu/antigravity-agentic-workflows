@@ -7,7 +7,7 @@ description: "Formats business requirements and user stories strictly into pure 
 
 Models feature requirements and business rules strictly in Gherkin syntax (`Given/When/Then`), ensuring focus on user and system behavior without leaking technical implementation details.
 
-## 🎯 Golden Rules of BDD
+## Golden Rules of BDD
 
 1. **Ubiquitous, Accessible Language:**
    * Write scenarios easily understood by developers, product managers, and business stakeholders.
@@ -18,6 +18,6 @@ Models feature requirements and business rules strictly in Gherkin syntax (`Give
 3. **Fidelity to Approved Proposal:**
    * Scenarios must reflect the exact Desired End-State approved during the debate step.
 
-## 📋 Available Resources
+## Available Resources
 * **BDD Template:** [`resources/template_bdd.md`](./resources/template_bdd.md)
 * **Reference Example:** [`examples/bdd_checkout_example.md`](./examples/bdd_checkout_example.md)

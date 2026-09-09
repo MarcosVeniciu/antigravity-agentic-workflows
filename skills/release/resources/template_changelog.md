@@ -1,15 +1,15 @@
-# 🚀 Release Notes - `v{{VERSION}}` ({{DATE}})
+# Release Notes - `v{{VERSION}}` ({{DATE}})
 
-## 🚀 New Features
+## New Features
 - `[feat]`: {{FEAT_DESCRIPTION}}
 
-## 🐛 Bug Fixes
+## Bug Fixes
 - `[fix]`: {{FIX_DESCRIPTION}}
 
-## ⚡ Performance & Refactoring
+## Performance & Refactoring
 - `[refactor/perf]`: {{PERF_DESCRIPTION}}
 
-## ⚠️ Breaking Changes
+## Breaking Changes
 - `[BREAKING]`: {{BREAKING_DESCRIPTION}}
 
 ---

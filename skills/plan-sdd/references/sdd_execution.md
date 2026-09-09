@@ -4,13 +4,27 @@ This document establishes the standards for constructing the **Software Design D
 
 ---
 
-## 1. UML Model Selection (Mermaid.js)
+## 1. Mandatory UML Models (Mermaid.js)
 
-Select the most appropriate Mermaid diagram for the feature's complexity:
-* **Sequence Diagram (`sequenceDiagram`)**: Recommended for distributed flows, REST APIs, event messaging, and repository transactions.
-* **Class Diagram (`classDiagram`)**: Recommended for domain entity modeling, class hierarchies, or patterns like Strategy/Factory.
-* **Flowchart (`flowchart`)**: For state machines or complex decision trees.
-* **ER Diagram (`erDiagram`)**: For relational database schema modeling.
+Every technical specification (SDD) **MUST** include both diagrams modeled in Mermaid.js:
+
+1. **Technical Execution Flow (`sequenceDiagram`) [Mandatory]:**
+   * Maps execution flow across technical layers: `Client -> Controller/API -> Service/Domain -> Repository/Port -> Adapter/Fake`.
+   * Must include `autonumber` and capture both success and error paths.
+   * Message labels must be enclosed in double quotes (e.g., `API->>Service: "process(dto)"`).
+
+2. **Component & Contract Structure (`classDiagram`) [Mandatory]:**
+   * Maps the concrete class and contract structure for this vertical slice.
+   * Must represent:
+     * Input and output DTOs.
+     * Service / Use Case classes with methods and visibility.
+     * Port interfaces (`<<Interface>>`) decoupling I/O.
+     * In-memory test doubles (`<<Fake>>` or `<<Mock>>`).
+     * Local domain entities.
+
+3. **Complementary Models (Optional / As-Needed):**
+   * **Flowchart (`flowchart`)**: For state machines or complex algorithmic branching.
+   * **Entity-Relationship Diagram (`erDiagram`)**: For slices introducing or altering relational database tables and migrations.
 
 > **Mandatory Mermaid Syntax Rule**: Every node label or message text containing spaces, parentheses, or special characters MUST be strictly enclosed in double quotes (e.g., `A["Authentication Service (JWT)"]`).
 

@@ -1,11 +1,11 @@
-# 🚀 [Project Name]
+# [Project Name]
 
 > [!NOTE]
 > **Business Vision:** `[Concise sentence describing the project purpose, problem it solves, and target audience]`
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Core:** `[Primary language / framework]`
 * **Database / Persistence:** `[Storage technology or ORM]`
@@ -14,7 +14,7 @@
 
 ---
 
-## 🏗️ High-Level Architecture
+## High-Level Architecture
 
 ```mermaid
 graph TD
@@ -25,7 +25,7 @@ graph TD
 
 ---
 
-## ⚡ Getting Started (Onboarding)
+## Getting Started (Onboarding)
 
 ### Prerequisites
 * `[Prerequisite 1 e.g., Python 3.10+ / Node.js 18+]`
@@ -51,7 +51,7 @@ graph TD
 
 ---
 
-## 🧰 Useful Commands
+## Useful Commands
 
 ```bash
 # Run test suite
@@ -63,6 +63,6 @@ graph TD
 
 ---
 
-## 📄 License & Contribution
+## License & Contribution
 
 `[Contribution and license information]`

@@ -4,7 +4,7 @@ This guide establishes the coding standard for unit test suites.
 
 ---
 
-## 🏗️ Canonical Arrange-Act-Assert (AAA) Structure
+## Canonical Arrange-Act-Assert (AAA) Structure
 
 Every unit test must have its 3 sections explicitly delineated with comments:
 
@@ -31,13 +31,13 @@ def test_should_register_producer_successfully():
 
 ---
 
-## 🛡️ Mocking Guidelines
+## Mocking Guidelines
 1. **Mock only what is outside the unit:** Never mock internal classes or simple data DTOs; mock I/O boundaries (repositories, network adapters, HTTP clients).
 2. **Use `spec` or `autospec`:** Ensures mocks break if the actual interface contract changes or non-existent methods are called.
 
 ---
 
-## ⚡ Concurrency & Race Condition Patterns (Polyglot)
+## Concurrency & Race Condition Patterns (Polyglot)
 
 When testing operations that mutate shared state, balances, or inventory, execute parallel invocations to prove atomicity:
 
@@ -96,7 +96,7 @@ test("should prevent double decrement on concurrent stock reservation", () async
 
 ---
 
-## 🔒 Security Boundary Testing Patterns
+## Security Boundary Testing Patterns
 
 ### 1. IDOR / Access Control Rejection
 ```python

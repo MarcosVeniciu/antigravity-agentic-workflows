@@ -1,4 +1,4 @@
-# 🛡️ Security Audit Report (OWASP & ASVS Aligned)
+# Security Audit Report (OWASP & ASVS Aligned)
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
 **Base Branch:** `{{BASE_BRANCH}}` | **Commit Ref:** `{{COMMIT_SHA}}`  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Scope & Coverage
+## Scope & Coverage
 
 - **Eligible Files:** `{{ELIGIBLE_FILES_COUNT}}`
 - **Analyzed Files:** `{{ANALYZED_FILES_COUNT}}`
@@ -16,7 +16,7 @@
 
 ---
 
-## 🔍 Identified Findings
+## Identified Findings
 
 > [!CAUTION]
 > **Sanitization Requirement:** Never paste raw secrets, credentials, or unmasked PII in the table below. Use `***REDACTED***`.
@@ -27,7 +27,7 @@
 
 ---
 
-## 🛠️ Authorized Surgical Mitigations (Mode B Only)
+## Authorized Surgical Mitigations (Mode B Only)
 
 > [!NOTE]
 > In **Mode A (Audit-Only)**, no source code or git history modifications are performed.
@@ -39,7 +39,7 @@
 
 ---
 
-## 🚦 Validation & Test Metrics
+## Validation & Test Metrics
 
 - **Test Suite Command:** `{{TEST_COMMAND}}`
 - **Test Metrics:** Executed: `{{TOTAL_TESTS}}` | Passed: `{{PASSED_TESTS}}` | Failed: `{{FAILED_TESTS}}` | Skipped: `{{SKIPPED_TESTS}}`
@@ -48,7 +48,7 @@
 
 ---
 
-## 🏁 Conclusion & Gate Decision
+## Conclusion & Gate Decision
 
 - **Decision:** `{{DECISION}}` *(APPROVED_CLEAN | BLOCKED_ON_FINDINGS | INCONCLUSIVE)*
 - **Justification / Residual Risk:** `{{JUSTIFICATION_OR_RESIDUAL_RISK}}`

@@ -4,18 +4,18 @@ This document guides the audit of architectural boundary isolation, layer coupli
 
 ---
 
-## ⚡ Phase 0 — Automated Boundary Check (Priority Guide)
+## Phase 0 — Automated Boundary Check (Priority Guide)
 
 Run the boundary linter against modified files to rapidly identify known boundary violations:
 ```bash
 python skills/review-architecture/scripts/check_arch_boundaries.py <modified_files>
 ```
-* **Evaluation:** Treat any `🔴 [VIOLATION]` as an architectural investigation lead. Document the finding in the audit report.
+* **Evaluation:** Treat any `[VIOLATION]` as an architectural investigation lead. Document the finding in the audit report.
 * **Note:** Scanners prioritize reading but do not replace semantic architectural inspection. Always evaluate full class and module responsibilities across the diff.
 
 ---
 
-## 🔄 Phase 1 — Audit (Locating Evidence)
+## Phase 1 — Audit (Locating Evidence)
 
 ### 1. Isolamento de Camadas & Inversão de Dependência (DIP)
 * **Vazamento de Infraestrutura no Domínio:** Verificar se camadas puras de negócio (`domain`, `entities`, `use_cases`) importam drivers de banco (`sqlalchemy`, `typeorm`, `prisma`), frameworks web (`flask`, `express`, `fastapi`) ou bibliotecas HTTP (`requests`, `axios`).
@@ -32,7 +32,7 @@ python skills/review-architecture/scripts/check_arch_boundaries.py <modified_fil
 
 ---
 
-## 🛠️ Phase 2 — Surgical Recommendations & Mitigation (Mode B Only)
+## Phase 2 — Surgical Recommendations & Mitigation (Mode B Only)
 
 * **Inversão de Dependências:** Declarar interfaces/protocolos na camada de domínio e injetar adaptadores concretos no ponto de composição (`__init__`).
 * **Fronteiras de DTO:** Introduzir mappers/DTOs específicos para desacoplar contratos de API de modelos de banco de dados.

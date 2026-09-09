@@ -1,4 +1,4 @@
-# ⚡ Performance & Resource Efficiency Audit Report
+# Performance & Resource Efficiency Audit Report
 
 **Feature:** `{{FEATURE_SLUG}}` | **Branch:** `{{BRANCH_NAME}}`  
 **Base Branch:** `{{BASE_BRANCH}}` | **Commit Ref:** `{{COMMIT_SHA}}`  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Scope & Workload Context
+## Scope & Workload Context
 
 - **Eligible Files:** `{{ELIGIBLE_FILES_COUNT}}`
 - **Analyzed Files:** `{{ANALYZED_FILES_COUNT}}`
@@ -16,7 +16,7 @@
 
 ---
 
-## 🔍 Identified Findings
+## Identified Findings
 
 | ID | File / Line | Pattern Detected | Cost Category | Severity | Confidence | Disposition | Impact / Evidence |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -24,7 +24,7 @@
 
 ---
 
-## 🛠️ Authorized Surgical Optimizations (Mode B Only)
+## Authorized Surgical Optimizations (Mode B Only)
 
 > [!NOTE]
 > In **Mode A (Audit-Only)**, no source code or git history modifications are performed.
@@ -36,7 +36,7 @@
 
 ---
 
-## 🚦 Validation & Benchmark / Test Metrics
+## Validation & Benchmark / Test Metrics
 
 - **Benchmark / Test Command:** `{{BENCHMARK_OR_TEST_COMMAND}}`
 - **Observed Metrics:**
@@ -47,7 +47,7 @@
 
 ---
 
-## 🏁 Conclusion & Gate Decision
+## Conclusion & Gate Decision
 
 - **Decision:** `{{DECISION}}` *(APPROVED_CLEAN | BLOCKED_ON_FINDINGS | INCONCLUSIVE)*
 - **Justification / Residual Risk:** `{{JUSTIFICATION_OR_RESIDUAL_RISK}}`

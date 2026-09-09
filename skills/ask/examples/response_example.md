@@ -4,10 +4,10 @@ This file serves as a practical demonstration for the model on how to structure 
 
 ---
 
-### 📥 Example User Question
+### Example User Question
 > "How does test coverage validation work in the CI pipeline and which file manages it?"
 
-### 📤 Example Agent Response (Project Oracle)
+### Example Agent Response (Project Oracle)
 
 Based on the analysis of the repository and Obsidian knowledge base, here are the details regarding test coverage validation:
 
